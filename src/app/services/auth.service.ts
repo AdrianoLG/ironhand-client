@@ -7,7 +7,6 @@ import { VisibleBarService } from './visible-bar.service';
   providedIn: 'root'
 })
 export class AuthService {
-  private message: string;
 
   constructor(private _router: Router, private visibleBarService: VisibleBarService ) {}
 
@@ -29,7 +28,6 @@ export class AuthService {
   }
 
   login(token): void {
-    this.clear();
     localStorage.setItem('token', token);
     this.visibleBarService.setVisibleBar(true);
 

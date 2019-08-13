@@ -4,4 +4,4 @@ Angular 8 app consuming [Node API's](https://github.com/AdrianoLG/ironhand-serve
 
 ## Config
 
-Rename globals.default.ts to globals.ts changing the url to the one of server running the API.
+Rename globals.default.ts to globals.ts changing the url to the one of the server running the API.

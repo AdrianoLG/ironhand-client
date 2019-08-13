@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { TodosService } from '../../services/todos/todos.service';
 import { Todo } from '../../models/todo';
 import { Todos } from 'src/app/models/todos';
+import { MenuService } from 'src/app/services/menu/menu.service';
 
 @Component({
   selector: 'app-todos',
@@ -17,11 +18,33 @@ export class TodosComponent implements OnInit {
 
   constructor(
     private todosService: TodosService,
+    private menuService: MenuService,
     private router: Router
   ) {}
 
   ngOnInit(): void {
+    this.menuService.changeMenuItems([
+      {
+        name: 'Cerrar sesión',
+        icon: 'logout'
+      },
+      {
+        name: 'Borrar completadas',
+        icon: 'delete_outline'
+      },
+      {
+        name: 'Salir',
+        icon: 'exit_to_app'
+      }
+    ]);
     this.getTodos();
+    this.menuService.needRefresh.subscribe(refresh => {
+      if (refresh) {
+        this.todos = null;
+        this.count = 0;
+        this.getTodos();
+      }
+    })
   }
 
   getTodos(): void {
@@ -37,17 +60,27 @@ export class TodosComponent implements OnInit {
   }
 
   onSelection(e, v) {
-    console.log('Selection list');
-
     for (const a of v) {
-      this.completeTask(a.value._id);
-      console.log(a.value);
+      if (a.value.completed) {
+        this.uncompleteTodo(a.value._id);
+      } else {
+        this.completeTodo(a.value._id);
+      }
       this.getTodos();
     }
   }
 
-  completeTask(id) {
+  completeTodo(id) {
     this.todosService.completeTodo(id)
+      .subscribe(message => {
+        console.log(message);
+      }, error => {
+        console.log(error);
+      });
+  }
+
+  uncompleteTodo(id) {
+    this.todosService.uncompleteTodo(id)
       .subscribe(message => {
         console.log(message);
       }, error => {

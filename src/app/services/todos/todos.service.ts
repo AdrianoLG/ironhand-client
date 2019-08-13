@@ -46,4 +46,19 @@ export class TodosService {
     ];
     return this.http.patch<Todo>(this.globals.url + '/todos/' + _id, body, this.httpOptions);
   }
+
+  uncompleteTodo(_id) {
+    const body = [
+      {
+        propName: 'completed',
+        value: false
+      }
+    ];
+    return this.http.patch<Todo>(this.globals.url + '/todos/' + _id, body, this.httpOptions);
+  }
+
+  deleteCompleted() {
+    return this.http.delete(this.globals.url + '/todos', this.httpOptions);
+  }
+
 }

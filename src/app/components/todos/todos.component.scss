@@ -2,6 +2,9 @@
 h2 {
    padding: 1.5rem 1rem 0;
 }
+h3 {
+   padding: 0 1rem;
+}
 ul {
    display: flex;
 }
@@ -20,6 +23,12 @@ mat-list h3 {
 }
 mat-tab-header .mat-tab-label-active {
    color: $primary;
+}
+.category {
+   font-size: .75em !important;
+   padding-top: .5em !important;
+   font-style: italic;
+   text-transform: uppercase;
 }
 .flex {
    align-items: center;

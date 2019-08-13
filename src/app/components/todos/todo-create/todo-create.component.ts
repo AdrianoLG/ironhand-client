@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {FormGroup, Validators, FormBuilder } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 import { Todo } from '../../../models/todo';
 import { TodosService } from 'src/app/services/todos/todos.service';
+import { MenuService } from 'src/app/services/menu/menu.service';
 
 @Component({
   selector: 'app-todo-create',
@@ -16,7 +16,6 @@ export class TodoCreateComponent implements OnInit {
   todo: Todo;
 
   constructor(
-    private route: ActivatedRoute,
     private todosService: TodosService,
     private location: Location,
     private formBuilder: FormBuilder
@@ -53,7 +52,7 @@ export class TodoCreateComponent implements OnInit {
       priority: this.addTaskForm.value.priority,
       completed: false
     };
-    this.todosService.addTodo(this.todo).subscribe(message => {
+    this.todosService.addTodo(this.todo).subscribe(() => {
       this.goBack();
     }, error => {
       console.log(error);

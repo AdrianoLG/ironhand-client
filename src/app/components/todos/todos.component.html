@@ -1,11 +1,13 @@
 <mat-tab-group [color]="primary" [backgroundColor]="primary">
   <mat-tab label="Todo">
     <h2 class="mat-title flex">Tareas <span matBadge="{{ count }}"></span></h2>
-    <mat-selection-list #todosList (selectionChange)="onSelection($event, todosList.selectedOptions.selected)">
+    <mat-selection-list #todosList (selectionChange)="onSelection($event, todosList.selectedOptions.selected)" *ngIf="count>0">
       <mat-list-option *ngFor="let todo of todos" [value]="todo" [class.completed]="todo.completed">
-          {{ todo.name }}
+          <p>{{ todo.name }}</p>
+          <sub class="category">{{ todo.category }}</sub>
       </mat-list-option>
     </mat-selection-list>
+    <h3 *ngIf="count==0">Todavía no hay tareas, ¡crea una!</h3>
   </mat-tab>
   <mat-tab label="Proyectos"></mat-tab>
 </mat-tab-group>

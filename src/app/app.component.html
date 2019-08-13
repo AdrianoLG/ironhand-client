@@ -12,17 +12,9 @@
             <mat-icon>more_vert</mat-icon>
          </button>
          <mat-menu #menu="matMenu">
-            <button mat-menu-item>
-               <mat-icon>logout</mat-icon>
-               <span>Cerrar sesión</span>
-            </button>
-            <button mat-menu-item disabled>
-               <mat-icon>voicemail</mat-icon>
-               <span>Check voicemail</span>
-            </button>
-            <button mat-menu-item>
-               <mat-icon>notifications_off</mat-icon>
-               <span>Disable alerts</span>
+            <button mat-menu-item *ngFor="let item of menuItems" (click)="selectMenuItem(item.name)">
+               <mat-icon>{{ item.icon}}</mat-icon>
+               <span>{{ item.name }}</span>
             </button>
          </mat-menu>
       </mat-toolbar-row>

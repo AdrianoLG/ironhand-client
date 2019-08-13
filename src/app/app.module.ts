@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
 import { MaterialModule } from './material/material.module';
 import { AppRoutingModule } from './app-routing.module';
@@ -14,23 +14,23 @@ import { Globals } from './services/globals';
 import 'hammerjs';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    LoginComponent,
-    HomeComponent,
-  ],
-  imports: [
-    BrowserModule,
-    BrowserAnimationsModule,
-    AppRoutingModule,
-    MaterialModule,
-    RouterModule,
-    FormsModule,
-    ReactiveFormsModule,
-    HttpClientModule
-  ],
-  providers: [AuthGuard, Globals],
-  bootstrap: [AppComponent]
+	declarations: [
+		AppComponent,
+		LoginComponent,
+		HomeComponent,
+	],
+	imports: [
+		BrowserModule,
+		BrowserAnimationsModule,
+		AppRoutingModule,
+		MaterialModule,
+		RouterModule,
+		FormsModule,
+		ReactiveFormsModule,
+		HttpClientModule
+	],
+	providers: [AuthGuard, Globals],
+	bootstrap: [AppComponent]
 })
 
-export class AppModule {}
+export class AppModule { }
