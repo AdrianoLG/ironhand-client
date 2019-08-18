@@ -52,7 +52,7 @@ body {
 
 $ironhand-primary: mat-palette($mat-red, 900);
 $ironhand-accent:  mat-palette($mat-blue-grey, 900);
-$ironhand-warn: mat-palette($mat-indigo, 900);
+$ironhand-warn: mat-palette($mat-cyan, 900);
 
 $ironhand-theme: mat-light-theme($ironhand-primary, $ironhand-accent, $ironhand-warn);
 

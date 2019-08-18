@@ -1,31 +1,9 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { Router } from '@angular/router';
-import { FoodService } from '../../services/food/food.service';
-import { FoodMeals } from '../../models/food-meals';
+import { MealsService } from '../../services/meals/meals.service';
+import { Meals } from '../../models/meals';
 import { CompletedExercise } from 'src/app/models/completed-exercise';
 import { ExerciseService } from '../../services/exercise/exercise.service';
-import { MAT_DATE_LOCALE, DateAdapter } from '@angular/material';
-
-@Component({
-  selector: 'app-dialog',
-  templateUrl: './app-dialog.component.html',
-  styleUrls: ['./app-dialog.component.scss']
-})
-
-export class DialogComponent implements OnInit {
-
-  constructor(public dialogRef: MatDialogRef<DialogComponent>, private _adapter: DateAdapter<any>) {}
-
-  ngOnInit() {
-    this._adapter.setLocale('es');
-  }
-
-  onNoClick(): void {
-    this.dialogRef.close();
-  }
-
-}
 
 @Component({
   selector: 'app-body',
@@ -35,24 +13,36 @@ export class DialogComponent implements OnInit {
 })
 export class BodyComponent implements OnInit {
 
-  foodMeals: FoodMeals;
+  meals: Meals[];
+  count: number;
   completedExercises: CompletedExercise;
   submitted = false;
 
-  constructor(private foodService: FoodService,
-              private exerciseService: ExerciseService,
-              private router: Router,
-              public dialog: MatDialog) {}
+  constructor(
+    private mealsService: MealsService,
+    private exerciseService: ExerciseService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
-    this.foodService.getFoodMeals().subscribe(foodMeals => {
-      this.foodMeals = foodMeals;
+    this.getFoodMeals();
+    this.getCompletedExercises();
+  }
+
+  getFoodMeals(): void {
+    this.mealsService.getMeals().subscribe(res => {
+      this.count = res.count;
+      this.meals = res.meals;
+      console.log(this.count);
+
     }, error => {
       if (error.status === 401) {
         this.router.navigate(['/login']);
       }
     });
+  }
 
+  getCompletedExercises(): void {
     this.exerciseService.getCompletedExercises().subscribe(completedExercises => {
       this.completedExercises = completedExercises;
     }, error => {
@@ -62,16 +52,4 @@ export class BodyComponent implements OnInit {
     });
   }
 
-  openDialog(): void {
-    const dialogRef = this.dialog.open(DialogComponent, {
-      width: '250px'
-    });
-
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
-    });
-  }
-
 }
-
-

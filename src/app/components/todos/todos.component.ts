@@ -2,7 +2,6 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { Router } from '@angular/router';
 import { TodosService } from '../../services/todos/todos.service';
 import { Todo } from '../../models/todo';
-import { Todos } from 'src/app/models/todos';
 import { MenuService } from 'src/app/services/menu/menu.service';
 
 @Component({
@@ -44,7 +43,7 @@ export class TodosComponent implements OnInit {
         this.count = 0;
         this.getTodos();
       }
-    })
+    });
   }
 
   getTodos(): void {
@@ -59,7 +58,7 @@ export class TodosComponent implements OnInit {
       });
   }
 
-  onSelection(e, v) {
+  onSelection(v) {
     for (const a of v) {
       if (a.value.completed) {
         this.uncompleteTodo(a.value._id);

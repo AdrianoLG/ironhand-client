@@ -28,6 +28,7 @@ export class AuthService {
   }
 
   login(token): void {
+    this.clear();
     localStorage.setItem('token', token);
     this.visibleBarService.setVisibleBar(true);
 

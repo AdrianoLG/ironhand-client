@@ -1,5 +1,13 @@
 import { NgModule } from '@angular/core';
-import { MatCheckboxModule, MatTabsModule, MatDatepickerModule, MatNativeDateModule, MatCardModule, MatBadgeModule } from '@angular/material';
+import {
+  MatCheckboxModule,
+  MatTabsModule,
+  MatDatepickerModule,
+  MatNativeDateModule,
+  MatCardModule,
+  MatBadgeModule,
+  MatChipsModule
+} from '@angular/material';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
@@ -24,7 +32,8 @@ import { MatToolbarModule } from '@angular/material/toolbar';
     MatDatepickerModule,
     MatNativeDateModule,
     MatCardModule,
-    MatBadgeModule
+    MatBadgeModule,
+    MatChipsModule
   ],
   exports: [
     MatButtonModule,
@@ -39,7 +48,8 @@ import { MatToolbarModule } from '@angular/material/toolbar';
     MatTabsModule,
     MatDatepickerModule,
     MatCardModule,
-    MatBadgeModule
+    MatBadgeModule,
+    MatChipsModule
   ],
   providers: [
     MatDatepickerModule

@@ -1,9 +1,13 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable  } from 'rxjs';
-import { Todos } from '../../models/todos';
 import { Todo } from 'src/app/models/todo';
 import { Globals } from '../globals';
+
+export interface TodosResponse {
+  count: number;
+  todos: Todo[]
+}
 
 @Injectable({
   providedIn: 'root'
@@ -25,8 +29,8 @@ export class TodosService {
     private globals: Globals
   ) { }
 
-  getTodos(): Observable<Todos> {
-    return this.http.get<Todos>(this.globals.url + '/todos', this.httpOptions);
+  getTodos(): Observable<TodosResponse> {
+    return this.http.get<TodosResponse>(this.globals.url + '/todos', this.httpOptions);
   }
 
   getTodo(_id: string): Observable<Todo> {

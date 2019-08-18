@@ -10,7 +10,7 @@
     <mat-form-field>
       <input matInput type="number" placeholder="Prioridad" formControlName="priority" required>
     </mat-form-field>
-    <div class="flexCont">
+    <div class="flex mT15">
       <mat-icon aria-hidden="false" aria-label="Formulario incorrecto" *ngIf="addTaskForm.status=='INVALID'" color="primary">block</mat-icon>
       <mat-icon aria-hidden="false" aria-label="Formulario incorrecto" *ngIf="addTaskForm.status=='VALID'" color="accent">thumb_up</mat-icon>
       <div class="buttons">

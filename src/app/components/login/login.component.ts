@@ -34,10 +34,18 @@ export class LoginComponent implements OnInit {
     if (this.loginForm.invalid) {
       return;
     }
-    this.userService.getToken({	email: this.loginForm.value.email, password: this.loginForm.value.password})
+    this.userService.getToken(
+      {
+        email: this.loginForm.value.email,
+        password: this.loginForm.value.password
+      }
+    )
     .subscribe(data => {
+      console.log(data.token);
       this.authService.login(data.token);
-    }, error => {console.log('Erroooor ', error)});
+    }, error => {
+      console.log('Erroooor ', error);
+    });
   }
 
   get f() { return this.loginForm.controls; }

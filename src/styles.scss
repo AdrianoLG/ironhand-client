@@ -1,6 +1,94 @@
 /* You can add global styles to this file, and also import other style files */
-.buttons button:first-child {
+@import './variables.scss';
+body {
+   overflow: hidden;
+}
+h3 {
+   padding: 0 1rem;
+}
+ul {
+   display: flex;
+}
+li {
+   background: white;
+   box-sizing: border-box;
+   width: 23%;
+   margin: 1% 2em 0;
+   padding: 2em;
+}
+mat-form-field {
+   width: 100%;
+}
+mat-list h3 {
+   box-sizing: border-box;
+   font-weight: normal;
+   margin-bottom: 1em;
+   padding: 1em;
+}
+mat-sidenav-container {
+   height: calc(100vh - 32px) !important;
+}
+mat-tab-header .mat-tab-label-active {
+   color: $primary;
+}
+.category {
+   font-size: .75em !important;
+   padding-top: .5em !important;
+   font-style: italic;
+   text-transform: uppercase;
+}
+.buttons button {
    margin-right: 1em;
+   &:last-child {
+      margin-right: 0;
+   }
+}
+.flex {
+   align-items: center;
+   display: flex;
+   justify-content: space-between;
+}
+.flexEnd {
+   align-items: center;
+   display: flex;
+   justify-content: flex-end;
+}
+.hundred {
+   width: 100%;
+}
+.mT15 {
+   margin-top: 1.5rem;
+}
+.mat-badge-medium.mat-badge-overlap.mat-badge-after .mat-badge-content {
+   right: 0;
+}
+.mat-card-content {
+   cursor: pointer;
+}
+.mat-checkbox-checked {
+   opacity: .6;
+}
+.mat-list-item.mat-list-option.completed {
+   color: $secondaryLightLowest;
+   .mat-pseudo-checkbox::after {
+      border-bottom: 2px solid $secondaryLightLowest;
+      border-left: 2px solid $secondaryLightLowest;
+      left: 3px;
+      height: 5px;
+      opacity: 1;
+      top: 0;
+      transform: rotate(-45deg);
+      width: 12px;
+  }
+   .mat-pseudo-checkbox {
+      color: $secondaryLightLowest;
+   }
+}
+.mat-mini-fab {
+   bottom: 1em;
+   position: fixed !important;
+   right: 1em;
+   z-index: 5;
 }
 .wrapper {
    padding: 1.5em 1em 1em;
