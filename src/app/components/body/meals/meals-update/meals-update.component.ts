@@ -7,10 +7,7 @@ import { DateAdapter } from '@angular/material';
 import { Meals } from 'src/app/models/meals';
 import { MealsService } from 'src/app/services/meals/meals.service';
 import { ActivatedRoute } from '@angular/router';
-
-export interface MealItem {
-  name: string;
-}
+import { ChipItem } from 'src/app/models/chip-item';
 
 @Component({
   selector: 'app-meals-update',
@@ -30,9 +27,9 @@ export class MealsUpdateComponent implements OnInit {
   luAddOnBlur = true;
   diAddOnBlur = true;
   readonly separatorKeysCodes: number[] = [ENTER, COMMA];
-  breakfastItems: MealItem[] = [];
-  lunchItems: MealItem[] = [];
-  dinnerItems: MealItem[] = [];
+  breakfastItems: ChipItem[] = [];
+  lunchItems: ChipItem[] = [];
+  dinnerItems: ChipItem[] = [];
   meals: Meals;
   updateMealsForm: FormGroup;
   public _id: string;
@@ -95,7 +92,7 @@ export class MealsUpdateComponent implements OnInit {
     }
   }
 
-  removeItem(type: string, item: MealItem): void {
+  removeItem(type: string, item: ChipItem): void {
     switch (type) {
       case 'breakfast':
         if (this.breakfastItems.indexOf(item) >= 0) {

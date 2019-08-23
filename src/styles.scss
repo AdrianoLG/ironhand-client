@@ -3,6 +3,9 @@
 body {
    overflow: hidden;
 }
+h2, h3, h4, p {
+   color: $secondary;
+}
 h3 {
    padding: 0 1rem;
 }
@@ -16,8 +19,30 @@ li {
    margin: 1% 2em 0;
    padding: 2em;
 }
+mat-card.mat-card {
+   align-items: baseline;
+   display: flex;
+   flex-direction: column;
+   justify-content: flex-start;
+   margin: 1em;
+}
+mat-card-content.mat-card-content {
+   display: flex;
+   width: 100%;
+   .left {
+      width: 25%;
+   }
+   .right {
+      padding-top: 2em;
+      width: 75%;
+   }
+}
 mat-form-field {
    width: 100%;
+}
+mat-list {
+   width: 30%;
+   margin: 1em 1.5%;
 }
 mat-list h3 {
    box-sizing: border-box;
@@ -27,9 +52,25 @@ mat-list h3 {
 }
 mat-sidenav-container {
    height: calc(100vh - 32px) !important;
+   padding-bottom: 5em;
 }
 mat-tab-header .mat-tab-label-active {
    color: $primary;
+}
+.bottomTabs mat-tab-header {
+   background: $primary;
+   bottom: 0;
+   position: fixed;
+   width: 100%;
+   z-index: 2;
+   .mat-tab-label-active, .mat-tab-label-content {
+      color: white;
+      opacity: 1;
+   }
+}
+.buttons .mat-raised-button.cancelButton {
+   background: $secondaryLightLowest;
+   color: white;
 }
 .category {
    font-size: .75em !important;
@@ -38,6 +79,7 @@ mat-tab-header .mat-tab-label-active {
    text-transform: uppercase;
 }
 .buttons button {
+   margin-bottom: 1em;
    margin-right: 1em;
    &:last-child {
       margin-right: 0;
@@ -53,8 +95,15 @@ mat-tab-header .mat-tab-label-active {
    display: flex;
    justify-content: flex-end;
 }
+.floatRight {
+   float: right;
+}
 .hundred {
    width: 100%;
+}
+.mat-mini-fab .mat-icon,
+.mat-toolbar-row .mat-icon {
+   color: white;
 }
 .mT15 {
    margin-top: 1.5rem;
@@ -68,8 +117,14 @@ mat-tab-header .mat-tab-label-active {
 .mat-checkbox-checked {
    opacity: .6;
 }
+.mat-list-base .mat-list-option {
+   color: $secondary;
+}
 .mat-list-item.mat-list-option.completed {
    color: $secondaryLightLowest;
+   p {
+      color: $secondaryLightLowest;
+   }
    .mat-pseudo-checkbox::after {
       border-bottom: 2px solid $secondaryLightLowest;
       border-left: 2px solid $secondaryLightLowest;
@@ -79,7 +134,7 @@ mat-tab-header .mat-tab-label-active {
       top: 0;
       transform: rotate(-45deg);
       width: 12px;
-  }
+   }
    .mat-pseudo-checkbox {
       color: $secondaryLightLowest;
    }
@@ -90,6 +145,26 @@ mat-tab-header .mat-tab-label-active {
    right: 1em;
    z-index: 5;
 }
+.pad {
+   padding: 0 1em;
+}
 .wrapper {
    padding: 1.5em 1em 1em;
+}
+.mat-tab-group{
+   height: 100%;
+}
+.mat-tab-body-wrapper {
+   flex-grow: 1;
+}
+
+.mat-tab-body {
+   display: flex !important;
+   flex-direction: column;
+}
+
+.mat-tab-body-content {
+   display: flex;
+   flex-direction: column;
+   flex-grow: 1;
 }

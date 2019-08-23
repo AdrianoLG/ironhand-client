@@ -53,7 +53,7 @@
       <mat-icon aria-hidden="false" aria-label="Formulario incorrecto" *ngIf="addMealsForm.status=='INVALID'" color="primary">block</mat-icon>
       <mat-icon aria-hidden="false" aria-label="Formulario incorrecto" *ngIf="addMealsForm.status=='VALID'" color="accent">thumb_up</mat-icon>
       <div class="buttons">
-         <button color="accent" mat-raised-button (click)="goBack()">Cancelar</button>
+         <button class="cancelButton" mat-raised-button (click)="goBack()">Cancelar</button>
          <button color="primary" type="submit" mat-raised-button [disabled]="!addMealsForm.valid" (click)="saveMeal()">Crear</button>
       </div>
    </div>

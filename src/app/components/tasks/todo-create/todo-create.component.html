@@ -14,7 +14,7 @@
       <mat-icon aria-hidden="false" aria-label="Formulario incorrecto" *ngIf="addTaskForm.status=='INVALID'" color="primary">block</mat-icon>
       <mat-icon aria-hidden="false" aria-label="Formulario incorrecto" *ngIf="addTaskForm.status=='VALID'" color="accent">thumb_up</mat-icon>
       <div class="buttons">
-        <button mat-raised-button (click)="goBack()">Cancelar</button>
+        <button mat-raised-button class="cancelButton" (click)="goBack()">Cancelar</button>
         <button mat-raised-button type="submit" [disabled]="!addTaskForm.valid" color="accent">Crear</button>
       </div>
     </div>

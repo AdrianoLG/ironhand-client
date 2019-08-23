@@ -2,13 +2,14 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import decode from 'jwt-decode';
 import { VisibleBarService } from './visible-bar.service';
+import { Location } from '@angular/common';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  constructor(private _router: Router, private visibleBarService: VisibleBarService ) {}
+  constructor(private _router: Router, private visibleBarService: VisibleBarService, private location: Location ) {}
 
   clear(): void {
     localStorage.clear();
@@ -16,8 +17,8 @@ export class AuthService {
 
   isAuthenticated(): boolean {
     const isAuth = localStorage.getItem('token') != null && !this.isTokenExpired()
-    && localStorage.getItem('token') != 'undefined';
-    if(isAuth) {
+    && localStorage.getItem('token') !== 'undefined' && localStorage.getItem('token') !== '';
+    if (isAuth) {
       this.visibleBarService.setVisibleBar(true);
       return true;
     }
@@ -27,12 +28,11 @@ export class AuthService {
     return false;
   }
 
-  login(token): void {
+  login(token: string): void {
     this.clear();
     localStorage.setItem('token', token);
     this.visibleBarService.setVisibleBar(true);
-
-    this._router.navigate(['/']);
+    this.location.back();
   }
 
   logout(): void {

@@ -7,7 +7,7 @@ import { AuthGuard } from './guards/auth-guard.service';
 const routes: Routes = [
   { path: '', component: HomeComponent, canActivate: [ AuthGuard ] },
   { path: 'login', component: LoginComponent },
-  { path: 'tareas', canActivate: [ AuthGuard ], loadChildren: () => import('./components/todos/todos.module').then(m => m.TodosModule) },
+  { path: 'tareas', canActivate: [ AuthGuard ], loadChildren: () => import('./components/tasks/tasks.module').then(m => m.TasksModule) },
   { path: 'cuerpo', canActivate: [ AuthGuard ], loadChildren: () => import('./components/body/body.module').then(m => m.BodyModule) }
 ];
 

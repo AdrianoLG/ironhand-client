@@ -1,0 +1,62 @@
+<div class="wrapper">
+    <h2 class="mat-title">Actualizar proyecto</h2>
+    <form [formGroup]="updateProjectForm">
+      <mat-form-field>
+        <input matInput placeholder="Nombre de proyecto" formControlName="name" required>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="Categoría" formControlName="category" required>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-chip-list #todoList aria-label="Todo">
+           <mat-chip *ngFor="let item of todoItems" [selectable]="todoSelectable"
+              [removable]="todoRemovable" (removed)="removeItem('todo', item)">
+              {{ item.name }}
+              <mat-icon matChipRemove *ngIf="todoRemovable">cancel</mat-icon>
+           </mat-chip>
+           <input placeholder="Todo"
+              [matChipInputFor]="todoList"
+              [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+              [matChipInputAddOnBlur]="todoAddOnBlur"
+              (matChipInputTokenEnd)="addItem('todo', $event)">
+        </mat-chip-list>
+     </mat-form-field>
+      <mat-form-field>
+        <mat-chip-list #doingList aria-label="Doing">
+           <mat-chip *ngFor="let item of doingItems" [selectable]="doingSelectable"
+              [removable]="doingRemovable" (removed)="removeItem('doing', item)">
+              {{ item.name }}
+              <mat-icon matChipRemove *ngIf="doingRemovable">cancel</mat-icon>
+           </mat-chip>
+           <input placeholder="Doing"
+              [matChipInputFor]="doingList"
+              [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+              [matChipInputAddOnBlur]="doingAddOnBlur"
+              (matChipInputTokenEnd)="addItem('doing', $event)">
+        </mat-chip-list>
+     </mat-form-field>
+      <mat-form-field>
+        <mat-chip-list #doneList aria-label="Done">
+           <mat-chip *ngFor="let item of doneItems" [selectable]="doneSelectable"
+              [removable]="doneRemovable" (removed)="removeItem('done', item)">
+              {{ item.name }}
+              <mat-icon matChipRemove *ngIf="doneRemovable">cancel</mat-icon>
+           </mat-chip>
+           <input placeholder="Done"
+              [matChipInputFor]="doneList"
+              [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+              [matChipInputAddOnBlur]="doneAddOnBlur"
+              (matChipInputTokenEnd)="addItem('done', $event)">
+        </mat-chip-list>
+     </mat-form-field>
+      <div class="flex mT15">
+        <mat-icon aria-hidden="false" aria-label="Formulario incorrecto" *ngIf="updateProjectForm.status=='INVALID'" color="primary">block</mat-icon>
+        <mat-icon aria-hidden="false" aria-label="Formulario incorrecto" *ngIf="updateProjectForm.status=='VALID'" color="accent">thumb_up</mat-icon>
+        <div class="buttons">
+          <button mat-raised-button class="cancelButton" (click)="goBack()">Cancelar</button>
+          <button color="warn" mat-raised-button (click)="deleteProject()">Borrar</button>
+          <button color="accent" mat-raised-button type="submit" [disabled]="!updateProjectForm.valid" (click)="updateProject()">Actualizar</button>
+        </div>
+      </div>
+    </form>
+  </div>

@@ -36,7 +36,9 @@
         <mat-tab-group [color]="accent" [backgroundColor]="accent" class="bottomTabs">
             <mat-tab label="Completados">
                 <div>
-                    <h3>Completados</h3>
+                    <div class="wrapper">
+                      <h2>Completados</h2>
+                    </div>
                     <mat-card *ngFor="let completedExercise of completedExercises?.completedExercises" data-id="{{ completedExercise._id }}">
                       <mat-card-content>
                         <div class="left">

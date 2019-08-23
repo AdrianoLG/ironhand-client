@@ -6,10 +6,7 @@ import { COMMA, ENTER } from '@angular/cdk/keycodes';
 import { DateAdapter } from '@angular/material';
 import { Meals } from 'src/app/models/meals';
 import { MealsService } from 'src/app/services/meals/meals.service';
-
-export interface MealItem {
-  name: string;
-}
+import { ChipItem } from 'src/app/models/chip-item';
 
 @Component({
   selector: 'app-meals-create',
@@ -28,9 +25,9 @@ export class MealsCreateComponent implements OnInit {
   luAddOnBlur = true;
   diAddOnBlur = true;
   readonly separatorKeysCodes: number[] = [ENTER, COMMA];
-  breakfastItems: MealItem[] = [];
-  lunchItems: MealItem[] = [];
-  dinnerItems: MealItem[] = [];
+  breakfastItems: ChipItem[] = [];
+  lunchItems: ChipItem[] = [];
+  dinnerItems: ChipItem[] = [];
   meals: Meals;
   addMealsForm: FormGroup;
 
@@ -77,7 +74,7 @@ export class MealsCreateComponent implements OnInit {
     }
   }
 
-  removeItem(type: string, item: MealItem): void {
+  removeItem(type: string, item: ChipItem): void {
     switch (type) {
       case 'breakfast':
         if (this.breakfastItems.indexOf(item) >= 0) {

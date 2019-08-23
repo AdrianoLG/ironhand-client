@@ -1,9 +1,9 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { Router } from '@angular/router';
-import { MealsService } from '../../services/meals/meals.service';
-import { Meals } from '../../models/meals';
+import { MealsService } from 'src/app/services/meals/meals.service';
+import { Meals } from 'src/app/models/meals';
 import { CompletedExercise } from 'src/app/models/completed-exercise';
-import { ExerciseService } from '../../services/exercise/exercise.service';
+import { ExerciseService } from 'src/app/services/exercise/exercise.service';
 
 @Component({
   selector: 'app-body',

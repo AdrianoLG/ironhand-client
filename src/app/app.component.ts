@@ -4,6 +4,7 @@ import { MatSidenav } from '@angular/material/sidenav';
 import { MenuService } from './services/menu/menu.service';
 import { TodosService } from './services/todos/todos.service';
 import { Location } from '@angular/common';
+import { AuthService } from './services/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -20,6 +21,7 @@ export class AppComponent implements OnInit {
 
   constructor(
     public router: Router,
+    private authService: AuthService,
     private menuService: MenuService,
     private todosService: TodosService,
     private location: Location,
@@ -36,6 +38,7 @@ export class AppComponent implements OnInit {
     }, error => {
       console.log(error);
     });
+    this.authService.logout();
   }
 
   toggleSidenav() {
@@ -45,7 +48,6 @@ export class AppComponent implements OnInit {
   selectMenuItem(menuItem) {
     switch (menuItem) {
       case 'Borrar completadas':
-        alert('borrar!');
         this.todosService.deleteCompleted().subscribe(message => {
           console.log(message);
           this.menuService.refreshIt();
@@ -57,6 +59,5 @@ export class AppComponent implements OnInit {
         console.log(menuItem);
         break;
     }
-    console.log('Fuera switch');
   }
 }

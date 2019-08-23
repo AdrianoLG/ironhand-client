@@ -1,0 +1,52 @@
+@import '../../../variables.scss';
+h3, h4 {
+   color: $secondary;
+}
+h3 {
+   font-size: 1.125rem;
+   font-style: italic;
+   font-weight: 600;
+   line-height: 1.5rem;
+   margin-bottom: 0;
+}
+h4 {
+   font-size: .875rem;
+   font-weight: 300;
+   text-transform: uppercase;
+}
+h5 {
+   font-size: .875rem;
+   font-weight: 300;
+   font-style: italic;
+}
+.buttons {
+   margin: 2em 0 1em;
+}
+.completed {
+   p {
+      color: $secondaryLightLowest;
+   }
+   mat-pseudo-checkbox::after {
+      border-bottom: 2px solid $secondaryLightLowest;
+      border-left: 2px solid $secondaryLightLowest;
+      left: 3px;
+      height: 5px;
+      opacity: 1;
+      top: 0;
+      transform: rotate(-45deg);
+      width: 12px;
+  }
+}
+.padTop0 {
+   padding-top: 0;
+}
+.projectTitles {
+   button.mat-stroked-button {
+      border: 1px solid $secondaryLightLowest;
+      color: $secondaryLightLowest;
+      &.projectTitle {
+         border: 1px solid $primary;
+         color: $primary;
+      }
+   }
+}

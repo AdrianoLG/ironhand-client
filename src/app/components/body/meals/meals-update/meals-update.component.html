@@ -1,61 +1,61 @@
 <div class="wrapper">
-    <h2 class="mat-title">Actualizar comida</h2>
-    <form [formGroup]="updateMealsForm">
-       <mat-form-field>
-          <input matInput [matDatepicker]="picker" formControlName="date" placeholder="Fecha" required>
-          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-          <mat-datepicker #picker></mat-datepicker>
-       </mat-form-field>
-       <mat-form-field>
-          <mat-chip-list #breakfastChipList aria-label="Desayuno">
-             <mat-chip *ngFor="let item of breakfastItems" [selectable]="brSelectable"
-                [removable]="brRemovable" (removed)="removeItem('breakfast', item)">
-                {{ item.name }}
-                <mat-icon matChipRemove *ngIf="brRemovable">cancel</mat-icon>
-             </mat-chip>
-             <input placeholder="Desayuno"
-                [matChipInputFor]="breakfastChipList"
-                [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
-                [matChipInputAddOnBlur]="brAddOnBlur"
-                (matChipInputTokenEnd)="addItem('breakfast', $event)">
-          </mat-chip-list>
-       </mat-form-field>
-       <mat-form-field>
-          <mat-chip-list #lunchChipList aria-label="Comida">
-             <mat-chip *ngFor="let item of lunchItems" [selectable]="luSelectable"
-                [removable]="luRemovable" (removed)="removeItem('lunch', item)">
-                {{ item.name }}
-                <mat-icon matChipRemove *ngIf="luRemovable">cancel</mat-icon>
-             </mat-chip>
-             <input placeholder="Comida"
-                [matChipInputFor]="lunchChipList"
-                [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
-                [matChipInputAddOnBlur]="luAddOnBlur"
-                (matChipInputTokenEnd)="addItem('lunch', $event)">
-          </mat-chip-list>
-       </mat-form-field>
-       <mat-form-field>
-          <mat-chip-list #dinnerChipList aria-label="Cena">
-             <mat-chip *ngFor="let item of dinnerItems" [selectable]="diSelectable"
-                [removable]="diRemovable" (removed)="removeItem('dinner', item)">
-                {{ item.name }}
-                <mat-icon matChipRemove *ngIf="diRemovable">cancel</mat-icon>
-             </mat-chip>
-             <input placeholder="Cena"
-                [matChipInputFor]="dinnerChipList"
-                [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
-                [matChipInputAddOnBlur]="diAddOnBlur"
-                (matChipInputTokenEnd)="addItem('dinner', $event)">
-          </mat-chip-list>
-       </mat-form-field>
-    </form>
-    <div class="flex mT15">
-       <mat-icon aria-hidden="false" aria-label="Formulario incorrecto" *ngIf="updateMealsForm.status=='INVALID'" color="primary">block</mat-icon>
-       <mat-icon aria-hidden="false" aria-label="Formulario incorrecto" *ngIf="updateMealsForm.status=='VALID'" color="accent">thumb_up</mat-icon>
-       <div class="buttons">
-          <button color="accent" mat-raised-button (click)="goBack()">Cancelar</button>
-          <button color="warn" mat-raised-button (click)="deleteMeal()">Borrar</button>
-          <button color="primary" type="submit" mat-raised-button [disabled]="!updateMealsForm.valid" (click)="updateMeal()">Actualizar</button>
-       </div>
-    </div>
- </div>
+  <h2 class="mat-title">Actualizar comida</h2>
+  <form [formGroup]="updateMealsForm">
+    <mat-form-field>
+      <input matInput [matDatepicker]="picker" formControlName="date" placeholder="Fecha" required>
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-chip-list #breakfastChipList aria-label="Desayuno">
+        <mat-chip *ngFor="let item of breakfastItems" [selectable]="brSelectable"
+        [removable]="brRemovable" (removed)="removeItem('breakfast', item)">
+        {{ item.name }}
+        <mat-icon matChipRemove *ngIf="brRemovable">cancel</mat-icon>
+      </mat-chip>
+      <input placeholder="Desayuno"
+      [matChipInputFor]="breakfastChipList"
+      [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+      [matChipInputAddOnBlur]="brAddOnBlur"
+      (matChipInputTokenEnd)="addItem('breakfast', $event)">
+    </mat-chip-list>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-chip-list #lunchChipList aria-label="Comida">
+      <mat-chip *ngFor="let item of lunchItems" [selectable]="luSelectable"
+      [removable]="luRemovable" (removed)="removeItem('lunch', item)">
+      {{ item.name }}
+      <mat-icon matChipRemove *ngIf="luRemovable">cancel</mat-icon>
+    </mat-chip>
+    <input placeholder="Comida"
+    [matChipInputFor]="lunchChipList"
+    [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+    [matChipInputAddOnBlur]="luAddOnBlur"
+    (matChipInputTokenEnd)="addItem('lunch', $event)">
+  </mat-chip-list>
+</mat-form-field>
+<mat-form-field>
+  <mat-chip-list #dinnerChipList aria-label="Cena">
+    <mat-chip *ngFor="let item of dinnerItems" [selectable]="diSelectable"
+    [removable]="diRemovable" (removed)="removeItem('dinner', item)">
+    {{ item.name }}
+    <mat-icon matChipRemove *ngIf="diRemovable">cancel</mat-icon>
+  </mat-chip>
+  <input placeholder="Cena"
+  [matChipInputFor]="dinnerChipList"
+  [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+  [matChipInputAddOnBlur]="diAddOnBlur"
+  (matChipInputTokenEnd)="addItem('dinner', $event)">
+</mat-chip-list>
+</mat-form-field>
+</form>
+<div class="flex mT15">
+  <mat-icon aria-hidden="false" aria-label="Formulario incorrecto" *ngIf="updateMealsForm.status=='INVALID'" color="primary">block</mat-icon>
+  <mat-icon aria-hidden="false" aria-label="Formulario incorrecto" *ngIf="updateMealsForm.status=='VALID'" color="accent">thumb_up</mat-icon>
+  <div class="buttons">
+    <button class="cancelButton" mat-raised-button (click)="goBack()">Cancelar</button>
+    <button color="warn" mat-raised-button (click)="deleteMeal()">Borrar</button>
+    <button color="accent" type="submit" mat-raised-button [disabled]="!updateMealsForm.valid" (click)="updateMeal()">Actualizar</button>
+  </div>
+</div>
+</div>
