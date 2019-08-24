@@ -144,8 +144,6 @@ export class ProjectUpdateComponent implements OnInit {
   }
 
   deleteProject(): void {
-    console.log('Entra');
-
     this.projectsService.removeProject(this._id).subscribe(response => {
       this.goBack();
     }, error => {

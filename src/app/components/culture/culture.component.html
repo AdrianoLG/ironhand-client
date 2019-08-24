@@ -1,0 +1,15 @@
+<mat-tab-group [color]="primary" [backgroundColor]="primary" (selectedTabChange)="changeSelectedIndex($event)" [selectedIndex]="selectedIndex">
+   <mat-tab label="Libros">
+      <div class="wrapper">
+         <h2 class="mat-title flex">Libros</h2>
+      </div>
+   </mat-tab>
+   <mat-tab label="Películas">
+      <div class="wrapper">
+         <h2 class="mat-title flex">Películas</h2>
+      </div>
+   </mat-tab>
+   <mat-tab tab label="Series">
+      <h2 class="mat-title flex">Series</h2>
+   </mat-tab>
+</mat-tab-group>

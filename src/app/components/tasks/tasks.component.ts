@@ -88,9 +88,6 @@ export class TasksComponent implements OnInit {
       for (const prTitle of res.projects) {
         if (prTitles.indexOf(prTitle.name) < 0) {
           prTitles.push(prTitle.name);
-        } else {
-          console.log(prTitles.indexOf(prTitle.name));
-
         }
       }
       this.projectTitles = prTitles;

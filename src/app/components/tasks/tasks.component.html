@@ -1,56 +1,56 @@
 <mat-tab-group [color]="primary" [backgroundColor]="primary" (selectedTabChange)="changeSelectedIndex($event)" [selectedIndex]="selectedIndex">
-  <mat-tab label="Todos">
-    <div class="wrapper">
-      <h2 class="mat-title flex">Tareas <span matBadge="{{ countTodos }}"></span></h2>
-    </div>
-    <mat-selection-list #todosList (selectionChange)="onSelection(todosList.selectedOptions.selected)" *ngIf="countTodos>0">
-      <mat-list-option *ngFor="let todo of todos" [value]="todo" [class.completed]="todo.completed">
-          <p>{{ todo.name }}</p>
-          <sub class="category">{{ todo.category }}</sub>
-      </mat-list-option>
-    </mat-selection-list>
-    <p *ngIf="countTodos==0" class="pad">Todavía no hay tareas, ¡crea una!</p>
-    <button mat-mini-fab>
-      <mat-icon routerLink="/tareas/crear-todo">add</mat-icon>
-    </button>
-  </mat-tab>
-  <mat-tab label="Proyectos">
-    <div class="wrapper">
-      <h2 class="mat-title flex">Proyectos <span matBadge="{{ countProjects }}"></span></h2>
-      <div class="buttons projectTitles">
-        <button mat-stroked-button *ngFor="let projectTitle of projectTitles; let first = first;" [ngClass]="{ 'projectTitle' : first }" (click)="onSelectProject($event, projectTitle)">{{ projectTitle }}</button>
+   <mat-tab label="Todos">
+      <div class="wrapper">
+         <h2 class="mat-title flex">Tareas <span matBadge="{{ countTodos }}"></span></h2>
       </div>
-    </div>
-    <h3>{{ selectedProject?.name }}<button mat-icon-button class="floatRight" routerLink="/tareas/actualizar-proyecto/{{ selectedProject?._id }}"><mat-icon color="accent">edit</mat-icon></button></h3>
-    <div class="wrapper padTop0">
-      <h5>{{ selectedProject?.category }}</h5>
-    </div>
-    <section class="wrapper">
-      <h4>Todo</h4>
-      <mat-selection-list #todoList (selectionChange)="onTodoSelection(todoList.selectedOptions.selected)">
-        <mat-list-option *ngFor="let todo of selectedProject?.todo" [value]="todo">
-          <p>{{ todo }}</p>
-        </mat-list-option>
+      <mat-selection-list #todosList (selectionChange)="onSelection(todosList.selectedOptions.selected)" *ngIf="countTodos>0">
+         <mat-list-option *ngFor="let todo of todos" [value]="todo" [class.completed]="todo.completed">
+            <p>{{ todo.name }}</p>
+            <sub class="category">{{ todo.category }}</sub>
+         </mat-list-option>
       </mat-selection-list>
-    </section>
-    <section class="wrapper">
-      <h4>Doing</h4>
-      <mat-selection-list #doingList (selectionChange)="onDoingSelection(doingList.selectedOptions.selected)">
-        <mat-list-option *ngFor="let doing of selectedProject?.doing" [value]="doing">
-            <p>{{ doing }}</p>
-        </mat-list-option>
-      </mat-selection-list>
-    </section>
-    <section class="wrapper">
-      <h4>Done</h4>
-      <mat-selection-list #doneList (selectionChange)="onDoneSelection(doneList.selectedOptions.selected)" disabled class="completed">
-        <mat-list-option *ngFor="let done of selectedProject?.done" [value]="done">
-          <p>{{ done }}</p>
-        </mat-list-option>
-      </mat-selection-list>
-    </section>
-    <button mat-mini-fab>
-      <mat-icon routerLink="/tareas/crear-proyecto">add</mat-icon>
-    </button>
-  </mat-tab>
+      <p *ngIf="countTodos==0" class="pad">Todavía no hay tareas, ¡crea una!</p>
+      <button mat-mini-fab>
+         <mat-icon routerLink="/tareas/crear-todo">add</mat-icon>
+      </button>
+   </mat-tab>
+   <mat-tab label="Proyectos">
+      <div class="wrapper">
+         <h2 class="mat-title flex">Proyectos <span matBadge="{{ countProjects }}"></span></h2>
+         <div class="buttons projectTitles">
+            <button mat-stroked-button *ngFor="let projectTitle of projectTitles; let first = first;" [ngClass]="{ 'projectTitle' : first }" (click)="onSelectProject($event, projectTitle)">{{ projectTitle }}</button>
+         </div>
+      </div>
+      <h3>{{ selectedProject?.name }}<button mat-icon-button class="floatRight" routerLink="/tareas/actualizar-proyecto/{{ selectedProject?._id }}"><mat-icon color="accent">edit</mat-icon></button></h3>
+      <div class="wrapper padTop0">
+         <h5>{{ selectedProject?.category }}</h5>
+      </div>
+      <section class="wrapper">
+         <h4>Todo</h4>
+         <mat-selection-list #todoList (selectionChange)="onTodoSelection(todoList.selectedOptions.selected)">
+            <mat-list-option *ngFor="let todo of selectedProject?.todo" [value]="todo">
+               <p>{{ todo }}</p>
+            </mat-list-option>
+         </mat-selection-list>
+      </section>
+      <section class="wrapper">
+         <h4>Doing</h4>
+         <mat-selection-list #doingList (selectionChange)="onDoingSelection(doingList.selectedOptions.selected)">
+            <mat-list-option *ngFor="let doing of selectedProject?.doing" [value]="doing">
+               <p>{{ doing }}</p>
+            </mat-list-option>
+         </mat-selection-list>
+      </section>
+      <section class="wrapper">
+         <h4>Done</h4>
+         <mat-selection-list #doneList (selectionChange)="onDoneSelection(doneList.selectedOptions.selected)" disabled class="completed">
+            <mat-list-option *ngFor="let done of selectedProject?.done" [value]="done">
+               <p>{{ done }}</p>
+            </mat-list-option>
+         </mat-selection-list>
+      </section>
+      <button mat-mini-fab>
+         <mat-icon routerLink="/tareas/crear-proyecto">add</mat-icon>
+      </button>
+   </mat-tab>
 </mat-tab-group>

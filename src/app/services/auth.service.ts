@@ -1,15 +1,31 @@
 import { Injectable } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, NavigationEnd, NavigationStart } from '@angular/router';
 import decode from 'jwt-decode';
 import { VisibleBarService } from './visible-bar.service';
 import { Location } from '@angular/common';
+import { filter } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  constructor(private _router: Router, private visibleBarService: VisibleBarService, private location: Location ) {}
+  private previousUrl: string = undefined;
+  private currentUrl: string = undefined;
+
+  constructor(
+    private _router: Router,
+    private _visibleBarService: VisibleBarService,
+    private _location: Location,
+  ) {
+    this.currentUrl = this._router.url;
+    _router.events.subscribe(event => {
+      if (event instanceof NavigationEnd) {
+        this.previousUrl = this.currentUrl;
+        this.currentUrl = event.url;
+      }
+    });
+  }
 
   clear(): void {
     localStorage.clear();
@@ -19,7 +35,7 @@ export class AuthService {
     const isAuth = localStorage.getItem('token') != null && !this.isTokenExpired()
     && localStorage.getItem('token') !== 'undefined' && localStorage.getItem('token') !== '';
     if (isAuth) {
-      this.visibleBarService.setVisibleBar(true);
+      this._visibleBarService.setVisibleBar(true);
       return true;
     }
   }
@@ -31,8 +47,15 @@ export class AuthService {
   login(token: string): void {
     this.clear();
     localStorage.setItem('token', token);
-    this.visibleBarService.setVisibleBar(true);
-    this.location.back();
+    this._visibleBarService.setVisibleBar(true);
+
+    console.log(this.currentUrl);
+    console.log(this.previousUrl);
+    if (!this.previousUrl) {
+      this._router.navigate(['/']);
+    } else {
+      this._location.back();
+    }
   }
 
   logout(): void {

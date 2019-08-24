@@ -143,8 +143,6 @@ export class MealsUpdateComponent implements OnInit {
   }
 
   deleteMeal(): void {
-    console.log('Entra');
-
     this.mealsService.removeMeals(this._id).subscribe(response => {
       this.goBack();
     }, error => {

@@ -23,38 +23,38 @@
       <mat-form-field>
          <mat-chip-list #lunchChipList aria-label="Comida">
             <mat-chip *ngFor="let item of lunchItems" [selectable]="luSelectable"
-               [removable]="luRemovable" (removed)="removeItem('lunch', item)">
+            [removable]="luRemovable" (removed)="removeItem('lunch', item)">
                {{ item.name }}
                <mat-icon matChipRemove *ngIf="luRemovable">cancel</mat-icon>
             </mat-chip>
-            <input placeholder="Comida"
-               [matChipInputFor]="lunchChipList"
-               [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
-               [matChipInputAddOnBlur]="luAddOnBlur"
-               (matChipInputTokenEnd)="addItem('lunch', $event)">
-         </mat-chip-list>
-      </mat-form-field>
-      <mat-form-field>
-         <mat-chip-list #dinnerChipList aria-label="Cena">
-            <mat-chip *ngFor="let item of dinnerItems" [selectable]="diSelectable"
-               [removable]="diRemovable" (removed)="removeItem('dinner', item)">
-               {{ item.name }}
-               <mat-icon matChipRemove *ngIf="diRemovable">cancel</mat-icon>
-            </mat-chip>
-            <input placeholder="Cena"
-               [matChipInputFor]="dinnerChipList"
-               [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
-               [matChipInputAddOnBlur]="diAddOnBlur"
-               (matChipInputTokenEnd)="addItem('dinner', $event)">
-         </mat-chip-list>
-      </mat-form-field>
-   </form>
-   <div class="flex mT15">
-      <mat-icon aria-hidden="false" aria-label="Formulario incorrecto" *ngIf="addMealsForm.status=='INVALID'" color="primary">block</mat-icon>
-      <mat-icon aria-hidden="false" aria-label="Formulario incorrecto" *ngIf="addMealsForm.status=='VALID'" color="accent">thumb_up</mat-icon>
-      <div class="buttons">
-         <button class="cancelButton" mat-raised-button (click)="goBack()">Cancelar</button>
-         <button color="primary" type="submit" mat-raised-button [disabled]="!addMealsForm.valid" (click)="saveMeal()">Crear</button>
-      </div>
+         <input placeholder="Comida"
+         [matChipInputFor]="lunchChipList"
+         [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+         [matChipInputAddOnBlur]="luAddOnBlur"
+         (matChipInputTokenEnd)="addItem('lunch', $event)">
+      </mat-chip-list>
+   </mat-form-field>
+   <mat-form-field>
+      <mat-chip-list #dinnerChipList aria-label="Cena">
+         <mat-chip *ngFor="let item of dinnerItems" [selectable]="diSelectable"
+         [removable]="diRemovable" (removed)="removeItem('dinner', item)">
+            {{ item.name }}
+            <mat-icon matChipRemove *ngIf="diRemovable">cancel</mat-icon>
+         </mat-chip>
+         <input placeholder="Cena"
+         [matChipInputFor]="dinnerChipList"
+         [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+         [matChipInputAddOnBlur]="diAddOnBlur"
+         (matChipInputTokenEnd)="addItem('dinner', $event)">
+      </mat-chip-list>
+   </mat-form-field>
+</form>
+<div class="flex mT15">
+   <mat-icon aria-hidden="false" aria-label="Formulario incorrecto" *ngIf="addMealsForm.status=='INVALID'" color="primary">block</mat-icon>
+   <mat-icon aria-hidden="false" aria-label="Formulario incorrecto" *ngIf="addMealsForm.status=='VALID'" color="accent">thumb_up</mat-icon>
+   <div class="buttons">
+      <button class="cancelButton" mat-raised-button (click)="goBack()">Cancelar</button>
+      <button color="primary" type="submit" mat-raised-button [disabled]="!addMealsForm.valid" (click)="saveMeal()">Crear</button>
    </div>
+</div>
 </div>
