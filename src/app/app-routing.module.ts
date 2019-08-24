@@ -17,11 +17,13 @@ const routes: Routes = [
   {
     path: 'tareas',
     canActivate: [ AuthGuard ],
-    loadChildren: () => import('./components/tasks/tasks.module').then(m => m.TasksModule) },
+    loadChildren: () => import('./components/tasks/tasks.module').then(m => m.TasksModule)
+  },
   {
     path: 'cultura',
     canActivate: [ AuthGuard ],
-    loadChildren: () => import('./components/culture/culture.module').then(m => m.CultureModule) },
+    loadChildren: () => import('./components/culture/culture.module').then(m => m.CultureModule)
+  },
   {
     path: 'cuerpo',
     canActivate: [ AuthGuard ],

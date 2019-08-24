@@ -34,6 +34,7 @@ export class TasksComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.selectedProject = null;
     this.menuService.changeMenuItems([
       {
         name: 'Cerrar sesión',

@@ -12,14 +12,12 @@ import { LoginComponent } from './components/login/login.component';
 import { HomeComponent } from './components/home/home.component';
 import { Globals } from './services/globals';
 import 'hammerjs';
-import { CultureComponent } from './components/culture/culture.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    HomeComponent,
-    CultureComponent
+    HomeComponent
   ],
   imports: [
     BrowserModule,

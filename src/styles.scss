@@ -24,7 +24,7 @@ mat-card.mat-card {
    display: flex;
    flex-direction: column;
    justify-content: flex-start;
-   margin: 1em;
+   margin: .5em 1em;
 }
 mat-card-content.mat-card-content {
    display: flex;
@@ -33,7 +33,6 @@ mat-card-content.mat-card-content {
       width: 25%;
    }
    .right {
-      padding-top: 2em;
       width: 75%;
    }
 }
@@ -90,9 +89,10 @@ mat-tab-header .mat-tab-label-active {
    display: flex;
    justify-content: space-between;
 }
-.flexEnd {
-   align-items: center;
-   display: flex;
+.aiFlexEnd {
+   align-items: flex-end;
+}
+.jcFlexEnd {
    justify-content: flex-end;
 }
 .floatRight {
@@ -114,8 +114,14 @@ mat-tab-header .mat-tab-label-active {
 .mat-card-content {
    cursor: pointer;
 }
+.mat-card .mat-card-content {
+   margin-bottom: 0;
+ }
 .mat-checkbox-checked {
    opacity: .6;
+}
+.mat-drawer-content {
+   overflow-x: hidden !important;
 }
 .mat-list-base .mat-list-option {
    color: $secondary;

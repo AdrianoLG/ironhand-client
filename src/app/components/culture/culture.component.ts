@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { SelectedTabService, Tab } from 'src/app/services/tabs/selected-tab.service';
+import { FormControl } from '@angular/forms';
+import { BooksService } from 'src/app/services/books/books.service';
+import { Book } from 'src/app/models/book';
 
 @Component({
   selector: 'app-culture',
@@ -10,9 +13,16 @@ export class CultureComponent implements OnInit {
 
   selectedIndex: number;
   currentTabs: Tab[];
+  booksAutocomplete: FormControl;
+  booksOptions: string[];
+  books: Book[];
+  booksCount: number;
+  readBook: boolean;
+  filterBook: any;
 
   constructor(
-    private _selectedTabService: SelectedTabService
+    private _selectedTabService: SelectedTabService,
+    private _bookService: BooksService
   ) { }
 
   ngOnInit() {
@@ -24,6 +34,12 @@ export class CultureComponent implements OnInit {
         }
       }
     });
+    this._bookService.getBooks().subscribe(books => {
+      this.booksCount = books.count;
+      this.books = books.books;
+    });
+    this.booksOptions = ['One', 'Two', 'Three'];
+    this.booksAutocomplete = new FormControl();
   }
 
   changeSelectedIndex($event): void {

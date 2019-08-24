@@ -1,0 +1,13 @@
+@import '../../../../variables.scss';
+.custom-form-field {
+   p {
+      color: rgba(0, 0, 0, 0.54);
+      margin-bottom: .5em;
+   }
+}
+.custom-form-field div {
+   margin-bottom: 1em;
+}
+.mat-slide-toggle {
+   margin: 1em 0;
+}

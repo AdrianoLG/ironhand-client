@@ -1,9 +1,8 @@
 import { Injectable } from '@angular/core';
-import { Router, NavigationEnd, NavigationStart } from '@angular/router';
+import { Router, NavigationEnd } from '@angular/router';
 import decode from 'jwt-decode';
 import { VisibleBarService } from './visible-bar.service';
 import { Location } from '@angular/common';
-import { filter } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -48,10 +47,7 @@ export class AuthService {
     this.clear();
     localStorage.setItem('token', token);
     this._visibleBarService.setVisibleBar(true);
-
-    console.log(this.currentUrl);
-    console.log(this.previousUrl);
-    if (!this.previousUrl) {
+    if (this.previousUrl === '' || this.previousUrl === '/login' || this.previousUrl == null) {
       this._router.navigate(['/']);
     } else {
       this._location.back();

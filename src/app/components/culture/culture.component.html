@@ -1,15 +1,44 @@
-<mat-tab-group [color]="primary" [backgroundColor]="primary" (selectedTabChange)="changeSelectedIndex($event)" [selectedIndex]="selectedIndex">
+<mat-tab-group [color]="primary" [backgroundColor]="primary"
+(selectedTabChange)="changeSelectedIndex($event)" [selectedIndex]="selectedIndex">
    <mat-tab label="Libros">
-      <div class="wrapper">
-         <h2 class="mat-title flex">Libros</h2>
-      </div>
+      <h2 class="mat-title flex">Libros <span matBadge="{{ booksCount }}"></span></h2>
+      <form>
+         <mat-form-field>
+            <input matInput type="text" placeholder="Buscar" [(ngModel)]="filterBook" name="filterBook">
+            <button mat-button *ngIf="filterBook" matSuffix mat-icon-button aria-label="Clear" (click)="filterBook=''">
+               <mat-icon>close</mat-icon>
+            </button>
+         </mat-form-field>
+      </form>
+      <mat-card mat-ripple *ngFor="let book of books | bookFilter : filterBook" routerLink="/cultura/libro/{{ book._id }}">
+         <mat-card-content>
+            <div class="left">
+               <h3>{{ book.title }}</h3>
+               <h4>{{ book.author }}</h4>
+            </div>
+            <div class="right">
+               <h5>{{ book.category }}</h5>
+            </div>
+         </mat-card-content>
+      </mat-card>
+      <button mat-mini-fab>
+         <mat-icon routerLink="/cultura/libro/crear">add</mat-icon>
+      </button>
    </mat-tab>
    <mat-tab label="Películas">
       <div class="wrapper">
          <h2 class="mat-title flex">Películas</h2>
       </div>
+      <button mat-mini-fab>
+         <mat-icon routerLink="/cultura/pelicula/crear">add</mat-icon>
+      </button>
    </mat-tab>
    <mat-tab tab label="Series">
-      <h2 class="mat-title flex">Series</h2>
+      <div class="wrapper">
+         <h2 class="mat-title flex">Series</h2>
+      </div>
+      <button mat-mini-fab>
+         <mat-icon routerLink="/cultura/serie/crear">add</mat-icon>
+      </button>
    </mat-tab>
 </mat-tab-group>

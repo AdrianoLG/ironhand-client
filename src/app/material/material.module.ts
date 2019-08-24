@@ -1,21 +1,24 @@
 import { NgModule } from '@angular/core';
 import {
+  MatButtonModule,
+  MatFormFieldModule,
+  MatIconModule,
+  MatInputModule,
+  MatListModule,
   MatCheckboxModule,
+  MatMenuModule,
+  MatSidenavModule,
+  MatToolbarModule,
   MatTabsModule,
   MatDatepickerModule,
   MatNativeDateModule,
   MatCardModule,
   MatBadgeModule,
-  MatChipsModule
+  MatChipsModule,
+  MatAutocompleteModule,
+  MatSlideToggleModule,
+  MatRippleModule
 } from '@angular/material';
-import { MatButtonModule } from '@angular/material/button';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatIconModule } from '@angular/material/icon';
-import { MatInputModule } from '@angular/material/input';
-import { MatListModule } from '@angular/material/list';
-import { MatMenuModule } from '@angular/material/menu';
-import { MatSidenavModule } from '@angular/material/sidenav';
-import { MatToolbarModule } from '@angular/material/toolbar';
 
 @NgModule({
   imports: [
@@ -33,7 +36,10 @@ import { MatToolbarModule } from '@angular/material/toolbar';
     MatNativeDateModule,
     MatCardModule,
     MatBadgeModule,
-    MatChipsModule
+    MatChipsModule,
+    MatAutocompleteModule,
+    MatSlideToggleModule,
+    MatRippleModule
   ],
   exports: [
     MatButtonModule,
@@ -49,7 +55,10 @@ import { MatToolbarModule } from '@angular/material/toolbar';
     MatDatepickerModule,
     MatCardModule,
     MatBadgeModule,
-    MatChipsModule
+    MatChipsModule,
+    MatAutocompleteModule,
+    MatSlideToggleModule,
+    MatRippleModule
   ],
   providers: [
     MatDatepickerModule
