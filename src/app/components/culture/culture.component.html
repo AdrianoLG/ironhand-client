@@ -10,7 +10,7 @@
             </button>
          </mat-form-field>
       </form>
-      <mat-card mat-ripple *ngFor="let book of books | bookFilter : filterBook" routerLink="/cultura/libro/{{ book._id }}">
+      <mat-card mat-ripple *ngFor="let book of books | collectionFilter: filterBook" routerLink="/cultura/libro/{{ book._id }}">
          <mat-card-content>
             <div class="left">
                <h3>{{ book.title }}</h3>
@@ -29,6 +29,25 @@
       <div class="wrapper">
          <h2 class="mat-title flex">Películas</h2>
       </div>
+      <form>
+         <mat-form-field>
+            <input matInput type="text" placeholder="Buscar" [(ngModel)]="filterMovie" name="filterMovie">
+            <button mat-button *ngIf="filterMovie" matSuffix mat-icon-button aria-label="Clear" (click)="filterMovie=''">
+               <mat-icon>close</mat-icon>
+            </button>
+         </mat-form-field>
+      </form>
+      <mat-card mat-ripple *ngFor="let movie of movies | collectionFilter: filterMovie" routerLink="/cultura/peliculas/{{ movie._id }}">
+         <mat-card-content>
+            <div class="left">
+               <h3>{{ movie.title }}</h3>
+               <h4>{{ movie.author }}</h4>
+            </div>
+            <div class="right">
+               <h5>{{ movie.category }}</h5>
+            </div>
+         </mat-card-content>
+      </mat-card>
       <button mat-mini-fab>
          <mat-icon routerLink="/cultura/pelicula/crear">add</mat-icon>
       </button>

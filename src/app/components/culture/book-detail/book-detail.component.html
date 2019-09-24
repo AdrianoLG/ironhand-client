@@ -9,8 +9,10 @@
       </div>
    </div>
 </div>
-<img src="{{ book.img }}" alt="" *ngIf="book.img != ''">
-<img src="http://lorempixel.com/800/400" alt="" *ngIf="book.img == ''">
+<div class="img" *ngIf="book">
+   <img src="{{ book.img }}" alt="" *ngIf="book.img != ''">
+   <img src="assets/img/dummy.jpg" alt="" *ngIf="book.img == ''">
+</div>
 <div class="wrapper">
    <p>{{ book.pages }} pág. <span class="readDate" *ngIf="book.read">Leído: {{ book.readDate | date: 'dd-MM-yyyy' }}</span> </p>
    <div class="rating" *ngIf="book.read">

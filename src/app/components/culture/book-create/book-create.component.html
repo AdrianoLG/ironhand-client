@@ -13,6 +13,9 @@
       <mat-form-field>
          <input matInput type="number" placeholder="Páginas" formControlName="pages">
       </mat-form-field>
+      <mat-form-field>
+         <input matInput placeholder="Imagen" formControlName="img">
+      </mat-form-field>
       <mat-slide-toggle (change)="readBook = !readBook">Leído</mat-slide-toggle>
       <div *ngIf="readBook">
          <mat-form-field>
