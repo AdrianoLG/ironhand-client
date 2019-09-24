@@ -1,0 +1,28 @@
+@import '../../../variables.scss';
+.seed h3 {
+   padding: 0;
+}
+.seed h4 {
+   color: $secondaryLightLowest;
+   text-transform: uppercase;
+}
+.seed h5 {
+   color:$secondaryLightMedium;
+}
+.seed .left {
+   width: 80%;
+}
+.seed .right {
+   text-align: right;
+   width: 20%;
+}
+.watering h3 {
+   font-weight: lighter;
+   padding: 0;
+}
+.mat-subheading-2 {
+   margin: 0;
+}
+.watering .right p {
+   color: $secondaryLightMedium;
+}

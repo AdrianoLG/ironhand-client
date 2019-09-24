@@ -22,7 +22,7 @@ export class BookCreateComponent implements OnInit {
     private _location: Location,
     private _formBuilder: FormBuilder,
     private _adapter: DateAdapter<any>
-  ) { }
+  ) {}
 
   ngOnInit() {
     this._adapter.setLocale('es');

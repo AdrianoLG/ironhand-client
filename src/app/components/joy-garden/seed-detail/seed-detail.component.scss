@@ -1,0 +1,18 @@
+@import '../../../../variables.scss';
+h2 {
+   margin: 0;
+}
+h3 {
+   padding: 0;
+}
+h4 {
+   font-size: .85em;
+   &:first-child {
+      margin-bottom: .5em;
+   }
+   text-align: right;
+}
+.material-icons {
+   position: relative;
+   top: 6px;
+}

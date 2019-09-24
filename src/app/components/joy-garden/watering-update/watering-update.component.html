@@ -1,0 +1,49 @@
+<div class="wrapper">
+   <h2 class="mat-title">Actualizar riego</h2>
+   <form [formGroup]="updateWateringForm">
+      <mat-form-field>
+         <input matInput placeholder="Contenedor" formControlName="container" required>
+      </mat-form-field>
+      <mat-form-field>
+         <input matInput [matDatepicker]="picker" formControlName="date" placeholder="Fecha">
+         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+         <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+      <div>
+         <h3>Fertilizante</h3>
+      </div>
+      <mat-form-field>
+         <input matInput type="number" placeholder="Crecimiento" formControlName="grow">
+      </mat-form-field>
+      <mat-form-field>
+         <input matInput type="number" placeholder="Floración" formControlName="flower">
+      </mat-form-field>
+      <mat-form-field>
+         <input matInput type="number" placeholder="Raíces" formControlName="root">
+      </mat-form-field>
+      <mat-form-field>
+         <input matInput type="number" placeholder="Powerzyme" formControlName="powerzyme">
+      </mat-form-field>
+      <mat-form-field>
+         <input matInput type="number" placeholder="Supervit" formControlName="supervit">
+      </mat-form-field>
+      <mat-form-field>
+         <input matInput type="number" placeholder="Delta 9" formControlName="delta9">
+      </mat-form-field>
+      <mat-form-field>
+         <input matInput type="number" placeholder="Boost" formControlName="boost">
+      </mat-form-field>
+      <mat-form-field>
+         <input matInput type="number" placeholder="PK 13-14" formControlName="pk1314">
+      </mat-form-field>
+   </form>
+   <div class="flex mT15">
+      <mat-icon aria-hidden="false" aria-label="Formulario incorrecto" *ngIf="updateWateringForm.status=='INVALID'" color="primary">block</mat-icon>
+      <mat-icon aria-hidden="false" aria-label="Formulario incorrecto" *ngIf="updateWateringForm.status=='VALID'" color="accent">thumb_up</mat-icon>
+      <div class="buttons">
+         <button class="cancelButton" mat-raised-button (click)="goBack()">Cancelar</button>
+         <button color="warn" mat-raised-button (click)="deleteWatering()">Borrar</button>
+         <button color="accent" type="submit" mat-raised-button [disabled]="!updateWateringForm.valid" (click)="updateWatering()">Actualizar</button>
+      </div>
+   </div>
+</div>

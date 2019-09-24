@@ -5,24 +5,29 @@ import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 
 @Component({
-	selector: 'app-book-detail',
-	templateUrl: './book-detail.component.html',
-	styleUrls: [ './book-detail.component.scss' ]
+  selector: 'app-book-detail',
+  templateUrl: './book-detail.component.html',
+  styleUrls: [ './book-detail.component.scss' ]
 })
 export class BookDetailComponent implements OnInit {
-	book: Book;
-	private _id: string;
 
-	constructor(private _bookService: BooksService, private _route: ActivatedRoute, private _location: Location) {}
+  book: Book;
+  private _id: string;
 
-	ngOnInit() {
-		this._id = this._route.snapshot.paramMap.get('_id');
-		this._bookService.getBook(this._route.snapshot.paramMap.get('_id')).subscribe(book => {
-			this.book = book;
-		});
-	}
+  constructor(
+    private _bookService: BooksService,
+    private _route: ActivatedRoute,
+    private _location: Location
+  ) {}
 
-	goBack(): void {
-		this._location.back();
-	}
+  ngOnInit() {
+    this._id = this._route.snapshot.paramMap.get('_id');
+    this._bookService.getBook(this._route.snapshot.paramMap.get('_id')).subscribe(book => {
+      this.book = book;
+    });
+  }
+
+  goBack(): void {
+    this._location.back();
+  }
 }

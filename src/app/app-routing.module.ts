@@ -28,6 +28,11 @@ const routes: Routes = [
     path: 'cuerpo',
     canActivate: [ AuthGuard ],
     loadChildren: () => import('./components/body/body.module').then(m => m.BodyModule)
+  },
+  {
+    path: 'jardin-de-la-alegria',
+    canActivate: [ AuthGuard ],
+    loadChildren: () => import('./components/joy-garden/joy-garden.module').then(m => m.JoyGardenModule)
   }
 ];
 

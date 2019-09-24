@@ -14,7 +14,7 @@
          <mat-icon routerLink="/tareas/crear-todo">add</mat-icon>
       </button>
    </mat-tab>
-   <mat-tab label="Proyectos">
+   <mat-tab label="Proyectos" *ngIf="selectedProject">
       <div class="wrapper">
          <h2 class="mat-title flex">Proyectos <span matBadge="{{ countProjects }}"></span></h2>
          <div class="buttons projectTitles">

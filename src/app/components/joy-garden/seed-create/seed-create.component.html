@@ -1,0 +1,44 @@
+<div class="wrapper">
+      <h2 class="mat-title">Añadir riego</h2>
+      <form [formGroup]="addSeedForm">
+         <mat-form-field>
+            <input matInput placeholder="Nombre" formControlName="name" required>
+         </mat-form-field>
+         <mat-form-field>
+            <input matInput placeholder="Banco" formControlName="bank">
+         </mat-form-field>
+         <mat-form-field>
+            <input matInput placeholder="Imagen" formControlName="img">
+         </mat-form-field>
+         <mat-form-field>
+            <input matInput placeholder="Genética" formControlName="genetic">
+         </mat-form-field>
+         <mat-form-field>
+            <input matInput placeholder="Índica/Sativa" formControlName="indicaSativa">
+         </mat-form-field>
+         <mat-form-field>
+            <input matInput placeholder="Productividad" formControlName="productivity" min="0" max="1000">
+         </mat-form-field>
+         <mat-form-field>
+            <input matInput placeholder="Floración" formControlName="flowering">
+         </mat-form-field>
+         <mat-form-field>
+            <input matInput placeholder="Altura" formControlName="height" min="0" max="200">
+         </mat-form-field>
+         <mat-form-field>
+            <input matInput placeholder="Efecto" formControlName="effect">
+         </mat-form-field>
+         <mat-form-field>
+            <input matInput placeholder="Aroma" formControlName="aroma">
+         </mat-form-field>
+      </form>
+      <div class="flex mT15">
+         <mat-icon aria-hidden="false" aria-label="Formulario incorrecto" *ngIf="addSeedForm.status=='INVALID'" color="primary">block</mat-icon>
+         <mat-icon aria-hidden="false" aria-label="Formulario incorrecto" *ngIf="addSeedForm.status=='VALID'" color="accent">thumb_up</mat-icon>
+         <div class="buttons">
+            <button class="cancelButton" mat-raised-button (click)="goBack()">Cancelar</button>
+            <button color="primary" type="submit" mat-raised-button [disabled]="!addSeedForm.valid" (click)="saveSeed()">Crear</button>
+         </div>
+      </div>
+   </div>
+   

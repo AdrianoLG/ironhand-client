@@ -1,10 +1,10 @@
 import { Component, OnInit, ViewEncapsulation, Input, ElementRef, Renderer2 } from '@angular/core';
+import { SelectedTabService, Tab } from 'src/app/services/tabs/selected-tab.service';
 import { Router } from '@angular/router';
 import { TodosService } from '../../services/todos/todos.service';
 import { ProjectsService } from '../../services/projects/projects.service';
 import { Todo } from '../../models/todo';
 import { MenuService } from 'src/app/services/menu/menu.service';
-import { SelectedTabService } from 'src/app/services/tabs/selected-tab.service';
 import { Project } from 'src/app/models/project';
 
 @Component({
@@ -17,25 +17,39 @@ export class TasksComponent implements OnInit {
 
   countTodos: number;
   countProjects: number;
+  currentTabs: Tab[];
   todos: Todo[];
   projects: Project[];
   projectTitles: Array<string>;
   selectedIndex: number;
   selectedProject: Project;
+  tabGroup: number;
 
   constructor(
-    private todosService: TodosService,
-    private projectsService: ProjectsService,
-    private menuService: MenuService,
-    private selectedTabService: SelectedTabService,
-    private router: Router,
-    private elRef: ElementRef,
-    private renderer: Renderer2
+    private _todosService: TodosService,
+    private _projectsService: ProjectsService,
+    private _menuService: MenuService,
+    private _selectedTabService: SelectedTabService,
+    private _router: Router,
+    private _elRef: ElementRef,
+    private _renderer: Renderer2
   ) {}
 
   ngOnInit(): void {
+    this._selectedTabService.currentTabs.subscribe(currentTabs => {
+      this.currentTabs = currentTabs;
+      console.log(this.currentTabs);
+
+      for (const currentTab of currentTabs) {
+        if (currentTab.name === 'tasks') {
+          this.tabGroup = currentTabs.indexOf(currentTab);
+          this.selectedIndex = currentTab.selected;
+
+        }
+      }
+    });
     this.selectedProject = null;
-    this.menuService.changeMenuItems([
+    this._menuService.changeMenuItems([
       {
         name: 'Cerrar sesión',
         icon: 'logout'
@@ -51,36 +65,29 @@ export class TasksComponent implements OnInit {
     ]);
     this.getTodos();
     this.getProjects();
-    this.menuService.needRefresh.subscribe(refresh => {
+    this._menuService.needRefresh.subscribe(refresh => {
       if (refresh) {
         this.todos = null;
         this.countTodos = 0;
         this.getTodos();
       }
     });
-    this.selectedTabService.currentTabs.subscribe(currentTabs => {
-      for (const currentTab of currentTabs) {
-        if (currentTab.name === 'tasks') {
-          this.selectedIndex = currentTab.selected;
-        }
-      }
-    });
   }
 
   getTodos(): void {
-    this.todosService.getTodos()
+    this._todosService.getTodos()
       .subscribe(todos => {
         this.todos = todos.todos;
         this.countTodos = +todos.count;
       }, error => {
         if (error.status === 401) {
-          this.router.navigate(['/login']);
+          this._router.navigate(['/login']);
         }
       });
   }
 
   getProjects(): void {
-    this.projectsService.getProjects().subscribe(res => {
+    this._projectsService.getProjects().subscribe(res => {
       this.projects = this.sortByCategory(res.projects);
       if (this.selectedProject == null) {
         this.selectedProject = this.projects[0];
@@ -95,7 +102,7 @@ export class TasksComponent implements OnInit {
       this.countProjects = + res.count;
     }, error => {
       if (error.status === 401) {
-        this.router.navigate(['/login']);
+        this._router.navigate(['/login']);
       }
     });
   }
@@ -129,7 +136,7 @@ export class TasksComponent implements OnInit {
       }
     }
 
-    this.projectsService.updateTodo(this.selectedProject._id, todoList, doingList).subscribe(res => {
+    this._projectsService.updateTodo(this.selectedProject._id, todoList, doingList).subscribe(res => {
       this.getProjects();
     });
   }
@@ -146,13 +153,13 @@ export class TasksComponent implements OnInit {
       }
     }
 
-    this.projectsService.updateDoing(this.selectedProject._id, doingList, doneList).subscribe(res => {
+    this._projectsService.updateDoing(this.selectedProject._id, doingList, doneList).subscribe(res => {
       this.getProjects();
     });
   }
 
   completeTodo(id): void {
-    this.todosService.completeTodo(id)
+    this._todosService.completeTodo(id)
       .subscribe(message => {
         console.log(message);
       }, error => {
@@ -161,7 +168,7 @@ export class TasksComponent implements OnInit {
   }
 
   uncompleteTodo(id): void {
-    this.todosService.uncompleteTodo(id)
+    this._todosService.uncompleteTodo(id)
       .subscribe(message => {
         console.log(message);
       }, error => {
@@ -169,23 +176,17 @@ export class TasksComponent implements OnInit {
       });
   }
 
-  // this.todoToDoing(id): void {
-  //   this.projectsService.
-  // }
-
   changeSelectedIndex($event): void {
-    this.selectedTabService.changeTabs([
-      {
-        name: 'tasks',
-        selected: $event.index
-      }
-    ]);
-    this.selectedIndex = $event.index;
+    const tabIndex = $event.index;
+    this.selectedIndex = tabIndex;
+    this.currentTabs[this.tabGroup].selected = tabIndex;
+    this._selectedTabService.changeTabs(this.currentTabs);
+    console.log(`TabGroup ${this.tabGroup}, SelectedIndex ${this.selectedIndex}`);
   }
 
   onSelectProject(event: any, projectTitle: string): void {
-    const el = this.elRef.nativeElement.querySelector('.projectTitle');
-    this.renderer.removeClass(el, 'projectTitle');
+    const el = this._elRef.nativeElement.querySelector('.projectTitle');
+    this._renderer.removeClass(el, 'projectTitle');
 
     if (event.target.parentNode.nodeName === 'BUTTON') {
       event.target.parentNode.classList.add('projectTitle');

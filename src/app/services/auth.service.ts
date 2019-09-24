@@ -31,22 +31,19 @@ export class AuthService {
   }
 
   isAuthenticated(): boolean {
-    const isAuth = localStorage.getItem('token') != null && !this.isTokenExpired()
-    && localStorage.getItem('token') !== 'undefined' && localStorage.getItem('token') !== '';
+    const isAuth = localStorage.getItem('token') != null && localStorage.getItem('token') !== 'undefined'
+    && localStorage.getItem('token') !== '';
     if (isAuth) {
-      this._visibleBarService.setVisibleBar(true);
       return true;
     }
-  }
-
-  isTokenExpired(): boolean {
     return false;
   }
 
   login(token: string): void {
-    this.clear();
-    localStorage.setItem('token', token);
-    this._visibleBarService.setVisibleBar(true);
+    if (!this.isAuthenticated()) {
+      localStorage.setItem('token', token);
+      this._visibleBarService.setVisibleBar(true);
+    }
     if (this.previousUrl === '' || this.previousUrl === '/login' || this.previousUrl == null) {
       this._router.navigate(['/']);
     } else {

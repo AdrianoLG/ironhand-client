@@ -10,6 +10,7 @@ import { AuthGuard } from './guards/auth-guard.service';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
 import { HomeComponent } from './components/home/home.component';
+
 import { Globals } from './services/globals';
 import 'hammerjs';
 

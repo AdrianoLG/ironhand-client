@@ -23,7 +23,6 @@ import { BookUpdateComponent } from './book-update/book-update.component';
     FormsModule,
     ReactiveFormsModule,
     CultureRoutingModule,
-  ],
-  exports: [ CollectionFilterPipe ]
+  ]
 })
 export class CultureModule {}
