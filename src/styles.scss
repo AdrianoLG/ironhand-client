@@ -162,7 +162,11 @@ mat-tab-header .mat-tab-label-active {
    height: 100%;
 }
 .mat-tab-body-wrapper {
+   box-sizing: border-box;
    flex-grow: 1;
+   flex-wrap: wrap;
+   overflow: auto !important;
+   padding-bottom: 4em;
 }
 
 .mat-tab-body {
