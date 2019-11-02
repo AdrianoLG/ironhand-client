@@ -41,7 +41,6 @@ yarn-error.log
 testem.log
 /typings
 globals.ts
-./src/assets/img/ih
 
 # System Files
 .DS_Store

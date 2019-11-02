@@ -5,65 +5,62 @@ import { JGPlant } from 'src/app/models/jg-plant';
 import { Globals } from '../globals';
 
 export interface JGPlantsResponse {
-  count: number;
-  plants: JGPlant[];
+	count: number;
+	plants: JGPlant[];
 }
 
 @Injectable({
-  providedIn: 'root'
+	providedIn: 'root'
 })
 export class JgPlantsService {
+	httpOptions = {
+		headers: new HttpHeaders({
+			'Content-Type': 'application/json',
+			Authorization: 'Bearer ' + localStorage.getItem('token')
+		})
+	};
 
-  response;
+	constructor(private http: HttpClient, private globals: Globals) {}
 
-  httpOptions = {
-    headers: new HttpHeaders({
-      'Content-Type': 'application/json',
-      Authorization: 'Bearer ' + localStorage.getItem('token')
-    })
-  };
+	getPlants(): Observable<JGPlantsResponse> {
+		return this.http.get<JGPlantsResponse>(this.globals.url + '/joy-garden/plants', this.httpOptions);
+	}
 
-  constructor(private http: HttpClient, private globals: Globals) {}
+	getPlant(_id: string): Observable<JGPlant> {
+		return this.http.get<JGPlant>(this.globals.url + '/joy-garden/plants/' + _id, this.httpOptions);
+	}
 
-  getPlants(): Observable<JGPlantsResponse> {
-    return this.http.get<JGPlantsResponse>(this.globals.url + '/joy-garden/plants', this.httpOptions);
-  }
+	addPlant(plant: JGPlant): Observable<any> {
+		return this.http.post<JGPlant>(this.globals.url + '/joy-garden/plants', plant, this.httpOptions);
+	}
 
-  getPlant(_id: string): Observable<JGPlant> {
-    return this.http.get<JGPlant>(this.globals.url + '/joy-garden/plants/' + _id, this.httpOptions);
-  }
+	updatePlant(_id: string, plant: JGPlant) {
+		const body = [
+			{
+				propName: 'seedId',
+				value: plant.seedId
+			},
+			{
+				propName: 'name',
+				value: plant.name
+			},
+			{
+				propName: 'container',
+				value: plant.container
+			},
+			{
+				propName: 'coords',
+				value: plant.coords
+			},
+			{
+				propName: 'gallery',
+				value: plant.gallery
+			}
+		];
+		return this.http.patch<JGPlant>(this.globals.url + '/joy-garden/plants/' + _id, body, this.httpOptions);
+	}
 
-  addPlant(plant: JGPlant): Observable<any> {
-    return this.http.post<JGPlant>(this.globals.url + '/joy-garden/plants', plant, this.httpOptions);
-  }
-
-  updatePlant(_id: string, plant: JGPlant) {
-    const body = [
-      {
-        propName: 'seedId',
-        value: plant.seedId
-      },
-      {
-        propName: 'name',
-        value: plant.name
-      },
-      {
-        propName: 'container',
-        value: plant.container
-      },
-      {
-        propName: 'coords',
-        value: plant.coords
-      },
-      {
-        propName: 'gallery',
-        value: plant.gallery
-      }
-    ];
-    return this.http.patch<JGPlant>(this.globals.url + '/joy-garden/plants/' + _id, body, this.httpOptions);
-  }
-
-  removePlant(_id: string): any {
-    return this.http.delete(this.globals.url + '/joy-garden/plants/' + _id, this.httpOptions);
-  }
+	removePlant(_id: string): any {
+		return this.http.delete(this.globals.url + '/joy-garden/plants/' + _id, this.httpOptions);
+	}
 }

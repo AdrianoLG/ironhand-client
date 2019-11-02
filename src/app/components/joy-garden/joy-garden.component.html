@@ -27,39 +27,39 @@
    </mat-tab>
    <mat-tab label="Plantas">
       <mat-tab-group [color]="accent" [backgroundColor]="accent" class="bottomTabs" (selectedTabChange)="changeSelectedIndex2($event)" [selectedIndex]="selectedIndex2">
-         <mat-tab label="Semillas">
-            <div class="wrapper">
-               <h2 class="mat-title flex">Semillas <span matBadge="{{ seedsCount }}"></span></h2>
-            </div>
-            <mat-card mat-ripple *ngFor="let seed of seeds" routerLink="/jardin-de-la-alegria/semillas/{{ seed._id }}" class="seed">
-               <mat-card-content>
-                  <div class="left">
-                     <h3 class="mat-subheading-2">{{ seed.name }}</h3>
-                     <h4 class="mat-caption">{{ seed.bank }}</h4>
-                  </div>
-                  <div class="right">
-                     <h5 class="mat-caption">{{ seed.indicaSativa }} (I/S)</h5>
-                     <h5 class="mat-caption">{{ seed.flowering }} días</h5>
-                  </div>
-               </mat-card-content>
-            </mat-card>
-         </mat-tab>
          <mat-tab label="Plantas">
             <div class="wrapper">
                <h2 class="mat-title flex">Plantas <span matBadge="{{ plantsCount }}"></span></h2>
             </div>
-            <mat-card mat-ripple *ngFor="let plant of plants" routerLink="/jardin-de-la-alegria/plantas/{{ plant._id }}">
+            <mat-card mat-ripple *ngFor="let plant of plants" routerLink="/jardin-de-la-alegria/plantas/{{ plant._id }}" class="plant">
                <mat-card-content>
                   <div class="left">
-                     <h3>{{ plant.name }}</h3>
-                     <h4>{{ plant.container }}</h4>
+                     <h3 class="mat-subheading-2">{{ plant.name }}</h3>
+                     <h4 class="mat-caption">{{ plant.container }}</h4>
                   </div>
                   <div class="right">
-                     <h5>{{ plant.coords }}</h5>
+                     <h5 class="mat-caption">{{ plant.coords }}</h5>
                   </div>
                </mat-card-content>
             </mat-card>
          </mat-tab>
+         <mat-tab label="Semillas">
+               <div class="wrapper">
+                  <h2 class="mat-title flex">Semillas <span matBadge="{{ seedsCount }}"></span></h2>
+               </div>
+               <mat-card mat-ripple *ngFor="let seed of seeds" routerLink="/jardin-de-la-alegria/semillas/{{ seed._id }}" class="seed">
+                  <mat-card-content>
+                     <div class="left">
+                        <h3 class="mat-subheading-2">{{ seed.name }}</h3>
+                        <h4 class="mat-caption">{{ seed.bank }}</h4>
+                     </div>
+                     <div class="right">
+                        <h5 class="mat-caption">{{ seed.indicaSativa }} (I/S)</h5>
+                        <h5 class="mat-caption">{{ seed.flowering }} días</h5>
+                     </div>
+                  </mat-card-content>
+               </mat-card>
+            </mat-tab>
       </mat-tab-group>
    </mat-tab>
 </mat-tab-group>

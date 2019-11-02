@@ -1,1 +1,33 @@
-<p>plant-create works!</p>
+<div class="wrapper">
+   <h2 class="mat-title">Añadir riego</h2>
+   <form [formGroup]="addPlantForm">
+      <mat-form-field>
+         <mat-label>Semilla</mat-label>
+         <mat-select formControlName="seedId" required>
+            <mat-option *ngFor="let seed of availableSeeds" [value]="seed._id">
+               {{seed.name}}
+            </mat-option>
+         </mat-select>
+      </mat-form-field>
+      <mat-form-field>
+         <input matInput placeholder="Nombre" formControlName="name" required>
+      </mat-form-field>
+      <mat-form-field>
+         <input matInput placeholder="Contenedor" formControlName="container" required>
+      </mat-form-field>
+      <mat-form-field>
+         <input matInput placeholder="Coordenadas" formControlName="coords" required>
+      </mat-form-field>
+      <mat-form-field>
+         <input matInput placeholder="Galería" formControlName="gallery">
+      </mat-form-field>
+   </form>
+   <div class="flex mT15">
+      <mat-icon aria-hidden="false" aria-label="Formulario incorrecto" *ngIf="addPlantForm.status=='INVALID'" color="primary">block</mat-icon>
+      <mat-icon aria-hidden="false" aria-label="Formulario incorrecto" *ngIf="addPlantForm.status=='VALID'" color="accent">thumb_up</mat-icon>
+      <div class="buttons">
+         <button class="cancelButton" mat-raised-button (click)="goBack()">Cancelar</button>
+         <button color="primary" type="submit" mat-raised-button [disabled]="!addPlantForm.valid" (click)="savePlant()">Crear</button>
+      </div>
+   </div>
+</div>
