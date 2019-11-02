@@ -31,7 +31,7 @@
             <div class="wrapper">
                <h2 class="mat-title flex">Plantas <span matBadge="{{ plantsCount }}"></span></h2>
             </div>
-            <mat-card mat-ripple *ngFor="let plant of plants" routerLink="/jardin-de-la-alegria/plantas/{{ plant._id }}" class="plant">
+            <mat-card mat-ripple *ngFor="let plant of plants" routerLink="/jardin-de-la-alegria/plantas/actualizar/{{ plant._id }}" class="plant">
                <mat-card-content>
                   <div class="left">
                      <h3 class="mat-subheading-2">{{ plant.name }}</h3>

@@ -1,10 +1,10 @@
 <div class="wrapper">
-   <h2 class="mat-title">Añadir planta</h2>
-   <form [formGroup]="addPlantForm">
+   <h2 class="mat-title">Actualizar planta</h2>
+   <form [formGroup]="updatePlantForm">
       <mat-form-field>
          <mat-label>Semilla</mat-label>
-         <mat-select formControlName="seedId" required>
-            <mat-option *ngFor="let seed of availableSeeds" [value]="seed._id">
+         <mat-select formControlName="seedId" [value]="seedId" required>
+            <mat-option *ngFor="let seed of availableSeeds" [value]="seed._id" select>
                {{seed.name}}
             </mat-option>
          </mat-select>
@@ -23,11 +23,11 @@
       </mat-form-field>
    </form>
    <div class="flex mT15">
-      <mat-icon aria-hidden="false" aria-label="Formulario incorrecto" *ngIf="addPlantForm.status=='INVALID'" color="primary">block</mat-icon>
-      <mat-icon aria-hidden="false" aria-label="Formulario incorrecto" *ngIf="addPlantForm.status=='VALID'" color="accent">thumb_up</mat-icon>
+      <mat-icon aria-hidden="false" aria-label="Formulario incorrecto" *ngIf="updatePlantForm.status=='INVALID'" color="primary">block</mat-icon>
+      <mat-icon aria-hidden="false" aria-label="Formulario incorrecto" *ngIf="updatePlantForm.status=='VALID'" color="accent">thumb_up</mat-icon>
       <div class="buttons">
          <button class="cancelButton" mat-raised-button (click)="goBack()">Cancelar</button>
-         <button color="primary" type="submit" mat-raised-button [disabled]="!addPlantForm.valid" (click)="savePlant()">Crear</button>
+         <button color="primary" type="submit" mat-raised-button [disabled]="!updatePlantForm.valid" (click)="updatePlant()">Actualizar</button>
       </div>
    </div>
 </div>
