@@ -1,0 +1,40 @@
+@import '../../../../variables.scss';
+h2,
+h3 {
+	color: $secondary;
+	padding: 0;
+}
+h3,
+h4 {
+	font-weight: 300;
+}
+h2 {
+	margin-bottom: .5rem;
+}
+h3 {
+	font-size: 1rem;
+}
+h4 {
+	text-align: right;
+	font-size: .875rem;
+	color: $secondaryLightLowest;
+	text-transform: uppercase;
+}
+.img {
+	img {
+		width: 100%;
+	}
+}
+.left {
+	width: 75%;
+}
+.rating {
+	margin: 1em 0;
+}
+.right {
+	width: 25%;
+}
+.seenDate {
+	padding-left: 2em;
+	color: $secondaryLightLow;
+}

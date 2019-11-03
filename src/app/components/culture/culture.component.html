@@ -26,9 +26,7 @@
       </button>
    </mat-tab>
    <mat-tab label="Películas">
-      <div class="wrapper">
-         <h2 class="mat-title flex">Películas</h2>
-      </div>
+      <h2 class="mat-title flex">Películas <span matBadge="{{ moviesCount }}"></span></h2>
       <form>
          <mat-form-field>
             <input matInput type="text" placeholder="Buscar" [(ngModel)]="filterMovie" name="filterMovie">
@@ -37,14 +35,14 @@
             </button>
          </mat-form-field>
       </form>
-      <mat-card mat-ripple *ngFor="let movie of movies | collectionFilter: filterMovie" routerLink="/cultura/peliculas/{{ movie._id }}">
+      <mat-card mat-ripple *ngFor="let movie of movies | collectionFilter: filterMovie" routerLink="/cultura/pelicula/{{ movie._id }}">
          <mat-card-content>
             <div class="left">
                <h3>{{ movie.title }}</h3>
-               <h4>{{ movie.author }}</h4>
+               <h4>{{ movie.director }}</h4>
             </div>
             <div class="right">
-               <h5>{{ movie.category }}</h5>
+               <h5>{{ movie.year }}</h5>
             </div>
          </mat-card-content>
       </mat-card>

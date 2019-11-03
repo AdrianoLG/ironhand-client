@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {FormGroup, Validators, FormBuilder } from '@angular/forms';
+import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { Location } from '@angular/common';
 import { Book } from 'src/app/models/book';
 import { BooksService } from 'src/app/services/books/books.service';
@@ -22,7 +22,7 @@ export class BookCreateComponent implements OnInit {
     private _location: Location,
     private _formBuilder: FormBuilder,
     private _adapter: DateAdapter<any>
-  ) {}
+  ) { }
 
   ngOnInit() {
     this._adapter.setLocale('es');
@@ -78,7 +78,6 @@ export class BookCreateComponent implements OnInit {
   rateBook(rating: number) {
     this.bookRating = rating;
     console.log(this.bookRating);
-
   }
 
 }

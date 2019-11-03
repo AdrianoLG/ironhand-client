@@ -1,0 +1,90 @@
+<div class="wrapper">
+   <h2 class="mat-title">Editar película</h2>
+   <form [formGroup]="updateMovieForm">
+      <mat-form-field>
+         <input matInput placeholder="Título" formControlName="title" required>
+      </mat-form-field>
+      <mat-form-field>
+         <input matInput placeholder="Director" formControlName="director" required>
+      </mat-form-field>
+      <mat-form-field>
+         <input matInput type="number" placeholder="Año" formControlName="year" required>
+      </mat-form-field>
+      <mat-form-field>
+         <mat-chip-list #castList aria-label="Cast">
+            <mat-chip *ngFor="let item of castItems" [selectable]="castSelectable"
+            [removable]="castRemovable" (removed)="removeItem('cast', item)">
+               {{ item.name }}
+               <mat-icon matChipRemove *ngIf="castRemovable">cancel</mat-icon>
+            </mat-chip>
+            <input placeholder="Cast"
+            [matChipInputFor]="castList"
+            [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+            [matChipInputAddOnBlur]="castAddOnBlur"
+            (matChipInputTokenEnd)="addItem('cast', $event)">
+         </mat-chip-list>
+      </mat-form-field>
+      <mat-form-field>
+         <mat-chip-list #categoriesList aria-label="Categories">
+            <mat-chip *ngFor="let item of categoriesItems" [selectable]="categoriesSelectable"
+            [removable]="categoriesRemovable" (removed)="removeItem('categories', item)">
+               {{ item.name }}
+               <mat-icon matChipRemove *ngIf="categoriesRemovable">cancel</mat-icon>
+            </mat-chip>
+            <input placeholder="Categories"
+            [matChipInputFor]="categoriesList"
+            [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+            [matChipInputAddOnBlur]="categoriesAddOnBlur"
+            (matChipInputTokenEnd)="addItem('categories', $event)">
+         </mat-chip-list>
+      </mat-form-field>
+      <mat-form-field>
+         <input matInput type="number" placeholder="Duración" formControlName="duration" required>
+      </mat-form-field>
+      <mat-form-field>
+         <input matInput placeholder="Imagen" formControlName="img">
+      </mat-form-field>
+      <mat-slide-toggle (change)="seenMovie = !seenMovie">Vista</mat-slide-toggle>
+      <div *ngIf="seenMovie" class="mT15">
+         <mat-form-field>
+            <input matInput [matDatepicker]="picker" formControlName="seenDate" placeholder="Fecha">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+         </mat-form-field>
+         <div class="custom-form-field">
+            <p>Calificación</p>
+            <div>
+               <button mat-icon-button aria-label="1 estrella" (click)="rateMovie(1)">
+                  <mat-icon color="accent" *ngIf="movieRating > 0 && movieRating <= 5">star</mat-icon>
+                  <mat-icon color="accent" *ngIf="!(movieRating > 0 && movieRating <= 5)">star_border</mat-icon>
+               </button>
+               <button mat-icon-button aria-label="2 estrellas" (click)="rateMovie(2)">
+                  <mat-icon color="accent" *ngIf="movieRating > 1 && movieRating <= 5">star</mat-icon>
+                  <mat-icon color="accent" *ngIf="!(movieRating > 1 && movieRating <= 5)">star_border</mat-icon>
+               </button>
+               <button mat-icon-button aria-label="3 estrellas"(click)="rateMovie(3)">
+                  <mat-icon color="accent" *ngIf="movieRating > 2 && movieRating <= 5">star</mat-icon>
+                  <mat-icon color="accent" *ngIf="!(movieRating > 2 && movieRating <= 5)">star_border</mat-icon>
+               </button>
+               <button mat-icon-button aria-label="4 estrellas" (click)="rateMovie(4)">
+                  <mat-icon color="accent" *ngIf="movieRating > 3 && movieRating <= 5">star</mat-icon>
+                  <mat-icon color="accent" *ngIf="!(movieRating > 3 && movieRating <= 5)">star_border</mat-icon>
+               </button>
+               <button mat-icon-button aria-label="5 estrellas" (click)="rateMovie(5)">
+                  <mat-icon color="accent" *ngIf="movieRating > 4 && movieRating <= 5">star</mat-icon>
+                  <mat-icon color="accent" *ngIf="!(movieRating > 4 && movieRating <= 5)">star_border</mat-icon>
+               </button>
+            </div>
+         </div>
+      </div>
+   </form>
+   <div class="flex mT15">
+      <mat-icon aria-hidden="false" aria-label="Formulario incorrecto" *ngIf="updateMovieForm.status=='INVALID'" color="primary">block</mat-icon>
+      <mat-icon aria-hidden="false" aria-label="Formulario incorrecto" *ngIf="updateMovieForm.status=='VALID'" color="accent">thumb_up</mat-icon>
+      <div class="buttons">
+         <button class="cancelButton" mat-raised-button (click)="goBack()">Cancelar</button>
+         <button color="warn" mat-raised-button (click)="deleteMovie()">Borrar</button>
+         <button color="accent" type="submit" mat-raised-button [disabled]="!updateMovieForm.valid" (click)="updateMovie()">Actualizar</button>
+      </div>
+   </div>
+</div>

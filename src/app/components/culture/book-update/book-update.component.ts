@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {FormGroup, Validators, FormBuilder } from '@angular/forms';
+import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { Location } from '@angular/common';
 import { Book } from 'src/app/models/book';
 import { BooksService } from 'src/app/services/books/books.service';
@@ -29,6 +29,7 @@ export class BookUpdateComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this._adapter.setLocale('es');
     this.book = null;
     this._id = this._route.snapshot.paramMap.get('_id');
     this._booksService.getBook(this._id).subscribe(book => {
@@ -83,23 +84,30 @@ export class BookUpdateComponent implements OnInit {
       comments: this.updateBookForm.value.comments
     };
 
-    this._booksService.updateBook(this._id, this.book).subscribe(response => {
-      this.goBack();
-    }, error => {
-      console.log(error);
-    });
+    this._booksService.updateBook(this._id, this.book)
+      .subscribe(() => {
+        this.goBack();
+      }, error => {
+        console.log(error);
+      });
   }
 
   deleteBook(): void {
-    this._booksService.removeBook(this._id).subscribe(response => {
-      this.goBack();
-    }, error => {
-      console.log(error);
-    });
+    this._booksService.removeBook(this._id)
+      .subscribe(() => {
+        this._router.navigate(['/cultura']);
+      }, error => {
+        console.log(error);
+      });
   }
 
   goBack(): void {
-    this._router.navigate(['/cultura']);
+    this._location.back();
+  }
+
+  rateBook(rating: number) {
+    this.bookRating = rating;
+    console.log(this.bookRating);
   }
 
 }

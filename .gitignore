@@ -41,6 +41,7 @@ yarn-error.log
 testem.log
 /typings
 globals.ts
+/src/assets/img/favicon
 
 # System Files
 .DS_Store
