@@ -83,7 +83,6 @@
       <mat-icon aria-hidden="false" aria-label="Formulario incorrecto" *ngIf="updateMovieForm.status=='VALID'" color="accent">thumb_up</mat-icon>
       <div class="buttons">
          <button class="cancelButton" mat-raised-button (click)="goBack()">Cancelar</button>
-         <button color="warn" mat-raised-button (click)="deleteMovie()">Borrar</button>
          <button color="accent" type="submit" mat-raised-button [disabled]="!updateMovieForm.valid" (click)="updateMovie()">Actualizar</button>
       </div>
    </div>

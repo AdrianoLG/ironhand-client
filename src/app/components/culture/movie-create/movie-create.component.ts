@@ -32,106 +32,107 @@ export class MovieCreateComponent implements OnInit {
     private _location: Location,
     private _formBuilder: FormBuilder,
     private _adapter: DateAdapter<any>
-    ) { }
+  ) { }
 
-    ngOnInit() {
-      this._adapter.setLocale('es');
-      this.addMovieForm = this._formBuilder.group({
-        title: ['', [Validators.required]],
-        director: ['', [Validators.required]],
-        year: [1895, [Validators.required, Validators.min(1895)]],
-        cast: [[], []],
-        categories: [[], []],
-        duration: [0, []],
-        img: ['', []],
-        seen: [false, []],
-        seenDate: ['', []],
-        rating: [0, []]
-      });
-    }
+  ngOnInit() {
+    this._adapter.setLocale('es');
+    this.addMovieForm = this._formBuilder.group({
+      title: ['', [Validators.required]],
+      director: ['', [Validators.required]],
+      year: [1895, [Validators.required, Validators.min(1895)]],
+      cast: [[], []],
+      categories: [[], []],
+      duration: [0, []],
+      img: ['', []],
+      seen: [false, []],
+      seenDate: ['', []],
+      rating: [0, []]
+    });
+  }
 
-    goBack(): void {
-      this._location.back();
-    }
+  goBack(): void {
+    this._location.back();
+  }
 
-    addItem(type: string, event: MatChipInputEvent): void {
-      const input = event.input;
-      const value = event.value;
+  addItem(type: string, event: MatChipInputEvent): void {
+    const input = event.input;
+    const value = event.value;
 
-      if ((value || '').trim()) {
-        switch (type) {
-          case 'cast':
-          this.castItems.push({ name: value.trim() });
-          break;
-          case 'categories':
-          this.categoriesItems.push({ name: value.trim() });
-          break;
-          default:
-          console.log('Pass a parameter');
-          break;
-        }
-      }
-
-      if (input) {
-        input.value = '';
-      }
-    }
-
-    removeItem(type: string, item: ChipItem): void {
+    if ((value || '').trim()) {
       switch (type) {
         case 'cast':
+          this.castItems.push({ name: value.trim() });
+          break;
+        case 'categories':
+          this.categoriesItems.push({ name: value.trim() });
+          break;
+        default:
+          console.log('Pass a parameter');
+          break;
+      }
+    }
+
+    if (input) {
+      input.value = '';
+    }
+  }
+
+  removeItem(type: string, item: ChipItem): void {
+    switch (type) {
+      case 'cast':
         if (this.castItems.indexOf(item) >= 0) {
           this.castItems.splice(this.castItems.indexOf(item), 1);
         }
         break;
-        case 'categories':
+      case 'categories':
         if (this.categoriesItems.indexOf(item) >= 0) {
           this.categoriesItems.splice(this.categoriesItems.indexOf(item), 1);
         }
         break;
-        default:
+      default:
         console.log('Pass a parameter');
         break;
-      }
     }
+  }
 
-    saveMovie(): void {
-      const castItems: string[] = [];
-      for (const castItem of this.castItems) {
-        castItems.push(castItem.name);
-      }
-      const categoriesItems: string[] = [];
-      for (const categorieItem of this.categoriesItems) {
-        categoriesItems.push(categorieItem.name);
-      }
-      if (this.addMovieForm.invalid) {
-        return;
-      }
-      this.movie = {
-        _id: null,
-        title: this.addMovieForm.value.title,
-        director: this.addMovieForm.value.director,
-        year: this.addMovieForm.value.year,
-        cast: castItems,
-        categories: categoriesItems,
-        duration: this.addMovieForm.value.duration,
-        img: this.addMovieForm.value.img,
-        seen: this.addMovieForm.value.seen,
-        seenDate: this.addMovieForm.value.seenDate,
-        rating: this.addMovieForm.value.rating
-      };
-      this._moviesService.addMovie(this.movie).subscribe(
-        () => {
-          this.goBack();
-        },
-        error => {
-          console.log(error);
-        }
-        );
-      }
-
-      rateMovie(rating: number) {
-        this.movieRating = rating;
-        console.log(this.movieRating);
-      }
+  saveMovie(): void {
+    const castItems: string[] = [];
+    for (const castItem of this.castItems) {
+      castItems.push(castItem.name);
     }
+    const categoriesItems: string[] = [];
+    for (const categorieItem of this.categoriesItems) {
+      categoriesItems.push(categorieItem.name);
+    }
+    if (this.addMovieForm.invalid) {
+      return;
+    }
+    this.movie = {
+      _id: null,
+      title: this.addMovieForm.value.title,
+      director: this.addMovieForm.value.director,
+      year: this.addMovieForm.value.year,
+      cast: castItems,
+      categories: categoriesItems,
+      duration: this.addMovieForm.value.duration,
+      img: this.addMovieForm.value.img,
+      seen: this.addMovieForm.value.seen,
+      seenDate: this.addMovieForm.value.seenDate,
+      rating: this.addMovieForm.value.rating
+    };
+    this._moviesService.addMovie(this.movie).subscribe(
+      () => {
+        this.goBack();
+      },
+      error => {
+        console.log(error);
+      }
+    );
+  }
+
+
+  rateMovie(rating: number) {
+    this.movieRating = rating;
+    console.log(this.movieRating);
+  }
+}

@@ -26,7 +26,8 @@
    <div class="wrapper">
       <div class="buttons floatRight">
          <button class="cancelButton" mat-raised-button (click)="goBack()">Atrás</button>
-         <button color="accent" mat-raised-button routerLink="/cultura/serie/editar/{{ tvSerie._id }}">Editar</button>
+         <button color="warn" mat-raised-button (click)="deleteTvSerie()">Borrar</button>
+         <button color="accent" mat-raised-button routerLink="/cultura/series/editar/{{ tvSerie._id }}">Editar</button>
       </div>
    </div>
 </div>

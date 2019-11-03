@@ -58,7 +58,6 @@
          <mat-icon aria-hidden="false" aria-label="Formulario incorrecto" *ngIf="updateBookForm.status=='VALID'" color="accent">thumb_up</mat-icon>
          <div class="buttons">
             <button class="cancelButton" mat-raised-button (click)="goBack()">Cancelar</button>
-            <button color="warn" mat-raised-button (click)="deleteBook()">Borrar</button>
             <button color="accent" type="submit" mat-raised-button [disabled]="!updateBookForm.valid" (click)="updateBook()">Actualizar</button>
          </div>
       </div>

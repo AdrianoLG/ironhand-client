@@ -32,8 +32,9 @@
    </div>
    <div class="wrapper">
       <div class="buttons floatRight">
-         <button class="cancelButton" mat-raised-button (click)="goBack()">Atrás</button>
-         <button color="accent" mat-raised-button routerLink="/cultura/pelicula/editar/{{ movie._id }}">Editar</button>
+         <button class="cancelButton" mat-raised-button (click)="goBack()">Cancelar</button>
+         <button color="warn" mat-raised-button (click)="deleteMovie()">Borrar</button>
+         <button color="accent" mat-raised-button routerLink="/cultura/peliculas/editar/{{ movie._id }}">Editar</button>
       </div>
    </div>
 </div>

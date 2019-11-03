@@ -30,4 +30,15 @@ export class MovieDetailComponent implements OnInit {
   goBack(): void {
     this._location.back();
   }
+
+  deleteMovie(): void {
+    this._moviesService.removeMovie(this._id).subscribe(
+      () => {
+        this.goBack();
+      },
+      error => {
+        console.log(error);
+      }
+    );
+  }
 }

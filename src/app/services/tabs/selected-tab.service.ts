@@ -23,6 +23,10 @@ export class SelectedTabService {
     {
       name: 'joy-garden',
       selected: 0
+    },
+    {
+      name: 'body',
+      selected: 0
     }
   ]);
   public currentTabs = this.tabs.asObservable();

@@ -6,7 +6,7 @@ import { MatChipInputEvent, DateAdapter } from '@angular/material';
 import { MoviesService } from 'src/app/services/movies/movies.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Movie } from 'src/app/models/movie';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-movie-update',
@@ -35,8 +35,7 @@ export class MovieUpdateComponent implements OnInit {
     private _location: Location,
     private _formBuilder: FormBuilder,
     private _adapter: DateAdapter<any>,
-    private _route: ActivatedRoute,
-    private _router: Router
+    private _route: ActivatedRoute
   ) { }
 
   ngOnInit() {
@@ -151,17 +150,6 @@ export class MovieUpdateComponent implements OnInit {
     this._moviesService.updateMovie(this._id, this.movie).subscribe(
       () => {
         this.goBack();
-      },
-      error => {
-        console.log(error);
-      }
-    );
-  }
-
-  deleteMovie(): void {
-    this._moviesService.removeMovie(this._id).subscribe(
-      () => {
-        this._router.navigate(['/cultura']);
       },
       error => {
         console.log(error);

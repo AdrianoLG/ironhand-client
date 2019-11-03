@@ -13,15 +13,15 @@ import { TvSerieUpdateComponent } from './tv-serie-update/tv-serie-update.compon
 
 const routes: Routes = [
   { path: '', component: CultureComponent },
-  { path: 'libro/crear', component: BookCreateComponent },
-  { path: 'libro/:_id', component: BookDetailComponent },
-  { path: 'libro/editar/:_id', component: BookUpdateComponent },
-  { path: 'pelicula/crear', component: MovieCreateComponent },
-  { path: 'pelicula/:_id', component: MovieDetailComponent },
-  { path: 'pelicula/editar/:_id', component: MovieUpdateComponent },
-  { path: 'serie/crear', component: TvSerieCreateComponent },
-  { path: 'serie/:_id', component: TvSerieDetailComponent },
-  { path: 'serie/editar/:_id', component: TvSerieUpdateComponent }
+  { path: 'libros/crear', component: BookCreateComponent },
+  { path: 'libros/:_id', component: BookDetailComponent },
+  { path: 'libros/editar/:_id', component: BookUpdateComponent },
+  { path: 'peliculas/crear', component: MovieCreateComponent },
+  { path: 'peliculas/:_id', component: MovieDetailComponent },
+  { path: 'peliculas/editar/:_id', component: MovieUpdateComponent },
+  { path: 'series/crear', component: TvSerieCreateComponent },
+  { path: 'series/:_id', component: TvSerieDetailComponent },
+  { path: 'series/editar/:_id', component: TvSerieUpdateComponent }
 ];
 
 @NgModule({

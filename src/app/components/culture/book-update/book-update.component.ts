@@ -4,7 +4,7 @@ import { Location } from '@angular/common';
 import { Book } from 'src/app/models/book';
 import { BooksService } from 'src/app/services/books/books.service';
 import { DateAdapter } from '@angular/material';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-book-update',
@@ -24,8 +24,7 @@ export class BookUpdateComponent implements OnInit {
     private _location: Location,
     private _formBuilder: FormBuilder,
     private _adapter: DateAdapter<any>,
-    private _route: ActivatedRoute,
-    private _router: Router
+    private _route: ActivatedRoute
   ) { }
 
   ngOnInit() {
@@ -87,15 +86,6 @@ export class BookUpdateComponent implements OnInit {
     this._booksService.updateBook(this._id, this.book)
       .subscribe(() => {
         this.goBack();
-      }, error => {
-        console.log(error);
-      });
-  }
-
-  deleteBook(): void {
-    this._booksService.removeBook(this._id)
-      .subscribe(() => {
-        this._router.navigate(['/cultura']);
       }, error => {
         console.log(error);
       });

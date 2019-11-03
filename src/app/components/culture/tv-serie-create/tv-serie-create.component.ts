@@ -35,6 +35,7 @@ export class TvSerieCreateComponent implements OnInit {
 
   ngOnInit() {
     this._adapter.setLocale('es');
+    this.ended = false;
     this.addTvSerieForm = this._formBuilder.group({
       title: ['', [Validators.required]],
       director: ['', [Validators.required]],

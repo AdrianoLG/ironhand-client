@@ -1,65 +1,108 @@
-<mat-tab-group [color]="primary" [backgroundColor]="primary">
+<mat-tab-group [color]="primary" [backgroundColor]="primary" (selectedTabChange)="changeSelectedIndex($event)"  [selectedIndex]="selectedIndex">
    <mat-tab label="Comida">
-      <mat-tab-group [color]="accent" [backgroundColor]="accent" class="bottomTabs">
+      <mat-tab-group [color]="accent" [backgroundColor]="accent" class="bottomTabs" (selectedTabChange)="changeSelectedIndex2($event)" [selectedIndex]="selectedIndex2">
          <mat-tab label="Comidas">
-            <div class="wrapper">
-               <h2 class="mat-title flex">Comidas <span matBadge="{{ count }}"></span></h2>
+            <div *ngIf="meals">
+               <div class="wrapper">
+                  <h2 class="mat-title flex">Comidas <span matBadge="{{ mealsCount }}"></span></h2>
+               </div>
+               <mat-card *ngFor="let meal of meals" data-id="{{ meal._id }}">
+                  <mat-card-content routerLink="/cuerpo/comida/comidas/editar/{{ meal._id }}">
+                     <div class="left">
+                        <p class="date">{{ meal.date | date: 'dd-MM-yyyy' }}</p>
+                     </div>
+                     <div class="right">
+                        <div>
+                           <h4>Desayuno</h4>
+                           <p><span *ngFor="let alimento of meal.breakfast; let isLast=last">{{ alimento }}{{ isLast ? '' : ', ' }}</span></p>
+                        </div>
+                        <div>
+                           <h4>Comida</h4>
+                           <p><span *ngFor="let alimento of meal.lunch; let isLast=last">{{ alimento }}{{ isLast ? '' : ', ' }}</span></p>
+                        </div>
+                        <div>
+                           <h4>Cena</h4>
+                           <p><span *ngFor="let alimento of meal.dinner; let isLast=last">{{ alimento }}{{ isLast ? '' : ', ' }}</span></p>
+                        </div>
+                     </div>
+                  </mat-card-content>
+               </mat-card>
             </div>
-            <mat-card *ngFor="let meal of meals" data-id="{{ meal._id }}">
-               <mat-card-content routerLink="/cuerpo/comidas/editar/{{ meal._id }}">
-                  <div class="left">
-                     <p class="date">{{ meal.date | date: 'dd-MM-yyyy' }}</p>
-                  </div>
-                  <div class="right">
-                     <div>
-                        <h4>Desayuno</h4>
-                        <p><span *ngFor="let alimento of meal.breakfast; let isLast=last">{{ alimento }}{{ isLast ? '' : ', ' }}</span></p>
-                     </div>
-                     <div>
-                        <h4>Comida</h4>
-                        <p><span *ngFor="let alimento of meal.lunch; let isLast=last">{{ alimento }}{{ isLast ? '' : ', ' }}</span></p>
-                     </div>
-                     <div>
-                        <h4>Cena</h4>
-                        <p><span *ngFor="let alimento of meal.dinner; let isLast=last">{{ alimento }}{{ isLast ? '' : ', ' }}</span></p>
-                     </div>
-                  </div>
-               </mat-card-content>
-            </mat-card>
          </mat-tab>
          <mat-tab label="Sugerencias">
-
+            <div *ngIf="suggestions">
+               <div class="wrapper">
+                  <h2 class="mat-title flex">Sugerencias <span matBadge="{{ suggestionsCount }}"></span></h2>
+               </div>
+               <mat-card *ngFor="let suggestion of suggestions" data-id="{{ suggestion._id }}">
+                  <mat-card-content routerLink="/cuerpo/comida/sugerencias/editar/{{ suggestion._id }}">
+                     <div class="left">
+                        <p class="date">{{ suggestion.name }}</p>
+                     </div>
+                     <div class="right">
+                        <div>
+                           <h4>Estaciones</h4>
+                           <p><span *ngFor="let season of suggestion.season; let isLast=last">{{ season }}{{ isLast ? '' : ', ' }}</span></p>
+                        </div>
+                        <div>
+                           <h4>Ingredientes</h4>
+                           <ul>
+                              <li *ngFor="let ingredient of suggestion.ingredients">{{ ingredient }}</li>
+                           </ul>
+                        </div>
+                     </div>
+                  </mat-card-content>
+               </mat-card>
+            </div>
          </mat-tab>
       </mat-tab-group>
    </mat-tab>
    <mat-tab label="Ejercicio">
-      <mat-tab-group [color]="accent" [backgroundColor]="accent" class="bottomTabs">
+      <mat-tab-group [color]="accent" [backgroundColor]="accent" class="bottomTabs" (selectedTabChange)="changeSelectedIndex2($event)" [selectedIndex]="selectedIndex2">
          <mat-tab label="Completados">
-            <div>
+            <div *ngIf="completedExercises" class="completed">
                <div class="wrapper">
-                  <h2>Completados</h2>
+                  <h2 class="mat-title flex">Completados <span matBadge="{{ completedExercisesCount }}"></span></h2>
                </div>
-               <mat-card *ngFor="let completedExercise of completedExercises?.completedExercises" data-id="{{ completedExercise._id }}">
-                  <mat-card-content>
+               <mat-card *ngFor="let completedExercise of completedExercises" data-id="{{ completedExercise._id }}">
+                  <mat-card-content routerLink="/cuerpo/ejercicio/completados/editar/{{ completedExercise._id }}">
                      <div class="left">
                         <p class="date">{{ completedExercise.date | date: 'dd-MM-yyyy' }}</p>
                      </div>
                      <div class="right">
-                        <p>Repetitions: {{ completedExercise.repetitions }}</p>
-                        <p>Time: {{ completedExercise.time }}</p>
-                        <p>Min. Heart: {{ completedExercise.minHeart }}</p>
-                        <p>Max. Heart: {{ completedExercise.maxHeart }}</p>
+                        <h3>{{ completedExercise.exerciseId }}</h3>
+                        <h4>Repeticiones: <span>{{ completedExercise.repetitions }}</span></h4>
+                        <h4>Tiempo: <span>{{ completedExercise.time }} seg.</span></h4>
+                        <h4>Min. pulsaciones: <span>{{ completedExercise.minHeart }} ppm</span></h4>
+                        <h4>Máx. pulsaciones: <span>{{ completedExercise.maxHeart }} ppm</span></h4>
                      </div>
                   </mat-card-content>
                </mat-card>
             </div>
          </mat-tab>
          <mat-tab label="Listado">
+            <div *ngIf="exercises">
+                  <div class="wrapper">
+                     <h2 class="mat-title flex">Ejercicios <span matBadge="{{ exercisesCount }}"></span></h2>
+                  </div>
+               <mat-card *ngFor="let exercise of exercises" data-id="{{ exercise._id }}">
+                  <mat-card-content routerLink="/cuerpo/ejercicio/listado/editar/{{ exercise._id }}">
+                     <div class="left">
+                        <p>{{ exercise.name }}</p>
+                        <ul>
+                           <li *ngFor="let bodyPart of exercise.bodyParts">{{ bodyPart }}</li>
+                        </ul>
+                     </div>
+                     <div class="right">
 
+                     </div>
+                  </mat-card-content>
+               </mat-card>
+            </div>
          </mat-tab>
       </mat-tab-group>
    </mat-tab>
 </mat-tab-group>
-<button mat-mini-fab>
-   <mat-icon routerLink="/cuerpo/comidas/crear">add</mat-icon>
+<button mat-mini-fab (click)="addSomething()">
+   <mat-icon>add</mat-icon>
 </button>

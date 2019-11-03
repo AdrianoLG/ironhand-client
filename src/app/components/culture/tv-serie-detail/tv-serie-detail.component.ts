@@ -31,4 +31,12 @@ export class TvSerieDetailComponent implements OnInit {
     this._location.back();
   }
 
+  deleteTvSerie(): void {
+    this._tvSeriesService.removeMovie(this._id).subscribe(() => {
+      this.goBack();
+    }, error => {
+      console.log(error);
+    });
+  }
+
 }

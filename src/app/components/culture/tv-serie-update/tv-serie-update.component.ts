@@ -6,7 +6,7 @@ import { MatChipInputEvent, DateAdapter } from '@angular/material';
 import { TvSeriesService } from 'src/app/services/tv-series/tv-series.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { TvSerie } from 'src/app/models/tv-serie';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-tv-serie-update',
@@ -33,8 +33,7 @@ export class TvSerieUpdateComponent implements OnInit {
     private _location: Location,
     private _formBuilder: FormBuilder,
     private _adapter: DateAdapter<any>,
-    private _route: ActivatedRoute,
-    private _router: Router
+    private _route: ActivatedRoute
   ) { }
 
   ngOnInit() {
@@ -158,14 +157,6 @@ export class TvSerieUpdateComponent implements OnInit {
         console.log(error);
       }
     );
-  }
-
-  deleteTvSerie(): void {
-    this._tvSeriesService.removeMovie(this._id).subscribe(() => {
-      this._router.navigate(['/cultura']);
-    }, error => {
-      console.log(error);
-    });
   }
 
 }

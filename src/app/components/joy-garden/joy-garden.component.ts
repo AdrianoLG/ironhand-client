@@ -18,13 +18,13 @@ export class JoyGardenComponent implements OnInit {
   selectedIndex: number;
   selectedIndex2: number;
   currentTabs: Tab[];
+  tabGroup: number;
   waterings: JGWatering[];
   wateringsCount: number;
   plants: JGPlant[];
   plantsCount: number;
   seeds: JGSeed[];
   seedsCount: number;
-  tabGroup: number;
 
   constructor(
     private _selectedTabService: SelectedTabService,
