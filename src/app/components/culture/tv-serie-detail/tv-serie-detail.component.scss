@@ -21,6 +21,7 @@ h4 {
 	text-transform: uppercase;
 }
 .categories {
+	line-height: 1.25em;
 	margin-bottom: 1em;
 	span {
 		color: $secondaryLightLow;
@@ -35,13 +36,13 @@ h4 {
 .left {
 	width: 75%;
 }
-.rating {
-	margin: 1em 0;
-}
 .right {
 	width: 25%;
 }
-.seenDate {
-	padding-left: 2em;
+.data {
 	color: $secondaryLightLow;
+	font-size: .875rem;
+}
+.tvSeriedata p {
+	margin-bottom: 1.25em;
 }

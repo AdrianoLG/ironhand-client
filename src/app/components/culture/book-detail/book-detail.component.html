@@ -1,37 +1,39 @@
-<div class="wrapper">
-   <div class="flex aiFlexEnd">
-      <div class="left">
-         <h2 class="mat-title">{{ book.title }}</h2>
-         <h3>{{ book.author }}</h3>
-      </div>
-      <div class="right">
-         <h4>{{ book.category }}</h4>
+<div *ngIf="book">
+   <div class="wrapper">
+      <div class="flex aiFlexEnd">
+         <div class="left">
+            <h2 class="mat-title">{{ book.title }}</h2>
+            <h3>{{ book.author }}</h3>
+         </div>
+         <div class="right">
+            <h4>{{ book.category }}</h4>
+         </div>
       </div>
    </div>
-</div>
-<div class="img" *ngIf="book">
-   <img src="{{ book.img }}" alt="" *ngIf="book.img != ''">
-   <img src="assets/img/dummy.jpg" alt="" *ngIf="book.img == ''">
-</div>
-<div class="wrapper">
-   <p>{{ book.pages }} pág. <span class="readDate" *ngIf="book.read">Leído: {{ book.readDate | date: 'dd-MM-yyyy' }}</span> </p>
-   <div class="rating" *ngIf="book.read">
-      <mat-icon color="accent" *ngIf="book.rating > 0 && book.rating <= 5">star</mat-icon>
-      <mat-icon color="accent" *ngIf="!(book.rating > 0 && book.rating <= 5)">star_border</mat-icon>
-      <mat-icon color="accent" *ngIf="book.rating > 1 && book.rating <= 5">star</mat-icon>
-      <mat-icon color="accent" *ngIf="!(book.rating > 1 && book.rating <= 5)">star_border</mat-icon>
-      <mat-icon color="accent" *ngIf="book.rating > 2 && book.rating <= 5">star</mat-icon>
-      <mat-icon color="accent" *ngIf="!(book.rating > 2 && book.rating <= 5)">star_border</mat-icon>
-      <mat-icon color="accent" *ngIf="book.rating > 3 && book.rating <= 5">star</mat-icon>
-      <mat-icon color="accent" *ngIf="!(book.rating > 3 && book.rating <= 5)">star_border</mat-icon>
-      <mat-icon color="accent" *ngIf="book.rating > 4 && book.rating <= 5">star</mat-icon>
-      <mat-icon color="accent" *ngIf="!(book.rating > 4 && book.rating <= 5)">star_border</mat-icon>
+   <div class="img" *ngIf="book">
+      <img src="{{ book.img }}" alt="" *ngIf="book.img != ''">
+      <img src="assets/img/dummy.jpg" alt="" *ngIf="book.img == ''">
    </div>
-   <p>{{ book.comments }}</p>
-</div>
-<div class="wrapper">
-   <div class="buttons floatRight">
-      <button class="cancelButton" mat-raised-button (click)="goBack()">Atrás</button>
-      <button color="accent" mat-raised-button routerLink="/cultura/libro/editar/{{ book._id }}">Editar</button>
+   <div class="wrapper">
+      <p>{{ book.pages }} pág. <span class="readDate" *ngIf="book.read">Leído: {{ book.readDate | date: 'dd-MM-yyyy' }}</span> </p>
+      <div class="rating" *ngIf="book.read">
+         <mat-icon color="accent" *ngIf="book.rating > 0 && book.rating <= 5">star</mat-icon>
+         <mat-icon color="accent" *ngIf="!(book.rating > 0 && book.rating <= 5)">star_border</mat-icon>
+         <mat-icon color="accent" *ngIf="book.rating > 1 && book.rating <= 5">star</mat-icon>
+         <mat-icon color="accent" *ngIf="!(book.rating > 1 && book.rating <= 5)">star_border</mat-icon>
+         <mat-icon color="accent" *ngIf="book.rating > 2 && book.rating <= 5">star</mat-icon>
+         <mat-icon color="accent" *ngIf="!(book.rating > 2 && book.rating <= 5)">star_border</mat-icon>
+         <mat-icon color="accent" *ngIf="book.rating > 3 && book.rating <= 5">star</mat-icon>
+         <mat-icon color="accent" *ngIf="!(book.rating > 3 && book.rating <= 5)">star_border</mat-icon>
+         <mat-icon color="accent" *ngIf="book.rating > 4 && book.rating <= 5">star</mat-icon>
+         <mat-icon color="accent" *ngIf="!(book.rating > 4 && book.rating <= 5)">star_border</mat-icon>
+      </div>
+      <p>{{ book.comments }}</p>
+   </div>
+   <div class="wrapper">
+      <div class="buttons floatRight">
+         <button class="cancelButton" mat-raised-button (click)="goBack()">Atrás</button>
+         <button color="accent" mat-raised-button routerLink="/cultura/libro/editar/{{ book._id }}">Editar</button>
+      </div>
    </div>
 </div>

@@ -10,25 +10,25 @@ import { BookDetailComponent } from './book-detail/book-detail.component';
 import { BookUpdateComponent } from './book-update/book-update.component';
 import { MovieDetailComponent } from './movie-detail/movie-detail.component';
 import { MovieUpdateComponent } from './movie-update/movie-update.component';
-import { TvShowCreateComponent } from './tv-show-create/tv-show-create.component';
-import { TvShowUpdateComponent } from './tv-show-update/tv-show-update.component';
-import { TvShowDetailComponent } from './tv-show-detail/tv-show-detail.component';
 import { MovieCreateComponent } from './movie-create/movie-create.component';
+import { TvSerieDetailComponent } from './tv-serie-detail/tv-serie-detail.component';
+import { TvSerieUpdateComponent } from './tv-serie-update/tv-serie-update.component';
+import { TvSerieCreateComponent } from './tv-serie-create/tv-serie-create.component';
 
 @NgModule({
-	declarations: [
-		CultureComponent,
-		BookCreateComponent,
-		CollectionFilterPipe,
-		BookDetailComponent,
-		BookUpdateComponent,
-		MovieCreateComponent,
-		MovieDetailComponent,
-		MovieUpdateComponent,
-		TvShowCreateComponent,
-		TvShowUpdateComponent,
-		TvShowDetailComponent
-	],
-	imports: [ CommonModule, MaterialModule, FormsModule, ReactiveFormsModule, CultureRoutingModule ]
+  declarations: [
+    CultureComponent,
+    BookCreateComponent,
+    CollectionFilterPipe,
+    BookDetailComponent,
+    BookUpdateComponent,
+    MovieCreateComponent,
+    MovieDetailComponent,
+    MovieUpdateComponent,
+    TvSerieDetailComponent,
+    TvSerieUpdateComponent,
+    TvSerieCreateComponent
+  ],
+  imports: [ CommonModule, MaterialModule, FormsModule, ReactiveFormsModule, CultureRoutingModule ]
 })
 export class CultureModule {}

@@ -7,6 +7,9 @@ import { BookUpdateComponent } from './book-update/book-update.component';
 import { MovieCreateComponent } from './movie-create/movie-create.component';
 import { MovieDetailComponent } from './movie-detail/movie-detail.component';
 import { MovieUpdateComponent } from './movie-update/movie-update.component';
+import { TvSerieCreateComponent } from './tv-serie-create/tv-serie-create.component';
+import { TvSerieDetailComponent } from './tv-serie-detail/tv-serie-detail.component';
+import { TvSerieUpdateComponent } from './tv-serie-update/tv-serie-update.component';
 
 const routes: Routes = [
   { path: '', component: CultureComponent },
@@ -15,7 +18,10 @@ const routes: Routes = [
   { path: 'libro/editar/:_id', component: BookUpdateComponent },
   { path: 'pelicula/crear', component: MovieCreateComponent },
   { path: 'pelicula/:_id', component: MovieDetailComponent },
-  { path: 'pelicula/editar/:_id', component: MovieUpdateComponent }
+  { path: 'pelicula/editar/:_id', component: MovieUpdateComponent },
+  { path: 'serie/crear', component: TvSerieCreateComponent },
+  { path: 'serie/:_id', component: TvSerieDetailComponent },
+  { path: 'serie/editar/:_id', component: TvSerieUpdateComponent }
 ];
 
 @NgModule({

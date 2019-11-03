@@ -11,13 +11,13 @@
          <input matInput type="number" placeholder="Año" formControlName="year" required>
       </mat-form-field>
       <mat-form-field>
-         <mat-chip-list #castList aria-label="Cast">
+         <mat-chip-list #castList aria-label="Reparto">
             <mat-chip *ngFor="let item of castItems" [selectable]="castSelectable"
             [removable]="castRemovable" (removed)="removeItem('cast', item)">
                {{ item.name }}
                <mat-icon matChipRemove *ngIf="castRemovable">cancel</mat-icon>
             </mat-chip>
-            <input placeholder="Cast"
+            <input placeholder="Reparto"
             [matChipInputFor]="castList"
             [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
             [matChipInputAddOnBlur]="castAddOnBlur"
@@ -25,13 +25,13 @@
          </mat-chip-list>
       </mat-form-field>
       <mat-form-field>
-         <mat-chip-list #categoriesList aria-label="Categories">
+         <mat-chip-list #categoriesList aria-label="Categorías">
             <mat-chip *ngFor="let item of categoriesItems" [selectable]="categoriesSelectable"
             [removable]="categoriesRemovable" (removed)="removeItem('categories', item)">
                {{ item.name }}
                <mat-icon matChipRemove *ngIf="categoriesRemovable">cancel</mat-icon>
             </mat-chip>
-            <input placeholder="Categories"
+            <input placeholder="Categorías"
             [matChipInputFor]="categoriesList"
             [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
             [matChipInputAddOnBlur]="categoriesAddOnBlur"

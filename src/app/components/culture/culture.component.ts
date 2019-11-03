@@ -4,6 +4,8 @@ import { BooksService } from 'src/app/services/books/books.service';
 import { Book } from 'src/app/models/book';
 import { Movie } from 'src/app/models/movie';
 import { MoviesService } from 'src/app/services/movies/movies.service';
+import { TvSerie } from 'src/app/models/tv-serie';
+import { TvSeriesService } from 'src/app/services/tv-series/tv-series.service';
 
 @Component({
   selector: 'app-culture',
@@ -20,12 +22,16 @@ export class CultureComponent implements OnInit {
   movies: Movie[];
   moviesCount: number;
   filterMovie: any;
+  tvSeries: TvSerie[];
+  tvSeriesCount: number;
+  filterTvSerie: any;
   tabGroup: number;
 
   constructor(
     private _selectedTabService: SelectedTabService,
     private _bookService: BooksService,
-    private _moviesService: MoviesService
+    private _moviesService: MoviesService,
+    private _tvSeriesService: TvSeriesService
     ) {}
 
     ngOnInit() {
@@ -46,6 +52,10 @@ export class CultureComponent implements OnInit {
       this._moviesService.getMovies().subscribe(movies => {
         this.moviesCount = movies.count;
         this.movies = movies.movies;
+      });
+      this._tvSeriesService.getTvSeries().subscribe(tvSeries => {
+        this.tvSeriesCount = tvSeries.count;
+        this.tvSeries = tvSeries.tvSeries;
       });
     }
 

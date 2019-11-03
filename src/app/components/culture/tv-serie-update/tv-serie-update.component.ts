@@ -3,22 +3,20 @@ import { Location } from '@angular/common';
 import { ChipItem } from 'src/app/models/chip-item';
 import { ENTER, COMMA } from '@angular/cdk/keycodes';
 import { MatChipInputEvent, DateAdapter } from '@angular/material';
-import { MoviesService } from 'src/app/services/movies/movies.service';
+import { TvSeriesService } from 'src/app/services/tv-series/tv-series.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Movie } from 'src/app/models/movie';
+import { TvSerie } from 'src/app/models/tv-serie';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
-  selector: 'app-movie-update',
-  templateUrl: './movie-update.component.html',
-  styleUrls: ['./movie-update.component.scss']
+  selector: 'app-tv-serie-update',
+  templateUrl: './tv-serie-update.component.html',
+  styleUrls: ['./tv-serie-update.component.scss']
 })
-
-export class MovieUpdateComponent implements OnInit {
-  updateMovieForm: FormGroup;
-  movie: Movie;
-  seenMovie: boolean;
-  movieRating: number;
+export class TvSerieUpdateComponent implements OnInit {
+  updateTvSerieForm: FormGroup;
+  tvSerie: TvSerie;
+  ended: boolean;
   castSelectable = true;
   castRemovable = true;
   castAddOnBlur = true;
@@ -31,7 +29,7 @@ export class MovieUpdateComponent implements OnInit {
   private _id: string;
 
   constructor(
-    private _moviesService: MoviesService,
+    private _tvSeriesService: TvSeriesService,
     private _location: Location,
     private _formBuilder: FormBuilder,
     private _adapter: DateAdapter<any>,
@@ -42,40 +40,43 @@ export class MovieUpdateComponent implements OnInit {
   ngOnInit() {
     this._id = this._route.snapshot.paramMap.get('_id');
     this._adapter.setLocale('es');
-    this._moviesService.getMovie(this._id)
-      .subscribe(movie => {
-        this.movie = movie;
-        for (const actor of this.movie.cast) {
-          this.castItems.push({ name: actor });
-        }
-        for (const category of this.movie.categories) {
-          this.categoriesItems.push({ name: category });
-        }
-        this.seenMovie = movie.seen;
-        this.movieRating = movie.rating;
-        this.updateMovieForm = this._formBuilder.group({
-          title: ['', [Validators.required]],
-          director: ['', [Validators.required]],
-          year: [1895, [Validators.required, Validators.min(1895)]],
-          cast: [[], []],
-          categories: [[], []],
-          duration: [0, []],
-          img: ['', []],
-          seen: [false, []],
-          seenDate: ['', []],
-          rating: [0, []]
-        });
-        this.updateMovieForm.patchValue({
-          title: movie.title,
-          director: movie.director,
-          year: movie.year,
-          duration: movie.duration,
-          img: movie.img,
-          seen: this.seenMovie,
-          seenDate: movie.seenDate,
-          rating: this.movieRating
-        });
+    this._tvSeriesService.getTvSerie(this._id)
+    .subscribe(tvSerie => {
+      this.tvSerie = tvSerie;
+      for (const actor of this.tvSerie.cast) {
+        this.castItems.push({ name: actor });
+      }
+      for (const category of this.tvSerie.categories) {
+        this.categoriesItems.push({ name: category });
+      }
+      this.ended = tvSerie.ended;
+      this.updateTvSerieForm = this._formBuilder.group({
+        title: ['', [Validators.required]],
+        director: ['', [Validators.required]],
+        cast: [[], []],
+        tv: ['', []],
+        country: ['', []],
+        beginDate: ['', []],
+        lastSeen: ['', [Validators.required]],
+        ended: ['', []],
+        endDate: ['', []],
+        categories: [[], []],
+        episodeDuration: [0, []],
+        img: ['', []]
       });
+      this.updateTvSerieForm.patchValue({
+        title: tvSerie.title,
+        director: tvSerie.director,
+        tv: tvSerie.tv,
+        country: tvSerie.country,
+        beginDate: tvSerie.beginDate,
+        lastSeen: tvSerie.lastSeen,
+        ended: tvSerie.ended,
+        endDate: tvSerie.endDate,
+        episodeDuration: tvSerie.episodeDuration,
+        img: tvSerie.img,
+      });
+    });
   }
 
   goBack(): void {
@@ -123,7 +124,7 @@ export class MovieUpdateComponent implements OnInit {
     }
   }
 
-  updateMovie(): void {
+  updateTvSerie(): void {
     const castItems: string[] = [];
     for (const castItem of this.castItems) {
       castItems.push(castItem.name);
@@ -132,24 +133,25 @@ export class MovieUpdateComponent implements OnInit {
     for (const categorieItem of this.categoriesItems) {
       categoriesItems.push(categorieItem.name);
     }
-    if (this.updateMovieForm.invalid) {
+    if (this.updateTvSerieForm.invalid) {
       return;
     }
-    this.movie = {
+    this.tvSerie = {
       _id: null,
-      title: this.updateMovieForm.value.title,
-      director: this.updateMovieForm.value.director,
-      year: this.updateMovieForm.value.year,
+      title: this.updateTvSerieForm.value.title,
+      director: this.updateTvSerieForm.value.director,
       cast: castItems,
+      tv: this.updateTvSerieForm.value.tv,
+      country: this.updateTvSerieForm.value.country,
+      beginDate: this.updateTvSerieForm.value.beginDate,
+      lastSeen: this.updateTvSerieForm.value.lastSeen,
+      ended: this.ended,
+      endDate: this.updateTvSerieForm.value.endDate,
       categories: categoriesItems,
-      duration: this.updateMovieForm.value.duration,
-      img: this.updateMovieForm.value.img,
-      seen: this.seenMovie,
-      seenDate: this.updateMovieForm.value.seenDate,
-      rating: this.movieRating
+      episodeDuration: this.updateTvSerieForm.value.episodeDuration,
+      img: this.updateTvSerieForm.value.img
     };
-    this._moviesService.updateMovie(this._id, this.movie).subscribe(
-      () => {
+    this._tvSeriesService.updateTvSerie(this._id, this.tvSerie).subscribe(() => {
         this.goBack();
       },
       error => {
@@ -158,20 +160,12 @@ export class MovieUpdateComponent implements OnInit {
     );
   }
 
-  deleteMovie(): void {
-    this._moviesService.removeMovie(this._id).subscribe(
-      () => {
-        this._router.navigate(['/cultura']);
-      },
-      error => {
-        console.log(error);
-      }
-    );
-  }
-
-  rateMovie(rating: number) {
-    this.movieRating = rating;
-    console.log(this.movieRating);
+  deleteTvSerie(): void {
+    this._tvSeriesService.removeMovie(this._id).subscribe(() => {
+      this._router.navigate(['/cultura']);
+    }, error => {
+      console.log(error);
+    });
   }
 
 }
