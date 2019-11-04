@@ -29,12 +29,31 @@ export class BookUpdateComponent implements OnInit {
 
   ngOnInit() {
     this._adapter.setLocale('es');
-    this.book = null;
     this._id = this._route.snapshot.paramMap.get('_id');
     this._booksService.getBook(this._id).subscribe(book => {
       this.book = book;
       this.readBook = book.read;
       this.bookRating = book.rating;
+      this.updateBookForm = this._formBuilder.group({
+        title: ['', [
+          Validators.required
+        ]],
+        author: ['', [
+          Validators.required
+        ]],
+        category: ['', [
+          Validators.required
+        ]],
+        pages: [0, [
+          Validators.min(0),
+          Validators.max(5000)
+        ]],
+        img: ['', []],
+        read: [false, []],
+        readDate: ['', []],
+        rating: [0, []],
+        comments: ['', []]
+      });
       this.updateBookForm.patchValue({
         title: book.title,
         author: book.author,
@@ -46,26 +65,6 @@ export class BookUpdateComponent implements OnInit {
         rating: this.bookRating,
         comments: book.comments
       });
-    });
-    this.updateBookForm = this._formBuilder.group({
-      title: ['', [
-        Validators.required
-      ]],
-      author: ['', [
-        Validators.required
-      ]],
-      category: ['', [
-        Validators.required
-      ]],
-      pages: [0, [
-        Validators.min(0),
-        Validators.max(5000)
-      ]],
-      img: ['', []],
-      read: [false, []],
-      readDate: ['', []],
-      rating: [0, []],
-      comments: ['', []]
     });
   }
 

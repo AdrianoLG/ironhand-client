@@ -1,1 +1,33 @@
-<p>completed-update works!</p>
+<div class="wrapper">
+   <h2 class="mat-title">Actualizar ejercicio completado</h2>
+   <form [formGroup]="updateCompletedForm">
+      <mat-form-field>
+         <input matInput placeholder="Id ejercicio" formControlName="exerciseId" required>
+      </mat-form-field>
+      <mat-form-field>
+         <input matInput [matDatepicker]="picker" formControlName="date" placeholder="Fecha" required>
+         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+         <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+      <mat-form-field>
+         <input matInput type="number" placeholder="Repeticiones" formControlName="repetitions">
+      </mat-form-field>
+      <mat-form-field>
+         <input matInput type="number" placeholder="Tiempo" formControlName="time">
+      </mat-form-field>
+      <mat-form-field>
+         <input matInput type="number" placeholder="Pulsaciones mínimas" formControlName="minHeart">
+      </mat-form-field>
+      <mat-form-field>
+         <input matInput type="number" placeholder="Pulsaciones máximas" formControlName="maxHeart">
+      </mat-form-field>
+   </form>
+   <div class="flex mT15">
+      <mat-icon aria-hidden="false" aria-label="Formulario incorrecto" *ngIf="updateCompletedForm.status=='INVALID'" color="primary">block</mat-icon>
+      <mat-icon aria-hidden="false" aria-label="Formulario incorrecto" *ngIf="updateCompletedForm.status=='VALID'" color="accent">thumb_up</mat-icon>
+      <div class="buttons">
+         <button class="cancelButton" mat-raised-button (click)="goBack()">Cancelar</button>
+         <button color="primary" type="submit" mat-raised-button [disabled]="!updateCompletedForm.valid" (click)="updateCompletedExercise()">Crear</button>
+      </div>
+   </div>
+</div>
