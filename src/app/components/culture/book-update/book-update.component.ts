@@ -12,7 +12,6 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./book-update.component.scss']
 })
 export class BookUpdateComponent implements OnInit {
-
   updateBookForm: FormGroup;
   book: Book;
   readBook: boolean;

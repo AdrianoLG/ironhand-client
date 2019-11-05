@@ -1,1 +1,33 @@
-<p>list-update works!</p>
+<div class="wrapper">
+   <h2 class="mat-title">Actualizar ejercicio</h2>
+   <form [formGroup]="updateExerciseForm">
+      <mat-form-field>
+         <input matInput placeholder="Nombre" formControlName="name" required>
+      </mat-form-field>
+      <mat-form-field>
+         <input matInput placeholder="Categoría" formControlName="category" required>
+      </mat-form-field>
+      <mat-form-field>
+         <mat-chip-list #bodyParts aria-label="Partes del cuerpo">
+            <mat-chip *ngFor="let item of bodyPartsItems" [selectable]="bodyPartsSelectable"
+            [removable]="bodyPartsRemovable" (removed)="removeItem('bodyParts', item)">
+               {{ item.name }}
+               <mat-icon matChipRemove *ngIf="bodyPartsRemovable">cancel</mat-icon>
+            </mat-chip>
+            <input placeholder="Partes del cuerpo"
+            [matChipInputFor]="bodyParts"
+            [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+            [matChipInputAddOnBlur]="bodyPartsAddOnBlur"
+            (matChipInputTokenEnd)="addItem('bodyParts', $event)">
+         </mat-chip-list>
+      </mat-form-field>
+   </form>
+   <div class="flex mT15">
+      <mat-icon aria-hidden="false" aria-label="Formulario incorrecto" *ngIf="updateExerciseForm.status=='INVALID'" color="primary">block</mat-icon>
+      <mat-icon aria-hidden="false" aria-label="Formulario incorrecto" *ngIf="updateExerciseForm.status=='VALID'" color="accent">thumb_up</mat-icon>
+      <div class="buttons">
+         <button class="cancelButton" mat-raised-button (click)="goBack()">Cancelar</button>
+         <button color="primary" type="submit" mat-raised-button [disabled]="!updateExerciseForm.valid" (click)="updateExercise()">Actualizar</button>
+      </div>
+   </div>
+</div>
