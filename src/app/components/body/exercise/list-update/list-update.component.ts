@@ -35,6 +35,9 @@ export class ListUpdateComponent implements OnInit {
     this._exercisesService.getExercise(this._id)
       .subscribe(exercise => {
         this.exercise = exercise;
+        for (const part of this.exercise.bodyParts) {
+          this.bodyPartsItems.push({ name: part });
+        }
         this.updateExerciseForm = this._formBuilder.group({
           name: ['', [Validators.required]],
           category: ['', [Validators.required]],
@@ -42,8 +45,7 @@ export class ListUpdateComponent implements OnInit {
         });
         this.updateExerciseForm.patchValue({
           name: exercise.name,
-          category: exercise.category,
-          bodyParts: this.bodyPartsItems
+          category: exercise.category
         });
       });
   }

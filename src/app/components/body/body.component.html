@@ -71,10 +71,8 @@
                      </div>
                      <div class="right">
                         <h3>{{ completedExercise.exerciseId }}</h3>
-                        <h4>Repeticiones: <span>{{ completedExercise.repetitions }}</span></h4>
-                        <h4>Tiempo: <span>{{ completedExercise.time }} seg.</span></h4>
-                        <h4>Min. pulsaciones: <span>{{ completedExercise.minHeart }} ppm</span></h4>
-                        <h4>Máx. pulsaciones: <span>{{ completedExercise.maxHeart }} ppm</span></h4>
+                        <h4>Repeticiones: <span>{{ completedExercise.repetitions }} </span> | Tiempo: <span>{{ completedExercise.time }} seg.</span></h4>
+                        <h4>Min./max. pulsaciones: <span>{{ completedExercise.minHeart }} ppm</span> | <span>{{ completedExercise.maxHeart }} ppm</span></h4>
                      </div>
                   </mat-card-content>
                </mat-card>
@@ -85,17 +83,12 @@
                   <div class="wrapper">
                      <h2 class="mat-title flex">Ejercicios <span matBadge="{{ exercisesCount }}"></span></h2>
                   </div>
-               <mat-card *ngFor="let exercise of exercises" data-id="{{ exercise._id }}">
+               <mat-card *ngFor="let exercise of exercises" data-id="{{ exercise._id }}" class="exercises">
                   <mat-card-content routerLink="/cuerpo/ejercicio/listado/editar/{{ exercise._id }}">
-                     <div class="left">
-                        <p>{{ exercise.name }}</p>
-                        <ul>
-                           <li *ngFor="let bodyPart of exercise.bodyParts">{{ bodyPart }}</li>
-                        </ul>
-                     </div>
-                     <div class="right">
-
-                     </div>
+                     <p>{{ exercise.name }}</p>
+                     <ul>
+                        <li *ngFor="let bodyPart of exercise.bodyParts">{{ bodyPart }}</li>
+                     </ul>
                   </mat-card-content>
                </mat-card>
             </div>

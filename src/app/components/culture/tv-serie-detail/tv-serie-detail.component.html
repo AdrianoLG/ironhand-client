@@ -17,6 +17,7 @@
       <img src="assets/img/dummy.jpg" alt="">
    </div>
    <div class="wrapper tvSeriedata">
+      <p class="cast">Reparto: <span *ngFor="let actor of tvSerie.cast; let isLast = last">{{ actor }}{{isLast ? '' : ', '}}</span></p>
       <p>TV: <span class="data">{{ tvSerie.tv }}</span></p>
       <p>País: <span class="data">{{ tvSerie.country }}</span></p>
       <p>Fecha de comienzo: <span class="data">{{ tvSerie.beginDate | date: 'dd-MM-yyyy' }}</span></p>

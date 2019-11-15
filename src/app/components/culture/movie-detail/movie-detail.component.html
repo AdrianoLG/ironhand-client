@@ -15,6 +15,7 @@
       <img src="assets/img/dummy.jpg" alt="" *ngIf="movie.img == ''">
    </div>
    <div class="wrapper">
+      <p class="cast">Reparto: <span *ngFor="let actor of movie.cast; let isLast = last">{{ actor }}{{isLast ? '' : ', '}}</span></p>
       <p class="categories">Categorías: <span *ngFor="let category of movie.categories; let isLast = last">{{ category }}{{isLast ? '' : ', '}}</span></p>
       <p>{{ movie.duration }} min. <span class="seenDate" *ngIf="movie.seen">Vista: {{ movie.seenDate | date: 'dd-MM-yyyy' }}</span> </p>
       <div class="rating" *ngIf="movie.seen">
@@ -32,7 +33,7 @@
    </div>
    <div class="wrapper">
       <div class="buttons floatRight">
-         <button class="cancelButton" mat-raised-button (click)="goBack()">Cancelar</button>
+         <button class="cancelButton" mat-raised-button (click)="goBack()">Atrás</button>
          <button color="warn" mat-raised-button (click)="deleteMovie()">Borrar</button>
          <button color="accent" mat-raised-button routerLink="/cultura/peliculas/editar/{{ movie._id }}">Editar</button>
       </div>
