@@ -3,7 +3,7 @@
    <form [formGroup]="updatePlantForm">
       <mat-form-field>
          <mat-label>Semilla</mat-label>
-         <mat-select formControlName="seedId" [value]="seedId" required>
+         <mat-select formControlName="seedId" [value]="plant.seedId" required>
             <mat-option *ngFor="let seed of availableSeeds" [value]="seed._id" select>
                {{seed.name}}
             </mat-option>
