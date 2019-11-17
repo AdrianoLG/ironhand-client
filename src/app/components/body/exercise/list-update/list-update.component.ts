@@ -88,7 +88,7 @@ export class ListUpdateComponent implements OnInit {
       name: this.updateExerciseForm.value.name,
       category: this.updateExerciseForm.value.category,
       bodyParts: this.updateExerciseForm.value.bodyParts
-    }
+    };
 
     this._exercisesService.updateExercise(this._id, this.exercise)
       .subscribe(() => {
