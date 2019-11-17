@@ -1,4 +1,4 @@
-<div class="wrapper">
+<div class="wrapper" *ngIf="updateExerciseForm">
    <h2 class="mat-title">Actualizar ejercicio</h2>
    <form [formGroup]="updateExerciseForm">
       <mat-form-field>
@@ -27,6 +27,7 @@
       <mat-icon aria-hidden="false" aria-label="Formulario incorrecto" *ngIf="updateExerciseForm.status=='VALID'" color="accent">thumb_up</mat-icon>
       <div class="buttons">
          <button class="cancelButton" mat-raised-button (click)="goBack()">Cancelar</button>
+         <button color="warn" mat-raised-button (click)="deleteExercise()">Borrar</button>
          <button color="primary" type="submit" mat-raised-button [disabled]="!updateExerciseForm.valid" (click)="updateExercise()">Actualizar</button>
       </div>
    </div>

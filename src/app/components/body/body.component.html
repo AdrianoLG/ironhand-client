@@ -34,7 +34,7 @@
                <div class="wrapper">
                   <h2 class="mat-title flex">Sugerencias <span matBadge="{{ suggestionsCount }}"></span></h2>
                </div>
-               <mat-card *ngFor="let suggestion of suggestions" data-id="{{ suggestion._id }}">
+               <mat-card *ngFor="let suggestion of suggestions" data-id="{{ suggestion._id }}" class="suggestion">
                   <mat-card-content routerLink="/cuerpo/comida/sugerencias/editar/{{ suggestion._id }}">
                      <div class="left">
                         <p class="date">{{ suggestion.name }}</p>

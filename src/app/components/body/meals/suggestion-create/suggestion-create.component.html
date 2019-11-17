@@ -2,16 +2,16 @@
    <h2 class="mat-title">Crear sugerencia de comida</h2>
    <form [formGroup]="addSuggestionForm">
       <mat-form-field>
-         <input formControlName="name" placeholder="Nombre" required>
+         <input matInput formControlName="name" placeholder="Nombre" required>
       </mat-form-field>
       <mat-form-field>
-         <mat-chip-list #seasonChipList aria-label="Comida">
+         <mat-chip-list #seasonChipList aria-label="Estación">
             <mat-chip *ngFor="let item of seasonItems" [selectable]="seSelectable"
                   [removable]="seRemovable" (removed)="removeItem('season', item)">
                {{ item.name }}
                <mat-icon matChipRemove *ngIf="seRemovable">cancel</mat-icon>
             </mat-chip>
-            <input placeholder="Comida"
+            <input placeholder="Estación"
                   [matChipInputFor]="seasonChipList"
                   [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
                   [matChipInputAddOnBlur]="seAddOnBlur"
@@ -38,7 +38,7 @@
       <mat-icon aria-hidden="false" aria-label="Formulario incorrecto" *ngIf="addSuggestionForm.status=='VALID'" color="accent">thumb_up</mat-icon>
       <div class="buttons">
          <button class="cancelButton" mat-raised-button (click)="goBack()">Cancelar</button>
-         <button color="primary" type="submit" mat-raised-button [disabled]="!addSuggestionForm.valid" (click)="saveMeal()">Crear</button>
+         <button color="primary" type="submit" mat-raised-button [disabled]="!addSuggestionForm.valid" (click)="saveSuggestion()">Crear</button>
       </div>
    </div>
 </div>

@@ -98,6 +98,14 @@ export class ListUpdateComponent implements OnInit {
       });
   }
 
+  deleteExercise() {
+    this._exercisesService.removeExercise(this._id).subscribe(() => {
+      this.goBack();
+    }, error => {
+      console.log(error);
+    });
+  }
+
   goBack(): void {
     this._location.back();
   }

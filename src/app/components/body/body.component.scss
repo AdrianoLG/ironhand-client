@@ -59,3 +59,28 @@ mat-card-content.mat-card-content {
 		padding: 0 0 .5em 0;
 	}
 }
+
+.suggestion {
+	mat-card-content.mat-card-content {
+		.left {
+			width: 40%;
+		}
+		.right {
+			width: 60%;
+		}
+	}
+	ul {
+		flex-direction: column;
+		flex-wrap: wrap;
+		list-style: circle;
+		padding: 0;
+		padding-left: .5em;
+		li {
+			color: $secondaryLightLowest;
+			margin: 0;
+			margin-bottom: .25em;
+			padding: 0;
+			width: 100%;
+		}
+	}
+}

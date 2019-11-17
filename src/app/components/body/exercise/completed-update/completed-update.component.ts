@@ -66,6 +66,14 @@ export class CompletedUpdateComponent implements OnInit {
     });
   }
 
+  deleteCompletedExercise() {
+    this._completedExercisesService.removeCompletedExercise(this._id).subscribe(() => {
+      this.goBack();
+    }, error => {
+      console.log(error);
+    });
+  }
+
   goBack(): void {
     this._location.back();
   }
