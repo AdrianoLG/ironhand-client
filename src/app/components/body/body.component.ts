@@ -31,6 +31,7 @@ export class BodyComponent implements OnInit {
   exercises: Exercise[];
   exercisesCount: number;
   submitted = false;
+  completedExercisesMixed = [];
 
   constructor(
     private _selectedTabService: SelectedTabService,
@@ -39,7 +40,7 @@ export class BodyComponent implements OnInit {
     private _exercisesService: ExercisesService,
     private _suggestionsService: SuggestionsService,
     private _router: Router
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this._selectedTabService.currentTabs.subscribe(currentTabs => {
@@ -85,6 +86,25 @@ export class BodyComponent implements OnInit {
     this._completedExercisesService.getCompletedExercises().subscribe(completedExercises => {
       this.completedExercisesCount = completedExercises.count;
       this.completedExercises = completedExercises.completedExercises;
+      this._exercisesService.getExercises().subscribe(exercises => {
+        for (let exercise of exercises.exercises) {
+          for (let completedExercise of this.completedExercises) {
+            if (completedExercise.exerciseId == exercise._id) {
+              this.completedExercisesMixed.push({
+                _id: completedExercise._id,
+                exerciseId: completedExercise.exerciseId,
+                exerciseName: exercise.name,
+                date: completedExercise.date,
+                repetitions: completedExercise.repetitions,
+                time: completedExercise.time,
+                minHeart: completedExercise.minHeart,
+                maxHeart: completedExercise.maxHeart
+              });
+            }
+          }
+        }
+        console.log(this.completedExercisesMixed);
+      });
     }, error => {
       if (error.status === 401) {
         this._router.navigate(['login']);

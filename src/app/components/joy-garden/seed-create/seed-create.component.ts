@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {FormGroup, Validators, FormBuilder } from '@angular/forms';
+import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { Location } from '@angular/common';
 import { JGSeed } from 'src/app/models/jg-seed';
 import { JgSeedsService } from 'src/app/services/jg-seeds/jg-seeds.service';
@@ -18,7 +18,7 @@ export class SeedCreateComponent implements OnInit {
     private _seedsService: JgSeedsService,
     private _location: Location,
     private _formBuilder: FormBuilder
-  ) {}
+  ) { }
 
   ngOnInit() {
     this.addSeedForm = this._formBuilder.group({
@@ -58,6 +58,7 @@ export class SeedCreateComponent implements OnInit {
       return;
     }
     this.seed = {
+      _id: null,
       name: this.addSeedForm.value.name,
       bank: this.addSeedForm.value.bank,
       img: this.addSeedForm.value.img,

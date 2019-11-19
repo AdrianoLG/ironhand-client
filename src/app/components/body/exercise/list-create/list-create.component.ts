@@ -81,6 +81,7 @@ export class ListCreateComponent implements OnInit {
       return;
     }
     this.exercise = {
+      _id: null,
       name: this.addExerciseForm.value.name,
       category: this.addExerciseForm.value.category,
       bodyParts: bodyPartsItems

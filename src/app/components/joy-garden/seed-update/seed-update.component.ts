@@ -9,7 +9,7 @@ import { ActivatedRoute } from '@angular/router';
 @Component({
 	selector: 'app-seed-update',
 	templateUrl: './seed-update.component.html',
-	styleUrls: [ './seed-update.component.scss' ]
+	styleUrls: ['./seed-update.component.scss']
 })
 export class SeedUpdateComponent implements OnInit {
 	updateSeedForm: FormGroup;
@@ -22,7 +22,7 @@ export class SeedUpdateComponent implements OnInit {
 		private _location: Location,
 		private _formBuilder: FormBuilder,
 		private _route: ActivatedRoute
-	) {}
+	) { }
 
 	ngOnInit() {
 		this._id = this._route.snapshot.paramMap.get('_id');
@@ -32,16 +32,16 @@ export class SeedUpdateComponent implements OnInit {
 			console.log(this.seed);
 
 			this.updateSeedForm = this._formBuilder.group({
-				name: [ '', [ Validators.required ] ],
-				bank: [ '', [ Validators.required ] ],
-				img: [ '', [] ],
-				genetic: [ '', [] ],
-				indicaSativa: [ '', [ Validators.required ] ],
-				productivity: [ '', [ Validators.required ] ],
-				flowering: [ '', [ Validators.required ] ],
-				height: [ 0, [ Validators.required, Validators.min(0), Validators.max(200) ] ],
-				effect: [ '', [] ],
-				aroma: [ '', [] ]
+				name: ['', [Validators.required]],
+				bank: ['', [Validators.required]],
+				img: ['', []],
+				genetic: ['', []],
+				indicaSativa: ['', [Validators.required]],
+				productivity: ['', [Validators.required]],
+				flowering: ['', [Validators.required]],
+				height: [0, [Validators.required, Validators.min(0), Validators.max(200)]],
+				effect: ['', []],
+				aroma: ['', []]
 			});
 
 			this.updateSeedForm.patchValue({
@@ -68,6 +68,7 @@ export class SeedUpdateComponent implements OnInit {
 			return;
 		}
 		this.seed = {
+			_id: this._id,
 			name: this.updateSeedForm.value.name,
 			bank: this.updateSeedForm.value.bank,
 			img: this.updateSeedForm.value.img,
@@ -92,7 +93,7 @@ export class SeedUpdateComponent implements OnInit {
 	deleteSeed(): void {
 		this._seedsService.removeSeed(this._id).subscribe(
 			() => {
-				this.router.navigate([ '/jardin-de-la-alegria' ]);
+				this.router.navigate(['/jardin-de-la-alegria']);
 			},
 			error => {
 				console.log(error);

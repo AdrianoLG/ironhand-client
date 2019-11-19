@@ -5,6 +5,8 @@ import { CompletedExercise } from 'src/app/models/completed-exercise';
 import { CompletedExercisesService } from 'src/app/services/completed-exercises/completed-exercises.service';
 import { DateAdapter } from '@angular/material';
 import { ActivatedRoute } from '@angular/router';
+import { Exercise } from 'src/app/models/exercise';
+import { ExercisesService } from 'src/app/services/exercises/exercises.service';
 
 @Component({
   selector: 'app-completed-update',
@@ -14,10 +16,12 @@ import { ActivatedRoute } from '@angular/router';
 export class CompletedUpdateComponent implements OnInit {
   updateCompletedForm: FormGroup;
   completedExercise: CompletedExercise;
+  availableExercises: Exercise[] = [];
   private _id: string;
 
   constructor(
     private _completedExercisesService: CompletedExercisesService,
+    private _exercisesService: ExercisesService,
     private _adapter: DateAdapter<any>,
     private _location: Location,
     private _formBuilder: FormBuilder,
@@ -46,11 +50,17 @@ export class CompletedUpdateComponent implements OnInit {
           minHeart: completedExercise.minHeart,
           maxHeart: completedExercise.maxHeart
         });
+        this._exercisesService.getExercises().subscribe(res => {
+          for (let exercise of res.exercises) {
+            this.availableExercises.push(exercise);
+          }
+        });
       });
   }
 
   updateCompletedExercise() {
     this.completedExercise = {
+      _id: this._id,
       exerciseId: this.updateCompletedForm.value.exerciseId,
       date: this.updateCompletedForm.value.date,
       repetitions: this.updateCompletedForm.value.repetitions,

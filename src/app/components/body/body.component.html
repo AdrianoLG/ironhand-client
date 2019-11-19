@@ -64,15 +64,15 @@
                <div class="wrapper">
                   <h2 class="mat-title flex">Completados <span matBadge="{{ completedExercisesCount }}"></span></h2>
                </div>
-               <mat-card *ngFor="let completedExercise of completedExercises" data-id="{{ completedExercise._id }}">
+               <mat-card *ngFor="let completedExercise of completedExercisesMixed" data-id="{{ completedExercise._id }}">
                   <mat-card-content routerLink="/cuerpo/ejercicio/completados/editar/{{ completedExercise._id }}">
                      <div class="left">
                         <p class="date">{{ completedExercise.date | date: 'dd-MM-yyyy' }}</p>
                      </div>
                      <div class="right">
-                        <h3>{{ completedExercise.exerciseId }}</h3>
-                        <h4>Repeticiones: <span>{{ completedExercise.repetitions }} </span> | Tiempo: <span>{{ completedExercise.time }} seg.</span></h4>
-                        <h4>Min./max. pulsaciones: <span>{{ completedExercise.minHeart }} ppm</span> | <span>{{ completedExercise.maxHeart }} ppm</span></h4>
+                        <h3>{{ completedExercise.exerciseName }}</h3>
+                        <h4>Repeticiones: <span>{{ completedExercise.repetitions ? completedExercise.repetitions : '-' }} </span> | Tiempo: <span>{{ completedExercise.time ? completedExercise.time + ' seg.': '-' }}</span></h4>
+                        <h4>Min./max. pulsaciones: <span>{{ completedExercise.minHeart ? completedExercise.minHeart + ' ppm': '-' }}</span> | <span>{{ completedExercise.maxHeart ? completedExercise.maxHeart + ' ppm' : '-' }}</span></h4>
                      </div>
                   </mat-card-content>
                </mat-card>
