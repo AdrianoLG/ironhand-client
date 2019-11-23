@@ -103,7 +103,7 @@ export class BodyComponent implements OnInit {
             }
           }
         }
-        console.log(this.completedExercisesMixed);
+        this.completedExercisesMixed.sort((a, b) => b.date.localeCompare(a.date));
       });
     }, error => {
       if (error.status === 401) {

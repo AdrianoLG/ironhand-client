@@ -1,6 +1,6 @@
-<mat-tab-group [color]="primary" [backgroundColor]="primary" (selectedTabChange)="changeSelectedIndex($event)"  [selectedIndex]="selectedIndex">
+<mat-tab-group [color]="'primary'" [backgroundColor]="'primary'" (selectedTabChange)="changeSelectedIndex($event)"  [selectedIndex]="selectedIndex">
    <mat-tab label="Comida">
-      <mat-tab-group [color]="accent" [backgroundColor]="accent" class="bottomTabs" (selectedTabChange)="changeSelectedIndex2($event)" [selectedIndex]="selectedIndex2">
+      <mat-tab-group [color]="'accent'" [backgroundColor]="'accent'" class="bottomTabs" (selectedTabChange)="changeSelectedIndex2($event)" [selectedIndex]="selectedIndex2">
          <mat-tab label="Comidas">
             <div *ngIf="meals">
                <div class="wrapper">
@@ -58,7 +58,7 @@
       </mat-tab-group>
    </mat-tab>
    <mat-tab label="Ejercicio">
-      <mat-tab-group [color]="accent" [backgroundColor]="accent" class="bottomTabs" (selectedTabChange)="changeSelectedIndex2($event)" [selectedIndex]="selectedIndex2">
+      <mat-tab-group [color]="'accent'" [backgroundColor]="'accent'" class="bottomTabs" (selectedTabChange)="changeSelectedIndex2($event)" [selectedIndex]="selectedIndex2">
          <mat-tab label="Completados">
             <div *ngIf="completedExercises" class="completed">
                <div class="wrapper">
