@@ -10,7 +10,7 @@ import { ActivatedRoute } from '@angular/router';
 @Component({
 	selector: 'app-plant-update',
 	templateUrl: './plant-update.component.html',
-	styleUrls: [ './plant-update.component.scss' ]
+	styleUrls: ['./plant-update.component.scss']
 })
 export class PlantUpdateComponent implements OnInit {
 	updatePlantForm: FormGroup;
@@ -24,7 +24,7 @@ export class PlantUpdateComponent implements OnInit {
 		private _location: Location,
 		private _formBuilder: FormBuilder,
 		private _route: ActivatedRoute
-	) {}
+	) { }
 
 	ngOnInit() {
 		this._id = this._route.snapshot.paramMap.get('_id');
@@ -33,11 +33,11 @@ export class PlantUpdateComponent implements OnInit {
 			console.log(this.plant);
 
 			this.updatePlantForm = this._formBuilder.group({
-				seedId: [ '', [ Validators.required ] ],
-				name: [ '', [ Validators.required ] ],
-				container: [ '', [ Validators.required ] ],
-				coords: [ '', [ Validators.required ] ],
-				gallery: [ '', [] ]
+				seedId: ['', [Validators.required]],
+				name: ['', [Validators.required]],
+				container: ['', [Validators.required]],
+				coords: ['', [Validators.required]],
+				gallery: ['', []]
 			});
 
 			this.plant.seedId = plant.seedId;

@@ -2,7 +2,12 @@
    <h2 class="mat-title">Actualizar ejercicio completado</h2>
    <form [formGroup]="updateCompletedForm">
       <mat-form-field>
-         <input matInput placeholder="Id ejercicio" formControlName="exerciseId" required>
+         <mat-label>Ejercicio</mat-label>
+         <mat-select formControlName="exerciseId" [value]="completedExercise.exerciseId" required>
+            <mat-option *ngFor="let exercise of availableExercises" [value]="exercise._id" select>
+               {{exercise.name}}
+            </mat-option>
+         </mat-select>
       </mat-form-field>
       <mat-form-field>
          <input matInput [matDatepicker]="picker" formControlName="date" placeholder="Fecha" required>

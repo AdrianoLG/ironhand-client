@@ -1,4 +1,5 @@
 export interface JGSeed {
+   _id: string;
    name: string;
    bank: string;
    img: string;

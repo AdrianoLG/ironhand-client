@@ -84,10 +84,18 @@ export class ListUpdateComponent implements OnInit {
   }
 
   updateExercise() {
+    const bodyPartsItems: string[] = [];
+    for (const bodyPartsItem of this.bodyPartsItems) {
+      bodyPartsItems.push(bodyPartsItem.name);
+    }
+    if (this.updateExerciseForm.invalid) {
+      return;
+    }
     this.exercise = {
+      _id: this._id,
       name: this.updateExerciseForm.value.name,
       category: this.updateExerciseForm.value.category,
-      bodyParts: this.updateExerciseForm.value.bodyParts
+      bodyParts: bodyPartsItems
     };
 
     this._exercisesService.updateExercise(this._id, this.exercise)

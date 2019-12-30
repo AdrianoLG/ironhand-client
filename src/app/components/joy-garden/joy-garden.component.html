@@ -1,4 +1,4 @@
-<mat-tab-group [color]="primary" [backgroundColor]="primary"
+<mat-tab-group [color]="'primary'" [backgroundColor]="'primary'"
 (selectedTabChange)="changeSelectedIndex($event)" [selectedIndex]="selectedIndex">
    <mat-tab label="Riegos">
       <div class="wrapper">
@@ -26,7 +26,7 @@
       </mat-card>
    </mat-tab>
    <mat-tab label="Plantas">
-      <mat-tab-group [color]="accent" [backgroundColor]="accent" class="bottomTabs" (selectedTabChange)="changeSelectedIndex2($event)" [selectedIndex]="selectedIndex2">
+      <mat-tab-group [color]="'accent'" [backgroundColor]="'accent'" class="bottomTabs" (selectedTabChange)="changeSelectedIndex2($event)" [selectedIndex]="selectedIndex2">
          <mat-tab label="Plantas">
             <div class="wrapper">
                <h2 class="mat-title flex">Plantas <span matBadge="{{ plantsCount }}"></span></h2>

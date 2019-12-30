@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
 import { CompletedExercisesService } from 'src/app/services/completed-exercises/completed-exercises.service';
+import { ExercisesService } from 'src/app/services/exercises/exercises.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CompletedExercise } from 'src/app/models/completed-exercise';
+import { Exercise } from 'src/app/models/exercise';
 
 @Component({
   selector: 'app-completed-create',
@@ -12,9 +14,11 @@ import { CompletedExercise } from 'src/app/models/completed-exercise';
 export class CompletedCreateComponent implements OnInit {
   addCompletedExerciseForm: FormGroup;
   completedExercise: CompletedExercise;
+  availableExercises: Exercise[] = [];
 
   constructor(
     private _completedExercisesService: CompletedExercisesService,
+    private _exercisesService: ExercisesService,
     private _location: Location,
     private _formBuilder: FormBuilder
   ) { }
@@ -28,6 +32,12 @@ export class CompletedCreateComponent implements OnInit {
       minHeart: [0, []],
       maxHeart: [0, []],
     });
+    this._exercisesService.getExercises().subscribe(res => {
+      for (let exercise of res.exercises) {
+        this.availableExercises.push(exercise);
+      }
+      console.log(this.availableExercises);
+    });
   }
 
   goBack(): void {
@@ -39,6 +49,7 @@ export class CompletedCreateComponent implements OnInit {
       return;
     }
     this.completedExercise = {
+      _id: null,
       exerciseId: this.addCompletedExerciseForm.value.exerciseId,
       date: this.addCompletedExerciseForm.value.date,
       repetitions: this.addCompletedExerciseForm.value.repetitions,

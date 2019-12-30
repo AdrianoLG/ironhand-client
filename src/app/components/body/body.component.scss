@@ -50,13 +50,17 @@ mat-card-content.mat-card-content {
 	.mat-card-content {
 		flex-direction: column;
 	}
+	ul {
+		flex-wrap: wrap;
+	}
 	p,
 	ul {
 		width: 100%;
 	}
 	li {
 		margin: 0;
-		padding: 0 0 .5em 0;
+		padding: 0 1.25em .5em 0;
+		width: auto;
 	}
 }
 
