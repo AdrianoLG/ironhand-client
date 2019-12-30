@@ -1,4 +1,4 @@
-<mat-toolbar color="primary" [ngClass]="{'invisible': router.url == '/login'}">
+<mat-toolbar color="primary" [ngClass]="{'invisible': _router.url == '/login'}">
    <mat-toolbar-row>
       <button mat-icon-button class="mr1" (click)="toggleSidenav()">
          <mat-icon *ngIf="!opened">menu</mat-icon>
@@ -20,11 +20,11 @@
    </mat-toolbar-row>
 </mat-toolbar>
 
-<mat-sidenav-container [ngClass]="{'height': router.url == '/login'}">
+<mat-sidenav-container [ngClass]="{'height': _router.url == '/login'}">
    <mat-sidenav #sidenav mode="over" [(opened)]="opened" role="navigation">
       <div class="sidenav-hero">
-         <p class="user mat-title">janedoe@gmail.com</p>
-         <p class="date mat-subtitle">03/05/2019</p>
+         <p class="user mat-title" *ngIf="user">{{ user }}</p>
+         <p class="date mat-subtitle" *ngIf="date">{{ date | date: 'dd/MM/yyyy' }}</p>
       </div>
       <mat-nav-list>
          <a mat-list-item routerLink="tareas" routerLinkActive="active-link" [routerLinkActiveOptions]="{exact:true}"

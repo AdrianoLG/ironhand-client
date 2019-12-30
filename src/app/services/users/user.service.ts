@@ -10,6 +10,8 @@ import { Globals } from '../globals';
 
 export class UserService {
 
+  user: string;
+
   constructor(
     private http: HttpClient,
     private globals: Globals
@@ -29,5 +31,13 @@ export class UserService {
       '{"email": "' + user.email + '", "password": "' + user.password + '"}',
       httpOptions
     );
+  }
+
+  public setUser(user) {
+    this.user = user;
+  }
+
+  public getUser() {
+    return this.user;
   }
 }
