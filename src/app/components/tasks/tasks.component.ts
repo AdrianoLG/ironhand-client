@@ -154,6 +154,7 @@ export class TasksComponent implements OnInit {
     this._todosService.completeTodo(id)
       .subscribe(message => {
         console.log(message);
+        this.getTodos();
       }, error => {
         console.log(error);
       });

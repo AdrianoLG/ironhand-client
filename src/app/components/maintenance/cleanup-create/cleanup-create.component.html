@@ -1,0 +1,65 @@
+<div class="wrapper">
+   <h2 class="mat-title">Añadir tareas de limpieza</h2>
+   <form [formGroup]="addCleanupForm">
+      <mat-form-field>
+         <input matInput [matDatepicker]="picker" formControlName="date" placeholder="Fecha">
+         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+         <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+      <mat-form-field>
+         <mat-label>Lugar</mat-label>
+         <mat-select formControlName="place" required>
+            <mat-option *ngFor="let place of availablePlaces" [value]="place">{{ place }}</mat-option>
+         </mat-select>
+      </mat-form-field>
+      <div class="cleanupIcons">
+         <div class="icon" (click)="toggle('bed')" [class.active]="bed">
+            <div class="my-icon" aria-label="Cama" [inlineSVG]="'../../../../assets/img/icons/bed.svg'"></div>
+         </div>
+         <div class="icon" (click)="toggle('broom')" [class.active]="broom">
+            <div class="my-icon" aria-label="Escoba" [inlineSVG]="'../../../../assets/img/icons/broom.svg'"></div>
+         </div>
+         <div class="icon" (click)="toggle('carwash')" [class.active]="carwash">
+            <div class="my-icon" aria-label="Limpieza de coche" [inlineSVG]="'../../../../assets/img/icons/carwash.svg'"></div>
+         </div>
+         <div class="icon" (click)="toggle('cleaningkit')" [class.active]="cleaningkit">
+            <div class="my-icon" aria-label="Kit de limpieza" [inlineSVG]="'../../../../assets/img/icons/cleaningkit.svg'"></div>
+         </div>
+         <div class="icon" (click)="toggle('clothes')" [class.active]="clothes">
+            <div class="my-icon" aria-label="Ropa" [inlineSVG]="'../../../../assets/img/icons/clothes.svg'"></div>
+         </div>
+         <div class="icon" (click)="toggle('clothespeg')" [class.active]="clothespeg">
+            <div class="my-icon" aria-label="Pinza" [inlineSVG]="'../../../../assets/img/icons/clothespeg.svg'"></div>
+         </div>
+         <div class="icon" (click)="toggle('desinfectant')" [class.active]="desinfectant">
+            <div class="my-icon" aria-label="Desinfectante" [inlineSVG]="'../../../../assets/img/icons/desinfectant.svg'"></div>
+         </div>
+         <div class="icon" (click)="toggle('dishwasher')" [class.active]="dishwasher">
+            <div class="my-icon" aria-label="Lavavajillas" [inlineSVG]="'../../../../assets/img/icons/dishwasher.svg'"></div>
+         </div>
+         <div class="icon" (click)="toggle('duster')" [class.active]="duster">
+            <div class="my-icon" aria-label="Plumero" [inlineSVG]="'../../../../assets/img/icons/duster.svg'"></div>
+         </div>
+         <div class="icon" (click)="toggle('iron')" [class.active]="iron">
+            <div class="my-icon" aria-label="Plancha" [inlineSVG]="'../../../../assets/img/icons/iron.svg'"></div>
+         </div>
+         <div class="icon" (click)="toggle('sponge')" [class.active]="sponge">
+            <div class="my-icon" aria-label="Esponja" [inlineSVG]="'../../../../assets/img/icons/sponge.svg'"></div>
+         </div>
+         <div class="icon" (click)="toggle('vacuum')" [class.active]="vacuum">
+            <div class="my-icon" aria-label="Aspiradora" [inlineSVG]="'../../../../assets/img/icons/vacuum.svg'"></div>
+         </div>
+         <div class="icon" (click)="toggle('washingmachine')" [class.active]="washingmachine">
+            <div class="my-icon" aria-label="Lavadora" [inlineSVG]="'../../../../assets/img/icons/washingmachine.svg'"></div>
+         </div>
+      </div>
+   </form>
+   <div class="flex mT15">
+      <mat-icon aria-hidden="false" aria-label="Formulario incorrecto" *ngIf="addCleanupForm.status=='INVALID'" color="primary">block</mat-icon>
+      <mat-icon aria-hidden="false" aria-label="Formulario incorrecto" *ngIf="addCleanupForm.status=='VALID'" color="accent">thumb_up</mat-icon>
+      <div class="buttons">
+         <button class="cancelButton" mat-raised-button (click)="goBack()">Cancelar</button>
+         <button color="primary" type="submit" mat-raised-button [disabled]="!addCleanupForm.valid" (click)="saveCleanup()">Crear</button>
+      </div>
+   </div>
+</div>

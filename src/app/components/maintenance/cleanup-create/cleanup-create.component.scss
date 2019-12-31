@@ -1,0 +1,26 @@
+@import '../../../../variables.scss';
+.cleanupIcons {
+   display: flex;
+   flex-wrap: wrap;
+   justify-content: flex-start;
+   margin-top: 1em;
+   .icon {
+      text-align: center;
+      margin-right: 1em;
+      max-height: 1.5rem;
+      max-width: 1.5rem;
+      width: 1.5rem;
+      fill: $secondary;
+      cursor: pointer;
+      &.active {
+         fill: $primary;
+      }
+      &:hover {
+         fill: $primary;
+      }
+      g, .my-icon, svg {
+         max-height: 1.5rem;
+         max-width: 1.5rem;
+      }
+   }
+}

@@ -1,15 +1,17 @@
-<mat-tab-group [color]="primary" [backgroundColor]="primary"
+<mat-tab-group [color]="'primary'" [backgroundColor]="primary"
 (selectedTabChange)="changeSelectedIndex($event)" [selectedIndex]="selectedIndex">
    <mat-tab label="Limpieza">
-      <h2 class="mat-title flex">Limpieza <span matBadge="{{ tasksCount }}"></span></h2>
-      <mat-card mat-ripple *ngFor="let task of tasks" routerLink="/mantenimiento/limpieza/{{ task._id }}">
+      <div class="wrapper">
+         <h2 class="mat-title flex">Limpieza <span matBadge="{{ cleanupsCount }}"></span></h2>
+      </div>
+      <mat-card mat-ripple *ngFor="let task of cleanups" routerLink="/mantenimiento/limpieza/{{ task._id }}">
          <mat-card-content>
             <div class="left">
                <h3>{{ task.place }}</h3>
-               <h4>{{ task.date | date:'dd/MM/yyyy' }}</h4>
+               <div *ngFor="let t of task.tasks;" class="customIcon" [inlineSVG]="'../../../../assets/img/icons/' + t + '.svg'"></div>
             </div>
             <div class="right">
-               <h5 *ngFor="let t of task.tasks">{{ t }}</h5>
+               <h5>{{ task.date | date:'dd/MM/yyyy' }}</h5>
             </div>
          </mat-card-content>
       </mat-card>
@@ -18,7 +20,9 @@
       </button>
    </mat-tab>
    <mat-tab label="Plantas">
-      <h2 class="mat-title flex">Plantas <span matBadge="{{ plantsCount }}"></span></h2>
+      <div class="wrapper">
+         <h2 class="mat-title flex">Plantas <span matBadge="{{ plantsCount }}"></span></h2>
+      </div>
       <mat-card mat-ripple *ngFor="let plant of plants" routerLink="/mantenimiento/plantas/{{ plant._id }}">
          <mat-card-content>
             <div class="left">
