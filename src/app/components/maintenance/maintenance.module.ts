@@ -11,6 +11,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { MatIconModule } from '@angular/material/icon';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { InlineSVGModule } from 'ng-inline-svg';
+import { PlantDetailComponent } from './plant-detail/plant-detail.component';
+import { WateringCreateComponent } from './watering-create/watering-create.component';
+import { TransplantCreateComponent } from './transplant-create/transplant-create.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +21,10 @@ import { InlineSVGModule } from 'ng-inline-svg';
     CleanupCreateComponent,
     PlantCreateComponent,
     PlantUpdateComponent,
-    CleanupUpdateComponent
+    CleanupUpdateComponent,
+    PlantDetailComponent,
+    WateringCreateComponent,
+    TransplantCreateComponent
   ],
   imports: [
     CommonModule,

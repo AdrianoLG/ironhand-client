@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { SelectedTabService, Tab } from 'src/app/services/tabs/selected-tab.service';
 import { CleanupService } from 'src/app/services/cleanup/cleanup.service';
 import { Cleanup } from 'src/app/models/cleanup';
+import { Plant } from 'src/app/models/plant';
+import { PlantsService } from 'src/app/services/plants/plants.service';
 
 
 @Component({
@@ -14,12 +16,15 @@ export class MaintenanceComponent implements OnInit {
   selectedIndex: number;
   currentTabs: Tab[];
   cleanups: Cleanup[];
+  plants: Plant[];
   cleanupsCount: number;
+  plantsCount: number;
   tabGroup: number;
 
   constructor(
     private _selectedTabService: SelectedTabService,
-    private _cleanupService: CleanupService
+    private _cleanupService: CleanupService,
+    private _plantsService: PlantsService
   ) { }
 
   ngOnInit() {
@@ -35,6 +40,10 @@ export class MaintenanceComponent implements OnInit {
       this._cleanupService.getCleanups().subscribe(cleanups => {
         this.cleanupsCount = cleanups.count;
         this.cleanups = cleanups.cleaningTasks;
+      });
+      this._plantsService.getPlants().subscribe(plants => {
+        this.plantsCount = plants.count;
+        this.plants = plants.plants;
       });
     });
   }

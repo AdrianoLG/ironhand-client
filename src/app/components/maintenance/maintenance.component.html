@@ -4,17 +4,19 @@
       <div class="wrapper">
          <h2 class="mat-title flex">Limpieza <span matBadge="{{ cleanupsCount }}"></span></h2>
       </div>
-      <mat-card mat-ripple *ngFor="let task of cleanups" routerLink="/mantenimiento/limpieza/{{ task._id }}">
-         <mat-card-content>
-            <div class="left">
-               <h3>{{ task.place }}</h3>
-               <div *ngFor="let t of task.tasks;" class="customIcon" [inlineSVG]="'../../../../assets/img/icons/' + t + '.svg'"></div>
-            </div>
-            <div class="right">
-               <h5>{{ task.date | date:'dd/MM/yyyy' }}</h5>
-            </div>
-         </mat-card-content>
-      </mat-card>
+      <div *ngIf="cleanups">
+         <mat-card mat-ripple *ngFor="let task of cleanups" routerLink="/mantenimiento/limpieza/editar/{{ task._id }}">
+            <mat-card-content>
+               <div class="left">
+                  <h3>{{ task.place }}</h3>
+                  <div *ngFor="let t of task.tasks;" class="customIcon" [inlineSVG]="'../../../../assets/img/icons/' + t + '.svg'"></div>
+               </div>
+               <div class="right">
+                  <h5>{{ task.date | date:'dd/MM/yyyy' }}</h5>
+               </div>
+            </mat-card-content>
+         </mat-card>
+      </div>
       <button mat-mini-fab>
          <mat-icon routerLink="/mantenimiento/limpieza/crear">add</mat-icon>
       </button>

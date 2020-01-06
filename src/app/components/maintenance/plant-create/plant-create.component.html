@@ -1,1 +1,101 @@
-<p>plant-create works!</p>
+<div class="wrapper">
+   <h2 class="mat-title">Añadir planta</h2>
+   <form [formGroup]="addPlantForm">
+      <mat-form-field>
+         <input matInput placeholder="Nombre" formControlName="name" required>
+      </mat-form-field>
+      <mat-form-field>
+         <input matInput placeholder="Nombre científico" formControlName="scientific">
+      </mat-form-field>
+      <mat-form-field>
+         <input matInput placeholder="Recipiente" formControlName="container" required>
+      </mat-form-field>
+      <mat-form-field>
+         <input matInput placeholder="Zona de la casa" formControlName="zone" required>
+      </mat-form-field>
+      <mat-form-field>
+         <mat-chip-list #galleryChipList aria-label="Galería">
+            <mat-chip *ngFor="let item of galleryItems" [selectable]="gaSelectable"
+                  [removable]="gaRemovable" (removed)="removeItem('gallery', item)">
+               {{ item.name }}
+               <mat-icon matChipRemove *ngIf="gaRemovable">cancel</mat-icon>
+            </mat-chip>
+            <input placeholder="Galería"
+                  [matChipInputFor]="galleryChipList"
+                  [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                  [matChipInputAddOnBlur]="gaAddOnBlur"
+                  (matChipInputTokenEnd)="addItem('gallery', $event)">
+         </mat-chip-list>
+      </mat-form-field>
+      <mat-form-field>
+         <input matInput placeholder="Sol" formControlName="sun" required>
+      </mat-form-field>
+      <mat-form-field *ngFor="let watering of waterings">
+         <input matInput name="watering{{ watering }}" [matDatepicker]="picker" placeholder="Riego {{ watering }}">
+         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+         <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+      <div class="buttonsRight">
+         <button mat-raised-button color="secondary" (click)="removeWatering()">Quitar riego</button>
+         <button mat-raised-button color="primary" (click)="addWatering()">Añadir riego</button>
+      </div>
+      <mat-form-field>
+         <input matInput type="number" placeholder="Frecuencia de riego" formControlName="wateringFrequency" required>
+      </mat-form-field>
+      <mat-slide-toggle formControlName="frost">Soporta heladas</mat-slide-toggle>
+      <mat-form-field>
+         <input matInput placeholder="Suelo" formControlName="soil">
+      </mat-form-field>
+      <mat-form-field>
+         <input matInput placeholder="Florecimiento" formControlName="flowering">
+      </mat-form-field>
+      <mat-slide-toggle formControlName="perishable">Perenne</mat-slide-toggle>
+      <mat-form-field>
+         <mat-chip-list #pestsChipList aria-label="Pestes">
+            <mat-chip *ngFor="let item of pestsItems" [selectable]="gaSelectable"
+                  [removable]="peRemovable" (removed)="removeItem('pests', item)">
+               {{ item.name }}
+               <mat-icon matChipRemove *ngIf="gaRemovable">cancel</mat-icon>
+            </mat-chip>
+            <input placeholder="Pestes"
+                  [matChipInputFor]="pestsChipList"
+                  [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                  [matChipInputAddOnBlur]="peAddOnBlur"
+                  (matChipInputTokenEnd)="addItem('pests', $event)">
+         </mat-chip-list>
+      </mat-form-field>
+      <mat-form-field>
+         <input matInput placeholder="Imagen" formControlName="img">
+      </mat-form-field>
+      <mat-form-field>
+         <mat-chip-list #originChipList aria-label="Origen">
+            <mat-chip *ngFor="let item of originItems" [selectable]="orSelectable"
+                  [removable]="orRemovable" (removed)="removeItem('origin', item)">
+               {{ item.name }}
+               <mat-icon matChipRemove *ngIf="orRemovable">cancel</mat-icon>
+            </mat-chip>
+            <input placeholder="Origen"
+                  [matChipInputFor]="originChipList"
+                  [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                  [matChipInputAddOnBlur]="orAddOnBlur"
+                  (matChipInputTokenEnd)="addItem('origin', $event)">
+         </mat-chip-list>
+      </mat-form-field>
+      <mat-form-field>
+         <input matInput [matDatepicker]="picker" formControlName="death" placeholder="Muerte">
+         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+         <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+      <mat-form-field>
+         <input matInput placeholder="Causa de la muerte" formControlName="deathCause">
+      </mat-form-field>
+   </form>
+   <div class="flex mT15">
+      <mat-icon aria-hidden="false" aria-label="Formulario incorrecto" *ngIf="addPlantForm.status=='INVALID'" color="primary">block</mat-icon>
+      <mat-icon aria-hidden="false" aria-label="Formulario incorrecto" *ngIf="addPlantForm.status=='VALID'" color="accent">thumb_up</mat-icon>
+      <div class="buttons">
+         <button class="cancelButton" mat-raised-button (click)="goBack()">Cancelar</button>
+         <button color="primary" type="submit" mat-raised-button [disabled]="!addPlantForm.valid" (click)="savePlant()">Crear</button>
+      </div>
+   </div>
+</div>

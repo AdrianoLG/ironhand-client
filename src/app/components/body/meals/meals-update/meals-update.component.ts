@@ -36,16 +36,17 @@ export class MealsUpdateComponent implements OnInit {
 
   constructor(
     private _adapter: DateAdapter<any>,
-    private mealsService: MealsService,
-    private location: Location,
-    private formBuilder: FormBuilder,
-    private route: ActivatedRoute
+    private _mealsService: MealsService,
+    private _location: Location,
+    private _formBuilder: FormBuilder,
+    private _route: ActivatedRoute
   ) {}
 
   ngOnInit() {
-    this._id = this.route.snapshot.paramMap.get('_id');
+    this._id = this._route.snapshot.paramMap.get('_id');
     this._adapter.setLocale('es');
-    this.mealsService.getMeal(this._id).subscribe(meals => {
+    this._adapter.getFirstDayOfWeek = () => 1;
+    this._mealsService.getMeal(this._id).subscribe(meals => {
       this.meals = meals;
       for (const meal of this.meals.breakfast) {
         this.breakfastItems.push({ name: meal });
@@ -58,7 +59,7 @@ export class MealsUpdateComponent implements OnInit {
       }
       this.updateMealsForm.patchValue({ date: meals.date });
     });
-    this.updateMealsForm = this.formBuilder.group({
+    this.updateMealsForm = this._formBuilder.group({
       breakfast: [this.breakfastItems, []],
       lunch: [this.lunchItems, []],
       dinner: [this.dinnerItems, []],
@@ -135,7 +136,7 @@ export class MealsUpdateComponent implements OnInit {
       dinner: diItems,
       date: this.updateMealsForm.value.date
     };
-    this.mealsService.updateMeals(this.meals._id, this.meals).subscribe(response => {
+    this._mealsService.updateMeals(this.meals._id, this.meals).subscribe(response => {
       this.goBack();
     }, error => {
       console.log(error);
@@ -143,7 +144,7 @@ export class MealsUpdateComponent implements OnInit {
   }
 
   deleteMeal(): void {
-    this.mealsService.removeMeals(this._id).subscribe(response => {
+    this._mealsService.removeMeals(this._id).subscribe(response => {
       this.goBack();
     }, error => {
       console.log(error);
@@ -151,7 +152,7 @@ export class MealsUpdateComponent implements OnInit {
   }
 
   goBack(): void {
-    this.location.back();
+    this._location.back();
   }
 
 }
