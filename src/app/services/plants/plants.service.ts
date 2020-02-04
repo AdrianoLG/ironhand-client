@@ -6,23 +6,15 @@ import { Plant } from 'src/app/models/plant';
 
 export interface PlantsResponse {
   count: number;
-<<<<<<< HEAD
-  plants: Plant[]
-}
-=======
   plants: Plant[];
 }
 
->>>>>>> 9de78ccdffce89ded8f255a65ddcbbfe80ae7e49
 @Injectable({
   providedIn: 'root'
 })
 export class PlantsService {
-<<<<<<< HEAD
-=======
   response;
 
->>>>>>> 9de78ccdffce89ded8f255a65ddcbbfe80ae7e49
   httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json',
@@ -36,30 +28,18 @@ export class PlantsService {
   ) { }
 
   getPlants(): Observable<PlantsResponse> {
-<<<<<<< HEAD
     return this.http.get<PlantsResponse>(this.globals.url + '/plants', this.httpOptions);
-=======
-    return this.http.get<PlantsResponse>(this.globals.url + '/plants/', this.httpOptions);
->>>>>>> 9de78ccdffce89ded8f255a65ddcbbfe80ae7e49
   }
 
   getPlant(_id: string): Observable<Plant> {
     return this.http.get<Plant>(this.globals.url + '/plants/' + _id, this.httpOptions);
   }
 
-<<<<<<< HEAD
   addPlant(plant: Plant): any {
-    return this.http.post<any>(this.globals.url + '/plants', plant, this.httpOptions);
+    return this.http.post<Plant>(this.globals.url + '/plants', plant, this.httpOptions);
   }
 
   updatePlant(_id: string, plant: Plant): any {
-=======
-  addPlant(project: Plant): Observable<any> {
-    return this.http.post<Plant>(this.globals.url + '/plants/', project, this.httpOptions);
-  }
-
-  updatePlant(_id: string, plant: Plant) {
->>>>>>> 9de78ccdffce89ded8f255a65ddcbbfe80ae7e49
     const body = [
       {
         propName: 'name',
