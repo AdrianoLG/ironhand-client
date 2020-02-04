@@ -14,6 +14,7 @@ import { HomeComponent } from './components/home/home.component';
 import { Globals } from './services/globals';
 import 'hammerjs';
 
+
 @NgModule({
   declarations: [AppComponent, LoginComponent, HomeComponent],
   imports: [
