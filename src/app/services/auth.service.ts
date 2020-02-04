@@ -31,8 +31,8 @@ export class AuthService {
   }
 
   isAuthenticated(): boolean {
-    const isAuth = localStorage.getItem('token') != null && localStorage.getItem('token') !== 'undefined'
-    && localStorage.getItem('token') !== '';
+    const isAuth = (localStorage.getItem('token') != null) && (localStorage.getItem('token') !== 'undefined')
+      && (localStorage.getItem('token') !== '');
     if (isAuth) {
       return true;
     }

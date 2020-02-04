@@ -34,7 +34,7 @@ import { TransplantCreateComponent } from './transplant-create/transplant-create
     FormsModule,
     ReactiveFormsModule,
     MatIconModule,
-    InlineSVGModule.forRoot()
+    InlineSVGModule
   ]
 })
-export class MaintenanceModule {}
+export class MaintenanceModule { }
