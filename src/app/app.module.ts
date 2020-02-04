@@ -14,19 +14,20 @@ import { HomeComponent } from './components/home/home.component';
 import { Globals } from './services/globals';
 import 'hammerjs';
 
+
 @NgModule({
-	declarations: [ AppComponent, LoginComponent, HomeComponent ],
-	imports: [
-		BrowserModule,
-		BrowserAnimationsModule,
-		AppRoutingModule,
-		MaterialModule,
-		RouterModule,
-		FormsModule,
-		ReactiveFormsModule,
-		HttpClientModule
-	],
-	providers: [ AuthGuard, Globals ],
-	bootstrap: [ AppComponent ]
+  declarations: [AppComponent, LoginComponent, HomeComponent],
+  imports: [
+    BrowserModule,
+    BrowserAnimationsModule,
+    AppRoutingModule,
+    MaterialModule,
+    RouterModule,
+    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule
+  ],
+  providers: [AuthGuard, Globals],
+  bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule { }

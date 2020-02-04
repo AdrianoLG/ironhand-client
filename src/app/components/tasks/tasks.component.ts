@@ -79,10 +79,6 @@ export class TasksComponent implements OnInit {
       .subscribe(todos => {
         this.todos = todos.todos;
         this.countTodos = +todos.count;
-      }, error => {
-        if (error.status === 401) {
-          this._router.navigate(['/login']);
-        }
       });
   }
 
@@ -100,10 +96,6 @@ export class TasksComponent implements OnInit {
       }
       this.projectTitles = prTitles;
       this.countProjects = + res.count;
-    }, error => {
-      if (error.status === 401) {
-        this._router.navigate(['/login']);
-      }
     });
   }
 
@@ -162,6 +154,7 @@ export class TasksComponent implements OnInit {
     this._todosService.completeTodo(id)
       .subscribe(message => {
         console.log(message);
+        this.getTodos();
       }, error => {
         console.log(error);
       });

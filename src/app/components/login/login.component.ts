@@ -41,6 +41,7 @@ export class LoginComponent implements OnInit {
       }
     )
     .subscribe(data => {
+      this.userService.setUser(this.loginForm.value.email);
       this.authService.login(data.token);
     }, error => {
       console.log('Erroooor ', error);

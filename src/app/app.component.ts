@@ -4,61 +4,69 @@ import { MatSidenav } from '@angular/material/sidenav';
 import { MenuService } from './services/menu/menu.service';
 import { TodosService } from './services/todos/todos.service';
 import { AuthService } from './services/auth.service';
+import { UserService } from './services/users/user.service';
 
 @Component({
-	selector: 'app-root',
-	templateUrl: './app.component.html',
-	styleUrls: [ './app.component.scss' ]
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-	title = 'Iron Hand';
-	visibleBar = true;
-	opened = false;
-	@ViewChild('sidenav', { static: false })
-	sidenav: MatSidenav;
-	menuItems: object[];
+  title = 'Iron Hand';
+  visibleBar = true;
+  opened = false;
+  @ViewChild('sidenav', { static: false })
+  sidenav: MatSidenav;
+  menuItems: object[];
+  user: string;
+  date: Date;
 
-	constructor(
-		public router: Router,
-		private authService: AuthService,
-		private menuService: MenuService,
-		private todosService: TodosService
-	) {}
+  constructor(
+    public _router: Router,
+    private _authService: AuthService,
+    private _menuService: MenuService,
+    private _todosService: TodosService,
+    private _userService: UserService
+  ) { }
 
-	ngOnInit() {
-		if (window.location.href.includes('login')) {
-			this.visibleBar = false;
-		} else {
-			this.visibleBar = true;
-		}
-		this.menuService.currentMenuItems.subscribe(
-			menuItems => {
-				this.menuItems = menuItems;
-			},
-			error => {
-				console.log(error);
-			}
-		);
-		this.authService.logout();
-	}
+  ngOnInit() {
+    if (window.location.href.includes('login')) {
+      this.visibleBar = false;
+    } else {
+      this.visibleBar = true;
+    }
+    this._menuService.currentMenuItems.subscribe(
+      menuItems => {
+        this.menuItems = menuItems;
+      },
+      error => {
+        console.log(error);
+      }
+    );
+    this._authService.logout();
+    this.date = new Date();
+  }
 
-	toggleSidenav() {
-		this.opened = !this.opened;
-	}
+  toggleSidenav() {
+    if (!this.user) {
+      this.user = this._userService.getUser();
+    }
+    this.opened = !this.opened;
+  }
 
-	selectMenuItem(menuItem) {
-		switch (menuItem) {
-			case 'Borrar completadas':
-				this.todosService.deleteCompleted().subscribe(message => {
-					console.log(message);
-					this.menuService.refreshIt();
-					this.router.navigateByUrl('/', { skipLocationChange: true });
-					this.router.navigate([ '/tareas' ]);
-				});
-				break;
-			default:
-				console.log(menuItem);
-				break;
-		}
-	}
+  selectMenuItem(menuItem) {
+    switch (menuItem) {
+      case 'Borrar completadas':
+        this._todosService.deleteCompleted().subscribe(message => {
+          console.log(message);
+          this._menuService.refreshIt();
+          this._router.navigateByUrl('/', { skipLocationChange: true });
+          this._router.navigate(['/tareas']);
+        });
+        break;
+      default:
+        console.log(menuItem);
+        break;
+    }
+  }
 }

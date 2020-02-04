@@ -59,7 +59,7 @@ mat-sidenav-container {
 mat-tab-header .mat-tab-label-active {
 	color: $primary;
 }
-.bottomTabs mat-tab-header {
+.mat-tab-group.mat-background-accent.bottomTabs .mat-tab-header {
 	background: $primary;
 	bottom: 0;
 	position: fixed;
@@ -70,6 +70,9 @@ mat-tab-header .mat-tab-label-active {
 		color: white;
 		opacity: 1;
 	}
+}
+.mat-tab-labels .mat-tab-label-active {
+	opacity: 1;
 }
 .buttons .mat-raised-button.cancelButton {
 	background: $secondaryLightLowest;

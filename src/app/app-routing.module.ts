@@ -33,6 +33,11 @@ const routes: Routes = [
     path: 'jardin-de-la-alegria',
     canActivate: [ AuthGuard ],
     loadChildren: () => import('./components/joy-garden/joy-garden.module').then(m => m.JoyGardenModule)
+  },
+  {
+    path: 'mantenimiento',
+    canActivate: [ AuthGuard ],
+    loadChildren: () => import('./components/maintenance/maintenance.module').then(m => m.MaintenanceModule)
   }
 ];
 

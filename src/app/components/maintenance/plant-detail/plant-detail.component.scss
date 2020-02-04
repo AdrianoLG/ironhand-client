@@ -1,0 +1,35 @@
+@import '../../../../variables.scss';
+h5 {
+   margin: 1em 0 1.5em;
+}
+hr {
+   color: lighten($secondaryLightLowest, 40);
+   margin: 2em 40%;
+}
+.buttonRight {
+   align-items: center;
+   display: flex;
+   justify-content: space-between;
+}
+.info {
+   p {
+      display: flex;
+      align-items: center;
+      .mat-icon {
+         margin-right: .25em;
+      }
+   }
+}
+.transplants, .waterings {
+   margin-bottom: 1em;
+   p {
+      display: flex;
+      align-items: center;
+      button {
+         margin-left: 3em;
+      }
+      .calendarIcon {
+         margin: 0 .25em 0 1em;
+      }
+   }
+}
