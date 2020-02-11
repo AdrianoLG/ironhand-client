@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable  } from 'rxjs';
+import { Observable } from 'rxjs';
 import { Todo } from 'src/app/models/todo';
 import { Globals } from '../globals';
 
 export interface TodosResponse {
   count: number;
-  todos: Todo[]
+  todos: Todo[];
 }
 
 @Injectable({
@@ -19,7 +19,7 @@ export class TodosService {
 
   httpOptions = {
     headers: new HttpHeaders({
-      'Content-Type':  'application/json',
+      'Content-Type': 'application/json',
       Authorization: 'Bearer ' + localStorage.getItem('token')
     })
   };
@@ -30,6 +30,7 @@ export class TodosService {
   ) { }
 
   getTodos(): Observable<TodosResponse> {
+    console.log(this.httpOptions.headers);
     return this.http.get<TodosResponse>(this.globals.url + '/todos', this.httpOptions);
   }
 

@@ -1,6 +1,5 @@
 import { Component, OnInit, ViewEncapsulation, Input, ElementRef, Renderer2 } from '@angular/core';
 import { SelectedTabService, Tab } from 'src/app/services/tabs/selected-tab.service';
-import { Router } from '@angular/router';
 import { TodosService } from '../../services/todos/todos.service';
 import { ProjectsService } from '../../services/projects/projects.service';
 import { Todo } from '../../models/todo';
@@ -30,10 +29,9 @@ export class TasksComponent implements OnInit {
     private _projectsService: ProjectsService,
     private _menuService: MenuService,
     private _selectedTabService: SelectedTabService,
-    private _router: Router,
     private _elRef: ElementRef,
     private _renderer: Renderer2
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this._selectedTabService.currentTabs.subscribe(currentTabs => {
@@ -44,7 +42,6 @@ export class TasksComponent implements OnInit {
         if (currentTab.name === 'tasks') {
           this.tabGroup = currentTabs.indexOf(currentTab);
           this.selectedIndex = currentTab.selected;
-
         }
       }
     });
@@ -63,8 +60,8 @@ export class TasksComponent implements OnInit {
         icon: 'exit_to_app'
       }
     ]);
-    this.getTodos();
     this.getProjects();
+    this.getTodos();
     this._menuService.needRefresh.subscribe(refresh => {
       if (refresh) {
         this.todos = null;
@@ -78,7 +75,7 @@ export class TasksComponent implements OnInit {
     this._todosService.getTodos()
       .subscribe(todos => {
         this.todos = todos.todos;
-        this.countTodos = +todos.count;
+        this.countTodos = + todos.count;
       });
   }
 

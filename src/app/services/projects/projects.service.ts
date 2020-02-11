@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable  } from 'rxjs';
+import { Observable } from 'rxjs';
 import { Project } from 'src/app/models/project';
 import { Globals } from '../globals';
 
@@ -19,7 +19,7 @@ export class ProjectsService {
 
   httpOptions = {
     headers: new HttpHeaders({
-      'Content-Type':  'application/json',
+      'Content-Type': 'application/json',
       Authorization: 'Bearer ' + localStorage.getItem('token')
     })
   };
