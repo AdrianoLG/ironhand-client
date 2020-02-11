@@ -15,7 +15,7 @@ export class AppComponent implements OnInit {
   title = 'Iron Hand';
   visibleBar = true;
   opened = false;
-  @ViewChild('sidenav', { static: false })
+  @ViewChild('sidenav')
   sidenav: MatSidenav;
   menuItems: object[];
   user: string;
