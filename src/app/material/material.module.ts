@@ -18,7 +18,8 @@ import {
 	MatAutocompleteModule,
 	MatSlideToggleModule,
 	MatRippleModule,
-	MatSelectModule
+	MatSelectModule,
+	MAT_DATE_LOCALE
 } from '@angular/material';
 
 @NgModule({
@@ -63,6 +64,9 @@ import {
 		MatRippleModule,
 		MatSelectModule
 	],
-	providers: [ MatDatepickerModule ]
+	providers: [
+		MatDatepickerModule,
+		{ provide: MAT_DATE_LOCALE, useValue: 'es-ES' }
+	]
 })
-export class MaterialModule {}
+export class MaterialModule { }

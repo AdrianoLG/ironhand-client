@@ -5,6 +5,7 @@ import { ExercisesService } from 'src/app/services/exercises/exercises.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CompletedExercise } from 'src/app/models/completed-exercise';
 import { Exercise } from 'src/app/models/exercise';
+import { DateAdapter } from '@angular/material';
 
 @Component({
   selector: 'app-completed-create',
@@ -20,13 +21,15 @@ export class CompletedCreateComponent implements OnInit {
     private _completedExercisesService: CompletedExercisesService,
     private _exercisesService: ExercisesService,
     private _location: Location,
-    private _formBuilder: FormBuilder
+    private _formBuilder: FormBuilder,
+    private _adapter: DateAdapter<any>
   ) { }
 
   ngOnInit() {
+    this._adapter.setLocale('es');
     this.addCompletedExerciseForm = this._formBuilder.group({
       exerciseId: ['', [Validators.required]],
-      date: ['', [Validators.required]],
+      date: [new Date(), [Validators.required]],
       repetitions: [0, []],
       time: [0, []],
       minHeart: [0, []],

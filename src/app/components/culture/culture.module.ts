@@ -29,6 +29,12 @@ import { TvSerieCreateComponent } from './tv-serie-create/tv-serie-create.compon
     TvSerieUpdateComponent,
     TvSerieCreateComponent
   ],
-  imports: [ CommonModule, MaterialModule, FormsModule, ReactiveFormsModule, CultureRoutingModule ]
+  imports: [
+    CommonModule,
+    MaterialModule,
+    FormsModule,
+    ReactiveFormsModule,
+    CultureRoutingModule
+  ]
 })
-export class CultureModule {}
+export class CultureModule { }
