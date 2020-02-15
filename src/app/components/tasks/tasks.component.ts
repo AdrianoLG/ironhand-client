@@ -34,6 +34,8 @@ export class TasksComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.getTodos();
+    this.getProjects();
     this._selectedTabService.currentTabs.subscribe(currentTabs => {
       this.currentTabs = currentTabs;
       console.log(this.currentTabs);
@@ -60,8 +62,6 @@ export class TasksComponent implements OnInit {
         icon: 'exit_to_app'
       }
     ]);
-    this.getProjects();
-    this.getTodos();
     this._menuService.needRefresh.subscribe(refresh => {
       if (refresh) {
         this.todos = null;
@@ -72,11 +72,10 @@ export class TasksComponent implements OnInit {
   }
 
   getTodos(): void {
-    this._todosService.getTodos()
-      .subscribe(todos => {
-        this.todos = todos.todos;
-        this.countTodos = + todos.count;
-      });
+    this._todosService.getTodos().subscribe(todos => {
+      this.todos = todos.todos;
+      this.countTodos = + todos.count;
+    });
   }
 
   getProjects(): void {

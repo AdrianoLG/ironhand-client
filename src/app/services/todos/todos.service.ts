@@ -20,7 +20,7 @@ export class TodosService {
   httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json',
-      Authorization: 'Bearer ' + localStorage.getItem('token')
+      Authorization: `Bearer ${localStorage.getItem('token')}`
     })
   };
 
@@ -30,7 +30,13 @@ export class TodosService {
   ) { }
 
   getTodos(): Observable<TodosResponse> {
-    console.log(this.httpOptions.headers);
+    // Fix - localstorage is already set at this point but Bearer is null in the HTTP request
+    this.httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${localStorage.getItem('token')}`
+      })
+    };
     return this.http.get<TodosResponse>(this.globals.url + '/todos', this.httpOptions);
   }
 
