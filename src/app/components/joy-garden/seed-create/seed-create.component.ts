@@ -39,7 +39,7 @@ export class SeedCreateComponent implements OnInit {
       flowering: ['', [
         Validators.required
       ]],
-      height: [0, [
+      height: [, [
         Validators.required,
         Validators.min(0),
         Validators.max(200)

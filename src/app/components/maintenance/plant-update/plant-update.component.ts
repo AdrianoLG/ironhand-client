@@ -1,12 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import {FormGroup, Validators, FormBuilder } from '@angular/forms';
-import {MatChipInputEvent} from '@angular/material/chips';
+import { FormGroup, Validators, FormBuilder } from '@angular/forms';
+import { MatChipInputEvent } from '@angular/material/chips';
 import { COMMA, ENTER } from '@angular/cdk/keycodes';
 import { Location } from '@angular/common';
 import { Plant } from 'src/app/models/Plant';
 import { PlantsService } from 'src/app/services/plants/plants.service';
 import { ChipItem } from 'src/app/models/chip-item';
-import { DateAdapter } from '@angular/material';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
@@ -40,25 +39,22 @@ export class PlantUpdateComponent implements OnInit {
     private _plantsService: PlantsService,
     private _location: Location,
     private _formBuilder: FormBuilder,
-    private _adapter: DateAdapter<any>,
     private _route: ActivatedRoute
   ) { }
 
   ngOnInit() {
     this._id = this._route.snapshot.paramMap.get('_id');
-    this._adapter.setLocale('es');
-    this._adapter.getFirstDayOfWeek = () => 1;
     this.updatePlantForm = this._formBuilder.group({
-      name: ['', [ Validators.required ]],
+      name: ['', [Validators.required]],
       scientific: ['', []],
-      container: ['', [ Validators.required ]],
-      zone: ['', [ Validators.required ]],
-      sun: ['', [ Validators.required ]],
-      wateringFrequency: ['', [ Validators.required ]],
-      frost: [0, []],
+      container: ['', [Validators.required]],
+      zone: ['', [Validators.required]],
+      sun: ['', [Validators.required]],
+      wateringFrequency: ['', [Validators.required]],
+      frost: [, []],
       soil: ['', []],
       flowering: ['', []],
-      perishable: [0, []],
+      perishable: [, []],
       img: ['', []],
       death: ['', []],
       deathCause: ['', []]
@@ -106,13 +102,13 @@ export class PlantUpdateComponent implements OnInit {
     if ((value || '').trim()) {
       switch (type) {
         case 'origin':
-          this.originItems.push({name: value.trim()});
+          this.originItems.push({ name: value.trim() });
           break;
         case 'gallery':
-          this.galleryItems.push({name: value.trim()});
+          this.galleryItems.push({ name: value.trim() });
           break;
         case 'pests':
-          this.pestsItems.push({name: value.trim()});
+          this.pestsItems.push({ name: value.trim() });
           break;
         default:
           console.log('Pass a parameter');

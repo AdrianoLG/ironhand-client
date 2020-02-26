@@ -3,7 +3,6 @@ import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { Location } from '@angular/common';
 import { CompletedExercise } from 'src/app/models/completed-exercise';
 import { CompletedExercisesService } from 'src/app/services/completed-exercises/completed-exercises.service';
-import { DateAdapter } from '@angular/material';
 import { ActivatedRoute } from '@angular/router';
 import { Exercise } from 'src/app/models/exercise';
 import { ExercisesService } from 'src/app/services/exercises/exercises.service';
@@ -22,14 +21,12 @@ export class CompletedUpdateComponent implements OnInit {
   constructor(
     private _completedExercisesService: CompletedExercisesService,
     private _exercisesService: ExercisesService,
-    private _adapter: DateAdapter<any>,
     private _location: Location,
     private _formBuilder: FormBuilder,
     private _route: ActivatedRoute
   ) { }
 
   ngOnInit() {
-    this._adapter.setLocale('es');
     this._id = this._route.snapshot.paramMap.get('_id');
     this._completedExercisesService.getCompletedExercise(this._id)
       .subscribe(completedExercise => {
@@ -37,10 +34,10 @@ export class CompletedUpdateComponent implements OnInit {
         this.updateCompletedForm = this._formBuilder.group({
           exerciseId: ['', [Validators.required]],
           date: ['', [Validators.required]],
-          repetitions: [0, []],
-          time: [0, []],
-          minHeart: [0, []],
-          maxHeart: [0, []]
+          repetitions: [, []],
+          time: [, []],
+          minHeart: [, []],
+          maxHeart: [, []]
         });
         this.updateCompletedForm.patchValue({
           exerciseId: completedExercise.exerciseId,

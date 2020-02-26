@@ -1,1 +1,26 @@
-<p>food-detail works!</p>
+<div *ngIf="food">
+   <div class="wrapper">
+      <div class="flex aiFlexEnd">
+         <div class="left">
+            <h2 class="mat-title">{{ food.productQty }}x {{ food.name }}</h2>
+            <h3>{{ food.brand }}</h3>
+         </div>
+         <div class="right">
+            <h4>{{ food.category }}</h4>
+         </div>
+      </div>
+   </div>
+   <img [src]="food.img">
+   <div class="wrapper">
+      <p>Caduca el {{ food.expiry | date: 'dd-MM-yyyy'}}</p>
+      <p>{{ food.qty }} {{ food.unit }}</p>
+      <p><span *ngFor="food.tags"></span></p>
+   </div>
+   <div class="wrapper">
+      <div class="buttons floatRight">
+         <button class="cancelButton" mat-raised-button (click)="goBack()">Atrás</button>
+         <button color="warn" mat-raised-button (click)="deleteBook()">Borrar</button>
+         <button color="accent" mat-raised-button routerLink="/aprovisionamiento/comida/actualizar/{{ food._id }}">Editar</button>
+      </div>
+   </div>
+</div>

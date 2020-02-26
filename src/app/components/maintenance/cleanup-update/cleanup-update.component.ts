@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {FormGroup, Validators, FormBuilder } from '@angular/forms';
+import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { Location } from '@angular/common';
 import { Cleanup } from 'src/app/models/cleanup';
 import { CleanupService } from 'src/app/services/cleanup/cleanup.service';
-import { DateAdapter } from '@angular/material';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
@@ -37,14 +36,11 @@ export class CleanupUpdateComponent implements OnInit {
     private _cleanupService: CleanupService,
     private _location: Location,
     private _formBuilder: FormBuilder,
-    private _adapter: DateAdapter<any>,
     private _route: ActivatedRoute
   ) { }
 
   ngOnInit() {
     this._id = this._route.snapshot.paramMap.get('_id');
-    this._adapter.setLocale('es');
-    this._adapter.getFirstDayOfWeek = () => 1;
     this.availablePlaces = [
       'Garaje',
       'Taller',
@@ -59,8 +55,8 @@ export class CleanupUpdateComponent implements OnInit {
       'Escaleras'
     ];
     this.updateCleanupForm = this._formBuilder.group({
-      place: ['', [ Validators.required ]],
-      date: ['', [ Validators.required ]]
+      place: ['', [Validators.required]],
+      date: ['', [Validators.required]]
     });
     this._cleanupService.getCleanup(this._id).subscribe(cleanup => {
       this.cleanup = cleanup;

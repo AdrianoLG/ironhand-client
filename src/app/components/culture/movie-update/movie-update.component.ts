@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
 import { ChipItem } from 'src/app/models/chip-item';
 import { ENTER, COMMA } from '@angular/cdk/keycodes';
-import { MatChipInputEvent, DateAdapter } from '@angular/material';
+import { MatChipInputEvent } from '@angular/material';
 import { MoviesService } from 'src/app/services/movies/movies.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Movie } from 'src/app/models/movie';
@@ -34,13 +34,11 @@ export class MovieUpdateComponent implements OnInit {
     private _moviesService: MoviesService,
     private _location: Location,
     private _formBuilder: FormBuilder,
-    private _adapter: DateAdapter<any>,
     private _route: ActivatedRoute
   ) { }
 
   ngOnInit() {
     this._id = this._route.snapshot.paramMap.get('_id');
-    this._adapter.setLocale('es');
     this._moviesService.getMovie(this._id)
       .subscribe(movie => {
         this.movie = movie;
@@ -58,11 +56,11 @@ export class MovieUpdateComponent implements OnInit {
           year: [1895, [Validators.required, Validators.min(1895)]],
           cast: [[], []],
           categories: [[], []],
-          duration: [0, []],
+          duration: [, []],
           img: ['', []],
           seen: [false, []],
           seenDate: ['', []],
-          rating: [0, []]
+          rating: [, []]
         });
         this.updateMovieForm.patchValue({
           title: movie.title,

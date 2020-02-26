@@ -3,7 +3,6 @@ import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { Location } from '@angular/common';
 import { Book } from 'src/app/models/book';
 import { BooksService } from 'src/app/services/books/books.service';
-import { DateAdapter } from '@angular/material';
 
 @Component({
   selector: 'app-book-create',
@@ -21,11 +20,9 @@ export class BookCreateComponent implements OnInit {
     private _booksService: BooksService,
     private _location: Location,
     private _formBuilder: FormBuilder,
-    private _adapter: DateAdapter<any>
   ) { }
 
   ngOnInit() {
-    this._adapter.setLocale('es');
     this.addBookForm = this._formBuilder.group({
       title: ['', [
         Validators.required
@@ -36,14 +33,14 @@ export class BookCreateComponent implements OnInit {
       category: ['', [
         Validators.required
       ]],
-      pages: [0, [
+      pages: [, [
         Validators.min(0),
         Validators.max(5000)
       ]],
       img: ['', []],
       read: [false, []],
       readDate: ['', []],
-      rating: [0, []],
+      rating: [, []],
       comments: ['', []]
     });
   }

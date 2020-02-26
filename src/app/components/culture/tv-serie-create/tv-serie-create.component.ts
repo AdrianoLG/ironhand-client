@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
 import { ChipItem } from 'src/app/models/chip-item';
 import { ENTER, COMMA } from '@angular/cdk/keycodes';
-import { MatChipInputEvent, DateAdapter } from '@angular/material';
+import { MatChipInputEvent } from '@angular/material';
 import { TvSeriesService } from 'src/app/services/tv-series/tv-series.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { TvSerie } from 'src/app/models/tv-serie';
@@ -30,11 +30,9 @@ export class TvSerieCreateComponent implements OnInit {
     private _tvSeriesService: TvSeriesService,
     private _location: Location,
     private _formBuilder: FormBuilder,
-    private _adapter: DateAdapter<any>
   ) { }
 
   ngOnInit() {
-    this._adapter.setLocale('es');
     this.ended = false;
     this.addTvSerieForm = this._formBuilder.group({
       title: ['', [Validators.required]],
@@ -47,7 +45,7 @@ export class TvSerieCreateComponent implements OnInit {
       ended: [false, []],
       endDate: ['', []],
       categories: [[], []],
-      episodeDuration: [0, []],
+      episodeDuration: [, []],
       img: ['', []]
     });
   }
@@ -63,14 +61,14 @@ export class TvSerieCreateComponent implements OnInit {
     if ((value || '').trim()) {
       switch (type) {
         case 'cast':
-        this.castItems.push({ name: value.trim() });
-        break;
+          this.castItems.push({ name: value.trim() });
+          break;
         case 'categories':
-        this.categoriesItems.push({ name: value.trim() });
-        break;
+          this.categoriesItems.push({ name: value.trim() });
+          break;
         default:
-        console.log('Pass a parameter');
-        break;
+          console.log('Pass a parameter');
+          break;
       }
     }
 
@@ -82,18 +80,18 @@ export class TvSerieCreateComponent implements OnInit {
   removeItem(type: string, item: ChipItem): void {
     switch (type) {
       case 'cast':
-      if (this.castItems.indexOf(item) >= 0) {
-        this.castItems.splice(this.castItems.indexOf(item), 1);
-      }
-      break;
+        if (this.castItems.indexOf(item) >= 0) {
+          this.castItems.splice(this.castItems.indexOf(item), 1);
+        }
+        break;
       case 'categories':
-      if (this.categoriesItems.indexOf(item) >= 0) {
-        this.categoriesItems.splice(this.categoriesItems.indexOf(item), 1);
-      }
-      break;
+        if (this.categoriesItems.indexOf(item) >= 0) {
+          this.categoriesItems.splice(this.categoriesItems.indexOf(item), 1);
+        }
+        break;
       default:
-      console.log('Pass a parameter');
-      break;
+        console.log('Pass a parameter');
+        break;
     }
   }
 
@@ -131,7 +129,7 @@ export class TvSerieCreateComponent implements OnInit {
       error => {
         console.log(error);
       }
-      );
-    }
+    );
+  }
 
 }

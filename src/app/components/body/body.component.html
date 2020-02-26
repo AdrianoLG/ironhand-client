@@ -6,8 +6,8 @@
                <div class="wrapper">
                   <h2 class="mat-title flex">Comidas <span matBadge="{{ mealsCount }}"></span></h2>
                </div>
-               <mat-card *ngFor="let meal of meals" data-id="{{ meal._id }}">
-                  <mat-card-content routerLink="/cuerpo/comida/comidas/editar/{{ meal._id }}">
+               <mat-card *ngFor="let meal of meals" data-id="{{ meal._id }}" routerLink="/cuerpo/comida/comidas/editar/{{ meal._id }}">
+                  <mat-card-content>
                      <div class="left">
                         <p class="date">{{ meal.date | date: 'dd-MM-yyyy' }}</p>
                      </div>
@@ -34,8 +34,8 @@
                <div class="wrapper">
                   <h2 class="mat-title flex">Sugerencias <span matBadge="{{ suggestionsCount }}"></span></h2>
                </div>
-               <mat-card *ngFor="let suggestion of suggestions" data-id="{{ suggestion._id }}" class="suggestion">
-                  <mat-card-content routerLink="/cuerpo/comida/sugerencias/editar/{{ suggestion._id }}">
+               <mat-card *ngFor="let suggestion of suggestions" data-id="{{ suggestion._id }}" class="suggestion" routerLink="/cuerpo/comida/sugerencias/editar/{{ suggestion._id }}">
+                  <mat-card-content>
                      <div class="left">
                         <p class="date">{{ suggestion.name }}</p>
                      </div>
@@ -64,8 +64,8 @@
                <div class="wrapper">
                   <h2 class="mat-title flex">Completados <span matBadge="{{ completedExercisesCount }}"></span></h2>
                </div>
-               <mat-card *ngFor="let completedExercise of completedExercisesMixed" data-id="{{ completedExercise._id }}">
-                  <mat-card-content routerLink="/cuerpo/ejercicio/completados/editar/{{ completedExercise._id }}">
+               <mat-card *ngFor="let completedExercise of completedExercisesMixed" data-id="{{ completedExercise._id }}" routerLink="/cuerpo/ejercicio/completados/editar/{{ completedExercise._id }}">
+                  <mat-card-content>
                      <div class="left">
                         <p class="date">{{ completedExercise.date | date: 'dd-MM-yyyy' }}</p>
                      </div>
@@ -83,8 +83,8 @@
                   <div class="wrapper">
                      <h2 class="mat-title flex">Ejercicios <span matBadge="{{ exercisesCount }}"></span></h2>
                   </div>
-               <mat-card *ngFor="let exercise of exercises" data-id="{{ exercise._id }}" class="exercises">
-                  <mat-card-content routerLink="/cuerpo/ejercicio/listado/editar/{{ exercise._id }}">
+               <mat-card *ngFor="let exercise of exercises" data-id="{{ exercise._id }}" class="exercises" routerLink="/cuerpo/ejercicio/listado/editar/{{ exercise._id }}">
+                  <mat-card-content>
                      <p>{{ exercise.name }}</p>
                      <ul>
                         <li *ngFor="let bodyPart of exercise.bodyParts">{{ bodyPart }}</li>

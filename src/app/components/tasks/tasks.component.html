@@ -12,7 +12,7 @@
          </mat-selection-list>
          <p *ngIf="countTodos==0" class="pad">Todavía no hay tareas, ¡crea una!</p>
          <button mat-mini-fab>
-            <mat-icon routerLink="/tareas/crear-todo">add</mat-icon>
+            <mat-icon routerLink="/tareas/todo/crear">add</mat-icon>
          </button>
       </div>
    </mat-tab>
@@ -24,7 +24,7 @@
                <button mat-stroked-button *ngFor="let projectTitle of projectTitles; let first = first;" [ngClass]="{ 'projectTitle' : first }" (click)="onSelectProject($event, projectTitle)">{{ projectTitle }}</button>
             </div>
          </div>
-         <h3>{{ selectedProject.name }}<button mat-icon-button class="floatRight" routerLink="/tareas/actualizar-proyecto/{{ selectedProject._id }}"><mat-icon color="accent">edit</mat-icon></button></h3>
+         <h3>{{ selectedProject.name }}<button mat-icon-button class="floatRight" routerLink="/tareas/proyecto/actualizar/{{ selectedProject._id }}"><mat-icon color="accent">edit</mat-icon></button></h3>
          <div class="wrapper padTop0">
             <h5>{{ selectedProject.category }}</h5>
          </div>
@@ -53,7 +53,7 @@
             </mat-selection-list>
          </section>
          <button mat-mini-fab>
-            <mat-icon routerLink="/tareas/crear-proyecto">add</mat-icon>
+            <mat-icon routerLink="/tareas/proyecto/crear">add</mat-icon>
          </button>
       </div>
    </mat-tab>

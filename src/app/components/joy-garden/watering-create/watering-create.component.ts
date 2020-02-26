@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {FormGroup, Validators, FormBuilder } from '@angular/forms';
+import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { Location } from '@angular/common';
 import { JGWatering } from 'src/app/models/jg-watering';
 import { JgWateringsService } from 'src/app/services/jg-waterings/jg-waterings.service';
-import { DateAdapter } from '@angular/material';
 
 @Component({
   selector: 'app-watering-create',
@@ -18,12 +17,10 @@ export class WateringCreateComponent implements OnInit {
   constructor(
     private _wateringsService: JgWateringsService,
     private _location: Location,
-    private _formBuilder: FormBuilder,
-    private _adapter: DateAdapter<any>
-  ) {}
+    private _formBuilder: FormBuilder
+  ) { }
 
   ngOnInit() {
-    this._adapter.setLocale('es');
     this.addWateringForm = this._formBuilder.group({
       container: ['', [
         Validators.required
@@ -31,28 +28,28 @@ export class WateringCreateComponent implements OnInit {
       date: ['', [
         Validators.required
       ]],
-      grow: [0, [
+      grow: [, [
         Validators.min(0)
       ]],
-      flower: [0, [
+      flower: [, [
         Validators.min(0)
       ]],
-      root: [0, [
+      root: [, [
         Validators.min(0)
       ]],
-      powerzyme: [0, [
+      powerzyme: [, [
         Validators.min(0)
       ]],
-      supervit: [0, [
+      supervit: [, [
         Validators.min(0)
       ]],
-      delta9: [0, [
+      delta9: [, [
         Validators.min(0)
       ]],
-      boost: [0, [
+      boost: [, [
         Validators.min(0)
       ]],
-      pk1314: [0, [
+      pk1314: [, [
         Validators.min(0)
       ]]
     });

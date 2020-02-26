@@ -6,7 +6,7 @@ import { Drink } from 'src/app/models/drink';
 
 export interface DrinksResponse {
   count: number;
-  drinks: Drink[]
+  drinks: Drink[];
 }
 @Injectable({
   providedIn: 'root'

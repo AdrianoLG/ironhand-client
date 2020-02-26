@@ -39,7 +39,7 @@ export class SeedUpdateComponent implements OnInit {
 				indicaSativa: ['', [Validators.required]],
 				productivity: ['', [Validators.required]],
 				flowering: ['', [Validators.required]],
-				height: [0, [Validators.required, Validators.min(0), Validators.max(200)]],
+				height: [, [Validators.required, Validators.min(0), Validators.max(200)]],
 				effect: ['', []],
 				aroma: ['', []]
 			});

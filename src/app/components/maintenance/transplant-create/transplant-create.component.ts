@@ -3,7 +3,6 @@ import { Location } from '@angular/common';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { Plant } from 'src/app/models/Plant';
 import { PlantsService } from 'src/app/services/plants/plants.service';
-import { DateAdapter } from '@angular/material';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
@@ -19,7 +18,6 @@ export class TransplantCreateComponent implements OnInit {
 
   constructor(
     private _plantsService: PlantsService,
-    private _adapter: DateAdapter<any>,
     private _location: Location,
     private _formBuilder: FormBuilder,
     private _route: ActivatedRoute
@@ -27,10 +25,8 @@ export class TransplantCreateComponent implements OnInit {
 
   ngOnInit() {
     this._id = this._route.snapshot.paramMap.get('_id');
-    this._adapter.setLocale('es');
-    this._adapter.getFirstDayOfWeek = () => 1;
     this.addTransplantForm = this._formBuilder.group({
-      date: ['', [ Validators.required ]]
+      date: ['', [Validators.required]]
     });
   }
 

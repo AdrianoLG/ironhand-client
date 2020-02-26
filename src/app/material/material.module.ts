@@ -19,8 +19,10 @@ import {
 	MatSlideToggleModule,
 	MatRippleModule,
 	MatSelectModule,
-	MAT_DATE_LOCALE
+	MAT_DATE_LOCALE,
+	DateAdapter
 } from '@angular/material';
+import { StartOnMondayDateAdapter } from './date-adapter';
 
 @NgModule({
 	imports: [
@@ -66,7 +68,8 @@ import {
 	],
 	providers: [
 		MatDatepickerModule,
-		{ provide: MAT_DATE_LOCALE, useValue: 'es-ES' }
+		{ provide: MAT_DATE_LOCALE, useValue: 'es-ES' },
+		{ provide: DateAdapter, useClass: StartOnMondayDateAdapter }
 	]
 })
 export class MaterialModule { }

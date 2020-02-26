@@ -7,9 +7,9 @@ import { ProjectUpdateComponent } from './project-update/project-update.componen
 
 const routes: Routes = [
   { path: '', component: TasksComponent },
-  { path: 'crear-todo', component: TodoCreateComponent },
-  { path: 'crear-proyecto', component: ProjectCreateComponent },
-  { path: 'actualizar-proyecto/:_id', component: ProjectUpdateComponent }
+  { path: 'todo/crear', component: TodoCreateComponent },
+  { path: 'proyecto/crear', component: ProjectCreateComponent },
+  { path: 'proyecto/actualizar/:_id', component: ProjectUpdateComponent }
 ];
 
 @NgModule({

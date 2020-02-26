@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
 import { ChipItem } from 'src/app/models/chip-item';
 import { ENTER, COMMA } from '@angular/cdk/keycodes';
-import { MatChipInputEvent, DateAdapter } from '@angular/material';
+import { MatChipInputEvent } from '@angular/material';
 import { TvSeriesService } from 'src/app/services/tv-series/tv-series.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { TvSerie } from 'src/app/models/tv-serie';
@@ -32,50 +32,48 @@ export class TvSerieUpdateComponent implements OnInit {
     private _tvSeriesService: TvSeriesService,
     private _location: Location,
     private _formBuilder: FormBuilder,
-    private _adapter: DateAdapter<any>,
     private _route: ActivatedRoute
   ) { }
 
   ngOnInit() {
     this._id = this._route.snapshot.paramMap.get('_id');
-    this._adapter.setLocale('es');
     this._tvSeriesService.getTvSerie(this._id)
-    .subscribe(tvSerie => {
-      this.tvSerie = tvSerie;
-      for (const actor of this.tvSerie.cast) {
-        this.castItems.push({ name: actor });
-      }
-      for (const category of this.tvSerie.categories) {
-        this.categoriesItems.push({ name: category });
-      }
-      this.ended = tvSerie.ended;
-      this.updateTvSerieForm = this._formBuilder.group({
-        title: ['', [Validators.required]],
-        director: ['', [Validators.required]],
-        cast: [[], []],
-        tv: ['', []],
-        country: ['', []],
-        beginDate: ['', []],
-        lastSeen: ['', [Validators.required]],
-        ended: ['', []],
-        endDate: ['', []],
-        categories: [[], []],
-        episodeDuration: [0, []],
-        img: ['', []]
+      .subscribe(tvSerie => {
+        this.tvSerie = tvSerie;
+        for (const actor of this.tvSerie.cast) {
+          this.castItems.push({ name: actor });
+        }
+        for (const category of this.tvSerie.categories) {
+          this.categoriesItems.push({ name: category });
+        }
+        this.ended = tvSerie.ended;
+        this.updateTvSerieForm = this._formBuilder.group({
+          title: ['', [Validators.required]],
+          director: ['', [Validators.required]],
+          cast: [[], []],
+          tv: ['', []],
+          country: ['', []],
+          beginDate: ['', []],
+          lastSeen: ['', [Validators.required]],
+          ended: ['', []],
+          endDate: ['', []],
+          categories: [[], []],
+          episodeDuration: [, []],
+          img: ['', []]
+        });
+        this.updateTvSerieForm.patchValue({
+          title: tvSerie.title,
+          director: tvSerie.director,
+          tv: tvSerie.tv,
+          country: tvSerie.country,
+          beginDate: tvSerie.beginDate,
+          lastSeen: tvSerie.lastSeen,
+          ended: tvSerie.ended,
+          endDate: tvSerie.endDate,
+          episodeDuration: tvSerie.episodeDuration,
+          img: tvSerie.img,
+        });
       });
-      this.updateTvSerieForm.patchValue({
-        title: tvSerie.title,
-        director: tvSerie.director,
-        tv: tvSerie.tv,
-        country: tvSerie.country,
-        beginDate: tvSerie.beginDate,
-        lastSeen: tvSerie.lastSeen,
-        ended: tvSerie.ended,
-        endDate: tvSerie.endDate,
-        episodeDuration: tvSerie.episodeDuration,
-        img: tvSerie.img,
-      });
-    });
   }
 
   goBack(): void {
@@ -151,8 +149,8 @@ export class TvSerieUpdateComponent implements OnInit {
       img: this.updateTvSerieForm.value.img
     };
     this._tvSeriesService.updateTvSerie(this._id, this.tvSerie).subscribe(() => {
-        this.goBack();
-      },
+      this.goBack();
+    },
       error => {
         console.log(error);
       }

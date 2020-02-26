@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import {MatChipInputEvent} from '@angular/material/chips';
+import { MatChipInputEvent } from '@angular/material/chips';
 import { COMMA, ENTER } from '@angular/cdk/keycodes';
 import { Project } from 'src/app/models/project';
 import { ProjectsService } from 'src/app/services/projects/projects.service';
@@ -35,12 +35,12 @@ export class ProjectCreateComponent implements OnInit {
     private projectsService: ProjectsService,
     private location: Location,
     private formBuilder: FormBuilder
-  ) {}
+  ) { }
 
   ngOnInit() {
     this.addProjectForm = this.formBuilder.group({
-      name: ['', [ Validators.required ]],
-      category: ['', [ Validators.required ]],
+      name: ['', [Validators.required]],
+      category: ['', [Validators.required]],
       todo: [[], []],
       doing: [[], []],
       done: [[], []]
@@ -54,13 +54,13 @@ export class ProjectCreateComponent implements OnInit {
     if ((value || '').trim()) {
       switch (type) {
         case 'todo':
-          this.todoItems.push({name: value.trim()});
+          this.todoItems.push({ name: value.trim() });
           break;
         case 'doing':
-          this.doingItems.push({name: value.trim()});
+          this.doingItems.push({ name: value.trim() });
           break;
         case 'done':
-          this.doneItems.push({name: value.trim()});
+          this.doneItems.push({ name: value.trim() });
           break;
         default:
           console.log('Pass a parameter');

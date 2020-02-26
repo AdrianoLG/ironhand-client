@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
 import { ChipItem } from 'src/app/models/chip-item';
 import { ENTER, COMMA } from '@angular/cdk/keycodes';
-import { MatChipInputEvent, DateAdapter } from '@angular/material';
+import { MatChipInputEvent } from '@angular/material';
 import { MoviesService } from 'src/app/services/movies/movies.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Movie } from 'src/app/models/movie';
@@ -31,22 +31,20 @@ export class MovieCreateComponent implements OnInit {
     private _moviesService: MoviesService,
     private _location: Location,
     private _formBuilder: FormBuilder,
-    private _adapter: DateAdapter<any>
   ) { }
 
   ngOnInit() {
-    this._adapter.setLocale('es');
     this.addMovieForm = this._formBuilder.group({
       title: ['', [Validators.required]],
       director: ['', [Validators.required]],
       year: [1895, [Validators.required, Validators.min(1895)]],
       cast: [[], []],
       categories: [[], []],
-      duration: [0, []],
+      duration: [, []],
       img: ['', []],
       seen: [false, []],
       seenDate: ['', []],
-      rating: [0, []]
+      rating: [, []]
     });
   }
 

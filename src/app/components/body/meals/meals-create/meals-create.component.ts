@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import {MatChipInputEvent} from '@angular/material/chips';
+import { MatChipInputEvent } from '@angular/material/chips';
 import { COMMA, ENTER } from '@angular/cdk/keycodes';
-import { DateAdapter } from '@angular/material';
 import { Meals } from 'src/app/models/meals';
 import { MealsService } from 'src/app/services/meals/meals.service';
 import { ChipItem } from 'src/app/models/chip-item';
@@ -32,19 +31,17 @@ export class MealsCreateComponent implements OnInit {
   addMealsForm: FormGroup;
 
   constructor(
-    private _adapter: DateAdapter<any>,
     private mealsService: MealsService,
     private location: Location,
     private formBuilder: FormBuilder
-  ) {}
+  ) { }
 
   ngOnInit() {
-    this._adapter.setLocale('es');
     this.addMealsForm = this.formBuilder.group({
       breakfast: [[], []],
       lunch: [[], []],
       dinner: [[], []],
-      date: ['', [ Validators.required ]]
+      date: ['', [Validators.required]]
     });
   }
 
@@ -55,13 +52,13 @@ export class MealsCreateComponent implements OnInit {
     if ((value || '').trim()) {
       switch (type) {
         case 'breakfast':
-          this.breakfastItems.push({name: value.trim()});
+          this.breakfastItems.push({ name: value.trim() });
           break;
         case 'lunch':
-          this.lunchItems.push({name: value.trim()});
+          this.lunchItems.push({ name: value.trim() });
           break;
         case 'dinner':
-          this.dinnerItems.push({name: value.trim()});
+          this.dinnerItems.push({ name: value.trim() });
           break;
         default:
           console.log('Pass a parameter');

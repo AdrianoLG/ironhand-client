@@ -1,6 +1,10 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { MaterialModule } from '../../material/material.module';
 import { ProvisioningComponent } from './provisioning.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
+import { ProvisioningRoutingModule } from './provisioning-routing.module';
 import { FoodCreateComponent } from './food-create/food-create.component';
 import { FoodDetailComponent } from './food-detail/food-detail.component';
 import { FoodUpdateComponent } from './food-update/food-update.component';
@@ -13,6 +17,7 @@ import { CocktailUpdateComponent } from './cocktail-update/cocktail-update.compo
 import { RecipeeCreateComponent } from './recipee-create/recipee-create.component';
 import { RecipeeDetailComponent } from './recipee-detail/recipee-detail.component';
 import { RecipeeUpdateComponent } from './recipee-update/recipee-update.component';
+import { MatTabsModule } from '@angular/material';
 
 
 @NgModule({
@@ -32,7 +37,13 @@ import { RecipeeUpdateComponent } from './recipee-update/recipee-update.componen
     RecipeeUpdateComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    MaterialModule,
+    FormsModule,
+    ReactiveFormsModule,
+    ProvisioningRoutingModule,
+    RouterModule,
+    MatTabsModule
   ]
 })
 export class ProvisioningModule { }

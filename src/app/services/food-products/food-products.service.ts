@@ -6,7 +6,7 @@ import { FoodProduct } from 'src/app/models/food-product';
 
 export interface FoodProductsResponse {
   count: number;
-  foodProducts: FoodProduct[]
+  products: FoodProduct[]
 }
 @Injectable({
   providedIn: 'root'
@@ -61,10 +61,6 @@ export class FoodProductsService {
       {
         propName: 'unit',
         value: foodProduct.unit
-      },
-      {
-        propName: 'unitQty',
-        value: foodProduct.unitQty
       },
       {
         propName: 'unit',

@@ -3,13 +3,12 @@ import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { Location } from '@angular/common';
 import { JGWatering } from 'src/app/models/jg-watering';
 import { JgWateringsService } from 'src/app/services/jg-waterings/jg-waterings.service';
-import { DateAdapter } from '@angular/material';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
 	selector: 'app-watering-update',
 	templateUrl: './watering-update.component.html',
-	styleUrls: [ './watering-update.component.scss' ]
+	styleUrls: ['./watering-update.component.scss']
 })
 export class WateringUpdateComponent implements OnInit {
 	updateWateringForm: FormGroup;
@@ -20,12 +19,10 @@ export class WateringUpdateComponent implements OnInit {
 		private _wateringsService: JgWateringsService,
 		private _location: Location,
 		private _formBuilder: FormBuilder,
-		private _adapter: DateAdapter<any>,
 		private _route: ActivatedRoute
-	) {}
+	) { }
 
 	ngOnInit() {
-		this._adapter.setLocale('es');
 		this._id = this._route.snapshot.paramMap.get('_id');
 		this._wateringsService.getWatering(this._id).subscribe(watering => {
 			this.watering = watering;
@@ -45,16 +42,16 @@ export class WateringUpdateComponent implements OnInit {
 			});
 		});
 		this.updateWateringForm = this._formBuilder.group({
-			container: [ '', [ Validators.required ] ],
-			date: [ '', [ Validators.required ] ],
-			grow: [ 0, [ Validators.min(0) ] ],
-			flower: [ 0, [ Validators.min(0) ] ],
-			root: [ 0, [ Validators.min(0) ] ],
-			powerzyme: [ 0, [ Validators.min(0) ] ],
-			supervit: [ 0, [ Validators.min(0) ] ],
-			delta9: [ 0, [ Validators.min(0) ] ],
-			boost: [ 0, [ Validators.min(0) ] ],
-			pk1314: [ 0, [ Validators.min(0) ] ]
+			container: ['', [Validators.required]],
+			date: ['', [Validators.required]],
+			grow: [0, [Validators.min(0)]],
+			flower: [0, [Validators.min(0)]],
+			root: [0, [Validators.min(0)]],
+			powerzyme: [0, [Validators.min(0)]],
+			supervit: [0, [Validators.min(0)]],
+			delta9: [0, [Validators.min(0)]],
+			boost: [0, [Validators.min(0)]],
+			pk1314: [0, [Validators.min(0)]]
 		});
 	}
 

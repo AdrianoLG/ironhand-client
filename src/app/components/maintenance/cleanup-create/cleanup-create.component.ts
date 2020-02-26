@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {FormGroup, Validators, FormBuilder } from '@angular/forms';
+import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { Location } from '@angular/common';
 import { Cleanup } from 'src/app/models/cleanup';
 import { CleanupService } from 'src/app/services/cleanup/cleanup.service';
-import { DateAdapter } from '@angular/material';
 
 @Component({
   selector: 'app-cleanup-create',
@@ -34,15 +33,12 @@ export class CleanupCreateComponent implements OnInit {
     private _cleanupService: CleanupService,
     private _location: Location,
     private _formBuilder: FormBuilder,
-    private _adapter: DateAdapter<any>
-  ) {}
+  ) { }
 
   ngOnInit() {
-    this._adapter.setLocale('es');
-    this._adapter.getFirstDayOfWeek = () => 1;
     this.addCleanupForm = this._formBuilder.group({
-      place: ['', [ Validators.required ]],
-      date: ['', [ Validators.required ]]
+      place: ['', [Validators.required]],
+      date: ['', [Validators.required]]
     });
     this.availablePlaces = [
       'Garaje',

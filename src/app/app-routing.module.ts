@@ -7,7 +7,7 @@ import { AuthGuard } from './guards/auth-guard.service';
 const routes: Routes = [
   {
     path: '',
-    canActivate: [ AuthGuard ],
+    canActivate: [AuthGuard],
     component: HomeComponent
   },
   {
@@ -16,33 +16,38 @@ const routes: Routes = [
   },
   {
     path: 'tareas',
-    canActivate: [ AuthGuard ],
+    canActivate: [AuthGuard],
     loadChildren: () => import('./components/tasks/tasks.module').then(m => m.TasksModule)
   },
   {
     path: 'cultura',
-    canActivate: [ AuthGuard ],
+    canActivate: [AuthGuard],
     loadChildren: () => import('./components/culture/culture.module').then(m => m.CultureModule)
   },
   {
     path: 'cuerpo',
-    canActivate: [ AuthGuard ],
+    canActivate: [AuthGuard],
     loadChildren: () => import('./components/body/body.module').then(m => m.BodyModule)
   },
   {
     path: 'jardin-de-la-alegria',
-    canActivate: [ AuthGuard ],
+    canActivate: [AuthGuard],
     loadChildren: () => import('./components/joy-garden/joy-garden.module').then(m => m.JoyGardenModule)
   },
   {
     path: 'mantenimiento',
-    canActivate: [ AuthGuard ],
+    canActivate: [AuthGuard],
     loadChildren: () => import('./components/maintenance/maintenance.module').then(m => m.MaintenanceModule)
+  },
+  {
+    path: 'aprovisionamiento',
+    canActivate: [AuthGuard],
+    loadChildren: () => import('./components/provisioning/provisioning.module').then(m => m.ProvisioningModule)
   }
 ];
 
 @NgModule({
-  imports: [ RouterModule.forRoot(routes) ],
-  exports: [ RouterModule ]
+  imports: [RouterModule.forRoot(routes)],
+  exports: [RouterModule]
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }

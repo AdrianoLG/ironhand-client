@@ -10,13 +10,16 @@ import { AuthGuard } from './guards/auth-guard.service';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
 import { HomeComponent } from './components/home/home.component';
-
 import { Globals } from './services/globals';
 import 'hammerjs';
 
 
 @NgModule({
-  declarations: [AppComponent, LoginComponent, HomeComponent],
+  declarations: [
+    AppComponent,
+    LoginComponent,
+    HomeComponent
+  ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
@@ -27,7 +30,6 @@ import 'hammerjs';
     ReactiveFormsModule,
     HttpClientModule
   ],
-  providers: [AuthGuard, Globals],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

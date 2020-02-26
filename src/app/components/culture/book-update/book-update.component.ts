@@ -3,7 +3,6 @@ import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { Location } from '@angular/common';
 import { Book } from 'src/app/models/book';
 import { BooksService } from 'src/app/services/books/books.service';
-import { DateAdapter } from '@angular/material';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
@@ -22,12 +21,10 @@ export class BookUpdateComponent implements OnInit {
     private _booksService: BooksService,
     private _location: Location,
     private _formBuilder: FormBuilder,
-    private _adapter: DateAdapter<any>,
     private _route: ActivatedRoute
   ) { }
 
   ngOnInit() {
-    this._adapter.setLocale('es');
     this._id = this._route.snapshot.paramMap.get('_id');
     this._booksService.getBook(this._id).subscribe(book => {
       this.book = book;
@@ -43,14 +40,14 @@ export class BookUpdateComponent implements OnInit {
         category: ['', [
           Validators.required
         ]],
-        pages: [0, [
+        pages: [, [
           Validators.min(0),
           Validators.max(5000)
         ]],
         img: ['', []],
         read: [false, []],
         readDate: ['', []],
-        rating: [0, []],
+        rating: [, []],
         comments: ['', []]
       });
       this.updateBookForm.patchValue({

@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import {MatChipInputEvent} from '@angular/material/chips';
+import { MatChipInputEvent } from '@angular/material/chips';
 import { COMMA, ENTER } from '@angular/cdk/keycodes';
-import { DateAdapter } from '@angular/material';
 import { Meals } from 'src/app/models/meals';
 import { MealsService } from 'src/app/services/meals/meals.service';
 import { ActivatedRoute } from '@angular/router';
@@ -35,17 +34,14 @@ export class MealsUpdateComponent implements OnInit {
   public _id: string;
 
   constructor(
-    private _adapter: DateAdapter<any>,
     private _mealsService: MealsService,
     private _location: Location,
     private _formBuilder: FormBuilder,
     private _route: ActivatedRoute
-  ) {}
+  ) { }
 
   ngOnInit() {
     this._id = this._route.snapshot.paramMap.get('_id');
-    this._adapter.setLocale('es');
-    this._adapter.getFirstDayOfWeek = () => 1;
     this._mealsService.getMeal(this._id).subscribe(meals => {
       this.meals = meals;
       for (const meal of this.meals.breakfast) {
@@ -63,7 +59,7 @@ export class MealsUpdateComponent implements OnInit {
       breakfast: [this.breakfastItems, []],
       lunch: [this.lunchItems, []],
       dinner: [this.dinnerItems, []],
-      date: ['', [ Validators.required ]]
+      date: ['', [Validators.required]]
     });
   }
 
@@ -74,13 +70,13 @@ export class MealsUpdateComponent implements OnInit {
     if ((value || '').trim()) {
       switch (type) {
         case 'breakfast':
-          this.breakfastItems.push({name: value.trim()});
+          this.breakfastItems.push({ name: value.trim() });
           break;
         case 'lunch':
-          this.lunchItems.push({name: value.trim()});
+          this.lunchItems.push({ name: value.trim() });
           break;
         case 'dinner':
-          this.dinnerItems.push({name: value.trim()});
+          this.dinnerItems.push({ name: value.trim() });
           break;
         default:
           console.log('Pass a parameter');

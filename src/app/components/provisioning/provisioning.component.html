@@ -1,1 +1,84 @@
-<p>provisioning works!</p>
+<mat-tab-group [color]="'primary'" [backgroundColor]="'primary'" (selectedTabChange)="changeSelectedIndex($event)" [selectedIndex]="selectedIndex">
+   <mat-tab label="Comida">
+      <mat-tab-group [color]="'accent'" [backgroundColor]="'accent'" class="bottomTabs" (selectedTabChange)="changeSelectedIndex2($event)" [selectedIndex]="selectedIndex2">
+         <mat-tab label="Comida">
+            <div *ngIf="food">
+               <div class="wrapper">
+                  <h2 class="mat-title flex">Comida <span matBadge="{{ foodCount }}"></span></h2>
+               </div>
+               <mat-card *ngFor="let foodItem of food" data-id="{{ foodItem._id }}" routerLink="/aprovisionamiento/comida/{{ foodItem._id }}">
+                  <mat-card-content>
+                     <div class="left">
+                        <p class="date">{{ foodItem.expiry | date: 'dd-MM-yyyy' }}</p>
+                     </div>
+                     <div class="right">
+                        <div>
+                           <p class="name">{{ foodItem.name }}</p>
+                        </div>
+                     </div>
+                  </mat-card-content>
+               </mat-card>
+            </div>
+         </mat-tab>
+         <mat-tab label="Recetas">
+            <div *ngIf="recipees">
+               <div class="wrapper">
+                  <h2 class="mat-title flex">Recetas <span matBadge="{{ recipeesCount }}"></span></h2>
+               </div>
+               <mat-card *ngFor="let recipee of recipees" data-id="{{ recipee._id }}" class="recipee" routerLink="/aprovisionamiento/receta/{{ recipee._id }}">
+                  <mat-card-content>
+                     <div class="left">
+                        <p class="date">{{ recipee.name }}</p>
+                     </div>
+                     <div class="right">
+                        <div>
+                           <h4>Ingredientes</h4>
+                           <p><span *ngFor="let ingredient of recipee.ingredients; let isLast=last">{{ ingredient }}{{ isLast ? '' : ', ' }}</span></p>
+                        </div>
+                     </div>
+                  </mat-card-content>
+               </mat-card>
+            </div>
+         </mat-tab>
+      </mat-tab-group>
+   </mat-tab>
+   <mat-tab label="Bebida">
+      <mat-tab-group [color]="'accent'" [backgroundColor]="'accent'" class="bottomTabs" (selectedTabChange)="changeSelectedIndex2($event)" [selectedIndex]="selectedIndex2">
+         <mat-tab label="Bebida">
+            <div *ngIf="drinks" class="completed">
+               <div class="wrapper">
+                  <h2 class="mat-title flex">Bebida <span matBadge="{{ drinksCount }}"></span></h2>
+               </div>
+               <mat-card *ngFor="let drink of drinks" data-id="{{ drink._id }}" routerLink="/aprovisionamiento/bebida/{{ drink._id }}">
+                  <mat-card-content>
+                     <div class="left">
+                        <p class="date">{{ drink.date | date: 'dd-MM-yyyy' }}</p>
+                     </div>
+                     <div class="right">
+                        <h3>{{ drink.drinkName }}</h3>
+                     </div>
+                  </mat-card-content>
+               </mat-card>
+            </div>
+         </mat-tab>
+         <mat-tab label="Cócteles">
+            <div *ngIf="cocktails">
+                  <div class="wrapper">
+                     <h2 class="mat-title flex">Cócteles <span matBadge="{{ cocktailsCount }}"></span></h2>
+                  </div>
+               <mat-card *ngFor="let cocktail of cocktails" data-id="{{ cocktail._id }}" class="cocktails" routerLink="/aprovisionamiento/coctel/{{ cocktail._id }}">
+                  <mat-card-content>
+                     <p>{{ cocktail.name }}</p>
+                     <ul>
+                        <li *ngFor="let ingredient of cocktail.ingredients">{{ ingredient }}</li>
+                     </ul>
+                  </mat-card-content>
+               </mat-card>
+            </div>
+         </mat-tab>
+      </mat-tab-group>
+   </mat-tab>
+</mat-tab-group>
+<button mat-mini-fab (click)="addSomething()">
+   <mat-icon>add</mat-icon>
+</button>

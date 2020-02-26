@@ -1,1 +1,53 @@
-<p>food-create works!</p>
+<div class="wrapper">
+   <h2 class="mat-title">Crear comida</h2>
+   <form [formGroup]="addFoodForm" class="addFoodForm" (ngSubmit)="onSubmit()">
+      <mat-form-field>
+         <input matInput placeholder="Nombre" formControlName="name" required>
+      </mat-form-field>
+      <mat-form-field>
+         <input matInput placeholder="Marca" formControlName="brand" required>
+      </mat-form-field>
+      <mat-form-field>
+         <input matInput placeholder="Categoría" formControlName="category" required>
+      </mat-form-field>
+      <mat-form-field>
+         <input matInput placeholder="Imagen" formControlName="img" required>
+      </mat-form-field>
+      <mat-form-field>
+         <input matInput type="number" placeholder="Cantidad" formControlName="qty" required>
+      </mat-form-field>
+      <mat-form-field>
+         <input matInput placeholder="Unidad" formControlName="unit" required>
+      </mat-form-field>
+      <mat-form-field>
+         <input matInput type="number" placeholder="Cantidad de producto" formControlName="productQty" required>
+      </mat-form-field>
+      <mat-form-field>
+         <input matInput [matDatepicker]="picker" formControlName="expiry" placeholder="Fecha de caducidad" required>
+         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+         <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+      <mat-form-field>
+         <mat-chip-list #tagList aria-label="Tags">
+            <mat-chip *ngFor="let tag of tags" [selectable]="tagSelectable"
+            [removable]="tagRemovable" (removed)="removeItem('tag', tag)">
+               {{ tag.name }}
+               <mat-icon matChipRemove *ngIf="tagRemovable">cancel</mat-icon>
+            </mat-chip>
+            <input placeholder="Etiquetas"
+            [matChipInputFor]="tagList"
+            [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+            [matChipInputAddOnBlur]="tagAddOnBlur"
+            (matChipInputTokenEnd)="addItem('tag', $event)">
+         </mat-chip-list>
+      </mat-form-field>
+      <div class="flex mT15">
+         <mat-icon aria-hidden="false" aria-label="Formulario incorrecto" *ngIf="addFoodForm.status=='INVALID'" color="primary">block</mat-icon>
+         <mat-icon aria-hidden="false" aria-label="Formulario incorrecto" *ngIf="addFoodForm.status=='VALID'" color="accent">thumb_up</mat-icon>
+         <div class="buttons">
+            <button mat-raised-button class="cancelButton" (click)="goBack()">Cancelar</button>
+            <button mat-raised-button type="submit" [disabled]="!addFoodForm.valid" color="accent">Crear</button>
+         </div>
+      </div>
+   </form>
+</div>
