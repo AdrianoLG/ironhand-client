@@ -1,6 +1,6 @@
 <div class="wrapper">
    <h2 class="mat-title">Crear comida</h2>
-   <form [formGroup]="addFoodForm" class="addFoodForm" (ngSubmit)="onSubmit()">
+   <form [formGroup]="addFoodForm" class="addFoodForm" *ngIf="addFoodForm">
       <mat-form-field>
          <input matInput placeholder="Nombre" formControlName="name" required>
       </mat-form-field>
@@ -41,12 +41,12 @@
             (matChipInputTokenEnd)="addItem('tag', $event)">
          </mat-chip-list>
       </mat-form-field>
-      <div class="flex mT15">
+      <div class="flex mT15" *ngIf="addFoodForm">
          <mat-icon aria-hidden="false" aria-label="Formulario incorrecto" *ngIf="addFoodForm.status=='INVALID'" color="primary">block</mat-icon>
          <mat-icon aria-hidden="false" aria-label="Formulario incorrecto" *ngIf="addFoodForm.status=='VALID'" color="accent">thumb_up</mat-icon>
          <div class="buttons">
             <button mat-raised-button class="cancelButton" (click)="goBack()">Cancelar</button>
-            <button mat-raised-button type="submit" [disabled]="!addFoodForm.valid" color="accent">Crear</button>
+            <button mat-raised-button type="submit" [disabled]="!addFoodForm.valid" color="accent" (click)="createFood()">Crear</button>
          </div>
       </div>
    </form>

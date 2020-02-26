@@ -62,7 +62,7 @@ export class FoodCreateComponent implements OnInit {
     }
   }
 
-  onSubmit() {
+  createFood() {
     const tags: string[] = [];
     for (const tag of this.tags) {
       tags.push(tag.name);

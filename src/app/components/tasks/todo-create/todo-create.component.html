@@ -1,6 +1,6 @@
 <div class="wrapper">
    <h2 class="mat-title">Crear tarea a hacer</h2>
-   <form [formGroup]="addTaskForm" class="addTask-form" (ngSubmit)="onSubmit()">
+   <form [formGroup]="addTaskForm" class="addTask-form">
       <mat-form-field>
          <input matInput placeholder="Nombre de tarea" formControlName="todoName" required>
       </mat-form-field>
@@ -15,7 +15,7 @@
          <mat-icon aria-hidden="false" aria-label="Formulario incorrecto" *ngIf="addTaskForm.status=='VALID'" color="accent">thumb_up</mat-icon>
          <div class="buttons">
             <button mat-raised-button class="cancelButton" (click)="goBack()">Cancelar</button>
-            <button mat-raised-button type="submit" [disabled]="!addTaskForm.valid" color="accent">Crear</button>
+            <button mat-raised-button type="submit" [disabled]="!addTaskForm.valid" color="accent" (click)="addTask()">Crear</button>
          </div>
       </div>
    </form>

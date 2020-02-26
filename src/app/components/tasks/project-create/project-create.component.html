@@ -1,6 +1,6 @@
 <div class="wrapper">
    <h2 class="mat-title">Crear proyecto</h2>
-   <form [formGroup]="addProjectForm" class="addProject-form" (ngSubmit)="onSubmit()">
+   <form [formGroup]="addProjectForm" class="addProject-form">
       <mat-form-field>
          <input matInput placeholder="Nombre de proyecto" formControlName="name" required>
       </mat-form-field>
@@ -54,7 +54,7 @@
          <mat-icon aria-hidden="false" aria-label="Formulario incorrecto" *ngIf="addProjectForm.status=='VALID'" color="accent">thumb_up</mat-icon>
          <div class="buttons">
             <button mat-raised-button class="cancelButton" (click)="goBack()">Cancelar</button>
-            <button mat-raised-button type="submit" [disabled]="!addProjectForm.valid" color="accent">Crear</button>
+            <button mat-raised-button type="submit" [disabled]="!addProjectForm.valid" color="accent" (click)="createProject()">Crear</button>
          </div>
       </div>
    </form>

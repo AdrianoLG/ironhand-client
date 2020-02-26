@@ -17,17 +17,17 @@ import { DrinkUpdateComponent } from './drink-update/drink-update.component';
 const routes: Routes = [
    { path: '', component: ProvisioningComponent },
    { path: 'receta/crear', component: RecipeeCreateComponent },
-   { path: 'receta/actualizar/:_id', component: RecipeeUpdateComponent },
    { path: 'receta/:_id', component: RecipeeDetailComponent },
+   { path: 'receta/editar/:_id', component: RecipeeUpdateComponent },
    { path: 'comida/crear', component: FoodCreateComponent },
-   { path: 'comida/actualizar/:_id', component: FoodUpdateComponent },
    { path: 'comida/:_id', component: FoodDetailComponent },
+   { path: 'comida/editar/:_id', component: FoodUpdateComponent },
    { path: 'bebida/crear', component: DrinkCreateComponent },
-   { path: 'bebida/actualizar/:_id', component: DrinkUpdateComponent },
    { path: 'bebida/:_id', component: DrinkDetailComponent },
+   { path: 'bebida/editar/:_id', component: DrinkUpdateComponent },
    { path: 'coctel/crear', component: CocktailCreateComponent },
-   { path: 'coctel/actualizar/:_id', component: CocktailUpdateComponent },
-   { path: 'coctel/:_id', component: CocktailDetailComponent }
+   { path: 'coctel/:_id', component: CocktailDetailComponent },
+   { path: 'coctel/editar/:_id', component: CocktailUpdateComponent }
 ];
 
 @NgModule({

@@ -96,7 +96,7 @@ export class ProjectCreateComponent implements OnInit {
     }
   }
 
-  onSubmit() {
+  createProject() {
     const todoItems: string[] = [];
     for (const todoItem of this.todoItems) {
       todoItems.push(todoItem.name);

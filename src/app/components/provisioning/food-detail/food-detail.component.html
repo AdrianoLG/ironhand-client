@@ -14,13 +14,13 @@
    <div class="wrapper">
       <p>Caduca el {{ food.expiry | date: 'dd-MM-yyyy'}}</p>
       <p>{{ food.qty }} {{ food.unit }}</p>
-      <p><span *ngFor="food.tags"></span></p>
+      <p>Etiquetas: <span *ngFor="let tag of food.tags;let isLast = last">{{ tag }}{{isLast ? '' : ', '}}</span></p>
    </div>
    <div class="wrapper">
       <div class="buttons floatRight">
          <button class="cancelButton" mat-raised-button (click)="goBack()">Atrás</button>
          <button color="warn" mat-raised-button (click)="deleteBook()">Borrar</button>
-         <button color="accent" mat-raised-button routerLink="/aprovisionamiento/comida/actualizar/{{ food._id }}">Editar</button>
+         <button color="accent" mat-raised-button routerLink="/aprovisionamiento/comida/editar/{{ food._id }}">Editar</button>
       </div>
    </div>
 </div>

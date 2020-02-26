@@ -99,12 +99,16 @@ export class FoodUpdateComponent implements OnInit {
       expiry: this.updateFoodForm.value.expiry,
       tags: tags
     };
-    this._foodService.addFoodProduct(this.food).subscribe(res => {
-      this.goBack();
-    });
+    this._foodService.updateFoodProducts(this._id, this.food)
+      .subscribe(() => {
+        this.goBack();
+      }, error => {
+        console.log(error);
+      });
   }
 
   goBack(): void {
     this._location.back();
   }
+
 }

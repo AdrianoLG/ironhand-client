@@ -27,4 +27,14 @@ export class FoodDetailComponent implements OnInit {
       });
   }
 
+  goBack(): void {
+    this._location.back();
+  }
+
+  deleteBook(): void {
+    this._foodService.removeFoodProducts(this._id).subscribe(res => {
+      this.goBack();
+    });
+  }
+
 }

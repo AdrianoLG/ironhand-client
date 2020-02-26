@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {FormGroup, Validators, FormBuilder } from '@angular/forms';
+import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { Location } from '@angular/common';
 import { Todo } from '../../../models/todo';
 import { TodosService } from 'src/app/services/todos/todos.service';
@@ -40,7 +40,7 @@ export class TodoCreateComponent implements OnInit {
     this.location.back();
   }
 
-  onSubmit(): void {
+  addTask(): void {
     if (this.addTaskForm.invalid) {
       return;
     }
