@@ -29,12 +29,12 @@
                   (matChipInputTokenEnd)="addItem($event)">
          </mat-chip-list>
       </mat-form-field>
-      <div class="flex mT15">
-         <mat-icon aria-hidden="false" aria-label="Formulario incorrecto" *ngIf="updateCocktailForm.status=='INVALID'" color="primary">block</mat-icon>
-         <mat-icon aria-hidden="false" aria-label="Formulario incorrecto" *ngIf="updateCocktailForm.status=='VALID'" color="accent">thumb_up</mat-icon>
-         <div class="buttons">
-            <button class="cancelButton" mat-raised-button (click)="goBack()">Cancelar</button>
-            <button color="primary" type="submit" mat-raised-button [disabled]="!updateCocktailForm.valid" (click)="updateCocktail()">Actualizar</button>
-         </div>
    </form>
+   <div class="flex mT15">
+      <mat-icon aria-hidden="false" aria-label="Formulario incorrecto" *ngIf="updateCocktailForm.status=='INVALID'" color="primary">block</mat-icon>
+      <mat-icon aria-hidden="false" aria-label="Formulario incorrecto" *ngIf="updateCocktailForm.status=='VALID'" color="accent">thumb_up</mat-icon>
+      <div class="buttons">
+         <button class="cancelButton" mat-raised-button (click)="goBack()">Cancelar</button>
+         <button color="primary" type="submit" mat-raised-button [disabled]="!updateCocktailForm.valid" (click)="updateCocktail()">Actualizar</button>
+      </div>
 </div>

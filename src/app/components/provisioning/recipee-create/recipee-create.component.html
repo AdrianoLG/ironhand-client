@@ -4,11 +4,17 @@
       <mat-form-field>
          <input matInput placeholder="Nombre" formControlName="name" required>
       </mat-form-field>
-      <mat-form-field *ngFor="let ingredient of ingredients">
-         <input matInput placeholder="Nombre" formControlName="name">
-         <input matInput type="number" placeholder="Cantidad" formControlName="qty">
-         <input matInput placeholder="Unidad" formControlName="unit">
-      </mat-form-field>
+      <div *ngFor="let ingredient of ingredients">
+         <mat-form-field>
+            <input matInput placeholder="Nombre" formControlName="name">
+         </mat-form-field>
+         <mat-form-field>
+            <input matInput type="number" placeholder="Cantidad" formControlName="qty">
+         </mat-form-field>
+         <mat-form-field>
+            <input matInput placeholder="Unidad" formControlName="unit">
+         </mat-form-field>
+      </div>
       <div class="buttonsRight">
          <button mat-raised-button color="secondary" (click)="removeIngredient()">Quitar ingrediente</button>
          <button mat-raised-button color="primary" (click)="addIngredient()">Añadir ingrediente</button>

@@ -30,6 +30,7 @@ import 'hammerjs';
     ReactiveFormsModule,
     HttpClientModule
   ],
+  providers: [AuthGuard, Globals],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

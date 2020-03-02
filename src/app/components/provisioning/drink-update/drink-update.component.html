@@ -10,7 +10,7 @@
       <mat-form-field>
          <input matInput placeholder="Categoría" formControlName="category" required>
       </mat-form-field>
-      <mat-slide-toggle (change)="alcohol = !alcohol">Alcohol</mat-slide-toggle>
+      <mat-slide-toggle (change)="alcohol = !alcohol" [checked]="alcohol">Alcohol</mat-slide-toggle>
       <mat-form-field *ngIf="alcohol">
          <input matInput type="number" placeholder="Graduación" formControlName="graduation">
       </mat-form-field>
