@@ -1,1 +1,40 @@
-<p>cocktail-update works!</p>
+<div class="wrapper">
+   <h2 class="mat-title">Actualizar cóctel</h2>
+   <form [formGroup]="updateCocktailForm" class="updateCocktailForm" *ngIf="updateCocktailForm">
+      <mat-form-field>
+         <input matInput placeholder="Nombre" formControlName="name" required>
+      </mat-form-field>
+      <mat-form-field>
+         <input matInput placeholder="Imagen" formControlName="img" required>
+      </mat-form-field>
+      <mat-form-field *ngFor="let ingredient of ingredients">
+         <input matInput placeholder="Nombre" formControlName="name">
+         <input matInput placeholder="Partes" formControlName="parts">
+      </mat-form-field>
+      <div class="buttonsRight">
+         <button mat-raised-button color="secondary" (click)="removeIngredient()">Quitar ingrediente</button>
+         <button mat-raised-button color="primary" (click)="addIngredient()">Añadir ingrediente</button>
+      </div>
+      <mat-form-field>
+         <mat-chip-list #mixtureChipList aria-label="Galería">
+            <mat-chip *ngFor="let item of mixtureItems" [selectable]="mixSelectable"
+                  [removable]="mixRemovable" (removed)="removeItem(item)">
+               {{ item.name }}
+               <mat-icon matChipRemove *ngIf="mixRemovable">cancel</mat-icon>
+            </mat-chip>
+            <input placeholder="Mezcla"
+                  [matChipInputFor]="mixtureChipList"
+                  [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                  [matChipInputAddOnBlur]="mixAddOnBlur"
+                  (matChipInputTokenEnd)="addItem($event)">
+         </mat-chip-list>
+      </mat-form-field>
+      <div class="flex mT15">
+         <mat-icon aria-hidden="false" aria-label="Formulario incorrecto" *ngIf="updateCocktailForm.status=='INVALID'" color="primary">block</mat-icon>
+         <mat-icon aria-hidden="false" aria-label="Formulario incorrecto" *ngIf="updateCocktailForm.status=='VALID'" color="accent">thumb_up</mat-icon>
+         <div class="buttons">
+            <button class="cancelButton" mat-raised-button (click)="goBack()">Cancelar</button>
+            <button color="primary" type="submit" mat-raised-button [disabled]="!updateCocktailForm.valid" (click)="updateCocktail()">Actualizar</button>
+         </div>
+   </form>
+</div>

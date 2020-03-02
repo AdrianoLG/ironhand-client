@@ -1,1 +1,28 @@
-<p>recipee-detail works!</p>
+<div *ngIf="recipee">
+   <div class="wrapper">
+      <div class="flex aiFlexEnd">
+         <div class="left">
+            <h2 class="mat-title">{{ recipee.name }}</h2>
+         </div>
+         <div class="right">
+            <h4></h4>
+         </div>
+      </div>
+   </div>
+   <img [src]="recipee.img">
+   <div class="wrapper">
+      <ul>
+         <li *ngFor="let ingredient of recipee.ingredients">{{ ingredient.parts }} {{ ingredient.name }}</li>
+      </ul>
+      <ol>
+         <li *ngFor="let instruction of recipee.instructions">{{ instruction }}</li>
+      </ol>
+   </div>
+   <div class="wrapper">
+      <div class="buttons floatRight">
+         <button class="cancelButton" mat-raised-button (click)="goBack()">Atrás</button>
+         <button color="warn" mat-raised-button (click)="deleteRecipee()">Borrar</button>
+         <button color="accent" mat-raised-button routerLink="/aprovisionamiento/recetas/editar/{{ recipee._id }}">Editar</button>
+      </div>
+   </div>
+</div>

@@ -57,7 +57,7 @@ export class CocktailsService {
     return this.http.patch<Cocktail>(this.globals.url + '/cocktails/' + _id, body, this.httpOptions);
   }
 
-  removeCocktails(_id: string): any {
+  removeCocktail(_id: string): any {
     return this.http.delete(this.globals.url + '/cocktails/' + _id, this.httpOptions);
   }
 }

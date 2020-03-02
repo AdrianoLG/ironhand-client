@@ -58,7 +58,7 @@ export class RecipeesService {
     return this.http.patch<Recipee>(this.globals.url + '/recipees/' + _id, body, this.httpOptions);
   }
 
-  removeRecipees(_id: string): any {
+  removeRecipee(_id: string): any {
     return this.http.delete(this.globals.url + '/recipees/' + _id, this.httpOptions);
   }
 }

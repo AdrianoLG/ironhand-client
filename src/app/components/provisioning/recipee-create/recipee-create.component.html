@@ -4,13 +4,35 @@
       <mat-form-field>
          <input matInput placeholder="Nombre" formControlName="name" required>
       </mat-form-field>
-      <!-- TODO Ingredients and instructions -->
+      <mat-form-field *ngFor="let ingredient of ingredients">
+         <input matInput placeholder="Nombre" formControlName="name">
+         <input matInput type="number" placeholder="Cantidad" formControlName="qty">
+         <input matInput placeholder="Unidad" formControlName="unit">
+      </mat-form-field>
+      <div class="buttonsRight">
+         <button mat-raised-button color="secondary" (click)="removeIngredient()">Quitar ingrediente</button>
+         <button mat-raised-button color="primary" (click)="addIngredient()">Añadir ingrediente</button>
+      </div>
+      <mat-form-field>
+         <mat-chip-list #instructionChipList aria-label="Instrucciones">
+            <mat-chip *ngFor="let item of instructionItems" [selectable]="insSelectable"
+                  [removable]="insRemovable" (removed)="removeItem(item)">
+               {{ item.name }}
+               <mat-icon matChipRemove *ngIf="insRemovable">cancel</mat-icon>
+            </mat-chip>
+            <input placeholder="Instrucciones"
+                  [matChipInputFor]="instructionChipList"
+                  [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                  [matChipInputAddOnBlur]="insAddOnBlur"
+                  (matChipInputTokenEnd)="addItem($event)">
+         </mat-chip-list>
+      </mat-form-field>
       <div class="flex mT15" *ngIf="addRecipeeForm">
          <mat-icon aria-hidden="false" aria-label="Formulario incorrecto" *ngIf="addRecipeeForm.status=='INVALID'" color="primary">block</mat-icon>
          <mat-icon aria-hidden="false" aria-label="Formulario incorrecto" *ngIf="addRecipeeForm.status=='VALID'" color="accent">thumb_up</mat-icon>
          <div class="buttons">
             <button mat-raised-button class="cancelButton" (click)="goBack()">Cancelar</button>
-            <button mat-raised-button type="submit" [disabled]="!addRecipeeForm.valid" color="accent" (click)="createFood()">Crear</button>
+            <button mat-raised-button type="submit" [disabled]="!addRecipeeForm.valid" color="accent" (click)="createRecipee()">Crear</button>
          </div>
       </div>
    </form>
