@@ -1,1 +1,38 @@
-<p>drink-update works!</p>
+<div class="wrapper">
+   <h2 class="mat-title">Actualizar bebida</h2>
+   <form [formGroup]="updateDrinkForm" class="updateDrinkForm" *ngIf="updateDrinkForm">
+      <mat-form-field>
+         <input matInput placeholder="Nombre" formControlName="name" required>
+      </mat-form-field>
+      <mat-form-field>
+         <input matInput placeholder="Marca" formControlName="brand" required>
+      </mat-form-field>
+      <mat-form-field>
+         <input matInput placeholder="Categoría" formControlName="category" required>
+      </mat-form-field>
+      <mat-slide-toggle (change)="alcohol = !alcohol">Alcohol</mat-slide-toggle>
+      <mat-form-field *ngIf="alcohol">
+         <input matInput type="number" placeholder="Graduación" formControlName="graduation">
+      </mat-form-field>
+      <mat-form-field>
+         <input matInput placeholder="Imagen" formControlName="img">
+      </mat-form-field>
+      <mat-form-field>
+         <input matInput type="number" placeholder="Cantidad" formControlName="qty" required>
+      </mat-form-field>
+      <mat-form-field>
+         <input matInput placeholder="Unidad" formControlName="unit" required>
+      </mat-form-field>
+      <mat-form-field>
+         <input matInput type="number" placeholder="Cantidad de producto" formControlName="productQty">
+      </mat-form-field>
+      <div class="flex mT15" *ngIf="updateDrinkForm">
+         <mat-icon aria-hidden="false" aria-label="Formulario incorrecto" *ngIf="updateDrinkForm.status=='INVALID'" color="primary">block</mat-icon>
+         <mat-icon aria-hidden="false" aria-label="Formulario incorrecto" *ngIf="updateDrinkForm.status=='VALID'" color="accent">thumb_up</mat-icon>
+         <div class="buttons">
+            <button mat-raised-button class="cancelButton" (click)="goBack()">Cancelar</button>
+            <button mat-raised-button type="submit" [disabled]="!updateDrinkForm.valid" color="accent" (click)="updateDrink()">Crear</button>
+         </div>
+      </div>
+   </form>
+</div>

@@ -78,7 +78,7 @@ export class DrinksService {
     return this.http.patch<Drink>(this.globals.url + '/drinks/' + _id, body, this.httpOptions);
   }
 
-  removeDrinks(_id: string): any {
+  removeDrink(_id: string): any {
     return this.http.delete(this.globals.url + '/drinks/' + _id, this.httpOptions);
   }
 }

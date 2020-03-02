@@ -6,7 +6,15 @@
                <div class="wrapper">
                   <h2 class="mat-title flex">Comida <span matBadge="{{ foodCount }}"></span></h2>
                </div>
-               <mat-card *ngFor="let foodItem of food" data-id="{{ foodItem._id }}" routerLink="/aprovisionamiento/comida/{{ foodItem._id }}">
+               <form>
+                  <mat-form-field>
+                     <input matInput type="text" placeholder="Buscar" [(ngModel)]="filterFood" name="filterFood">
+                     <button mat-button *ngIf="filterFood" matSuffix mat-icon-button aria-label="Clear" (click)="filterFood=''">
+                        <mat-icon>close</mat-icon>
+                     </button>
+                  </mat-form-field>
+               </form>
+               <mat-card *ngFor="let foodItem of food | collectionFilter: filterFood" data-id="{{ foodItem._id }}" routerLink="/aprovisionamiento/comida/{{ foodItem._id }}">
                   <mat-card-content>
                      <div class="left">
                         <p class="date">{{ foodItem.expiry | date: 'dd-MM-yyyy' }}</p>
@@ -25,7 +33,15 @@
                <div class="wrapper">
                   <h2 class="mat-title flex">Recetas <span matBadge="{{ recipeesCount }}"></span></h2>
                </div>
-               <mat-card *ngFor="let recipee of recipees" data-id="{{ recipee._id }}" class="recipee" routerLink="/aprovisionamiento/receta/{{ recipee._id }}">
+               <form>
+                  <mat-form-field>
+                     <input matInput type="text" placeholder="Buscar" [(ngModel)]="filterRecipees" name="filterRecipees">
+                     <button mat-button *ngIf="filterRecipees" matSuffix mat-icon-button aria-label="Clear" (click)="filterRecipees=''">
+                        <mat-icon>close</mat-icon>
+                     </button>
+                  </mat-form-field>
+               </form>
+               <mat-card *ngFor="let recipee of recipees | collectionFilter: filterRecipees" data-id="{{ recipee._id }}" class="recipee" routerLink="/aprovisionamiento/receta/{{ recipee._id }}">
                   <mat-card-content>
                      <div class="left">
                         <p class="date">{{ recipee.name }}</p>
@@ -49,7 +65,15 @@
                <div class="wrapper">
                   <h2 class="mat-title flex">Bebida <span matBadge="{{ drinksCount }}"></span></h2>
                </div>
-               <mat-card *ngFor="let drink of drinks" data-id="{{ drink._id }}" routerLink="/aprovisionamiento/bebida/{{ drink._id }}">
+               <form>
+                  <mat-form-field>
+                     <input matInput type="text" placeholder="Buscar" [(ngModel)]="filterDrinks" name="filterDrinks">
+                     <button mat-button *ngIf="filterDrinks" matSuffix mat-icon-button aria-label="Clear" (click)="filterDrinks=''">
+                        <mat-icon>close</mat-icon>
+                     </button>
+                  </mat-form-field>
+               </form>
+               <mat-card *ngFor="let drink of drinks | collectionFilter: filterDrinks" data-id="{{ drink._id }}" routerLink="/aprovisionamiento/bebida/{{ drink._id }}">
                   <mat-card-content>
                      <div class="left">
                         <p class="date">{{ drink.date | date: 'dd-MM-yyyy' }}</p>
@@ -63,10 +87,18 @@
          </mat-tab>
          <mat-tab label="Cócteles">
             <div *ngIf="cocktails">
-                  <div class="wrapper">
-                     <h2 class="mat-title flex">Cócteles <span matBadge="{{ cocktailsCount }}"></span></h2>
-                  </div>
-               <mat-card *ngFor="let cocktail of cocktails" data-id="{{ cocktail._id }}" class="cocktails" routerLink="/aprovisionamiento/coctel/{{ cocktail._id }}">
+               <div class="wrapper">
+                  <h2 class="mat-title flex">Cócteles <span matBadge="{{ cocktailsCount }}"></span></h2>
+               </div>
+               <form>
+                  <mat-form-field>
+                     <input matInput type="text" placeholder="Buscar" [(ngModel)]="filterCocktails" name="filterCocktails">
+                     <button mat-button *ngIf="filterCocktails" matSuffix mat-icon-button aria-label="Clear" (click)="filterCocktails=''">
+                        <mat-icon>close</mat-icon>
+                     </button>
+                  </mat-form-field>
+               </form>
+               <mat-card *ngFor="let cocktail of cocktails | collectionFilter: filterCocktails" data-id="{{ cocktail._id }}" class="cocktails" routerLink="/aprovisionamiento/coctel/{{ cocktail._id }}">
                   <mat-card-content>
                      <p>{{ cocktail.name }}</p>
                      <ul>

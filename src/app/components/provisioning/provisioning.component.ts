@@ -17,7 +17,10 @@ import { Tab, SelectedTabService } from 'src/app/services/tabs/selected-tab.serv
   encapsulation: ViewEncapsulation.None
 })
 export class ProvisioningComponent implements OnInit {
-
+  filterFood: any;
+  filterDrinks: any;
+  filterRecipees: any;
+  filterCocktails: any;
   drinks: Drink[];
   food: FoodProduct[];
   cocktails: Cocktail[];

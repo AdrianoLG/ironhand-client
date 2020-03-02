@@ -31,7 +31,7 @@ export class FoodDetailComponent implements OnInit {
     this._location.back();
   }
 
-  deleteBook(): void {
+  deleteFood(): void {
     this._foodService.removeFoodProducts(this._id).subscribe(res => {
       this.goBack();
     });
