@@ -1,0 +1,19 @@
+<mat-tab-group [color]="'primary'" [backgroundColor]="'primary'"
+(selectedTabChange)="changeSelectedIndex($event)" [selectedIndex]="selectedIndex">
+   <mat-tab label="Ensayos">
+      <h2 class="mat-title flex">Ensayos <span matBadge="{{ rehearsalsCount }}"></span></h2>
+      <mat-card mat-ripple *ngFor="let rehearsal of rehearsals" routerLink="/ensayos/ensayo/editar/{{ rehearsal._id }}">
+         <mat-card-content>
+            <div class="left">
+               <h3>{{ rehearsal.instrument }}</h3>
+            </div>
+            <div class="right">
+               <h5>{{ rehearsal.time }}</h5>
+            </div>
+         </mat-card-content>
+      </mat-card>
+      <button mat-mini-fab>
+         <mat-icon routerLink="/ensayos/ensayo/crear">add</mat-icon>
+      </button>
+   </mat-tab>
+</mat-tab-group>

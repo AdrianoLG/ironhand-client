@@ -32,11 +32,11 @@ export class RehearsalsService {
     return this.http.get<Rehearsal>(this.globals.url + '/rehearsals/' + _id, this.httpOptions);
   }
 
-  addRehearsals(rehearsal: Rehearsal): any {
+  addRehearsal(rehearsal: Rehearsal): any {
     return this.http.post<any>(this.globals.url + '/rehearsals', rehearsal, this.httpOptions);
   }
 
-  updateRehearsals(_id: string, rehearsal: Rehearsal): any {
+  updateRehearsal(_id: string, rehearsal: Rehearsal): any {
     const body = [
       {
         propName: 'instrument',

@@ -1,0 +1,32 @@
+<div class="wrapper">
+   <h2 class="mat-title">Actualizar ensayo</h2>
+   <form [formGroup]="updateRehearsalForm" class="updateRehearsalForm" *ngIf="updateRehearsalForm">
+      <mat-form-field>
+         <input matInput placeholder="Instrumento" formControlName="instrument" required>
+      </mat-form-field>
+      <mat-form-field>
+         <input matInput placeholder="Tiempo" formControlName="time" required>
+      </mat-form-field>
+      <div *ngFor="let sheet of sheets">
+         <mat-form-field>
+            <input matInput placeholder="Nombre" sheetName value="sheet.name">
+         </mat-form-field>
+         <mat-form-field>
+            <input matInput type="number" placeholder="Tiempo" sheetTime value="sheet.time">
+         </mat-form-field>
+         <button mat-raised-button color="primary" (click)="addSheet(sheetName, sheetTime)">Añadir partitura</button>
+      </div>
+      <div class="buttonsRight">
+         <button mat-raised-button color="secondary" (click)="removeSheet()">Quitar partitura</button>
+      </div>
+      <!-- TODO DATE!! (add to server) -->
+      <div class="flex mT15" *ngIf="updateRehearsalForm">
+         <mat-icon aria-hidden="false" aria-label="Formulario incorrecto" *ngIf="updateRehearsalForm.status=='INVALID'" color="primary">block</mat-icon>
+         <mat-icon aria-hidden="false" aria-label="Formulario incorrecto" *ngIf="updateRehearsalForm.status=='VALID'" color="accent">thumb_up</mat-icon>
+         <div class="buttons">
+            <button mat-raised-button class="cancelButton" (click)="goBack()">Cancelar</button>
+            <button mat-raised-button type="submit" [disabled]="!updateRehearsalForm.valid" color="accent" (click)="createRehearsal()">Crear</button>
+         </div>
+      </div>
+   </form>
+</div>

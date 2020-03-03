@@ -6,6 +6,7 @@ import { COMMA, ENTER } from '@angular/cdk/keycodes';
 import { ChipItem } from 'src/app/models/chip-item';
 import { Recipee } from 'src/app/models/recipee';
 import { RecipeesService } from 'src/app/services/recipees/recipees.service';
+import { Ingredient } from 'src/app/models/ingredient';
 
 @Component({
   selector: 'app-recipee-create',
@@ -13,7 +14,7 @@ import { RecipeesService } from 'src/app/services/recipees/recipees.service';
   styleUrls: ['./recipee-create.component.scss']
 })
 export class RecipeeCreateComponent implements OnInit {
-  ingredients = [];
+  ingredients: Ingredient[];
   insSelectable = true;
   insRemovable = true;
   insAddOnBlur = true;
@@ -33,7 +34,7 @@ export class RecipeeCreateComponent implements OnInit {
       name: ['', [Validators.required]],
       img: ['', []]
     });
-    this.ingredients = [1];
+    this.ingredients = [];
   }
 
   goBack(): void {
@@ -57,9 +58,13 @@ export class RecipeeCreateComponent implements OnInit {
     this.instructionItems.splice(this.instructionItems.indexOf(item), 1);
   }
 
-  addIngredient() {
+  addIngredient(name, qty, unit) {
     const max = this.ingredients.length;
-    this.ingredients.push(max + 1);
+    this.ingredients.push({
+      name: name,
+      qty: qty,
+      unit: unit
+    });
   }
 
   removeIngredient() {

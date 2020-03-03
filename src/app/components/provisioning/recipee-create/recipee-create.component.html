@@ -6,18 +6,18 @@
       </mat-form-field>
       <div *ngFor="let ingredient of ingredients">
          <mat-form-field>
-            <input matInput placeholder="Nombre" formControlName="name">
+            <input matInput placeholder="Nombre" ingredientName>
          </mat-form-field>
          <mat-form-field>
-            <input matInput type="number" placeholder="Cantidad" formControlName="qty">
+            <input matInput type="number" placeholder="Cantidad" ingredientQty>
          </mat-form-field>
          <mat-form-field>
-            <input matInput placeholder="Unidad" formControlName="unit">
+            <input matInput placeholder="Unidad" ingredientUnit>
          </mat-form-field>
+         <button mat-raised-button color="primary" (click)="addIngredient(ingredientName, ingredientQty, ingredientUnit)">Añadir ingrediente</button>
       </div>
       <div class="buttonsRight">
          <button mat-raised-button color="secondary" (click)="removeIngredient()">Quitar ingrediente</button>
-         <button mat-raised-button color="primary" (click)="addIngredient()">Añadir ingrediente</button>
       </div>
       <mat-form-field>
          <mat-chip-list #instructionChipList aria-label="Instrucciones">
