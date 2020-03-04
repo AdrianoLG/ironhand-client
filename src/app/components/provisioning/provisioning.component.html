@@ -14,7 +14,7 @@
                      </button>
                   </mat-form-field>
                </form>
-               <mat-card *ngFor="let foodItem of food | collectionFilter: filterFood" data-id="{{ foodItem._id }}" routerLink="/aprovisionamiento/comida/{{ foodItem._id }}">
+               <mat-card *ngFor="let foodItem of food | collectionFilter: filterFood : 'name'" data-id="{{ foodItem._id }}" routerLink="/aprovisionamiento/comida/{{ foodItem._id }}">
                   <mat-card-content>
                      <div class="left">
                         <p class="date">{{ foodItem.expiry | date: 'dd-MM-yyyy' }}</p>
@@ -41,7 +41,7 @@
                      </button>
                   </mat-form-field>
                </form>
-               <mat-card *ngFor="let recipee of recipees | collectionFilter: filterRecipees" data-id="{{ recipee._id }}" class="recipee" routerLink="/aprovisionamiento/receta/{{ recipee._id }}">
+               <mat-card *ngFor="let recipee of recipees | collectionFilter: filterRecipees : 'name'" data-id="{{ recipee._id }}" class="recipee" routerLink="/aprovisionamiento/receta/{{ recipee._id }}">
                   <mat-card-content>
                      <div class="left">
                         <p class="date">{{ recipee.name }}</p>
@@ -73,7 +73,7 @@
                      </button>
                   </mat-form-field>
                </form>
-               <mat-card *ngFor="let drink of drinks | collectionFilter: filterDrinks" data-id="{{ drink._id }}" routerLink="/aprovisionamiento/bebida/{{ drink._id }}">
+               <mat-card *ngFor="let drink of drinks | collectionFilter: filterDrinks : 'name'" data-id="{{ drink._id }}" routerLink="/aprovisionamiento/bebida/{{ drink._id }}">
                   <mat-card-content>
                      <div class="left">
                         <h3>{{ drink.name }}</h3>
@@ -98,7 +98,7 @@
                      </button>
                   </mat-form-field>
                </form>
-               <mat-card *ngFor="let cocktail of cocktails | collectionFilter: filterCocktails" data-id="{{ cocktail._id }}" class="cocktails" routerLink="/aprovisionamiento/coctel/{{ cocktail._id }}">
+               <mat-card *ngFor="let cocktail of cocktails | collectionFilter: filterCocktails : 'name'" data-id="{{ cocktail._id }}" class="cocktails" routerLink="/aprovisionamiento/coctel/{{ cocktail._id }}">
                   <mat-card-content>
                      <p>{{ cocktail.name }}</p>
                      <ul>

@@ -10,7 +10,7 @@
             </button>
          </mat-form-field>
       </form>
-      <mat-card mat-ripple *ngFor="let book of books | collectionFilter: filterBook" routerLink="/cultura/libros/{{ book._id }}">
+      <mat-card mat-ripple *ngFor="let book of books | collectionFilter: filterBook : 'title'" routerLink="/cultura/libros/{{ book._id }}">
          <mat-card-content>
             <div class="left">
                <h3>{{ book.title }}</h3>
@@ -35,7 +35,7 @@
             </button>
          </mat-form-field>
       </form>
-      <mat-card mat-ripple *ngFor="let movie of movies | collectionFilter: filterMovie" routerLink="/cultura/peliculas/{{ movie._id }}">
+      <mat-card mat-ripple *ngFor="let movie of movies | collectionFilter: filterMovie : 'title'" routerLink="/cultura/peliculas/{{ movie._id }}">
          <mat-card-content>
             <div class="left">
                <h3>{{ movie.title }}</h3>
@@ -60,7 +60,7 @@
             </button>
          </mat-form-field>
       </form>
-      <mat-card mat-ripple *ngFor="let tvSerie of tvSeries | collectionFilter: filterTvSerie" routerLink="/cultura/series/{{ tvSerie._id }}">
+      <mat-card mat-ripple *ngFor="let tvSerie of tvSeries | collectionFilter: filterTvSerie : 'title'" routerLink="/cultura/series/{{ tvSerie._id }}">
          <mat-card-content>
             <div class="left">
                <h3>{{ tvSerie.title }}</h3>
