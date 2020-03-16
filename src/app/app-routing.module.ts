@@ -43,6 +43,11 @@ const routes: Routes = [
     path: 'aprovisionamiento',
     canActivate: [AuthGuard],
     loadChildren: () => import('./components/provisioning/provisioning.module').then(m => m.ProvisioningModule)
+  },
+  {
+    path: 'ensayos',
+    canActivate: [AuthGuard],
+    loadChildren: () => import('./components/rehearsal/rehearsal.module').then(m => m.RehearsalModule)
   }
 ];
 

@@ -1,9 +1,9 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { Router } from '@angular/router';
-import { DrinksService } from "src/app/services/drinks/drinks.service";
-import { FoodProductsService } from "src/app/services/food-products/food-products.service";
-import { CocktailsService } from "src/app/services/cocktails/cocktails.service";
-import { RecipeesService } from "src/app/services/recipees/recipees.service";
+import { DrinksService } from 'src/app/services/drinks/drinks.service';
+import { FoodProductsService } from 'src/app/services/food-products/food-products.service';
+import { CocktailsService } from 'src/app/services/cocktails/cocktails.service';
+import { RecipeesService } from 'src/app/services/recipees/recipees.service';
 import { Drink } from 'src/app/models/drink';
 import { FoodProduct } from 'src/app/models/food-product';
 import { Cocktail } from 'src/app/models/cocktail';

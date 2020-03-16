@@ -6,7 +6,7 @@ import { Rehearsal } from 'src/app/models/rehearsal';
 
 export interface RehearsalsResponse {
   count: number;
-  rehearsals: Rehearsal[]
+  rehearsals: Rehearsal[];
 }
 @Injectable({
   providedIn: 'root'

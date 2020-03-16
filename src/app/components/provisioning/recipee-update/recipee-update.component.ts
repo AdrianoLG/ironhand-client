@@ -1,12 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { Location } from '@angular/common';
-import { MatChipInputEvent } from '@angular/material/chips';
-import { COMMA, ENTER } from '@angular/cdk/keycodes';
-import { ChipItem } from 'src/app/models/chip-item';
 import { Recipee } from 'src/app/models/recipee';
 import { RecipeesService } from 'src/app/services/recipees/recipees.service';
+import { Ingredient } from 'src/app/models/ingredient';
 import { ActivatedRoute } from '@angular/router';
+
+export interface Instruction {
+  instruction: string;
+}
 
 @Component({
   selector: 'app-recipee-update',
@@ -14,14 +16,16 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./recipee-update.component.scss']
 })
 export class RecipeeUpdateComponent implements OnInit {
-  ingredients = [];
-  insSelectable = true;
-  insRemovable = true;
-  insAddOnBlur = true;
-  instructionItems: ChipItem[] = [];
+  ingredients: Ingredient[];
+  ingredientIndex: number;
+  ingredientFormAction: string;
+  addIngredientForm: FormGroup;
+  instructions: Instruction[];
+  instructionIndex: number;
+  instructionFormAction: string;
+  addInstructionForm: FormGroup;
   updateRecipeeForm: FormGroup;
   recipee: Recipee;
-  readonly separatorKeysCodes: number[] = [ENTER, COMMA];
   private _id: string;
 
   constructor(
@@ -37,17 +41,36 @@ export class RecipeeUpdateComponent implements OnInit {
       name: ['', [Validators.required]],
       img: ['', []]
     });
-    this.ingredients = [1];
     this._recipeesService.getRecipee(this._id).subscribe(recipee => {
       this.recipee = recipee;
       this.updateRecipeeForm.patchValue({
         name: recipee.name,
         img: recipee.img
       });
-      this.ingredients = recipee.ingredients;
-      for (const instruction of this.recipee.instructions) {
-        this.instructionItems.push({ name: instruction });
+      this.ingredients = [];
+      for (const ingredient of this.recipee.ingredients) {
+        this.ingredients.push({
+          name: ingredient.name,
+          qty: ingredient.qty,
+          unit: ingredient.unit
+        });
       }
+      this.instructions = [];
+      for (const instruction of this.recipee.instructions) {
+        this.instructions.push({instruction});
+      }
+      this.addIngredientForm = this._formBuilder.group({
+        name: ['', [Validators.required]],
+        qty: [, []],
+        unit: ['', []]
+      });
+      this.addInstructionForm = this._formBuilder.group({
+        instruction: ['', [Validators.required]]
+      });
+      this.ingredientIndex = -1;
+      this.ingredientFormAction = 'Añadir';
+      this.instructionIndex = -1;
+      this.instructionFormAction = 'Añadir';
     });
   }
 
@@ -55,46 +78,88 @@ export class RecipeeUpdateComponent implements OnInit {
     this._location.back();
   }
 
-  addItem(event: MatChipInputEvent): void {
-    const input = event.input;
-    const value = event.value;
-
-    if ((value || '').trim()) {
-      this.instructionItems.push({ name: value.trim() });
+  addIngredient(newIngredient?: number) {
+    if (newIngredient !== -1) {
+      this.ingredients[this.ingredientIndex].name = this.addIngredientForm.value.name;
+      this.ingredients[this.ingredientIndex].qty = this.addIngredientForm.value.qty;
+      this.ingredients[this.ingredientIndex].unit = this.addIngredientForm.value.unit;
+      this.ingredientIndex = -1;
+      this.ingredientFormAction = 'Añadir';
+      this.clearIngredientForm();
+    } else {
+      this.ingredients.push({
+        name: this.addIngredientForm.value.name,
+        qty: this.addIngredientForm.value.qty,
+        unit: this.addIngredientForm.value.unit
+      });
+      this.clearIngredientForm();
     }
+  }
 
-    if (input) {
-      input.value = '';
+  editIngredient(index: number, name: string, qty: number, unit: string) {
+    this.ingredientIndex = index;
+    this.addIngredientForm.patchValue({
+      name,
+      qty,
+      unit
+    });
+    this.ingredientFormAction = 'Editar';
+  }
+
+  removeIngredient(index: number) {
+    this.ingredients.splice(index, 1);
+    this.clearIngredientForm();
+  }
+
+  clearIngredientForm() {
+    this.addIngredientForm.patchValue({ name: '', qty: '', unit: ''});
+  }
+
+  addInstruction(newInstruction?: number) {
+    if (newInstruction !== -1) {
+      this.instructions[this.instructionIndex].instruction = this.addInstructionForm.value.instruction;
+      this.instructionIndex = -1;
+      this.instructionFormAction = 'Añadir';
+      this.clearInstructionForm();
+    } else {
+      this.instructions.push({
+        instruction: this.addInstructionForm.value.instruction
+      });
+      this.clearInstructionForm();
     }
   }
 
-  removeItem(item: ChipItem): void {
-    this.instructionItems.splice(this.instructionItems.indexOf(item), 1);
+  editInstruction(index: number, instruction: string) {
+    this.instructionIndex = index;
+    this.addInstructionForm.patchValue({ instruction });
+    this.instructionFormAction = 'Editar';
   }
 
-  addIngredient() {
-    const max = this.ingredients.length;
-    this.ingredients.push(max + 1);
+  removeInstruction(index: number) {
+    this.instructions.splice(index, 1);
+    this.instructionIndex = -1;
+    this.instructionFormAction = 'Añadir';
+    this.clearInstructionForm();
   }
 
-  removeIngredient() {
-    this.ingredients.pop();
+  clearInstructionForm() {
+    this.addInstructionForm.patchValue({ instruction: '' });
   }
 
   updateRecipee(): void {
     if (this.updateRecipeeForm.invalid) {
       return;
     }
-    const instructionItems: string[] = [];
-    for (const instruction of this.instructionItems) {
-      instructionItems.push(instruction.name);
+    const inst = [];
+    for (const i of this.instructions) {
+      inst.push(i.instruction);
     }
     this.recipee = {
       _id: null,
       name: this.updateRecipeeForm.value.name,
       img: this.updateRecipeeForm.value.img,
       ingredients: this.ingredients,
-      instructions: instructionItems
+      instructions: inst
     };
     this._recipeesService.updateRecipee(this._id, this.recipee).subscribe(() => {
       this.goBack();

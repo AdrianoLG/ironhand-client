@@ -1,0 +1,14 @@
+ul {
+   flex-wrap: wrap;
+   margin-bottom: 1.5em;
+   li {
+      align-items: center;
+      display: flex;
+      justify-content: space-between;
+      padding: .25em .5em;
+      width: 100%;
+   }
+}
+.buttonsB {
+   margin-bottom: 2em;
+}

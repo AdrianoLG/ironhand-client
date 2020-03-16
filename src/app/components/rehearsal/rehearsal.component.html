@@ -1,7 +1,8 @@
-<mat-tab-group [color]="'primary'" [backgroundColor]="'primary'"
-(selectedTabChange)="changeSelectedIndex($event)" [selectedIndex]="selectedIndex">
+<mat-tab-group [color]="'primary'" [backgroundColor]="'primary'">
    <mat-tab label="Ensayos">
-      <h2 class="mat-title flex">Ensayos <span matBadge="{{ rehearsalsCount }}"></span></h2>
+      <div class="wrapper">
+         <h2 class="mat-title flex">Ensayos <span matBadge="{{ rehearsalsCount }}"></span></h2>
+      </div>
       <mat-card mat-ripple *ngFor="let rehearsal of rehearsals" routerLink="/ensayos/ensayo/editar/{{ rehearsal._id }}">
          <mat-card-content>
             <div class="left">

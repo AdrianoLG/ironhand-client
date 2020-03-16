@@ -4,41 +4,54 @@
       <mat-form-field>
          <input matInput placeholder="Nombre" formControlName="name" required>
       </mat-form-field>
-      <div *ngFor="let ingredient of ingredients">
-         <mat-form-field>
-            <input matInput placeholder="Nombre" ingredientName>
-         </mat-form-field>
-         <mat-form-field>
-            <input matInput type="number" placeholder="Cantidad" ingredientQty>
-         </mat-form-field>
-         <mat-form-field>
-            <input matInput placeholder="Unidad" ingredientUnit>
-         </mat-form-field>
-         <button mat-raised-button color="primary" (click)="addIngredient(ingredientName, ingredientQty, ingredientUnit)">Añadir ingrediente</button>
-      </div>
-      <div class="buttonsRight">
-         <button mat-raised-button color="secondary" (click)="removeIngredient()">Quitar ingrediente</button>
-      </div>
       <mat-form-field>
-         <mat-chip-list #instructionChipList aria-label="Instrucciones">
-            <mat-chip *ngFor="let item of instructionItems" [selectable]="insSelectable"
-                  [removable]="insRemovable" (removed)="removeItem(item)">
-               {{ item.name }}
-               <mat-icon matChipRemove *ngIf="insRemovable">cancel</mat-icon>
-            </mat-chip>
-            <input placeholder="Instrucciones"
-                  [matChipInputFor]="instructionChipList"
-                  [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
-                  [matChipInputAddOnBlur]="insAddOnBlur"
-                  (matChipInputTokenEnd)="addItem($event)">
-         </mat-chip-list>
+         <input matInput placeholder="Imagen" formControlName="img" required>
       </mat-form-field>
+      <ul>
+         <li *ngFor="let ingredient of ingredients; let i = index" class="ingredient">
+            <p *ngIf="ingredient.qty">{{ ingredient.qty }} {{ ingredient.unit ? ingredient.unit + ' de ' : '' }} {{ ingredient.name | lowercase }}</p>
+            <p *ngIf="!ingredient.qty">{{ ingredient.name }}</p>
+            <button mat-icon-button class="mr1" (click)="editIngredient(i, ingredient.name, ingredient.qty, ingredient.unit)"><mat-icon>edit</mat-icon></button>
+         </li>
+      </ul>
+      <form [formGroup]="addIngredientForm" class="addIngredientForm" *ngIf="addIngredientForm">
+         <p class="mat-subheading-2">{{ ingredientFormAction }} ingrediente</p>
+         <mat-form-field>
+            <input matInput placeholder="Nombre" formControlName="name">
+         </mat-form-field>
+         <mat-form-field>
+            <input matInput type="number" placeholder="Cantidad" formControlName="qty">
+         </mat-form-field>
+         <mat-form-field>
+            <input matInput placeholder="Unidad" formControlName="unit">
+         </mat-form-field>
+         <div class="buttonsB">
+            <button mat-raised-button color="secondary" (click)="removeIngredient(i)" mat-raised-button class="removeIngredient" *ngIf="ingredientFormAction == 'Editar'">Quitar ingrediente</button>
+            <button mat-raised-button color="primary" (click)="addIngredient(ingredientIndex)"mat-raised-button type="submit" [disabled]="!addIngredientForm.valid" color="accent">{{ ingredientFormAction }} ingrediente</button>
+         </div>
+      </form>
+      <ul>
+         <li *ngFor="let instruction of instructions; let i = index" class="instruction">
+            <p>{{ instruction.instruction }}</p>
+            <button mat-icon-button class="mr1" (click)="editInstruction(i, instruction.instruction)"><mat-icon>edit</mat-icon></button>
+         </li>
+      </ul>
+      <form [formGroup]="addInstructionForm" class="addInstructionForm" *ngIf="addInstructionForm">
+         <p class="mat-subheading-2">{{ instructionFormAction }} instrucción</p>
+         <mat-form-field>
+            <input matInput placeholder="Instrucción" formControlName="instruction">
+         </mat-form-field>
+         <div class="buttonsB">
+            <button mat-raised-button color="secondary" (click)="removeInstruction(i)" mat-raised-button class="removeIngredient" *ngIf="instructionFormAction == 'Editar'">Quitar instrucción</button>
+            <button mat-raised-button color="primary" (click)="addInstruction(instructionIndex)"mat-raised-button type="submit" [disabled]="!addInstructionForm.valid" color="accent">{{ instructionFormAction }} instrucción</button>
+         </div>
+      </form>
       <div class="flex mT15" *ngIf="addRecipeeForm">
          <mat-icon aria-hidden="false" aria-label="Formulario incorrecto" *ngIf="addRecipeeForm.status=='INVALID'" color="primary">block</mat-icon>
          <mat-icon aria-hidden="false" aria-label="Formulario incorrecto" *ngIf="addRecipeeForm.status=='VALID'" color="accent">thumb_up</mat-icon>
          <div class="buttons">
             <button mat-raised-button class="cancelButton" (click)="goBack()">Cancelar</button>
-            <button mat-raised-button type="submit" [disabled]="!addRecipeeForm.valid" color="accent" (click)="createRecipee()">Crear</button>
+            <button mat-raised-button type="submit" [disabled]="!addRecipeeForm.valid" color="accent" (click)="saveRecipee()">Crear</button>
          </div>
       </div>
    </form>
