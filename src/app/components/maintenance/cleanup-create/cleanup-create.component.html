@@ -1,5 +1,5 @@
 <div class="wrapper">
-   <h2 class="mat-title">Añadir tareas de limpieza</h2>
+   <h2 class="formTitle">Añadir tareas de limpieza</h2>
    <form [formGroup]="addCleanupForm">
       <mat-form-field>
          <input matInput [matDatepicker]="picker" formControlName="date" placeholder="Fecha">
@@ -54,7 +54,7 @@
          </div>
       </div>
    </form>
-   <div class="flex mT15">
+   <div class="formFooter">
       <mat-icon aria-hidden="false" aria-label="Formulario incorrecto" *ngIf="addCleanupForm.status=='INVALID'" color="primary">block</mat-icon>
       <mat-icon aria-hidden="false" aria-label="Formulario incorrecto" *ngIf="addCleanupForm.status=='VALID'" color="accent">thumb_up</mat-icon>
       <div class="buttons">

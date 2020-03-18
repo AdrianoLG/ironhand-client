@@ -1,4 +1,6 @@
-@import '../../../../variables.scss';
+@import '_colors';
+@import '_typography';
+
 h2,
 h3 {
 	color: $secondary;
@@ -12,27 +14,22 @@ h2 {
 	margin-bottom: .5rem;
 }
 h3 {
-	font-size: 1rem;
+	color: $secondaryLightLow;
+	font-size: $fontSize-s;
 }
 h4 {
 	text-align: right;
-	font-size: .875rem;
+	font-size: $fontSize-s;
 	color: $secondaryLightLowest;
-	text-transform: uppercase;
 }
-.categories,
-.cast {
-	line-height: 1.25em;
-	margin-bottom: 1em;
-	span {
-		color: $secondaryLightLow;
-		font-size: .875rem;
-	}
+img {
+	box-sizing: border-box;
+	padding: 0 1rem;
+	width: 100%;
 }
-.img {
-	img {
-		width: 100%;
-	}
+.flex {
+	align-items: baseline;
+	display: flex;
 }
 .left {
 	width: 75%;
@@ -42,8 +39,8 @@ h4 {
 }
 .data {
 	color: $secondaryLightLow;
-	font-size: .875rem;
+	font-size: $fontSize-s;
 }
 .tvSeriedata p {
-	margin-bottom: 1.25em;
+	margin-bottom: $fontSize-m;
 }

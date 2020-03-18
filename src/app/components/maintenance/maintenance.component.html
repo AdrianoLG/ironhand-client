@@ -2,7 +2,7 @@
 (selectedTabChange)="changeSelectedIndex($event)" [selectedIndex]="selectedIndex">
    <mat-tab label="Limpieza">
       <div class="wrapper">
-         <h2 class="mat-title flex">Limpieza <span matBadge="{{ cleanupsCount }}"></span></h2>
+         <h2 class="sectionTitle">Limpieza <span matBadge="{{ cleanupsCount }}"></span></h2>
       </div>
       <div *ngIf="cleanups">
          <mat-card mat-ripple *ngFor="let task of cleanups" routerLink="/mantenimiento/limpieza/editar/{{ task._id }}">
@@ -23,7 +23,7 @@
    </mat-tab>
    <mat-tab label="Plantas">
       <div class="wrapper">
-         <h2 class="mat-title flex">Plantas <span matBadge="{{ plantsCount }}"></span></h2>
+         <h2 class="sectionTitle">Plantas <span matBadge="{{ plantsCount }}"></span></h2>
       </div>
       <mat-card mat-ripple *ngFor="let plant of plants" routerLink="/mantenimiento/plantas/{{ plant._id }}">
          <mat-card-content>

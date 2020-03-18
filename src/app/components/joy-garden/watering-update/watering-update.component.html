@@ -1,5 +1,5 @@
 <div class="wrapper">
-   <h2 class="mat-title">Actualizar riego</h2>
+   <h2 class="formTitle">Actualizar riego</h2>
    <form [formGroup]="updateWateringForm">
       <mat-form-field>
          <input matInput placeholder="Contenedor" formControlName="container" required>
@@ -37,7 +37,7 @@
          <input matInput type="number" placeholder="PK 13-14" formControlName="pk1314">
       </mat-form-field>
    </form>
-   <div class="flex mT15">
+   <div class="formFooter">
       <mat-icon aria-hidden="false" aria-label="Formulario incorrecto" *ngIf="updateWateringForm.status=='INVALID'" color="primary">block</mat-icon>
       <mat-icon aria-hidden="false" aria-label="Formulario incorrecto" *ngIf="updateWateringForm.status=='VALID'" color="accent">thumb_up</mat-icon>
       <div class="buttons">

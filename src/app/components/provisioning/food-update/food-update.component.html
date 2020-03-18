@@ -1,6 +1,6 @@
 <div class="wrapper">
-   <h2 class="mat-title">Actualizar comida</h2>
-   <form [formGroup]="updateFoodForm" class="updateFoodForm" *ngIf="updateFoodForm">
+   <h2 class="formTitle">Actualizar comida</h2>
+   <form [formGroup]="updateFoodForm" *ngIf="updateFoodForm">
       <mat-form-field>
          <input matInput placeholder="Nombre" formControlName="name" required>
       </mat-form-field>
@@ -41,7 +41,7 @@
             (matChipInputTokenEnd)="addItem('tag', $event)">
          </mat-chip-list>
       </mat-form-field>
-      <div class="flex mT15">
+      <div class="formFooter">
          <mat-icon aria-hidden="false" aria-label="Formulario incorrecto" *ngIf="updateFoodForm.status=='INVALID'" color="primary">block</mat-icon>
          <mat-icon aria-hidden="false" aria-label="Formulario incorrecto" *ngIf="updateFoodForm.status=='VALID'" color="accent">thumb_up</mat-icon>
          <div class="buttons">

@@ -1,5 +1,5 @@
 <div class="wrapper">
-   <h2 class="mat-title">Crear sugerencia de comida</h2>
+   <h2 class="formTitle">Crear sugerencia de comida</h2>
    <form [formGroup]="addSuggestionForm">
       <mat-form-field>
          <input matInput formControlName="name" placeholder="Nombre" required>
@@ -33,7 +33,7 @@
          </mat-chip-list>
       </mat-form-field>
    </form>
-   <div class="flex mT15">
+   <div class="formFooter">
       <mat-icon aria-hidden="false" aria-label="Formulario incorrecto" *ngIf="addSuggestionForm.status=='INVALID'" color="primary">block</mat-icon>
       <mat-icon aria-hidden="false" aria-label="Formulario incorrecto" *ngIf="addSuggestionForm.status=='VALID'" color="accent">thumb_up</mat-icon>
       <div class="buttons">

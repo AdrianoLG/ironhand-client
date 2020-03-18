@@ -1,4 +1,6 @@
-@import '../../../../variables.scss';
+@import '_colors';
+@import '_typography';
+
 h2,
 h3 {
 	color: $secondary;
@@ -12,13 +14,17 @@ h2 {
 	margin-bottom: .5rem;
 }
 h3 {
-	font-size: 1rem;
+	color: $secondaryLightLow;
+	font-size: $fontSize-s;
 }
 h4 {
 	text-align: right;
-	font-size: .875rem;
+	font-size: $fontSize-s;
 	color: $secondaryLightLowest;
-	text-transform: uppercase;
+}
+.flex {
+	align-items: baseline;
+	display: flex;
 }
 .categories,
 .cast {
@@ -30,6 +36,8 @@ h4 {
 }
 .img {
 	img {
+      box-sizing: border-box;
+      padding: 0 1rem;
 		width: 100%;
 	}
 }

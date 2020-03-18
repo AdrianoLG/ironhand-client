@@ -1,4 +1,6 @@
-@import '../variables.scss';
+@import '_colors';
+@import '_typography';
+
 mat-sidenav-container {
    bottom: 0;
    height: calc(100vh - 64px);
@@ -17,25 +19,18 @@ mat-toolbar {
       text-decoration: none;
    }
 }
-.avatar {
-   img {
-      border-radius: 100%;
-   }
-}
-.height {
-   height: 100vh;
-   top: 0;
-}
-.invisible {
-   display: none;
-}
-.mat-drawer-side {
-   border-right: none;
-}
 .mat-nav-list .mat-list-item {
    color: $secondaryLightLow;
-   &.active-link, &:hover {
-      background: rgba(183,28,28,.1);
+   &:focus {
+      background: none;
+      box-sizing: border-box;
+      border: 1px dashed $primaryLightLowest;
+   }
+   &.active-link {
+      background: $lightBackground;
+   }
+   &:hover {
+      background: $primaryLightLowest;
       color: $primary;
    }
    .mat-icon {
@@ -51,6 +46,13 @@ mat-toolbar {
    .date, .user {
       color: white;
    }
+   .date {
+      font-size: $fontSize-s;
+   }
+   .user {
+      font-size: $fontSize-m;
+      @include marginBottom($fontSize-m, 3);
+   }
 }
 .spacer {
    flex: 1 1 auto;
@@ -61,6 +63,11 @@ mat-toolbar {
       top: 56px;
    }
 }
-@media (min-width: 1120px) {
-
+/* Used for show/hide the topbar */
+.height {
+   height: 100vh;
+   top: 0;
+}
+.invisible {
+   display: none;
 }

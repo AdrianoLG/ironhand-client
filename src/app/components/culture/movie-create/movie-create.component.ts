@@ -37,7 +37,7 @@ export class MovieCreateComponent implements OnInit {
     this.addMovieForm = this._formBuilder.group({
       title: ['', [Validators.required]],
       director: ['', [Validators.required]],
-      year: [1895, [Validators.required, Validators.min(1895)]],
+      year: [, [Validators.required, Validators.min(1895)]],
       cast: [[], []],
       categories: [[], []],
       duration: [, []],

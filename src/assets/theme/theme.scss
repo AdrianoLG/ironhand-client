@@ -32,21 +32,12 @@
 }
 
 @import './_reset';
+@import '_colors';
 @import '~@angular/material/theming';
 
 $fira-sans: mat-typography-config(
    $font-family: '"Fira Sans", sans-serif'
-   );
-
-body {
-   font-family: 'Fira Sans', sans-serif;
-   .mat-toolbar h1 {
-      font-family: 'Courgette', cursive;
-      font-size: 1.125em;
-   }
-}
-
-
+);
 
 @include mat-core($fira-sans);
 

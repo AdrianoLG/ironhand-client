@@ -1,7 +1,7 @@
 <mat-tab-group [color]="'primary'" [backgroundColor]="'primary'"
-(selectedTabChange)="changeSelectedIndex($event)" [selectedIndex]="selectedIndex">
+(selectedTabChange)="changeSelectedIndex($event)" [selectedIndex]="selectedIndex" (swipeleft)="previousSection(selectedIndex)" (swiperight)="nextSection(selectedIndex)">
    <mat-tab label="Libros">
-      <h2 class="mat-title flex">Libros <span matBadge="{{ booksCount }}"></span></h2>
+      <h2 class="sectionTitle">Libros <span matBadge="{{ booksCount }}"></span></h2>
       <form>
          <mat-form-field>
             <input matInput type="text" placeholder="Buscar" [(ngModel)]="filterBook" name="filterBook">
@@ -10,7 +10,7 @@
             </button>
          </mat-form-field>
       </form>
-      <mat-card mat-ripple *ngFor="let book of books | collectionFilter: filterBook : 'title'" routerLink="/cultura/libros/{{ book._id }}">
+      <mat-card mat-ripple *ngFor="let book of books | collectionFilter: filterBook : 'titleAndAuthor'" routerLink="/cultura/libros/{{ book._id }}">
          <mat-card-content>
             <div class="left">
                <h3>{{ book.title }}</h3>
@@ -21,12 +21,12 @@
             </div>
          </mat-card-content>
       </mat-card>
-      <button mat-mini-fab>
-         <mat-icon routerLink="/cultura/libros/crear">add</mat-icon>
+      <button mat-mini-fab routerLink="/cultura/libros/crear">
+         <mat-icon>add</mat-icon>
       </button>
    </mat-tab>
    <mat-tab label="Películas">
-      <h2 class="mat-title flex">Películas <span matBadge="{{ moviesCount }}"></span></h2>
+      <h2 class="sectionTitle">Películas <span matBadge="{{ moviesCount }}"></span></h2>
       <form>
          <mat-form-field>
             <input matInput type="text" placeholder="Buscar" [(ngModel)]="filterMovie" name="filterMovie">
@@ -35,7 +35,7 @@
             </button>
          </mat-form-field>
       </form>
-      <mat-card mat-ripple *ngFor="let movie of movies | collectionFilter: filterMovie : 'title'" routerLink="/cultura/peliculas/{{ movie._id }}">
+      <mat-card mat-ripple *ngFor="let movie of movies | collectionFilter: filterMovie : 'titleAndDirector'" routerLink="/cultura/peliculas/{{ movie._id }}">
          <mat-card-content>
             <div class="left">
                <h3>{{ movie.title }}</h3>
@@ -46,12 +46,12 @@
             </div>
          </mat-card-content>
       </mat-card>
-      <button mat-mini-fab>
-         <mat-icon routerLink="/cultura/peliculas/crear">add</mat-icon>
+      <button mat-mini-fab routerLink="/cultura/peliculas/crear">
+         <mat-icon>add</mat-icon>
       </button>
    </mat-tab>
    <mat-tab tab label="Series">
-      <h2 class="mat-title flex">Series <span matBadge="{{ tvSeriesCount }}"></span></h2>
+      <h2 class="sectionTitle">Series <span matBadge="{{ tvSeriesCount }}"></span></h2>
       <form>
          <mat-form-field>
             <input matInput type="text" placeholder="Buscar" [(ngModel)]="filterTvSerie" name="filterTvSerie">
@@ -60,19 +60,19 @@
             </button>
          </mat-form-field>
       </form>
-      <mat-card mat-ripple *ngFor="let tvSerie of tvSeries | collectionFilter: filterTvSerie : 'title'" routerLink="/cultura/series/{{ tvSerie._id }}">
+      <mat-card mat-ripple *ngFor="let tvSerie of tvSeries | collectionFilter: filterTvSerie : 'titleAndTV'" routerLink="/cultura/series/{{ tvSerie._id }}">
          <mat-card-content>
             <div class="left">
                <h3>{{ tvSerie.title }}</h3>
-               <h4>{{ tvSerie.director }}</h4>
+               <h4>{{ tvSerie.tv }}</h4>
             </div>
             <div class="right">
                <h5>{{ tvSerie.lastSeen || '-' }}</h5>
             </div>
          </mat-card-content>
       </mat-card>
-      <button mat-mini-fab>
-         <mat-icon routerLink="/cultura/series/crear">add</mat-icon>
+      <button mat-mini-fab routerLink="/cultura/series/crear">
+         <mat-icon>add</mat-icon>
       </button>
    </mat-tab>
 </mat-tab-group>

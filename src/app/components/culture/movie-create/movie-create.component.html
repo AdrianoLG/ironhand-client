@@ -1,5 +1,5 @@
 <div class="wrapper">
-   <h2 class="mat-title">Añadir película</h2>
+   <h2 class="formTitle">Añadir película</h2>
    <form [formGroup]="addMovieForm">
       <mat-form-field>
          <input matInput placeholder="Título" formControlName="title" required>
@@ -45,7 +45,7 @@
          <input matInput placeholder="Imagen" formControlName="img">
       </mat-form-field>
       <mat-slide-toggle (change)="seenMovie = !seenMovie">Vista</mat-slide-toggle>
-      <div *ngIf="seenMovie" class="mT15">
+      <div *ngIf="seenMovie">
          <mat-form-field>
             <input matInput [matDatepicker]="picker" formControlName="seenDate" placeholder="Fecha">
             <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
@@ -78,7 +78,7 @@
          </div>
       </div>
    </form>
-   <div class="flex mT15">
+   <div class="formFooter">
       <mat-icon aria-hidden="false" aria-label="Formulario incorrecto" *ngIf="addMovieForm.status=='INVALID'" color="primary">block</mat-icon>
       <mat-icon aria-hidden="false" aria-label="Formulario incorrecto" *ngIf="addMovieForm.status=='VALID'" color="accent">thumb_up</mat-icon>
       <div class="buttons">

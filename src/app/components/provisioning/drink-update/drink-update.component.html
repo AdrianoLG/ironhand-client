@@ -1,6 +1,6 @@
 <div class="wrapper">
-   <h2 class="mat-title">Actualizar bebida</h2>
-   <form [formGroup]="updateDrinkForm" class="updateDrinkForm" *ngIf="updateDrinkForm">
+   <h2 class="formTitle">Actualizar bebida</h2>
+   <form [formGroup]="updateDrinkForm" *ngIf="updateDrinkForm">
       <mat-form-field>
          <input matInput placeholder="Nombre" formControlName="name" required>
       </mat-form-field>
@@ -26,7 +26,7 @@
       <mat-form-field>
          <input matInput type="number" placeholder="Cantidad de producto" formControlName="productQty">
       </mat-form-field>
-      <div class="flex mT15" *ngIf="updateDrinkForm">
+      <div class="formFooter" *ngIf="updateDrinkForm">
          <mat-icon aria-hidden="false" aria-label="Formulario incorrecto" *ngIf="updateDrinkForm.status=='INVALID'" color="primary">block</mat-icon>
          <mat-icon aria-hidden="false" aria-label="Formulario incorrecto" *ngIf="updateDrinkForm.status=='VALID'" color="accent">thumb_up</mat-icon>
          <div class="buttons">

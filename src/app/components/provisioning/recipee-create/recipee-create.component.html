@@ -1,6 +1,6 @@
 <div class="wrapper">
-   <h2 class="mat-title">Crear receta</h2>
-   <form [formGroup]="addRecipeeForm" class="addRecipeeForm" *ngIf="addRecipeeForm">
+   <h2 class="formTitle">Crear receta</h2>
+   <form [formGroup]="addRecipeeForm" *ngIf="addRecipeeForm">
       <mat-form-field>
          <input matInput placeholder="Nombre" formControlName="name" required>
       </mat-form-field>
@@ -14,7 +14,7 @@
             <button mat-icon-button class="mr1" (click)="editIngredient(i, ingredient.name, ingredient.qty, ingredient.unit)"><mat-icon>edit</mat-icon></button>
          </li>
       </ul>
-      <form [formGroup]="addIngredientForm" class="addIngredientForm" *ngIf="addIngredientForm">
+      <form [formGroup]="addIngredientForm" *ngIf="addIngredientForm">
          <p class="mat-subheading-2">{{ ingredientFormAction }} ingrediente</p>
          <mat-form-field>
             <input matInput placeholder="Nombre" formControlName="name">
@@ -36,7 +36,7 @@
             <button mat-icon-button class="mr1" (click)="editInstruction(i, instruction.instruction)"><mat-icon>edit</mat-icon></button>
          </li>
       </ul>
-      <form [formGroup]="addInstructionForm" class="addInstructionForm" *ngIf="addInstructionForm">
+      <form [formGroup]="addInstructionForm" *ngIf="addInstructionForm">
          <p class="mat-subheading-2">{{ instructionFormAction }} instrucción</p>
          <mat-form-field>
             <input matInput placeholder="Instrucción" formControlName="instruction">
@@ -46,7 +46,7 @@
             <button mat-raised-button color="primary" (click)="addInstruction(instructionIndex)"mat-raised-button type="submit" [disabled]="!addInstructionForm.valid" color="accent">{{ instructionFormAction }} instrucción</button>
          </div>
       </form>
-      <div class="flex mT15" *ngIf="addRecipeeForm">
+      <div class="formFooter" *ngIf="addRecipeeForm">
          <mat-icon aria-hidden="false" aria-label="Formulario incorrecto" *ngIf="addRecipeeForm.status=='INVALID'" color="primary">block</mat-icon>
          <mat-icon aria-hidden="false" aria-label="Formulario incorrecto" *ngIf="addRecipeeForm.status=='VALID'" color="accent">thumb_up</mat-icon>
          <div class="buttons">

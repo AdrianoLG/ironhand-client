@@ -2,26 +2,27 @@
    <div class="wrapper">
       <div class="flex aiFlexEnd">
          <div class="left">
-            <h2 class="mat-title">{{ tvSerie.title }}</h2>
-            <h3>{{ tvSerie.director }}</h3>
+            <h2 class="formTitle">{{ tvSerie.title }}</h2>
+            <h3>{{ tvSerie.tv }}</h3>
          </div>
          <div class="right">
             <h4 class="lastSeen">{{ tvSerie.lastSeen }}</h4>
          </div>
       </div>
    </div>
-   <div class="img" *ngIf="tvSerie">
+   <div *ngIf="tvSerie">
       <img src="{{ tvSerie.img }}" alt="">
    </div>
-   <div class="img" *ngIf="!tvSerie">
+   <div *ngIf="!tvSerie">
       <img src="assets/img/dummy.jpg" alt="">
    </div>
    <div class="wrapper tvSeriedata">
-      <p class="cast">Reparto: <span *ngFor="let actor of tvSerie.cast; let isLast = last">{{ actor }}{{isLast ? '' : ', '}}</span></p>
+      <p>Director: <span class="data">{{ tvSerie.director }}</span></p>
+      <p>Reparto: <span *ngFor="let actor of tvSerie.cast; let isLast = last" class="data">{{ actor }}{{isLast ? '' : ', '}}</span></p>
       <p>TV: <span class="data">{{ tvSerie.tv }}</span></p>
       <p>País: <span class="data">{{ tvSerie.country }}</span></p>
       <p>Fecha de comienzo: <span class="data">{{ tvSerie.beginDate | date: 'dd-MM-yyyy' }}</span></p>
-      <p class="categories">Categorías: <span *ngFor="let category of tvSerie.categories; let isLast = last">{{ category }}{{isLast ? '' : ', '}}</span></p>
+      <p>Categorías: <span *ngFor="let category of tvSerie.categories; let isLast = last" class="data">{{ category }}{{isLast ? '' : ', '}}</span></p>
       <p *ngIf="tvSerie.ended">Terminada: <span class="ended data" *ngIf="tvSerie.endDate">{{ tvSerie.endDate | date: 'dd-MM-yyyy' }}</span></p>
    </div>
    <div class="wrapper">

@@ -1,5 +1,5 @@
 <div class="wrapper">
-   <h2 class="mat-title">Añadir riego</h2>
+   <h2 class="formTitle">Añadir riego</h2>
    <form [formGroup]="updateSeedForm">
       <mat-form-field>
          <input matInput placeholder="Nombre" formControlName="name" required>
@@ -32,7 +32,7 @@
          <input matInput placeholder="Aroma" formControlName="aroma">
       </mat-form-field>
    </form>
-   <div class="flex mT15">
+   <div class="formFooter">
       <mat-icon aria-hidden="false" aria-label="Formulario incorrecto" *ngIf="updateSeedForm.status=='INVALID'" color="primary">block</mat-icon>
       <mat-icon aria-hidden="false" aria-label="Formulario incorrecto" *ngIf="updateSeedForm.status=='VALID'" color="accent">thumb_up</mat-icon>
       <div class="buttons">

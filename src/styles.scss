@@ -1,7 +1,14 @@
-/* You can add global styles to this file, and also import other style files */
-@import './variables.scss';
+@import '_colors';
+@import '_typography';
+
 body {
+	color: $secondary;
 	overflow: hidden;
+	font-family: 'Fira Sans', sans-serif;
+	.mat-toolbar h1 {
+		font-family: 'Courgette', cursive;
+		font-size: $fontSize-m;
+	}
 }
 h2,
 h3,
@@ -9,7 +16,176 @@ h4,
 p {
 	color: $secondary;
 }
-h3 {
+button {
+	font-size: $fontSize-s !important;
+}
+.formFooter {
+	@extend .flexCBw;
+	margin-top: 1rem;
+}
+.formTitle {
+	@extend .sectionTitle;
+	margin-bottom: 1.5rem;
+}
+.sectionTitle {
+	@extend .flexCBw;
+	font-weight: 500;
+	font-size: $fontSize-m;
+}
+/* Utility */
+.flexCC {
+	align-items: center !important;
+	display: flex !important;
+	justify-content: center !important;
+}
+.flexCBw {
+	align-items: center;
+	display: flex;
+	justify-content: space-between;
+}
+.floatRight {
+	float: right;
+}
+.mb1 {
+	margin-bottom: 1em;
+}
+.pt0 {
+	padding-top: 0;
+}
+.wrapper {
+	padding: 1.5em 1em 1em;
+}
+/* Material components */
+mat-form-field {
+	width: 100%;
+}
+.buttons {
+	button {
+		margin: $fontSize-s $fontSize-s $fontSize-s 0;
+		&:last-child {
+			margin-right: 0;
+		}
+	}
+	.mat-raised-button.cancelButton {
+		background: $secondaryLightLowest;
+		color: white;
+	}
+}
+.mat-badge-medium.mat-badge-overlap.mat-badge-after .mat-badge-content {
+	right: 0;
+}
+mat-card.mat-card {
+	align-items: baseline;
+	cursor: pointer;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	margin: .5em 1em;
+	.mat-card-content {
+		margin-bottom: 0;
+		width: 100%;
+	}
+}
+.mat-card:last-child {
+	margin-bottom: 4em;
+}
+.mat-input-element {
+	color: $secondary;
+}
+.mat-mini-fab {
+	@extend .flexCC;
+	bottom: 1em;
+	position: fixed !important;
+	right: 1em;
+	z-index: 5;
+	.mat-button-wrapper {
+		@extend .flexCC;
+	}
+}
+.mat-slide-toggle {
+	padding: .5em 0;
+}
+.mat-slider-horizontal {
+   .mat-slider-thumb-container {
+      left: 5px;
+	}
+	.mat-slider-track-background {
+		background-color: rgba(0, 0, 0, 0.42);
+	}
+	.mat-slider-track-wrapper {
+		height: 1px !important;
+	}
+   .mat-slider-wrapper {
+
+		height: 1px !important;
+      left: 0 !important;
+      right: 0 !important;
+      width: 100%;
+   }
+}
+.mat-tab-group, .mat-tab-body-wrapper {
+	height: 100%;
+}
+.mat-tab-label {
+	transition: .5s opacity;
+}
+.mat-tab-label:hover {
+	color: white;
+	opacity: 1;
+}
+.mat-tab-group.mat-background-primary .mat-tab-label {
+	&.-active .mat-tab-label-content{
+		color: $secondary;
+	}
+}
+.mat-tab-group.mat-primary.mat-background-primary .mat-ink-bar, .mat-tab-nav-bar.mat-primary.mat-background-primary .mat-ink-bar {
+	background-color: $primary;
+}
+.mat-tab-group.mat-background-primary .mat-tab-header {
+	background-color: $lightestBackground;
+}
+.mat-tab-group.mat-background-accent.bottomTabs {
+	.mat-ink-bar {
+		background-color: $lightBackground;
+		position: absolute;
+		top: 0;
+	}
+	.mat-tab-header {
+		background: $primary;
+		bottom: 0;
+		position: fixed;
+		width: 100%;
+		z-index: 2;
+		.mat-tab-label-active,
+		.mat-tab-label-content {
+			color: white;
+			opacity: 1;
+		}
+	}
+	.mat-tab-labels {
+		position: relative;
+	}
+}
+.mat-tab-group.mat-background-primary {
+	.mat-tab-label-active {
+		opacity: 1;
+		.mat-tab-label-content {
+			color: $primary;
+		}
+	}
+	.mat-tab-label-content {
+		color: $secondaryLightLow;
+		.mat-tab-label-active,
+		.mat-tab-label-content {
+			color: $secondary;
+			opacity: 1;
+		}
+	}
+}
+.mat-tab-labels {
+	border-bottom: 1px solid $lightBackground;
+}
+/*h3 {
 	padding: 0 1rem;
 }
 ul {
@@ -22,13 +198,6 @@ li {
 	margin: 1% 2em 0;
 	padding: 2em;
 }
-mat-card.mat-card {
-	align-items: baseline;
-	display: flex;
-	flex-direction: column;
-	justify-content: flex-start;
-	margin: .5em 1em;
-}
 mat-card-content.mat-card-content {
 	display: flex;
 	width: 100%;
@@ -38,9 +207,6 @@ mat-card-content.mat-card-content {
 	.right {
 		width: 75%;
 	}
-}
-mat-form-field {
-	width: 100%;
 }
 mat-list {
 	width: 30%;
@@ -52,45 +218,21 @@ mat-list h3 {
 	margin-bottom: 1em;
 	padding: 1em;
 }
-mat-sidenav-container {
-	height: calc(100vh - 32px) !important;
-	padding-bottom: 5em;
-}
 mat-tab-header .mat-tab-label-active {
 	color: $primary;
 }
-.mat-tab-group.mat-background-accent.bottomTabs .mat-tab-header {
-	background: $primary;
-	bottom: 0;
-	position: fixed;
-	width: 100%;
-	z-index: 2;
-	.mat-tab-label-active,
-	.mat-tab-label-content {
-		color: white;
-		opacity: 1;
-	}
-}
+
 .mat-tab-labels .mat-tab-label-active {
 	opacity: 1;
 }
-.buttons .mat-raised-button.cancelButton {
-	background: $secondaryLightLowest;
-	color: white;
-}
+
 .category {
 	font-size: .75em !important;
 	padding-top: .5em !important;
 	font-style: italic;
 	text-transform: uppercase;
 }
-.buttons button {
-	margin-bottom: 1em;
-	margin-right: 1em;
-	&:last-child {
-		margin-right: 0;
-	}
-}
+
 .flex {
 	align-items: center;
 	display: flex;
@@ -118,17 +260,8 @@ mat-tab-header .mat-tab-label-active {
 .mat-toolbar-row .mat-icon {
 	color: white;
 }
-.mT15 {
-	margin-top: 1.5rem;
-}
 .mat-badge-medium.mat-badge-overlap.mat-badge-after .mat-badge-content {
 	right: 0;
-}
-.mat-card {
-	cursor: pointer;
-}
-.mat-card .mat-card-content {
-	margin-bottom: 0;
 }
 .mat-checkbox-checked {
 	opacity: .6;
@@ -159,26 +292,17 @@ mat-tab-header .mat-tab-label-active {
 		color: $secondaryLightLowest;
 	}
 }
-.mat-mini-fab {
-	bottom: 1em;
-	position: fixed !important;
-	right: 1em;
-	z-index: 5;
-}
 .pad {
 	padding: 0 1em;
 }
 .wrapper {
 	padding: 1.5em 1em 1em;
 }
-.mat-tab-group {
-	height: 100%;
-}
 .mat-tab-body-wrapper {
-	box-sizing: border-box;
 	flex-grow: 1;
 	flex-wrap: wrap;
 	overflow: auto !important;
+	box-sizing: border-box;
 	padding-bottom: 4em;
 }
 
@@ -191,4 +315,4 @@ mat-tab-header .mat-tab-label-active {
 	display: flex;
 	flex-direction: column;
 	flex-grow: 1;
-}
+}*/

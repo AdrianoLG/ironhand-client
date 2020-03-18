@@ -1,5 +1,5 @@
 <div class="wrapper">
-   <h2 class="mat-title">Crear cóctel</h2>
+   <h2 class="formTitle">Crear cóctel</h2>
    <form [formGroup]="updateCocktailForm" class="updateCocktailForm" *ngIf="updateCocktailForm">
       <mat-form-field>
          <input matInput placeholder="Nombre" formControlName="name" required>
@@ -43,7 +43,7 @@
             <button mat-raised-button color="primary" (click)="addMixture(mixtureIndex)"mat-raised-button type="submit" [disabled]="!addMixtureForm.valid" color="accent">{{ mixtureFormAction }} instrucción</button>
          </div>
       </form>
-      <div class="flex mT15" *ngIf="updateCocktailForm">
+      <div class="formFooter" *ngIf="updateCocktailForm">
          <mat-icon aria-hidden="false" aria-label="Formulario incorrecto" *ngIf="updateCocktailForm.status=='INVALID'" color="primary">block</mat-icon>
          <mat-icon aria-hidden="false" aria-label="Formulario incorrecto" *ngIf="updateCocktailForm.status=='VALID'" color="accent">thumb_up</mat-icon>
          <div class="buttons">

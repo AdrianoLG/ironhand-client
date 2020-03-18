@@ -2,7 +2,7 @@
 (selectedTabChange)="changeSelectedIndex($event)" [selectedIndex]="selectedIndex">
    <mat-tab label="Riegos">
       <div class="wrapper">
-         <h2 class="mat-title flex">Riegos <span matBadge="{{ wateringsCount }}"></span></h2>
+         <h2 class="sectionTitle">Riegos <span matBadge="{{ wateringsCount }}"></span></h2>
       </div>
       <mat-card mat-ripple *ngFor="let watering of waterings" routerLink="/jardin-de-la-alegria/riegos/actualizar/{{ watering._id }}" class="watering">
          <mat-card-content>
@@ -29,7 +29,7 @@
       <mat-tab-group [color]="'accent'" [backgroundColor]="'accent'" class="bottomTabs" (selectedTabChange)="changeSelectedIndex2($event)" [selectedIndex]="selectedIndex2">
          <mat-tab label="Plantas">
             <div class="wrapper">
-               <h2 class="mat-title flex">Plantas <span matBadge="{{ plantsCount }}"></span></h2>
+               <h2 class="sectionTitle">Plantas <span matBadge="{{ plantsCount }}"></span></h2>
             </div>
             <mat-card mat-ripple *ngFor="let plant of plants" routerLink="/jardin-de-la-alegria/plantas/actualizar/{{ plant._id }}" class="plant">
                <mat-card-content>
@@ -45,7 +45,7 @@
          </mat-tab>
          <mat-tab label="Semillas">
                <div class="wrapper">
-                  <h2 class="mat-title flex">Semillas <span matBadge="{{ seedsCount }}"></span></h2>
+                  <h2 class="sectionTitle">Semillas <span matBadge="{{ seedsCount }}"></span></h2>
                </div>
                <mat-card mat-ripple *ngFor="let seed of seeds" routerLink="/jardin-de-la-alegria/semillas/{{ seed._id }}" class="seed">
                   <mat-card-content>

@@ -1,6 +1,6 @@
 <div *ngIf="updateTvSerieForm">
    <div class="wrapper">
-      <h2 class="mat-title">Actualizar serie</h2>
+      <h2 class="formTitle">Actualizar serie</h2>
       <form [formGroup]="updateTvSerieForm">
          <mat-form-field>
             <input matInput placeholder="Título" formControlName="title" required>
@@ -63,7 +63,7 @@
             <input matInput placeholder="Imagen" formControlName="img">
          </mat-form-field>
       </form>
-      <div class="flex mT15">
+      <div class="formFooter">
          <mat-icon aria-hidden="false" aria-label="Formulario incorrecto" *ngIf="updateTvSerieForm.status=='INVALID'" color="primary">block</mat-icon>
          <mat-icon aria-hidden="false" aria-label="Formulario incorrecto" *ngIf="updateTvSerieForm.status=='VALID'" color="accent">thumb_up</mat-icon>
          <div class="buttons">

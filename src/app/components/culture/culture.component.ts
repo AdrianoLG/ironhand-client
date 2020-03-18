@@ -35,6 +35,7 @@ export class CultureComponent implements OnInit {
     ) {}
 
     ngOnInit() {
+      // Checks for current tab
       this._selectedTabService.currentTabs.subscribe(currentTabs => {
         this.currentTabs = currentTabs;
         for (const currentTab of currentTabs) {
@@ -44,26 +45,49 @@ export class CultureComponent implements OnInit {
           }
         }
       });
-      console.log(`TabGroup ${this.tabGroup}, SelectedIndex ${this.selectedIndex}`);
+      // Gets books
       this._bookService.getBooks().subscribe(books => {
         this.booksCount = books.count;
         this.books = books.books;
       });
+      // Gets movies
       this._moviesService.getMovies().subscribe(movies => {
         this.moviesCount = movies.count;
         this.movies = movies.movies;
       });
+      // Gets TV Series
       this._tvSeriesService.getTvSeries().subscribe(tvSeries => {
         this.tvSeriesCount = tvSeries.count;
         this.tvSeries = tvSeries.tvSeries;
       });
     }
 
+    // Changes selected tab - clicks
     changeSelectedIndex($event): void {
       const tabIndex = $event.index;
       this.selectedIndex = tabIndex;
       this.currentTabs[this.tabGroup].selected = tabIndex;
       this._selectedTabService.changeTabs(this.currentTabs);
-      console.log(`TabGroup ${this.tabGroup}, SelectedIndex ${this.selectedIndex}`);
+    }
+
+    // Changes selected tab - swipes
+    changeSection(tabIndex): void {
+      this.selectedIndex = tabIndex;
+      this.currentTabs[this.tabGroup].selected = tabIndex;
+      this._selectedTabService.changeTabs(this.currentTabs);
+    }
+
+    // If exists it stablishes the next tab
+    nextSection(selectedIndex) {
+      if (selectedIndex < document.getElementsByClassName('mat-tab-label').length - 1) {
+        this.changeSection(selectedIndex + 1);
+      }
+    }
+
+    // If exists it stablishes the previous tab
+    previousSection(selectedIndex) {
+      if (selectedIndex > 0) {
+        this.changeSection(selectedIndex - 1);
+      }
     }
   }

@@ -1,24 +1,24 @@
-@import '../../../variables.scss';
+@import '_colors';
+@import '_typography';
 h2 {
    padding: 1.5em 1em 0;
 }
 mat-card-content.mat-card-content {
-   h3, h4 {
-      color: $secondary;
-   }
+   align-items: baseline;
+   display: flex;
    h3 {
-      font-size: 1.125rem;
+      font-size: $fontSize-m;
+      line-height: 1.1;
       padding: 0;
       margin-bottom: .5rem;
    }
    h4 {
-      font-size: .825rem;
-      font-style: italic;
+      font-size: $fontSize-s;
       font-weight: 300;
    }
    h5 {
       text-align: right;
-      font-size: .825rem;
+      font-size: $fontSize-s;
       color: $secondaryLightLowest;
    }
    .left {
@@ -30,5 +30,12 @@ mat-card-content.mat-card-content {
 }
 mat-form-field {
    box-sizing: border-box;
+   margin-top: 2em;
    padding: 0 1em;
+}
+.left {
+   width: 70%;
+}
+.right {
+   width: 30%;
 }

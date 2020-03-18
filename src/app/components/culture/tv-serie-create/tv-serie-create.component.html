@@ -1,5 +1,5 @@
 <div class="wrapper">
-   <h2 class="mat-title">Añadir serie</h2>
+   <h2 class="formTitle">Añadir serie</h2>
    <form [formGroup]="addTvSerieForm">
       <mat-form-field>
          <input matInput placeholder="Título" formControlName="title" required>
@@ -50,7 +50,7 @@
          <input matInput placeholder="Último episodio visto" formControlName="lastSeen">
       </mat-form-field>
       <mat-slide-toggle (change)="ended = !ended">Vista</mat-slide-toggle>
-      <mat-form-field>
+      <mat-form-field *ngIf="ended">
          <input matInput [matDatepicker]="picker2" formControlName="endDate" placeholder="Fecha de finalización">
          <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
          <mat-datepicker #picker2></mat-datepicker>
@@ -62,7 +62,7 @@
          <input matInput placeholder="Imagen" formControlName="img">
       </mat-form-field>
    </form>
-   <div class="flex mT15">
+   <div class="formFooter">
       <mat-icon aria-hidden="false" aria-label="Formulario incorrecto" *ngIf="addTvSerieForm.status=='INVALID'" color="primary">block</mat-icon>
       <mat-icon aria-hidden="false" aria-label="Formulario incorrecto" *ngIf="addTvSerieForm.status=='VALID'" color="accent">thumb_up</mat-icon>
       <div class="buttons">

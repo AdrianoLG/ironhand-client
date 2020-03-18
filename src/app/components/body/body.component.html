@@ -4,7 +4,7 @@
          <mat-tab label="Comidas">
             <div *ngIf="meals">
                <div class="wrapper">
-                  <h2 class="mat-title flex">Comidas <span matBadge="{{ mealsCount }}"></span></h2>
+                  <h2 class="sectionTitle">Comidas <span matBadge="{{ mealsCount }}"></span></h2>
                </div>
                <mat-card *ngFor="let meal of meals" data-id="{{ meal._id }}" routerLink="/cuerpo/comida/comidas/editar/{{ meal._id }}">
                   <mat-card-content>
@@ -32,7 +32,7 @@
          <mat-tab label="Sugerencias">
             <div *ngIf="suggestions">
                <div class="wrapper">
-                  <h2 class="mat-title flex">Sugerencias <span matBadge="{{ suggestionsCount }}"></span></h2>
+                  <h2 class="sectionTitle">Sugerencias <span matBadge="{{ suggestionsCount }}"></span></h2>
                </div>
                <mat-card *ngFor="let suggestion of suggestions" data-id="{{ suggestion._id }}" class="suggestion" routerLink="/cuerpo/comida/sugerencias/editar/{{ suggestion._id }}">
                   <mat-card-content>
@@ -62,7 +62,7 @@
          <mat-tab label="Completados">
             <div *ngIf="completedExercises" class="completed">
                <div class="wrapper">
-                  <h2 class="mat-title flex">Completados <span matBadge="{{ completedExercisesCount }}"></span></h2>
+                  <h2 class="sectionTitle">Completados <span matBadge="{{ completedExercisesCount }}"></span></h2>
                </div>
                <mat-card *ngFor="let completedExercise of completedExercisesMixed" data-id="{{ completedExercise._id }}" routerLink="/cuerpo/ejercicio/completados/editar/{{ completedExercise._id }}">
                   <mat-card-content>
@@ -81,7 +81,7 @@
          <mat-tab label="Listado">
             <div *ngIf="exercises">
                   <div class="wrapper">
-                     <h2 class="mat-title flex">Ejercicios <span matBadge="{{ exercisesCount }}"></span></h2>
+                     <h2 class="sectionTitle">Ejercicios <span matBadge="{{ exercisesCount }}"></span></h2>
                   </div>
                <mat-card *ngFor="let exercise of exercises" data-id="{{ exercise._id }}" class="exercises" routerLink="/cuerpo/ejercicio/listado/editar/{{ exercise._id }}">
                   <mat-card-content>

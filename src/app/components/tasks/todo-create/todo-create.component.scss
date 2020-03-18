@@ -1,0 +1,13 @@
+@import '_typography';
+label {
+   font-size: $fontSize-s;
+   position: relative;
+   bottom: 1em;
+}
+.slider {
+   margin-top: 1.5rem;
+}
+.mat-slider {
+   padding: 0;
+   width: 100%;
+}

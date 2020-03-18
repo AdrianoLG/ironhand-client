@@ -1,6 +1,6 @@
 <div class="wrapper">
-   <h2 class="mat-title">Crear cóctel</h2>
-   <form [formGroup]="addCocktailForm" class="addCocktailForm" *ngIf="addCocktailForm">
+   <h2 class="formTitle">Crear cóctel</h2>
+   <form [formGroup]="addCocktailForm" *ngIf="addCocktailForm">
       <mat-form-field>
          <input matInput placeholder="Nombre" formControlName="name" required>
       </mat-form-field>
@@ -14,7 +14,7 @@
             <button mat-icon-button class="mr1" (click)="editIngredient(i, ingredient.name, ingredient.parts)"><mat-icon>edit</mat-icon></button>
          </li>
       </ul>
-      <form [formGroup]="addIngredientForm" class="addIngredientForm" *ngIf="addIngredientForm">
+      <form [formGroup]="addIngredientForm" *ngIf="addIngredientForm">
          <p class="mat-subheading-2">{{ ingredientFormAction }} ingrediente</p>
          <mat-form-field>
             <input matInput placeholder="Nombre" formControlName="name">
@@ -33,7 +33,7 @@
             <button mat-icon-button class="mr1" (click)="editMixture(i, mix.mixture)"><mat-icon>edit</mat-icon></button>
          </li>
       </ul>
-      <form [formGroup]="addMixtureForm" class="addMixtureForm" *ngIf="addMixtureForm">
+      <form [formGroup]="addMixtureForm" *ngIf="addMixtureForm">
          <p class="mat-subheading-2">{{ mixtureFormAction }} instrucción</p>
          <mat-form-field>
             <input matInput placeholder="Instrucción" formControlName="mixture">
@@ -43,7 +43,7 @@
             <button mat-raised-button color="primary" (click)="addMixture(mixtureIndex)"mat-raised-button type="submit" [disabled]="!addMixtureForm.valid" color="accent">{{ mixtureFormAction }} instrucción</button>
          </div>
       </form>
-      <div class="flex mT15" *ngIf="addCocktailForm">
+      <div class="formFooter" *ngIf="addCocktailForm">
          <mat-icon aria-hidden="false" aria-label="Formulario incorrecto" *ngIf="addCocktailForm.status=='INVALID'" color="primary">block</mat-icon>
          <mat-icon aria-hidden="false" aria-label="Formulario incorrecto" *ngIf="addCocktailForm.status=='VALID'" color="accent">thumb_up</mat-icon>
          <div class="buttons">

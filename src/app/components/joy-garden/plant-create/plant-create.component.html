@@ -1,5 +1,5 @@
 <div class="wrapper">
-   <h2 class="mat-title">Añadir planta</h2>
+   <h2 class="formTitle">Añadir planta</h2>
    <form [formGroup]="addPlantForm">
       <mat-form-field>
          <mat-label>Semilla</mat-label>
@@ -22,7 +22,7 @@
          <input matInput placeholder="Galería" formControlName="gallery">
       </mat-form-field>
    </form>
-   <div class="flex mT15">
+   <div class="formFooter">
       <mat-icon aria-hidden="false" aria-label="Formulario incorrecto" *ngIf="addPlantForm.status=='INVALID'" color="primary">block</mat-icon>
       <mat-icon aria-hidden="false" aria-label="Formulario incorrecto" *ngIf="addPlantForm.status=='VALID'" color="accent">thumb_up</mat-icon>
       <div class="buttons">

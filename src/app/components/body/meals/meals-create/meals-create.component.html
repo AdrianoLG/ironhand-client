@@ -1,5 +1,5 @@
 <div class="wrapper">
-   <h2 class="mat-title">Crear comida</h2>
+   <h2 class="formTitle">Crear comida</h2>
    <form [formGroup]="addMealsForm">
       <mat-form-field>
          <input matInput [matDatepicker]="picker" formControlName="date" placeholder="Fecha" required>
@@ -49,7 +49,7 @@
          </mat-chip-list>
       </mat-form-field>
    </form>
-   <div class="flex mT15">
+   <div class="formFooter">
       <mat-icon aria-hidden="false" aria-label="Formulario incorrecto" *ngIf="addMealsForm.status=='INVALID'" color="primary">block</mat-icon>
       <mat-icon aria-hidden="false" aria-label="Formulario incorrecto" *ngIf="addMealsForm.status=='VALID'" color="accent">thumb_up</mat-icon>
       <div class="buttons">

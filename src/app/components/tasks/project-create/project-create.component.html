@@ -1,6 +1,6 @@
 <div class="wrapper">
-   <h2 class="mat-title">Crear proyecto</h2>
-   <form [formGroup]="addProjectForm" class="addProject-form">
+   <h2 class="formTitle">Crear proyecto</h2>
+   <form [formGroup]="addProjectForm">
       <mat-form-field>
          <input matInput placeholder="Nombre de proyecto" formControlName="name" required>
       </mat-form-field>
@@ -49,7 +49,7 @@
             (matChipInputTokenEnd)="addItem('done', $event)">
          </mat-chip-list>
       </mat-form-field>
-      <div class="flex mT15">
+      <div class="formFooter">
          <mat-icon aria-hidden="false" aria-label="Formulario incorrecto" *ngIf="addProjectForm.status=='INVALID'" color="primary">block</mat-icon>
          <mat-icon aria-hidden="false" aria-label="Formulario incorrecto" *ngIf="addProjectForm.status=='VALID'" color="accent">thumb_up</mat-icon>
          <div class="buttons">

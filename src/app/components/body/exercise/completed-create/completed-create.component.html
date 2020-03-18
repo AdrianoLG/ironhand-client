@@ -1,5 +1,5 @@
 <div class="wrapper">
-   <h2 class="mat-title">Añadir ejercicio completado</h2>
+   <h2 class="formTitle">Añadir ejercicio completado</h2>
    <form [formGroup]="addCompletedExerciseForm">
       <mat-form-field>
          <mat-label>Ejercicio</mat-label>
@@ -27,7 +27,7 @@
          <input matInput type="number" placeholder="Pulsaciones máximas" formControlName="maxHeart">
       </mat-form-field>
    </form>
-   <div class="flex mT15">
+   <div class="formFooter">
       <mat-icon aria-hidden="false" aria-label="Formulario incorrecto" *ngIf="addCompletedExerciseForm.status=='INVALID'" color="primary">block</mat-icon>
       <mat-icon aria-hidden="false" aria-label="Formulario incorrecto" *ngIf="addCompletedExerciseForm.status=='VALID'" color="accent">thumb_up</mat-icon>
       <div class="buttons">

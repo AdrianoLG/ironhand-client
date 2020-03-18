@@ -1,3 +1,17 @@
+@import '_typography';
+h2 {
+   color: white;
+   font-size: $fontSize-hero;
+   left: 50%;
+   position: absolute;
+   font-weight: bold;
+   mix-blend-mode: difference;
+   top: 50%;
+   transform: translate(-50%, -50%);
+}
 .cover {
    width: 100%;
+}
+.hero {
+   position: relative;
 }

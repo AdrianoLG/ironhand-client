@@ -3,6 +3,7 @@ import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { Location } from '@angular/common';
 import { Todo } from '../../../models/todo';
 import { TodosService } from 'src/app/services/todos/todos.service';
+import { MatSliderChange } from '@angular/material';
 
 @Component({
   selector: 'app-todo-create',
@@ -28,12 +29,17 @@ export class TodoCreateComponent implements OnInit {
       category: ['', [
         Validators.required
       ]],
-      priority: [null, [
-        Validators.required,
-        Validators.min(1),
-        Validators.max(9)
+      priority: [, [
+        Validators.required
       ]]
     });
+  }
+
+  changePriority(e: MatSliderChange) {
+    this.addTaskForm.patchValue({
+      priority: e.value
+    });
+    console.log(this.addTaskForm.value);
   }
 
   goBack(): void {

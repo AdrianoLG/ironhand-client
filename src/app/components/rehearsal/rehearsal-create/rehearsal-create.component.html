@@ -1,6 +1,6 @@
 <div class="wrapper">
-   <h2 class="mat-title">Crear ensayo</h2>
-   <form [formGroup]="addRehearsalForm" class="addRehearsalForm" *ngIf="addRehearsalForm">
+   <h2 class="formTitle">Crear ensayo</h2>
+   <form [formGroup]="addRehearsalForm" *ngIf="addRehearsalForm">
       <mat-form-field>
          <input matInput [matDatepicker]="picker" formControlName="date" placeholder="Fecha" required>
          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
@@ -23,7 +23,7 @@
             <button mat-icon-button class="mr1" (click)="editSheet(i, sheet.name, sheet.time)"><mat-icon>edit</mat-icon></button>
          </li>
       </ul>
-      <form [formGroup]="addSheetForm" class="addSheetForm" *ngIf="addSheetForm">
+      <form [formGroup]="addSheetForm" *ngIf="addSheetForm">
          <p class="mat-subheading-2">{{ sheetFormAction }} partitura</p>
          <mat-form-field>
             <input matInput placeholder="Nombre" formControlName="name">
@@ -36,7 +36,7 @@
             <button mat-raised-button color="primary" (click)="addSheet(sheetIndex)"mat-raised-button type="submit" [disabled]="!addSheetForm.valid" color="accent">{{ sheetFormAction }} partitura</button>
          </div>
       </form>
-      <div class="flex mT15" *ngIf="addRehearsalForm">
+      <div class="formFooter" *ngIf="addRehearsalForm">
          <mat-icon aria-hidden="false" aria-label="Formulario incorrecto" *ngIf="addRehearsalForm.status=='INVALID'" color="primary">block</mat-icon>
          <mat-icon aria-hidden="false" aria-label="Formulario incorrecto" *ngIf="addRehearsalForm.status=='VALID'" color="accent">thumb_up</mat-icon>
          <div class="buttons">
