@@ -1,20 +1,22 @@
 <div *ngIf="food">
    <div class="wrapper">
-      <div class="flex aiFlexEnd">
+      <div class="flexBBw">
          <div class="left">
             <h2 class="formTitle">{{ food.productQty }}x {{ food.name }}</h2>
-            <h3>{{ food.brand }}</h3>
+            <h3>{{ food.category }}</h3>
          </div>
          <div class="right">
-            <h4>{{ food.category }}</h4>
+            <h4>{{ food.expiry | date: 'dd-MM-yyyy'}}</h4>
          </div>
       </div>
-   </div>
-   <img [src]="food.img">
-   <div class="wrapper">
-      <p>Caduca el {{ food.expiry | date: 'dd-MM-yyyy'}}</p>
-      <p>{{ food.qty }} {{ food.unit }}</p>
-      <p>Etiquetas: <span *ngFor="let tag of food.tags;let isLast = last">{{ tag }}{{isLast ? '' : ', '}}</span></p>
+      <img [src]="food.img">
+      <div class="flexBBw">
+         <div class="fifty">
+            <p>Cantidad: <span class="data">{{ food.qty }} {{ food.unit }}</span></p>
+            <p>Marca: <span class="data">{{ food.brand }}</span></p>
+         </div>
+         <mat-chip-list class="data fifty right"><mat-chip *ngFor="let tag of food.tags;let isLast = last" color="primary">{{ tag }}</mat-chip></mat-chip-list>
+      </div>
    </div>
    <div class="wrapper">
       <div class="buttons floatRight">

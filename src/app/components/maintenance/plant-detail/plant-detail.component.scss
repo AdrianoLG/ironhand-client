@@ -1,4 +1,21 @@
 @import '_colors';
+@import '_typography';
+
+h2 {
+   margin-bottom: .25em;
+}
+h3 {
+   font-size: $fontSize-s;
+   font-weight: 300;
+}
+h4 {
+   color: $secondaryLightLowest;
+   font-size: $fontSize-xs;
+   text-align: right;
+   &:first-child {
+      margin-bottom: .5em;
+   }
+}
 h5 {
    margin: 1em 0 1.5em;
 }
@@ -6,30 +23,81 @@ hr {
    color: lighten($secondaryLightLowest, 40);
    margin: 2em 40%;
 }
+#plantInfo .mat-tab-label:hover {
+   color: $secondary !important;
+}
 .buttonRight {
    align-items: center;
    display: flex;
    justify-content: space-between;
 }
-.info {
-   p {
+.gallery {
+   margin-top: 2em;
+   img {
+      width: 100%;
+   }
+   > div {
       display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-start;
+      margin: 3vw 0;
+      > div {
+         background-position: center;
+         background-size: cover;
+         margin-bottom: 3vw;
+         margin-right: 3vw;
+         height: 20vw;
+         width: 20vw;
+         &:hover {
+            cursor: pointer;
+            opacity: .8;
+         }
+         &:nth-child(4n) {
+            margin-right: 0;
+         }
+      }
+   }
+}
+.header {
+   margin-bottom: 1.5em;
+}
+.img {
+	img {
+		width: 100%;
+	}
+}
+.info {
+   padding: 1em 0;
+   p {
       align-items: center;
+      color: $secondaryLightHigh;
+      display: flex;
+      font-size: $fontSize-s;
+      margin-bottom: .5em;
       .mat-icon {
          margin-right: .25em;
       }
    }
 }
+.smIcon {
+   font-size: $fontSize-s;
+   height: $fontSize-s;
+   width: $fontSize-s;
+}
 .transplants, .waterings {
    margin-bottom: 1em;
    p {
-      display: flex;
       align-items: center;
+      display: flex;
+      font-size: $fontSize-s;
       button {
          margin-left: 3em;
       }
-      .calendarIcon {
-         margin: 0 .25em 0 1em;
+      .iconMargRight {
+         margin-right: .25em;
+      }
+      .fertilizer {
+         margin-left: 1em;
       }
    }
 }

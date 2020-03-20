@@ -38,7 +38,7 @@ export class CleanupCreateComponent implements OnInit {
   ngOnInit() {
     this.addCleanupForm = this._formBuilder.group({
       place: ['', [Validators.required]],
-      date: ['', [Validators.required]]
+      date: [new Date(), [Validators.required]]
     });
     this.availablePlaces = [
       'Garaje',

@@ -11,6 +11,7 @@ import { Location } from '@angular/common';
 })
 export class PlantDetailComponent implements OnInit {
   plant: Plant;
+  mainImg: string;
   public id: string;
 
   constructor(
@@ -23,6 +24,7 @@ export class PlantDetailComponent implements OnInit {
     this.id = this._route.snapshot.paramMap.get('_id');
     this._plantsService.getPlant(this.id).subscribe(plant => {
       this.plant = plant;
+      this.mainImg = this.plant.gallery[0];
     });
   }
 
@@ -73,6 +75,10 @@ export class PlantDetailComponent implements OnInit {
         this.plant = plant;
       });
     });
+  }
+
+  toggleImage(image) {
+    this.mainImg = image;
   }
 
   transplantSortBy(prop: string) {

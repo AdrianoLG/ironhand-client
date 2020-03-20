@@ -33,6 +33,7 @@ export class ProvisioningComponent implements OnInit {
   selectedIndex2: number;
   currentTabs: Tab[];
   tabGroup: number;
+  tabGroup2: number;
 
   constructor(
     private _selectedTabService: SelectedTabService,
@@ -50,7 +51,10 @@ export class ProvisioningComponent implements OnInit {
         if (currentTab.name === 'provisioning') {
           this.tabGroup = currentTabs.indexOf(currentTab);
           this.selectedIndex = currentTab.selected;
-          this.selectedIndex2 = 0;
+        }
+        if (currentTab.name === 'provisioning2') {
+          this.tabGroup2 = currentTabs.indexOf(currentTab);
+          this.selectedIndex2 = currentTab.selected;
         }
       }
     });
@@ -128,7 +132,9 @@ export class ProvisioningComponent implements OnInit {
   }
 
   changeSelectedIndex2($event): void {
-    this.selectedIndex2 = $event.index;
+    const tabIndex = $event.index;
+    this.selectedIndex2 = tabIndex;
+    this.currentTabs[this.tabGroup2].selected = tabIndex;
     console.log(`TabGroup ${this.tabGroup}, SelectedIndex ${this.selectedIndex}, OtherIndex ${this.selectedIndex2}`);
   }
 

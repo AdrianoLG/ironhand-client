@@ -1,21 +1,17 @@
 <div *ngIf="drink">
    <div class="wrapper">
-      <div class="flex aiFlexEnd">
+      <div class="flexBBw">
          <div class="left">
             <h2 class="formTitle">{{ drink.name }}</h2>
             <h3>{{ drink.brand }}</h3>
          </div>
          <div class="right">
-            <h4>{{ drink.alcohol === true ? drink.graduation : 0}}º</h4>
-            <h4>{{ drink.category }}</h4>
+            <h4>{{ drink.alcohol === true ? drink.graduation : 0}}<span class="ss">º</span></h4>
          </div>
       </div>
-   </div>
-   <img [src]="drink.img">
-   <div class="wrapper">
-      <p>{{ drink.qty }} {{ drink.unit }}</p>
-   </div>
-   <div class="wrapper">
+      <img [src]="drink.img">
+      <p>Categoría: <span class="data">{{ drink.category }}</span></p>
+      <p>Cantidad: <span class="data">{{ drink.qty }} {{ drink.unit }}</span></p>
       <div class="buttons floatRight">
          <button class="cancelButton" mat-raised-button (click)="goBack()">Atrás</button>
          <button color="warn" mat-raised-button (click)="deleteDrink()">Borrar</button>

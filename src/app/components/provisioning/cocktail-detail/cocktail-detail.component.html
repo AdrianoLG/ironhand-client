@@ -1,24 +1,15 @@
 <div *ngIf="cocktail">
    <div class="wrapper">
-      <div class="flex aiFlexEnd">
-         <div class="left">
-            <h2 class="formTitle">{{ cocktail.name }}</h2>
-         </div>
-         <div class="right">
-            <h4></h4>
-         </div>
-      </div>
-   </div>
-   <img [src]="cocktail.img">
-   <div class="wrapper">
+      <h2 class="formTitle">{{ cocktail.name }}</h2>
+      <img [src]="cocktail.img">
+      <h3>Ingredientes:</h3>
       <ul>
          <li *ngFor="let ingredient of cocktail.ingredients">{{ ingredient.parts }} {{ ingredient.name }}</li>
       </ul>
+      <h3>Instrucciones:</h3>
       <ol>
          <li *ngFor="let instruction of cocktail.mixture">{{ instruction }}</li>
       </ol>
-   </div>
-   <div class="wrapper">
       <div class="buttons floatRight">
          <button class="cancelButton" mat-raised-button (click)="goBack()">Atrás</button>
          <button color="warn" mat-raised-button (click)="deleteCocktail()">Borrar</button>

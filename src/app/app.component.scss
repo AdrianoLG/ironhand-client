@@ -21,11 +21,6 @@ mat-toolbar {
 }
 .mat-nav-list .mat-list-item {
    color: $secondaryLightLow;
-   &:focus {
-      background: none;
-      box-sizing: border-box;
-      border: 1px dashed $primaryLightLowest;
-   }
    &.active-link {
       background: $lightBackground;
    }

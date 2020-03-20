@@ -14,6 +14,7 @@ import { InlineSVGModule } from 'ng-inline-svg';
 import { PlantDetailComponent } from './plant-detail/plant-detail.component';
 import { WateringCreateComponent } from './watering-create/watering-create.component';
 import { TransplantCreateComponent } from './transplant-create/transplant-create.component';
+import { DateFilterPipe } from 'src/app/filters/date-filter.pipe';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { TransplantCreateComponent } from './transplant-create/transplant-create
     CleanupUpdateComponent,
     PlantDetailComponent,
     WateringCreateComponent,
-    TransplantCreateComponent
+    TransplantCreateComponent,
+    DateFilterPipe
   ],
   imports: [
     CommonModule,

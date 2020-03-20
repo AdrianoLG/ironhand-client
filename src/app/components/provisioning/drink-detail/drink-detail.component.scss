@@ -1,0 +1,38 @@
+@import '_colors';
+@import '_typography';
+
+h2,
+h3 {
+	color: $secondary;
+	padding: 0;
+}
+h3,
+h4 {
+	font-weight: 300;
+}
+h2 {
+	margin-bottom: .5rem;
+}
+h3 {
+	color: $secondaryLightLow;
+	font-size: $fontSize-s;
+}
+h4 {
+	text-align: right;
+	font-size: $fontSize-s;
+	color: $secondaryLightLowest;
+}
+img {
+	margin: 1.5em 0;
+	width: 100%;
+}
+p {
+   margin-bottom: $fontSize-m;
+}
+.data {
+	color: $secondaryLightLow;
+	font-size: $fontSize-s;
+}
+.ss {
+   font-family: sans-serif;
+}

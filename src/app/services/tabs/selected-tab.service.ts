@@ -35,6 +35,10 @@ export class SelectedTabService {
     {
       name: 'provisioning',
       selected: 0
+    },
+    {
+      name: 'provisioning2',
+      selected: 0
     }
   ]);
   public currentTabs = this.tabs.asObservable();

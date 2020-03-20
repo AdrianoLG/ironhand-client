@@ -5,9 +5,15 @@ body {
 	color: $secondary;
 	overflow: hidden;
 	font-family: 'Fira Sans', sans-serif;
-	.mat-toolbar h1 {
-		font-family: 'Courgette', cursive;
-		font-size: $fontSize-m;
+	.mat-toolbar {
+		a:focus {
+			background: rgba(0, 0, 0, .1);
+			outline: none;
+		}
+		h1 {
+			font-family: 'Courgette', cursive;
+			font-size: $fontSize-m;
+		}
 	}
 }
 h2,
@@ -38,6 +44,11 @@ button {
 	display: flex !important;
 	justify-content: center !important;
 }
+.flexBBw {
+	align-items: baseline;
+	display: flex;
+	justify-content: space-between;
+}
 .flexCBw {
 	align-items: center;
 	display: flex;
@@ -59,7 +70,11 @@ button {
 mat-form-field {
 	width: 100%;
 }
+#plantInfo .mat-tab-label:hover {
+   color: $secondary !important;
+}
 .buttons {
+	margin-bottom: 1em;
 	button {
 		margin: $fontSize-s $fontSize-s $fontSize-s 0;
 		&:last-child {
@@ -88,6 +103,9 @@ mat-card.mat-card {
 }
 .mat-card:last-child {
 	margin-bottom: 4em;
+}
+.mat-chip-list.right .mat-chip-list-wrapper {
+	justify-content: end;
 }
 .mat-input-element {
 	color: $secondary;

@@ -1,19 +1,12 @@
 <div *ngIf="recipee">
    <div class="wrapper">
-      <div class="flex aiFlexEnd">
-         <div class="left">
-            <h2 class="formTitle">{{ recipee.name }}</h2>
-         </div>
-         <div class="right">
-            <h4></h4>
-         </div>
-      </div>
-   </div>
-   <img [src]="recipee.img">
-   <div class="wrapper">
+      <h2 class="formTitle">{{ recipee.name }}</h2>
+      <img [src]="recipee.img">
+      <h3>Ingredientes:</h3>
       <ul>
          <li *ngFor="let ingredient of recipee.ingredients">{{ ingredient.parts }} {{ ingredient.name }}</li>
       </ul>
+      <h3>Instrucciones:</h3>
       <ol>
          <li *ngFor="let instruction of recipee.instructions">{{ instruction }}</li>
       </ol>
