@@ -23,8 +23,8 @@
          <div class="wrapper">
             <h2 class="sectionTitle">Proyectos <span matBadge="{{ countProjects }}"></span></h2>
             <div class="buttons projectTitles">
-               <button mat-stroked-button *ngFor="let projectTitle of projectTitles; let first = first;"
-               [ngClass]="{ 'projectTitle' : first }" (click)="onSelectProject($event, projectTitle)">
+               <button mat-stroked-button *ngFor="let projectTitle of projectTitles; let isFirst = first"
+               [ngClass]="{ 'projectTitle' : isFirst }" (click)="onSelectProject($event, projectTitle)">
                   {{ projectTitle }}
                </button>
             </div>

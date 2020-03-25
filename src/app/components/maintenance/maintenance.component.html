@@ -8,10 +8,12 @@
          <mat-card mat-ripple *ngFor="let task of cleanups" routerLink="/mantenimiento/limpieza/editar/{{ task._id }}">
             <mat-card-content>
                <div class="flexBBw">
-                  <h3>{{ task.place }}</h3>
-                  <h5>{{ task.date | dateFilter | uppercase }}</h5>
+                  <p class="cardMain">{{ task.place }}</p>
+                  <p class="cardTertiary">{{ task.date | dateFilter | uppercase }}</p>
                </div>
-               <div *ngFor="let t of task.tasks;" class="customIcon" [inlineSVG]="'../../../../assets/img/icons/' + t + '.svg'"></div>
+               <div class="hundred">
+                  <div *ngFor="let t of task.tasks;" class="customIcon" [inlineSVG]="'../../../../assets/img/icons/' + t + '.svg'"></div>
+               </div>
             </mat-card-content>
          </mat-card>
       </div>
@@ -26,10 +28,14 @@
       <mat-card mat-ripple *ngFor="let plant of plants" routerLink="/mantenimiento/plantas/{{ plant._id }}" [ngClass]="{'dead': plant.death != ''}">
          <mat-card-content>
             <div class="flexBBw">
-               <h3>{{ plant.name }}</h3>
-               <h5>{{ plant.zone }}</h5>
+               <div class="left">
+                  <p class="cardMain">{{ plant.name }}</p>
+                  <p class="cardSecondary">{{ plant.zone }}</p>
+               </div>
+               <div class="right">
+                  <p class="cardTertiary">{{ plant.container }}</p>
+               </div>
             </div>
-            <h4>{{ plant.container }}</h4>
          </mat-card-content>
       </mat-card>
       <button mat-mini-fab>

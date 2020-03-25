@@ -2,11 +2,11 @@
    <div class="wrapper">
       <div class="flexBBw">
          <div class="left">
-            <h2 class="formTitle">{{ drink.name }}</h2>
-            <h3>{{ drink.brand }}</h3>
+            <h2 class="sectionTitle">{{ drink.name }}</h2>
+            <p class="detailSecondary">{{ drink.brand }}</p>
          </div>
          <div class="right">
-            <h4>{{ drink.alcohol === true ? drink.graduation : 0}}<span class="ss">º</span></h4>
+            <p class="detailTertiary">{{ drink.alcohol === true ? drink.graduation : 0}}<span class="ss">º</span></p>
          </div>
       </div>
       <img [src]="drink.img">

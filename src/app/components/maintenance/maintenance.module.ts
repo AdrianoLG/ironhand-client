@@ -14,7 +14,7 @@ import { InlineSVGModule } from 'ng-inline-svg';
 import { PlantDetailComponent } from './plant-detail/plant-detail.component';
 import { WateringCreateComponent } from './watering-create/watering-create.component';
 import { TransplantCreateComponent } from './transplant-create/transplant-create.component';
-import { DateFilterPipe } from 'src/app/filters/date-filter.pipe';
+import { DatePipeModule } from 'src/app/filters/date-pipe.module';
 
 @NgModule({
   declarations: [
@@ -25,8 +25,7 @@ import { DateFilterPipe } from 'src/app/filters/date-filter.pipe';
     CleanupUpdateComponent,
     PlantDetailComponent,
     WateringCreateComponent,
-    TransplantCreateComponent,
-    DateFilterPipe
+    TransplantCreateComponent
   ],
   imports: [
     CommonModule,
@@ -36,7 +35,8 @@ import { DateFilterPipe } from 'src/app/filters/date-filter.pipe';
     FormsModule,
     ReactiveFormsModule,
     MatIconModule,
-    InlineSVGModule
+    InlineSVGModule,
+    DatePipeModule
   ]
 })
 export class MaintenanceModule { }

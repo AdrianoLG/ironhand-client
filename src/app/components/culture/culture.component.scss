@@ -1,40 +1,11 @@
-@import '_colors';
 @import '_typography';
-h2 {
-   padding: 1.5em 1em 0;
-}
-mat-card-content.mat-card-content {
-   align-items: baseline;
-   display: flex;
-   h3 {
-      font-size: $fontSize-m;
-      line-height: 1.1;
-      padding: 0;
-      margin-bottom: .5rem;
-   }
-   h4 {
-      font-size: $fontSize-s;
-      font-weight: 300;
-   }
-   h5 {
-      text-align: right;
-      font-size: $fontSize-s;
-      color: $secondaryLightLowest;
-   }
-   .left {
-      width: 75%;
-   }
-   .right {
-      width: 25%;
-   }
-}
-mat-form-field {
-   box-sizing: border-box;
-   margin-top: 2em;
-   padding: 0 1em;
-}
+
 .left {
-   width: 70%;
+   margin-right: 3%;
+   width: 67%;
+}
+.mat-form-field {
+   margin-top: 1.5rem;
 }
 .right {
    width: 30%;

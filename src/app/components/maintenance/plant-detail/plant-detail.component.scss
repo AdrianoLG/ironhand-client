@@ -1,35 +1,12 @@
 @import '_colors';
 @import '_typography';
 
-h2 {
-   margin-bottom: .25em;
-}
-h3 {
-   font-size: $fontSize-s;
-   font-weight: 300;
-}
-h4 {
-   color: $secondaryLightLowest;
-   font-size: $fontSize-xs;
-   text-align: right;
-   &:first-child {
-      margin-bottom: .5em;
-   }
-}
-h5 {
-   margin: 1em 0 1.5em;
-}
 hr {
    color: lighten($secondaryLightLowest, 40);
    margin: 2em 40%;
 }
-#plantInfo .mat-tab-label:hover {
-   color: $secondary !important;
-}
-.buttonRight {
-   align-items: center;
-   display: flex;
-   justify-content: space-between;
+.buttons {
+   margin-top: 2rem;
 }
 .gallery {
    margin-top: 2em;
@@ -58,16 +35,15 @@ hr {
       }
    }
 }
-.header {
-   margin-bottom: 1.5em;
+.margTop {
+   margin-top: 1.5rem;
 }
-.img {
-	img {
-		width: 100%;
-	}
+.smIcon {
+   font-size: $fontSize-s;
+   height: $fontSize-s;
+   width: $fontSize-s;
 }
-.info {
-   padding: 1em 0;
+.tabs {
    p {
       align-items: center;
       color: $secondaryLightHigh;
@@ -78,11 +54,6 @@ hr {
          margin-right: .25em;
       }
    }
-}
-.smIcon {
-   font-size: $fontSize-s;
-   height: $fontSize-s;
-   width: $fontSize-s;
 }
 .transplants, .waterings {
    margin-bottom: 1em;

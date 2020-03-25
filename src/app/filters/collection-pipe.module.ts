@@ -13,4 +13,4 @@ import { CollectionFilterPipe } from './collection-filter.pipe';
     CollectionFilterPipe
   ]
 })
-export class PipeModule { }
+export class CollectionPipeModule { }

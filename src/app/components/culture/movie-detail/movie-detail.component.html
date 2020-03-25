@@ -1,41 +1,35 @@
-<div *ngIf="movie">
-   <div class="wrapper">
-      <div class="flex aiFlexEnd">
-         <div class="left">
-            <h2 class="formTitle">{{ movie.title }}</h2>
-            <h3>{{ movie.director }}</h3>
-         </div>
-         <div class="right">
-            <h4>{{ movie.year }}</h4>
-         </div>
+<div *ngIf="movie" class="wrapper">
+   <div class="flexBBw">
+      <div class="left">
+         <h2 class="sectionTitle">{{ movie.title }}</h2>
+         <p class="detailSecondary">{{ movie.director }}</p>
+      </div>
+      <div class="right">
+         <p class="detailTertiary">{{ movie.year }}</p>
       </div>
    </div>
    <div class="img">
       <img src="{{ movie.img }}" alt="" *ngIf="movie.img != ''">
       <img src="assets/img/dummy.jpg" alt="" *ngIf="movie.img == ''">
    </div>
-   <div class="wrapper">
-      <p class="cast">Reparto: <span *ngFor="let actor of movie.cast; let isLast = last">{{ actor }}{{isLast ? '' : ', '}}</span></p>
-      <p class="categories">Categorías: <span *ngFor="let category of movie.categories; let isLast = last">{{ category }}{{isLast ? '' : ', '}}</span></p>
-      <p>{{ movie.duration }} min. <span class="seenDate" *ngIf="movie.seen">Vista: {{ movie.seenDate | date: 'dd-MM-yyyy' }}</span> </p>
-      <div class="rating" *ngIf="movie.seen">
-         <mat-icon color="accent" *ngIf="movie.rating > 0 && movie.rating <= 5">star</mat-icon>
-         <mat-icon color="accent" *ngIf="!(movie.rating > 0 && movie.rating <= 5)">star_border</mat-icon>
-         <mat-icon color="accent" *ngIf="movie.rating > 1 && movie.rating <= 5">star</mat-icon>
-         <mat-icon color="accent" *ngIf="!(movie.rating > 1 && movie.rating <= 5)">star_border</mat-icon>
-         <mat-icon color="accent" *ngIf="movie.rating > 2 && movie.rating <= 5">star</mat-icon>
-         <mat-icon color="accent" *ngIf="!(movie.rating > 2 && movie.rating <= 5)">star_border</mat-icon>
-         <mat-icon color="accent" *ngIf="movie.rating > 3 && movie.rating <= 5">star</mat-icon>
-         <mat-icon color="accent" *ngIf="!(movie.rating > 3 && movie.rating <= 5)">star_border</mat-icon>
-         <mat-icon color="accent" *ngIf="movie.rating > 4 && movie.rating <= 5">star</mat-icon>
-         <mat-icon color="accent" *ngIf="!(movie.rating > 4 && movie.rating <= 5)">star_border</mat-icon>
-      </div>
+   <p class="cast">Reparto: <span *ngFor="let actor of movie.cast; let isLast = last">{{ actor }}{{isLast ? '' : ', '}}</span></p>
+   <p class="categories">Categorías: <span *ngFor="let category of movie.categories; let isLast = last">{{ category }}{{isLast ? '' : ', '}}</span></p>
+   <p>{{ movie.duration }} min. <span class="seenDate" *ngIf="movie.seen">Vista: {{ movie.seenDate | date: 'dd-MM-yyyy' }}</span> </p>
+   <div class="rating" *ngIf="movie.seen">
+      <mat-icon color="accent" *ngIf="movie.rating > 0 && movie.rating <= 5">star</mat-icon>
+      <mat-icon color="accent" *ngIf="!(movie.rating > 0 && movie.rating <= 5)">star_border</mat-icon>
+      <mat-icon color="accent" *ngIf="movie.rating > 1 && movie.rating <= 5">star</mat-icon>
+      <mat-icon color="accent" *ngIf="!(movie.rating > 1 && movie.rating <= 5)">star_border</mat-icon>
+      <mat-icon color="accent" *ngIf="movie.rating > 2 && movie.rating <= 5">star</mat-icon>
+      <mat-icon color="accent" *ngIf="!(movie.rating > 2 && movie.rating <= 5)">star_border</mat-icon>
+      <mat-icon color="accent" *ngIf="movie.rating > 3 && movie.rating <= 5">star</mat-icon>
+      <mat-icon color="accent" *ngIf="!(movie.rating > 3 && movie.rating <= 5)">star_border</mat-icon>
+      <mat-icon color="accent" *ngIf="movie.rating > 4 && movie.rating <= 5">star</mat-icon>
+      <mat-icon color="accent" *ngIf="!(movie.rating > 4 && movie.rating <= 5)">star_border</mat-icon>
    </div>
-   <div class="wrapper">
-      <div class="buttons floatRight">
-         <button class="cancelButton" mat-raised-button (click)="goBack()">Atrás</button>
-         <button color="warn" mat-raised-button (click)="deleteMovie()">Borrar</button>
-         <button color="accent" mat-raised-button routerLink="/cultura/peliculas/editar/{{ movie._id }}">Editar</button>
-      </div>
+   <div class="buttons floatRight">
+      <button class="cancelButton" mat-raised-button (click)="goBack()">Atrás</button>
+      <button color="warn" mat-raised-button (click)="deleteMovie()">Borrar</button>
+      <button color="accent" mat-raised-button routerLink="/cultura/peliculas/editar/{{ movie._id }}">Editar</button>
    </div>
 </div>

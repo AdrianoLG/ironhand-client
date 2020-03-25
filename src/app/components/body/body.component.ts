@@ -32,6 +32,8 @@ export class BodyComponent implements OnInit {
   exercisesCount: number;
   submitted = false;
   completedExercisesMixed = [];
+  seasons: Array<string>;
+  selectedSeason: string;
 
   constructor(
     private _selectedTabService: SelectedTabService,
@@ -53,11 +55,12 @@ export class BodyComponent implements OnInit {
         }
       }
     });
-    console.log(`TabGroup ${this.tabGroup}, SelectedIndex ${this.selectedIndex}`);
     this.getFoodMeals();
     this.getCompletedExercises();
     this.getSuggestions();
     this.getExercises();
+    this.seasons = ['Primavera', 'Verano', 'Otoño', 'Invierno'];
+    this.selectedSeason = this.defaultSeason();
   }
 
   getFoodMeals(): void {
@@ -159,6 +162,44 @@ export class BodyComponent implements OnInit {
   changeSelectedIndex2($event): void {
     this.selectedIndex2 = $event.index;
     console.log(`TabGroup ${this.tabGroup}, SelectedIndex ${this.selectedIndex}, OtherIndex ${this.selectedIndex2}`);
+  }
+
+  defaultSeason() {
+    const today = new Date();
+    const todayMonth = today.getMonth();
+    const todayDay = today.getTime();
+    let selectedSeason: string;
+    if (todayMonth === 2) {
+      selectedSeason = todayDay < 21 ? 'Invierno' : 'Primavera';
+    } else if (todayMonth === 5) {
+      selectedSeason = todayDay < 21 ? 'Primavera' : 'Verano';
+    } else if (todayMonth === 8) {
+      selectedSeason = todayDay < 23 ? 'Verano' : 'Otoño';
+    } else if (todayMonth === 11) {
+      selectedSeason = todayDay < 21 ? 'Otoño' : 'Invierno';
+    } else if (todayMonth < 2) {
+      selectedSeason = 'Invierno';
+    } else if (todayMonth > 2 && todayMonth < 5) {
+      selectedSeason = 'Primavera';
+    } else if (todayMonth > 5 && todayMonth < 8) {
+      selectedSeason = 'Primavera';
+    } else if (todayMonth > 8 && todayMonth < 11) {
+      selectedSeason = 'Primavera';
+    }
+    return selectedSeason;
+  }
+
+  changeSeason(season: string) {
+    this.selectedSeason = season;
+  }
+
+  filterSuggestions(seasons: Array<string>) {
+    for (const season of seasons) {
+      if (season === this.selectedSeason) {
+        return true;
+      }
+    }
+    return false;
   }
 
 }

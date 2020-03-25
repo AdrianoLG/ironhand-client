@@ -13,6 +13,9 @@ import { CompletedCreateComponent } from './exercise/completed-create/completed-
 import { CompletedUpdateComponent } from './exercise/completed-update/completed-update.component';
 import { ListCreateComponent } from './exercise/list-create/list-create.component';
 import { ListUpdateComponent } from './exercise/list-update/list-update.component';
+import { CollectionPipeModule } from 'src/app/filters/collection-pipe.module';
+import { DatePipeModule } from 'src/app/filters/date-pipe.module';
+
 @NgModule({
   declarations: [
     BodyComponent,
@@ -31,7 +34,9 @@ import { ListUpdateComponent } from './exercise/list-update/list-update.componen
     MaterialModule,
     FormsModule,
     ReactiveFormsModule,
-    RouterModule
+    RouterModule,
+    CollectionPipeModule,
+    DatePipeModule
   ]
 })
 export class BodyModule { }

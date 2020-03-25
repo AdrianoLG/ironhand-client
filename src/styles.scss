@@ -22,8 +22,31 @@ h4,
 p {
 	color: $secondary;
 }
+h2 {
+	color: $secondary;
+	font-size: $fontSize-l;
+	padding: 0;
+}
 button {
 	font-size: $fontSize-s !important;
+}
+.data {
+	color: $secondaryLightLow;
+	font-size: $fontSize-s;
+}
+.detailSecondary {
+	color: $secondaryLightMedium;
+	font-size: $fontSize-s;
+	padding: 0;
+}
+.detailSecondary,
+.detailTertiary {
+	font-weight: 300;
+}
+.detailTertiary {
+	text-align: right;
+	font-size: $fontSize-xs;
+	color: $secondaryLightLow;
 }
 .formFooter {
 	@extend .flexCBw;
@@ -33,25 +56,34 @@ button {
 	@extend .sectionTitle;
 	margin-bottom: 1.5rem;
 }
+.img {
+	img {
+		margin: 1.5rem 0;
+		width: 100%;
+	}
+}
 .sectionTitle {
 	@extend .flexCBw;
 	font-weight: 500;
-	font-size: $fontSize-m;
+	padding-bottom: .5rem;
 }
 /* Utility */
 .flexCC {
 	align-items: center !important;
 	display: flex !important;
+	flex-wrap: wrap;
 	justify-content: center !important;
 }
 .flexBBw {
 	align-items: baseline;
 	display: flex;
+	flex-wrap: wrap;
 	justify-content: space-between;
 }
 .flexCBw {
 	align-items: center;
 	display: flex;
+	flex-wrap: wrap;
 	justify-content: space-between;
 }
 .floatRight {
@@ -66,13 +98,10 @@ button {
 .wrapper {
 	padding: 1.5em 1em 1em;
 }
+.wrapper-nobottom {
+	padding: 1.5em 1em 0 1em;
+}
 /* Material components */
-mat-form-field {
-	width: 100%;
-}
-#plantInfo .mat-tab-label:hover {
-   color: $secondary !important;
-}
 .buttons {
 	margin-bottom: 1em;
 	button {
@@ -89,16 +118,31 @@ mat-form-field {
 .mat-badge-medium.mat-badge-overlap.mat-badge-after .mat-badge-content {
 	right: 0;
 }
-mat-card.mat-card {
-	align-items: baseline;
+.mat-card {
 	cursor: pointer;
-	display: flex;
-	flex-direction: column;
-	justify-content: flex-start;
 	margin: .5em 1em;
 	.mat-card-content {
+		align-items: baseline;
+		display: flex;
+		flex-wrap: wrap;
 		margin-bottom: 0;
 		width: 100%;
+		.cardMain {
+			font-size: $fontSize-m;
+			line-height: 1.1;
+			padding: 0;
+			margin-bottom: .5rem;
+		}
+		.cardSecondary {
+			color: $secondaryLightMedium;
+			font-size: $fontSize-xs;
+		}
+		.cardTertiary {
+			text-align: right;
+			font-size: $fontSize-s;
+			color: $secondaryLightLow;
+			font-weight: 300;
+		}
 	}
 }
 .mat-card:last-child {
@@ -106,6 +150,9 @@ mat-card.mat-card {
 }
 .mat-chip-list.right .mat-chip-list-wrapper {
 	justify-content: end;
+}
+.mat-form-field {
+	width: 100%;
 }
 .mat-input-element {
 	color: $secondary;
@@ -202,6 +249,9 @@ mat-card.mat-card {
 }
 .mat-tab-labels {
 	border-bottom: 1px solid $lightBackground;
+}
+.tabs .mat-tab-label:hover {
+   color: $secondary !important;
 }
 /*h3 {
 	padding: 0 1rem;

@@ -18,7 +18,7 @@ import { RecipeeCreateComponent } from './recipee-create/recipee-create.componen
 import { RecipeeDetailComponent } from './recipee-detail/recipee-detail.component';
 import { RecipeeUpdateComponent } from './recipee-update/recipee-update.component';
 import { MatTabsModule } from '@angular/material';
-import { PipeModule } from 'src/app/filters/pipe.module';
+import { CollectionPipeModule } from 'src/app/filters/collection-pipe.module';
 
 
 @NgModule({
@@ -45,7 +45,7 @@ import { PipeModule } from 'src/app/filters/pipe.module';
     ProvisioningRoutingModule,
     RouterModule,
     MatTabsModule,
-    PipeModule
+    CollectionPipeModule
   ]
 })
 export class ProvisioningModule { }

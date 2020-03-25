@@ -1,24 +1,21 @@
 @import '_colors';
 @import '_typography';
 
-h3 {
-   font-size: $fontSize;
-   padding: 0;
-}
-h4 {
-   font-size: $fontSize-s;
-   font-weight: 300;
-   margin-top: .5em;
-}
-h5 {
-   color: $secondaryLightLowest;
-   font-size: $fontSize-xs;
-}
 .customIcon {
    fill: $secondaryLightLow;
    display: inline-block;
-   margin: 1em 1em 0 0;
+   margin: .5rem .5rem 0 0;
 }
 .dead {
    opacity: .5;
+}
+.flexBBw, .hundred {
+   width: 100%;
+}
+.left {
+   margin-right: 3%;
+   width:67%;
+}
+.right {
+   width: 30%;
 }

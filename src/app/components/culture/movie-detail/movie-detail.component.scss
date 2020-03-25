@@ -1,54 +1,22 @@
 @import '_colors';
-@import '_typography';
 
-h2,
-h3 {
-	color: $secondary;
-	padding: 0;
-}
-h3,
-h4 {
-	font-weight: 300;
-}
-h2 {
-	margin-bottom: .5rem;
-}
-h3 {
-	color: $secondaryLightLow;
-	font-size: $fontSize-s;
-}
-h4 {
-	text-align: right;
-	font-size: $fontSize-s;
-	color: $secondaryLightLowest;
-}
-.flex {
-	align-items: baseline;
-	display: flex;
-}
 .categories,
 .cast {
+	line-height: 1.1;
 	margin-bottom: 1em;
 	span {
 		color: $secondaryLightLow;
 		font-size: .875rem;
 	}
 }
-.img {
-	img {
-      box-sizing: border-box;
-      padding: 0 1rem;
-		width: 100%;
-	}
-}
 .left {
-	width: 75%;
+	width: 67%;
 }
 .rating {
 	margin: 1em 0;
 }
 .right {
-	width: 25%;
+	width: 30%;
 }
 .seenDate {
 	padding-left: 2em;

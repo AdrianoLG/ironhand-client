@@ -13,7 +13,7 @@ import { MovieCreateComponent } from './movie-create/movie-create.component';
 import { TvSerieDetailComponent } from './tv-serie-detail/tv-serie-detail.component';
 import { TvSerieUpdateComponent } from './tv-serie-update/tv-serie-update.component';
 import { TvSerieCreateComponent } from './tv-serie-create/tv-serie-create.component';
-import { PipeModule } from 'src/app/filters/pipe.module';
+import { CollectionPipeModule } from 'src/app/filters/collection-pipe.module';
 
 @NgModule({
   declarations: [
@@ -34,7 +34,7 @@ import { PipeModule } from 'src/app/filters/pipe.module';
     FormsModule,
     ReactiveFormsModule,
     CultureRoutingModule,
-    PipeModule
+    CollectionPipeModule
   ]
 })
 export class CultureModule { }

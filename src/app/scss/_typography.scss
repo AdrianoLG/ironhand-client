@@ -1,13 +1,13 @@
-/* Minor Third */
+/* Major Second */
 $fontSize-hero: 8vw;
-$fontSize-xxl: 2.074rem;
-$fontSize-xl: 1.728rem;
-$fontSize-l: 1.44rem;
-$fontSize-m: 1.2rem;
+$fontSize-xxl: 1.602rem;
+$fontSize-xl: 1.424rem;
+$fontSize-l: 1.266rem;
+$fontSize-m: 1.125rem;
 $fontSize: 1rem;
-$fontSize-s: 0.833rem;
-$fontSize-xs: 0.694rem;
-$fontSize-xxs: 0.579rem;
+$fontSize-s: 0.889rem;
+$fontSize-xs: 0.79rem;
+$fontSize-xxs: 0.702rem;
 @mixin marginBottom($size, $parts) {
    margin-bottom: calc(#{$size}/#{$parts});
 }
