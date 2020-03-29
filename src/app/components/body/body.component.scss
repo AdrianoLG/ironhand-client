@@ -1,27 +1,6 @@
 @import '_colors';
 @import '_typography';
 
-.flexBBw .cardSecondary {
-	color: $secondaryLightLow !important;
-	margin-bottom: .25rem;
-	span {
-		color: $secondary;
-	}
-}
-.heading {
-	color: $secondary;
-	font-weight: normal;
-	font-size: .875em;
-	margin-bottom: .5em;
-	span {
-		color: $secondaryLightLowest;
-		font-size: 1.125em;
-		padding-left: .25rem;
-	}
-}
-.mat-select {
-	margin-top: 2em;
-}
 p {
 	color: $secondaryLightHigh;
 	font-size: $fontSize;
@@ -31,16 +10,6 @@ p {
 		color: $secondaryLightLow;
 		font-size: $fontSize-xs;
 		margin-bottom: 0;
-	}
-}
-.completed mat-card-content.mat-card-content {
-	h3 {
-		margin-bottom: .25em;
-	}
-	h4 {
-		color: $secondaryLightLow;
-		font-size: 1em;
-		margin-bottom: .25em;
 	}
 }
 .exercises {
@@ -62,35 +31,35 @@ p {
 }
 .flexBBw {
 	width: 100%;
-}
-.left {
-	width: 25%;
-}
-.right {
-	width: 72%;
-}
-.suggestion {
-	ul, p {
-		width: 100%;
-	}
-	p:not(.heading), li {
-		color: $secondary;
-		font-size: $fontSize;
-	}
-	ul {
-		list-style: disc;
-		padding: 0;
-		padding-left: 1em;
-		li {
-			margin: 0;
-			margin-bottom: .25em;
-			padding: 0;
-			width: 100%;
+	.cardSecondary {
+		color: $secondaryLightLow !important;
+		margin-bottom: .25rem;
+		span {
+			color: $secondary;
 		}
 	}
-	.name {
-		font-size: $fontSize-m;
+}
+.meals {
+	p {
+		margin-bottom: .5em;
+		&.heading {
+			color: $secondaryLightHigh;
+			font-weight: normal;
+			font-size: .875em;
+			margin-bottom: .25em;
+			span {
+				color: $secondaryLightLowest;
+				font-size: 1.125em;
+				padding-left: .25rem;
+			}
+		}
 	}
+	div:last-child p {
+		margin-bottom: 0;
+	}
+}
+.mat-select {
+	margin-top: 2em;
 }
 .suggestions {
 	.mat-card:last-child {

@@ -45,7 +45,7 @@
                <mat-card *ngFor="let recipee of recipees | collectionFilter: filterRecipees : 'name'" data-id="{{ recipee._id }}" class="recipee" routerLink="/aprovisionamiento/receta/{{ recipee._id }}">
                   <mat-card-content>
                      <p class="cardMain">{{ recipee.name }}</p>
-                     <p class="cardSecondary"><span *ngFor="let ingredient p recipee.ingredients; let isLast = last; let isFirst = first;">{{ isFirst ? ingredient.name : ingredient.name | lowercase }}{{ isLast ? '' : ', ' }}</span></p>
+                     <p class="cardSecondary"><span *ngFor="let ingredient of recipee.ingredients; let isLast = last; let isFirst = first;">{{ isFirst ? ingredient.name : ingredient.name | lowercase }}{{ isLast ? '' : ', ' }}</span></p>
                   </mat-card-content>
                </mat-card>
             </div>
@@ -98,7 +98,7 @@
                <mat-card *ngFor="let cocktail of cocktails | collectionFilter: filterCocktails : 'nameAndIngredients'" data-id="{{ cocktail._id }}" class="cocktails" routerLink="/aprovisionamiento/coctel/{{ cocktail._id }}">
                   <mat-card-content>
                      <p class="cardMain">{{ cocktail.name }}</p>
-                     <p class="cardSecondary"><span *ngFor="let ingredient p cocktail.ingredients; let isFirst = first; let isLast = last">{{ isFirst ? (ingredient.name | titlecase) : (ingredient.name | lowercase) }}{{ isLast ? '' : ', ' }}</span></p>
+                     <p class="cardSecondary"><span *ngFor="let ingredient of cocktail.ingredients; let isFirst = first; let isLast = last">{{ isFirst ? (ingredient.name | titlecase) : (ingredient.name | lowercase) }}{{ isLast ? '' : ', ' }}</span></p>
                   </mat-card-content>
                </mat-card>
             </div>

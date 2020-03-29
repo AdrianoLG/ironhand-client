@@ -5,11 +5,23 @@
       </div>
       <mat-card mat-ripple *ngFor="let rehearsal of rehearsals" routerLink="/ensayos/ensayo/editar/{{ rehearsal._id }}">
          <mat-card-content>
-            <div class="left">
-               <h3>{{ rehearsal.instrument }}</h3>
-            </div>
-            <div class="right">
-               <h5>{{ rehearsal.time }}</h5>
+            <div class="rehearsal">
+               <div class="leftI">
+                  <p class="date">{{ rehearsal.date | dateFilter | uppercase }}</p>
+               </div>
+               <div class="rightI sheets">
+                  <div class="left">
+                     <p>{{ rehearsal.instrument }}</p>
+                     <ul>
+                        <li *ngFor="let sheet of rehearsal.sheets">
+                           {{ sheet.name }}, {{ sheet.time }} min.
+                        </li>
+                     </ul>
+                  </div>
+                  <div class="right">
+                     <p class="time">{{ rehearsal.time }} min.</p>
+                  </div>
+               </div>
             </div>
          </mat-card-content>
       </mat-card>

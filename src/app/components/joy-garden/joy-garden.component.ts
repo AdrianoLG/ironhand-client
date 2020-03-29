@@ -19,6 +19,7 @@ export class JoyGardenComponent implements OnInit {
   selectedIndex2: number;
   currentTabs: Tab[];
   tabGroup: number;
+  tabGroup2: number;
   waterings: JGWatering[];
   wateringsCount: number;
   plants: JGPlant[];
@@ -37,14 +38,18 @@ export class JoyGardenComponent implements OnInit {
   ngOnInit() {
     this._selectedTabService.currentTabs.subscribe(currentTabs => {
       this.currentTabs = currentTabs;
+      console.log(currentTabs);
       for (const currentTab of currentTabs) {
         if (currentTab.name === 'joy-garden') {
           this.tabGroup = currentTabs.indexOf(currentTab);
           this.selectedIndex = currentTab.selected;
         }
+        if (currentTab.name === 'joy-garden2') {
+          this.tabGroup2 = currentTabs.indexOf(currentTab);
+          this.selectedIndex2 = currentTab.selected;
+        }
       }
     });
-    console.log(`TabGroup ${this.tabGroup}, SelectedIndex ${this.selectedIndex}`);
     this._wateringsService.getWaterings().subscribe(waterings => {
       this.wateringsCount = waterings.count;
       this.waterings = waterings.waterings;
@@ -57,19 +62,24 @@ export class JoyGardenComponent implements OnInit {
       this.seedsCount = seeds.count;
       this.seeds = seeds.seeds;
     });
-    this.selectedIndex2 = 0;
   }
 
   addSomething(): void {
+    console.log(this.selectedIndex);
+    console.log(this.selectedIndex2);
     switch (this.selectedIndex) {
       case 0:
+        console.log('Case 0');
         this.router.navigate(['jardin-de-la-alegria/riegos/crear']);
         break;
-      case 1:
+        case 1:
+        console.log(0);
         if (this.selectedIndex2 === 0) {
-          this.router.navigate(['jardin-de-la-alegria/semillas/crear']);
-        } else if (this.selectedIndex2 === 1) {
+          console.log('Case 0-0');
           this.router.navigate(['jardin-de-la-alegria/plantas/crear']);
+        } else if (this.selectedIndex2 === 1) {
+          console.log('Case 0-1');
+          this.router.navigate(['jardin-de-la-alegria/semillas/crear']);
         } else {
           console.log('Something wrong');
         }
@@ -84,11 +94,14 @@ export class JoyGardenComponent implements OnInit {
     this.selectedIndex = tabIndex;
     this.currentTabs[this.tabGroup].selected = tabIndex;
     this._selectedTabService.changeTabs(this.currentTabs);
-    console.log(`TabGroup ${this.tabGroup}, SelectedIndex ${this.selectedIndex}`);
+    console.log(`TabGroup ${this.tabGroup}, SelectedIndex ${this.selectedIndex}, TabGroup2 ${this.tabGroup2}, SelectedIndex2 ${this.selectedIndex2}`);
   }
 
   changeSelectedIndex2($event): void {
-    this.selectedIndex2 = $event.index;
+    const tabIndex = $event.index;
+    this.selectedIndex2 = tabIndex;
+    this.currentTabs[this.tabGroup2].selected = tabIndex;
+    console.log(`TabGroup ${this.tabGroup}, SelectedIndex ${this.selectedIndex}, TabGroup2 ${this.tabGroup2}, SelectedIndex2 ${this.selectedIndex2}`);
   }
 
 }

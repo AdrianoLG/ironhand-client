@@ -7,6 +7,7 @@ import { RehearsalRoutingModule } from './rehearsal-routing.module';
 import { MaterialModule } from 'src/app/material/material.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
+import { DatePipeModule } from 'src/app/filters/date-pipe.module';
 
 
 
@@ -18,7 +19,8 @@ import { RouterModule } from '@angular/router';
     MaterialModule,
     FormsModule,
     ReactiveFormsModule,
-    RouterModule
+    RouterModule,
+    DatePipeModule
   ]
 })
 export class RehearsalModule { }

@@ -39,6 +39,10 @@ export class RehearsalsService {
   updateRehearsal(_id: string, rehearsal: Rehearsal): any {
     const body = [
       {
+        propName: 'date',
+        value: rehearsal.date
+      },
+      {
         propName: 'instrument',
         value: rehearsal.instrument
       },

@@ -89,6 +89,13 @@ button {
 .floatRight {
 	float: right;
 }
+.left, .rightI {
+	margin-left: 3%;
+	width: 67%;
+}
+.leftI, .right {
+	width: 30%;
+}
 .mb1 {
 	margin-bottom: 1em;
 }
@@ -136,6 +143,8 @@ button {
 		.cardSecondary {
 			color: $secondaryLightMedium;
 			font-size: $fontSize-xs;
+			line-height: 1.1;
+			margin-bottom: 0;
 		}
 		.cardTertiary {
 			text-align: right;

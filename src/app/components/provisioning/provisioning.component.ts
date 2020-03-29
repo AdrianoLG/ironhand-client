@@ -58,12 +58,10 @@ export class ProvisioningComponent implements OnInit {
         }
       }
     });
-    console.log(`TabGroup ${this.tabGroup}, SelectedIndex ${this.selectedIndex}`);
     this.getDrinks();
     this.getFood();
     this.getCocktails();
     this.getRecipees();
-    console.log(`Food ${this.food}, Drink ${this.drinks}, Cocktails ${this.cocktails}, Recipees: ${this.recipees}`);
   }
 
   addSomething(): void {
@@ -128,14 +126,12 @@ export class ProvisioningComponent implements OnInit {
     this.selectedIndex = tabIndex;
     this.currentTabs[this.tabGroup].selected = tabIndex;
     this._selectedTabService.changeTabs(this.currentTabs);
-    console.log(`TabGroup ${this.tabGroup}, SelectedIndex ${this.selectedIndex}, OtherIndex ${this.selectedIndex2}`);
   }
 
   changeSelectedIndex2($event): void {
     const tabIndex = $event.index;
     this.selectedIndex2 = tabIndex;
     this.currentTabs[this.tabGroup2].selected = tabIndex;
-    console.log(`TabGroup ${this.tabGroup}, SelectedIndex ${this.selectedIndex}, OtherIndex ${this.selectedIndex2}`);
   }
 
 }

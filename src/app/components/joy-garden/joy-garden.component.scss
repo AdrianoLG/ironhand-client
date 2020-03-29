@@ -1,33 +1,26 @@
 @import '_colors';
-.plant h3,
-.seed h3 {
-	padding: 0;
+@import '_typography';
+
+p {
+	color: $secondaryLightHigh;
+	font-size: $fontSize;
+	line-height: 1.3;
+	margin-bottom: .5em;
+	&.date {
+		color: $secondaryLightMedium;
+        font-size: $fontSize-xs;
+		margin-bottom: 0;
+    }
 }
-.plant h4,
-.seed h4 {
-	color: $secondaryLightLowest;
-	text-transform: uppercase;
+ul {
+	box-sizing: border-box;
+	padding-left: 5%;
+	li p {
+		color: $secondaryLightLow;
+		font-size: $fontSize-s;
+		margin-bottom: .25em;
+	}	
 }
-.plant h5,
-.seed h5 {
-	color: $secondaryLightMedium;
-}
-.plant .left,
-.seed .left {
-	width: 80%;
-}
-.plant .right,
-.seed .right {
-	text-align: right;
-	width: 20%;
-}
-.watering h3 {
-	font-weight: lighter;
-	padding: 0;
-}
-.mat-subheading-2 {
-	margin: 0;
-}
-.watering .right p {
-	color: $secondaryLightMedium;
+.flexBBw {
+	width: 100%;
 }

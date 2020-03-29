@@ -6,22 +6,22 @@
       </div>
       <mat-card mat-ripple *ngFor="let watering of waterings" routerLink="/jardin-de-la-alegria/riegos/actualizar/{{ watering._id }}" class="watering">
          <mat-card-content>
-            <div class="left">
-               <h3 class="mat-subheading-2">{{ watering.date | date: 'dd-MM-yyyy' }}</h3>
-               <h4 class="mat-caption">{{ watering.container | uppercase }}</h4>
+            <div class="flexBBw">
+               <p>{{ watering.container }}</p>
+               <p class="date">{{ watering.date | dateFilter | uppercase }}</p>
             </div>
-            <div class="right">
-               <div *ngFor="let fertilizers of watering.fertilizer">
-                  <p class="mat-body" *ngIf="fertilizers.grow">Crecimiento: {{ fertilizers.grow }} ml</p>
-                  <p class="mat-body" *ngIf="fertilizers.flower">Floración: {{ fertilizers.flower }} ml</p>
-                  <p class="mat-body" *ngIf="fertilizers.root">Raíces: {{ fertilizers.root }} ml</p>
-                  <p class="mat-body" *ngIf="fertilizers.powerzyme">Powerzyme: {{ fertilizers.powerzyme }} ml</p>
-                  <p class="mat-body" *ngIf="fertilizers.supervit">Supervit: {{ fertilizers.supervit }} ml</p>
-                  <p class="mat-body" *ngIf="fertilizers.delta9">Delta 9: {{ fertilizers.delta9 }} ml</p>
-                  <p class="mat-body" *ngIf="fertilizers.boost">Boost: {{ fertilizers.boost }} ml</p>
-                  <p class="mat-body" *ngIf="fertilizers.pk1314">PK 13-14: {{ fertilizers.pk1314 }} ml</p>
-               </div>
-            </div>
+            <ul>
+               <li *ngFor="let fertilizers of watering.fertilizer"> 
+                  <p *ngIf="fertilizers.grow">{{ fertilizers.grow }} ml Crecimiento</p>
+                  <p *ngIf="fertilizers.flower">{{ fertilizers.flower }} ml Floración</p>
+                  <p *ngIf="fertilizers.root">{{ fertilizers.root }} ml Complejo radicular</p>
+                  <p *ngIf="fertilizers.powerzyme">{{ fertilizers.powerzyme }} ml Powerzyme</p>
+                  <p *ngIf="fertilizers.supervit">{{ fertilizers.supervit }} ml SuperVit</p>
+                  <p *ngIf="fertilizers.delta9">{{ fertilizers.delta9 }} ml Delta 9</p>
+                  <p *ngIf="fertilizers.boost">{{ fertilizers.boost }} ml Boost</p>
+                  <p *ngIf="fertilizers.pk1314">{{ fertilizers.pk1314 }} ml PK 13/14</p>
+               </li>
+            </ul>
          </mat-card-content>
       </mat-card>
    </mat-tab>
@@ -33,29 +33,32 @@
             </div>
             <mat-card mat-ripple *ngFor="let plant of plants" routerLink="/jardin-de-la-alegria/plantas/actualizar/{{ plant._id }}" class="plant">
                <mat-card-content>
-                  <div class="left">
-                     <h3 class="mat-subheading-2">{{ plant.name }}</h3>
-                     <h4 class="mat-caption">{{ plant.container }}</h4>
-                  </div>
-                  <div class="right">
-                     <h5 class="mat-caption">{{ plant.coords }}</h5>
+                  <div class="flexBBw">
+                     <div class="left">
+                        <p class="cardMain">{{ plant.name }}</p>
+                        <p class="cardSecondary">{{ plant.container }}</p>
+                     </div>
+                     <div class="right">
+                        <p class="cardTertiary">{{ plant.coords }}</p>
+                     </div>
                   </div>
                </mat-card-content>
             </mat-card>
          </mat-tab>
          <mat-tab label="Semillas">
-               <div class="wrapper">
-                  <h2 class="sectionTitle">Semillas <span matBadge="{{ seedsCount }}"></span></h2>
-               </div>
-               <mat-card mat-ripple *ngFor="let seed of seeds" routerLink="/jardin-de-la-alegria/semillas/{{ seed._id }}" class="seed">
-                  <mat-card-content>
-                     <div class="left">
-                        <h3 class="mat-subheading-2">{{ seed.name }}</h3>
-                        <h4 class="mat-caption">{{ seed.bank }}</h4>
-                     </div>
-                     <div class="right">
-                        <h5 class="mat-caption">{{ seed.indicaSativa }} (I/S)</h5>
-                        <h5 class="mat-caption">{{ seed.flowering }} días</h5>
+            <div class="wrapper">
+               <h2 class="sectionTitle">Semillas <span matBadge="{{ seedsCount }}"></span></h2>
+            </div>
+            <mat-card mat-ripple *ngFor="let seed of seeds" routerLink="/jardin-de-la-alegria/semillas/{{ seed._id }}" class="seed">
+               <mat-card-content>
+                     <div class="flexBBw">
+                        <div class="left">
+                           <h3 class="cardMain">{{ seed.name }}</h3>
+                           <h4 class="cardSecondary">{{ seed.flowering }} días</h4>
+                        </div>
+                        <div class="right">
+                           <h5 class="cardTertiary">I/S: {{ seed.indicaSativa }}</h5>
+                        </div>
                      </div>
                   </mat-card-content>
                </mat-card>

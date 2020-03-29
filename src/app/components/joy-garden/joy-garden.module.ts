@@ -11,6 +11,7 @@ import { WateringUpdateComponent } from './watering-update/watering-update.compo
 import { SeedDetailComponent } from './seed-detail/seed-detail.component';
 import { SeedUpdateComponent } from './seed-update/seed-update.component';
 import { PlantUpdateComponent } from './plant-update/plant-update.component';
+import { DatePipeModule } from 'src/app/filters/date-pipe.module';
 
 @NgModule({
 	declarations: [
@@ -23,6 +24,13 @@ import { PlantUpdateComponent } from './plant-update/plant-update.component';
 		PlantUpdateComponent,
 		SeedUpdateComponent
 	],
-	imports: [ CommonModule, MaterialModule, FormsModule, ReactiveFormsModule, JoyGardenRoutingModule ]
+	imports: [
+		CommonModule, 
+		MaterialModule, 
+		FormsModule, 
+		ReactiveFormsModule, 
+		JoyGardenRoutingModule, 
+		DatePipeModule
+	]
 })
 export class JoyGardenModule {}

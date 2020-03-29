@@ -9,21 +9,33 @@
                <mat-card *ngFor="let meal of meals" data-id="{{ meal._id }}" routerLink="/cuerpo/comida/comidas/editar/{{ meal._id }}">
                   <mat-card-content>
                      <div class="flexBBw">
-                        <div class="left">
+                        <div class="leftI">
                            <p class="date">{{ meal.date | dateFilter | uppercase }}</p>
                         </div>
-                        <div class="right">
+                        <div class="rightI meals">
                            <div>
                               <p class="heading">Desayuno</p>
-                              <p><span *ngFor="let alimento of meal.breakfast; let isLast = last; let isFirst = first">{{ isFirst ? alimento : alimento | lowercase }}{{ isLast ? '' : ', ' }}</span></p>
+                              <p>
+                                 <span *ngFor="let alimento of meal.breakfast; let isLast = last; let isFirst = first">
+                                    {{ isFirst ? alimento : alimento | lowercase }}{{ isLast ? '' : ', ' }}
+                                 </span>
+                              </p>
                            </div>
                            <div>
                               <p class="heading">Comida</p>
-                              <p><span *ngFor="let alimento of meal.lunch; let isLast = last; let isFirst = first">{{ isFirst? alimento : alimento | lowercase }}{{ isLast ? '' : ', ' }}</span></p>
+                              <p>
+                                 <span *ngFor="let alimento of meal.lunch; let isLast = last; let isFirst = first">
+                                    {{ isFirst? alimento : alimento | lowercase }}{{ isLast ? '' : ', ' }}
+                                 </span>
+                              </p>
                            </div>
                            <div>
                               <p class="heading">Cena</p>
-                              <p><span *ngFor="let alimento of meal.dinner; let isLast = last; let isFirst = first">{{ isFirst ? alimento : alimento | lowercase }}{{ isLast ? '' : ', ' }}</span></p>
+                              <p>
+                                 <span *ngFor="let alimento of meal.dinner; let isLast = last; let isFirst = first">
+                                    {{ isFirst ? alimento : alimento | lowercase }}{{ isLast ? '' : ', ' }}
+                                 </span>
+                              </p>
                            </div>
                         </div>
                      </div>
@@ -44,11 +56,12 @@
                <div *ngFor="let suggestion of suggestions">
                   <mat-card data-id="{{ suggestion._id }}" class="suggestion" routerLink="/cuerpo/comida/sugerencias/editar/{{ suggestion._id }}" *ngIf="filterSuggestions(suggestion.season)">
                      <mat-card-content>
-                        <p class="name">{{ suggestion.name }}</p>
-                        <p class="heading">Ingredientes</p>
-                        <ul>
-                           <li *ngFor="let ingredient of suggestion.ingredients">{{ ingredient }}</li>
-                        </ul>
+                        <p class="cardMain">{{ suggestion.name }}</p>
+                        <p class="cardSecondary">
+                           <span *ngFor="let ingredient of suggestion.ingredients; let isFirst = first; let isLast = last;">
+                              {{ isFirst ? ingredient : ingredient | lowercase }}{{ isLast ? '' : ', '}}
+                           </span>
+                        </p>
                      </mat-card-content>
                   </mat-card>
                </div>
@@ -66,10 +79,10 @@
                <mat-card *ngFor="let completedExercise of completedExercisesMixed" data-id="{{ completedExercise._id }}" routerLink="/cuerpo/ejercicio/completados/editar/{{ completedExercise._id }}">
                   <mat-card-content>
                      <div class="flexBBw">
-                        <div class="left">
+                        <div class="leftI">
                            <p class="date">{{ completedExercise.date | dateFilter | uppercase }}</p>
                         </div>
-                        <div class="right">
+                        <div class="rightI">
                            <p class="cardMain">{{ completedExercise.exerciseName }}</p>
                            <p class="cardSecondary">Repeticiones: <span>{{ completedExercise.repetitions ? completedExercise.repetitions : '-' }} </span> | Tiempo: <span>{{ completedExercise.time ? completedExercise.time + ' seg.': '-' }}</span></p>
                            <p class="cardSecondary">Min./max. pulsaciones: <span>{{ completedExercise.minHeart ? completedExercise.minHeart + ' ppm': '-' }}</span> | <span>{{ completedExercise.maxHeart ? completedExercise.maxHeart + ' ppm' : '-' }}</span></p>

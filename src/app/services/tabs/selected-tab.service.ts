@@ -25,7 +25,15 @@ export class SelectedTabService {
       selected: 0
     },
     {
+      name: 'joy-garden2',
+      selected: 0
+    },
+    {
       name: 'body',
+      selected: 0
+    },
+    {
+      name: 'body2',
       selected: 0
     },
     {

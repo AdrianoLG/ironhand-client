@@ -19,9 +19,9 @@ import { Exercise } from 'src/app/models/exercise';
 export class BodyComponent implements OnInit {
   selectedIndex: number;
   selectedIndex2: number;
-  selectedIndex3: number;
   currentTabs: Tab[];
   tabGroup: number;
+  tabGroup2: number;
   meals: Meals[];
   mealsCount: number;
   suggestions: Suggestion[];
@@ -51,7 +51,10 @@ export class BodyComponent implements OnInit {
         if (currentTab.name === 'body') {
           this.tabGroup = currentTabs.indexOf(currentTab);
           this.selectedIndex = currentTab.selected;
-          this.selectedIndex2 = 0;
+        }
+        if (currentTab.name === 'body2') {
+          this.tabGroup2 = currentTabs.indexOf(currentTab);
+          this.selectedIndex2 = currentTab.selected;
         }
       }
     });
@@ -156,12 +159,14 @@ export class BodyComponent implements OnInit {
     this.selectedIndex = tabIndex;
     this.currentTabs[this.tabGroup].selected = tabIndex;
     this._selectedTabService.changeTabs(this.currentTabs);
-    console.log(`TabGroup ${this.tabGroup}, SelectedIndex ${this.selectedIndex}, OtherIndex ${this.selectedIndex2}`);
+    console.log(`TabGroup ${this.tabGroup}, SelectedIndex ${this.selectedIndex}, TabGroup2 ${this.tabGroup2}, SelectedIndex2 ${this.selectedIndex2}`);
   }
 
   changeSelectedIndex2($event): void {
-    this.selectedIndex2 = $event.index;
-    console.log(`TabGroup ${this.tabGroup}, SelectedIndex ${this.selectedIndex}, OtherIndex ${this.selectedIndex2}`);
+    const tabIndex = $event.index;
+    this.selectedIndex2 = tabIndex;
+    this.currentTabs[this.tabGroup2].selected = tabIndex;
+    console.log(`TabGroup ${this.tabGroup}, SelectedIndex ${this.selectedIndex}, TabGroup2 ${this.tabGroup2}, SelectedIndex2 ${this.selectedIndex2}`);
   }
 
   defaultSeason() {
