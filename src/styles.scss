@@ -90,11 +90,16 @@ button {
 	float: right;
 }
 .left, .rightI {
-	margin-left: 3%;
 	width: 67%;
 }
 .leftI, .right {
 	width: 30%;
+}
+.left {
+	margin-right: 3%;
+}
+.rightI {
+	margin-left: 3%;
 }
 .mb1 {
 	margin-bottom: 1em;
@@ -139,6 +144,7 @@ button {
 			line-height: 1.1;
 			padding: 0;
 			margin-bottom: .5rem;
+			width: 100%;
 		}
 		.cardSecondary {
 			color: $secondaryLightMedium;
