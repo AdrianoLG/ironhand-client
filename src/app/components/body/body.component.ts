@@ -205,4 +205,44 @@ export class BodyComponent implements OnInit {
     return false;
   }
 
+  // Changes selected tab - swipes
+  changeSection(tabIndex): void {
+    this.selectedIndex = tabIndex;
+    this.currentTabs[this.tabGroup].selected = tabIndex;
+    this._selectedTabService.changeTabs(this.currentTabs);
+  }
+
+  // Changes selected tab - swipes
+  changeSection2(tabIndex): void {
+    this.selectedIndex2 = tabIndex;
+    this.currentTabs[this.tabGroup2].selected = tabIndex;
+    this._selectedTabService.changeTabs(this.currentTabs);
+  }
+
+  // If exists it stablishes the next tab
+  nextSection(selectedIndex) {
+    if (selectedIndex < 2) {
+      this.changeSection(selectedIndex + 1);
+    }
+  }
+
+  nextSubsection(selectedIndex2) {
+    if (selectedIndex2 < 2) {
+      this.changeSection2(selectedIndex2 + 1);
+    }
+  }
+
+  // If exists it stablishes the previous tab
+  previousSection(selectedIndex) {
+    if (selectedIndex > 0) {
+      this.changeSection(selectedIndex - 1);
+    }
+  }
+
+  previousSubsection(selectedIndex2) {
+    if (selectedIndex2 > 0) {
+      this.changeSection2(selectedIndex2 - 1);
+    }
+  }
+
 }

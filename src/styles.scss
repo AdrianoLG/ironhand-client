@@ -127,6 +127,14 @@ button {
 		color: white;
 	}
 }
+.cdk-overlay-container {
+	z-index: 1 !important;
+}
+.hidden {
+	height: 0;
+	width: 0;
+	visibility: hidden;
+}
 .mat-badge-medium.mat-badge-overlap.mat-badge-after .mat-badge-content {
 	right: 0;
 }
@@ -268,134 +276,11 @@ button {
 .tabs .mat-tab-label:hover {
    color: $secondary !important;
 }
-/*h3 {
-	padding: 0 1rem;
-}
-ul {
-	display: flex;
-}
-li {
-	background: white;
-	box-sizing: border-box;
-	width: 23%;
-	margin: 1% 2em 0;
-	padding: 2em;
-}
-mat-card-content.mat-card-content {
-	display: flex;
-	width: 100%;
-	.left {
-		width: 25%;
+.todo-menu .mat-stroked-button {
+	background: #FAFAFA;
+	font-size: $fontSize-xxs !important;
+	font-weight: 300;
+	&:last-child {
+		margin-bottom: 0;
 	}
-	.right {
-		width: 75%;
-	}
-}
-mat-list {
-	width: 30%;
-	margin: 1em 1.5%;
-}
-mat-list h3 {
-	box-sizing: border-box;
-	font-weight: normal;
-	margin-bottom: 1em;
-	padding: 1em;
-}
-mat-tab-header .mat-tab-label-active {
-	color: $primary;
-}
-
-.mat-tab-labels .mat-tab-label-active {
-	opacity: 1;
-}
-
-.category {
-	font-size: .75em !important;
-	padding-top: .5em !important;
-	font-style: italic;
-	text-transform: uppercase;
-}
-
-.flex {
-	align-items: center;
-	display: flex;
-	justify-content: space-between;
-}
-.aiFlexEnd {
-	align-items: flex-end;
-}
-.jcFlexEnd {
-	justify-content: flex-end;
-}
-.floatRight {
-	display: flex;
-	justify-content: flex-end;
-}
-.hundred {
-	width: 100%;
-}
-.mat-h2,
-.mat-title,
-.mat-typography h2 {
-	font: 500 20px/1.2 "Fira Sans", sans-serif;
-}
-.mat-mini-fab .mat-icon,
-.mat-toolbar-row .mat-icon {
-	color: white;
-}
-.mat-badge-medium.mat-badge-overlap.mat-badge-after .mat-badge-content {
-	right: 0;
-}
-.mat-checkbox-checked {
-	opacity: .6;
-}
-.mat-drawer-content {
-	height: 94vh !important;
-	overflow-x: hidden !important;
-}
-.mat-list-base .mat-list-option {
-	color: $secondary;
-}
-.mat-list-item.mat-list-option.completed {
-	color: $secondaryLightLowest;
-	p {
-		color: $secondaryLightLowest;
-	}
-	.mat-pseudo-checkbox::after {
-		border-bottom: 2px solid $secondaryLightLowest;
-		border-left: 2px solid $secondaryLightLowest;
-		left: 3px;
-		height: 5px;
-		opacity: 1;
-		top: 0;
-		transform: rotate(-45deg);
-		width: 12px;
-	}
-	.mat-pseudo-checkbox {
-		color: $secondaryLightLowest;
-	}
-}
-.pad {
-	padding: 0 1em;
-}
-.wrapper {
-	padding: 1.5em 1em 1em;
-}
-.mat-tab-body-wrapper {
-	flex-grow: 1;
-	flex-wrap: wrap;
-	overflow: auto !important;
-	box-sizing: border-box;
-	padding-bottom: 4em;
-}
-
-.mat-tab-body {
-	display: flex !important;
-	flex-direction: column;
-}
-
-.mat-tab-body-content {
-	display: flex;
-	flex-direction: column;
-	flex-grow: 1;
-}*/
+ }

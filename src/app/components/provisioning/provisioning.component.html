@@ -1,6 +1,10 @@
-<mat-tab-group [color]="'primary'" [backgroundColor]="'primary'" (selectedTabChange)="changeSelectedIndex($event)" [selectedIndex]="selectedIndex">
+<mat-tab-group [color]="'primary'" [backgroundColor]="'primary'" 
+(selectedTabChange)="changeSelectedIndex($event)" [selectedIndex]="selectedIndex"
+(swipeleft)="previousSection(selectedIndex)" (swiperight)="nextSection(selectedIndex)"
+(swipedown)="previousSubsection(selectedIndex2)" (swipeup)="nextSubsection(selectedIndex2)">
    <mat-tab label="Comida">
-      <mat-tab-group [color]="'accent'" [backgroundColor]="'accent'" class="bottomTabs" (selectedTabChange)="changeSelectedIndex2($event)" [selectedIndex]="selectedIndex2">
+      <mat-tab-group [color]="'accent'" [backgroundColor]="'accent'" class="bottomTabs" 
+      (selectedTabChange)="changeSelectedIndex2($event)" [selectedIndex]="selectedIndex2">
          <mat-tab label="Comida">
             <div class="wrapper">
                <h2 class="sectionTitle">Comida <span matBadge="{{ foodCount }}"></span></h2>
@@ -51,7 +55,8 @@
       </mat-tab-group>
    </mat-tab>
    <mat-tab label="Bebida">
-      <mat-tab-group [color]="'accent'" [backgroundColor]="'accent'" class="bottomTabs" (selectedTabChange)="changeSelectedIndex2($event)" [selectedIndex]="selectedIndex2">
+      <mat-tab-group [color]="'accent'" [backgroundColor]="'accent'" class="bottomTabs" 
+      (selectedTabChange)="changeSelectedIndex2($event)" [selectedIndex]="selectedIndex2">
          <mat-tab label="Bebida">
             <div class="completed">
                <div class="wrapper">

@@ -1,5 +1,6 @@
 <mat-tab-group [color]="'primary'" [backgroundColor]="'primary'"
-(selectedTabChange)="changeSelectedIndex($event)" [selectedIndex]="selectedIndex" (swipeleft)="previousSection(selectedIndex)" (swiperight)="nextSection(selectedIndex)">
+(selectedTabChange)="changeSelectedIndex($event)" [selectedIndex]="selectedIndex" 
+(swipeleft)="previousSection(selectedIndex)" (swiperight)="nextSection(selectedIndex)">
    <mat-tab label="Libros">
       <div class="wrapper-nobottom">
          <h2 class="sectionTitle">Libros <span matBadge="{{ booksCount }}"></span></h2>

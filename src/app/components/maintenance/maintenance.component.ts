@@ -54,4 +54,25 @@ export class MaintenanceComponent implements OnInit {
     this._selectedTabService.changeTabs(this.currentTabs);
   }
 
+  // Changes selected tab - swipes
+  changeSection(tabIndex): void {
+    this.selectedIndex = tabIndex;
+    this.currentTabs[this.tabGroup].selected = tabIndex;
+    this._selectedTabService.changeTabs(this.currentTabs);
+  }
+
+  // If exists it stablishes the next tab
+  nextSection(selectedIndex) {
+    if (selectedIndex < document.getElementsByClassName('mat-tab-label').length - 1) {
+      this.changeSection(selectedIndex + 1);
+    }
+  }
+
+  // If exists it stablishes the previous tab
+  previousSection(selectedIndex) {
+    if (selectedIndex > 0) {
+      this.changeSection(selectedIndex - 1);
+    }
+  }
+
 }

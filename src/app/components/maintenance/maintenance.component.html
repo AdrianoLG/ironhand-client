@@ -1,5 +1,6 @@
 <mat-tab-group [color]="'primary'" [backgroundColor]="'primary'"
-(selectedTabChange)="changeSelectedIndex($event)" [selectedIndex]="selectedIndex">
+(selectedTabChange)="changeSelectedIndex($event)" [selectedIndex]="selectedIndex"
+(swipeleft)="previousSection(selectedIndex)" (swiperight)="nextSection(selectedIndex)">
    <mat-tab label="Limpieza">
       <div class="wrapper">
          <h2 class="sectionTitle">Limpieza <span matBadge="{{ cleanupsCount }}"></span></h2>

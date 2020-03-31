@@ -7,13 +7,15 @@ import { TodoCreateComponent } from './todo-create/todo-create.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ProjectCreateComponent } from './project-create/project-create.component';
 import { ProjectUpdateComponent } from './project-update/project-update.component';
+import { TodoUpdateComponent } from './todo-update/todo-update.component';
 
 @NgModule({
   declarations: [
     TasksComponent,
     TodoCreateComponent,
     ProjectCreateComponent,
-    ProjectUpdateComponent
+    ProjectUpdateComponent,
+    TodoUpdateComponent
   ],
   imports: [
     CommonModule,

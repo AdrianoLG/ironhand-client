@@ -1,5 +1,5 @@
 export interface Todo {
-   _id: number;
+   _id: string;
    name: string;
    category: string;
    priority: number;

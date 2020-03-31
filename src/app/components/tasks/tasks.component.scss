@@ -29,6 +29,10 @@ h5 {
    padding-top: 0.5rem !important;
    font-style: italic;
 }
+.cdk-overlay-pane {
+   margin-left: 1em;
+   right: unset !important;
+}
 .completed {
    p {
       color: $secondaryLightLowest;
@@ -55,4 +59,8 @@ h5 {
          color: $primary;
       }
    }
+}
+.todo-menu {
+   display: flex;
+   flex-direction: column;
 }

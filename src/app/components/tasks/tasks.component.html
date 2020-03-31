@@ -1,5 +1,6 @@
 <mat-tab-group [color]="'primary'" [backgroundColor]="'primary'"
-(selectedTabChange)="changeSelectedIndex($event)" [selectedIndex]="selectedIndex">
+(selectedTabChange)="changeSelectedIndex($event)" [selectedIndex]="selectedIndex" 
+(swipeleft)="previousSection(selectedIndex)" (swiperight)="nextSection(selectedIndex)">
    <mat-tab label="Todos">
       <div class="wrapper">
          <h2 class="sectionTitle">Tareas <span matBadge="{{ countTodos }}"></span></h2>
@@ -8,7 +9,7 @@
       <div *ngIf="todos">
          <mat-selection-list #todosList (selectionChange)="onSelection(todosList.selectedOptions.selected)"
          *ngIf="countTodos > 0">
-            <mat-list-option *ngFor="let todo of todos" [value]="todo" [class.completed]="todo.completed">
+            <mat-list-option *ngFor="let todo of todos" [value]="todo" [class.completed]="todo.completed" (contextmenu)="openContextMenu($event, todo); $event.preventDefault();" (press)="openContextMenuPress($event, todo); $event.preventDefault();">
                <p>{{ todo.name }}</p>
                <sub class="category">{{ todo.category }}</sub>
             </mat-list-option>
@@ -17,6 +18,13 @@
             <mat-icon>add</mat-icon>
          </button>
       </div>
+      <ng-template #todoMenu let-todo>
+         <div class="todo-menu">
+            <button mat-stroked-button (click)="updateTodo(todo)" color="accent">Editar</button>
+            <button mat-stroked-button (click)="deleteTodo(todo)" color="warn">Borrar</button><br>
+            <button mat-stroked-button (click)="deleteAllCompleted()" color="primary">Borrar completadas</button><br>
+         </div>
+      </ng-template>
    </mat-tab>
    <mat-tab label="Proyectos">
       <div class="wrapper">

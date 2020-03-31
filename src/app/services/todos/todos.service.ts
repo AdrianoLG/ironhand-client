@@ -68,6 +68,32 @@ export class TodosService {
     return this.http.patch<Todo>(this.globals.url + '/todos/' + _id, body, this.httpOptions);
   }
 
+  updateTodo(_id: string, todo: Todo) {
+    const body = [
+      {
+        propName: 'name',
+        value: todo.name
+      },
+      {
+        propName: 'category',
+        value: todo.category
+      },
+      {
+        propName: 'priority',
+        value: todo.priority
+      },
+      {
+        propName: 'completed',
+        value: todo.completed
+      }
+    ];
+    return this.http.patch<Todo>(this.globals.url + '/todos/' + _id, body, this.httpOptions);
+  }
+
+  deleteTodo(_id: string) {
+    return this.http.delete(this.globals.url + '/todos/' + _id, this.httpOptions);
+  }
+
   deleteCompleted() {
     return this.http.delete(this.globals.url + '/todos', this.httpOptions);
   }
