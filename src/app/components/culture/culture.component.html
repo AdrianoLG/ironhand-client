@@ -3,7 +3,8 @@
    <mat-tab label="Libros">
       <div class="wrapper-nobottom">
          <h2 class="sectionTitle">Libros <span matBadge="{{ booksCount }}"></span></h2>
-         <form>
+         <p *ngIf="booksCount == 0">Todavía no hay libros, ¡crea uno!</p>
+         <form *ngIf="booksCount > 0">
             <mat-form-field>
                <input matInput type="text" placeholder="Buscar" [(ngModel)]="filterBook" name="filterBook">
                <button mat-button *ngIf="filterBook" matSuffix mat-icon-button aria-label="Clear" (click)="filterBook=''">
@@ -30,7 +31,8 @@
    <mat-tab label="Películas">
       <div class="wrapper-nobottom">
          <h2 class="sectionTitle">Películas <span matBadge="{{ moviesCount }}"></span></h2>
-         <form>
+         <p *ngIf="moviesCount == 0">Todavía no hay películas, ¡crea una!</p>
+         <form *ngIf="moviesCount > 0">
             <mat-form-field>
                <input matInput type="text" placeholder="Buscar" [(ngModel)]="filterMovie" name="filterMovie">
                <button mat-button *ngIf="filterMovie" matSuffix mat-icon-button aria-label="Clear" (click)="filterMovie=''">
@@ -57,7 +59,8 @@
    <mat-tab tab label="Series">
       <div class="wrapper-nobottom">
          <h2 class="sectionTitle">Series <span matBadge="{{ tvSeriesCount }}"></span></h2>
-         <form>
+         <p *ngIf="tvSeriesCount == 0">Todavía no hay series, ¡crea una!</p>
+         <form *ngIf="tvSeriesCount > 0">
             <mat-form-field>
                <input matInput type="text" placeholder="Buscar" [(ngModel)]="filterTvSerie" name="filterTvSerie">
                <button mat-button *ngIf="filterTvSerie" matSuffix mat-icon-button aria-label="Clear" (click)="filterTvSerie=''">

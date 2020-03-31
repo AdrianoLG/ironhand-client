@@ -2,6 +2,7 @@
    <mat-tab label="Ensayos">
       <div class="wrapper">
          <h2 class="sectionTitle">Ensayos <span matBadge="{{ rehearsalsCount }}"></span></h2>
+         <p *ngIf="rehearsalsCount == 0">Todavía no hay ensayos, ¡crea uno!</p>
       </div>
       <mat-card mat-ripple *ngFor="let rehearsal of rehearsals" routerLink="/ensayos/ensayo/editar/{{ rehearsal._id }}">
          <mat-card-content>

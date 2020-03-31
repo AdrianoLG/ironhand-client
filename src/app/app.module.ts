@@ -13,13 +13,15 @@ import { HomeComponent } from './components/home/home.component';
 import { Globals } from './services/globals';
 import 'hammerjs';
 import { GestureConfig } from '@angular/material';
+import { RegisterComponent } from './components/register/register.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    HomeComponent
+    HomeComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,

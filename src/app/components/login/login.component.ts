@@ -14,10 +14,14 @@ export class LoginComponent implements OnInit {
   loginForm: FormGroup;
   submitted = false;
 
-  constructor(private formBuilder: FormBuilder, private userService: UserService, private authService: AuthService) {}
+  constructor(
+    private _formBuilder: FormBuilder, 
+    private _userService: UserService, 
+    private _authService: AuthService
+  ) {}
 
   ngOnInit(): void {
-    this.loginForm = this.formBuilder.group({
+    this.loginForm = this._formBuilder.group({
       email: ['', [
         Validators.required,
         Validators.email,
@@ -34,15 +38,15 @@ export class LoginComponent implements OnInit {
     if (this.loginForm.invalid) {
       return;
     }
-    this.userService.getToken(
+    this._userService.getToken(
       {
         email: this.loginForm.value.email,
         password: this.loginForm.value.password
       }
     )
     .subscribe(data => {
-      this.userService.setUser(this.loginForm.value.email);
-      this.authService.login(data.token);
+      this._userService.setUser(this.loginForm.value.email);
+      this._authService.login(data.token);
     }, error => {
       console.log('Erroooor ', error);
     });

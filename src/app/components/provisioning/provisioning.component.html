@@ -2,63 +2,62 @@
    <mat-tab label="Comida">
       <mat-tab-group [color]="'accent'" [backgroundColor]="'accent'" class="bottomTabs" (selectedTabChange)="changeSelectedIndex2($event)" [selectedIndex]="selectedIndex2">
          <mat-tab label="Comida">
-            <div *ngIf="food">
-               <div class="wrapper">
-                  <h2 class="sectionTitle">Comida <span matBadge="{{ foodCount }}"></span></h2>
-                  <form>
-                     <mat-form-field>
-                        <input matInput type="text" placeholder="Buscar" [(ngModel)]="filterFood" name="filterFood">
-                        <button mat-button *ngIf="filterFood" matSuffix mat-icon-button aria-label="Clear" (click)="filterFood=''">
-                           <mat-icon>close</mat-icon>
-                        </button>
-                     </mat-form-field>
-                  </form>
-               </div>
-               <mat-card *ngFor="let foodItem of food | collectionFilter: filterFood : 'nameAndCategory'" data-id="{{ foodItem._id }}" routerLink="/aprovisionamiento/comida/{{ foodItem._id }}">
-                  <mat-card-content>
-                     <div class="flexBBw">
-                        <div class="left">
-                           <p class="cardMain">{{ foodItem.productQty }}x {{ foodItem.name }}</p>
-                           <p class="cardSecondary">{{ foodItem.category }}</p>
-                        </div>
-                        <div class="right">
-                           <p class="cardTertiary">{{ foodItem.expiry | date: 'dd-MM-yyyy' }}</p>
-                        </div>
-                     </div>
-                  </mat-card-content>
-               </mat-card>
+            <div class="wrapper">
+               <h2 class="sectionTitle">Comida <span matBadge="{{ foodCount }}"></span></h2>
+               <p *ngIf="foodCount == 0">Todavía no hay comidas, ¡crea una!</p>
+               <form *ngIf="foodCount > 0">
+                  <mat-form-field>
+                     <input matInput type="text" placeholder="Buscar" [(ngModel)]="filterFood" name="filterFood">
+                     <button mat-button *ngIf="filterFood" matSuffix mat-icon-button aria-label="Clear" (click)="filterFood=''">
+                        <mat-icon>close</mat-icon>
+                     </button>
+                  </mat-form-field>
+               </form>
             </div>
+            <mat-card *ngFor="let foodItem of food | collectionFilter: filterFood : 'nameAndCategory'" data-id="{{ foodItem._id }}" routerLink="/aprovisionamiento/comida/{{ foodItem._id }}">
+               <mat-card-content>
+                  <div class="flexBBw">
+                     <div class="left">
+                        <p class="cardMain">{{ foodItem.productQty }}x {{ foodItem.name }}</p>
+                        <p class="cardSecondary">{{ foodItem.category }}</p>
+                     </div>
+                     <div class="right">
+                        <p class="cardTertiary">{{ foodItem.expiry | date: 'dd-MM-yyyy' }}</p>
+                     </div>
+                  </div>
+               </mat-card-content>
+            </mat-card>
          </mat-tab>
          <mat-tab label="Recetas">
-            <div *ngIf="recipees">
-               <div class="wrapper">
-                  <h2 class="sectionTitle">Recetas <span matBadge="{{ recipeesCount }}"></span></h2>
-                  <form>
-                     <mat-form-field>
-                        <input matInput type="text" placeholder="Buscar" [(ngModel)]="filterRecipees" name="filterRecipees">
-                        <button mat-button *ngIf="filterRecipees" matSuffix mat-icon-button aria-label="Clear" (click)="filterRecipees=''">
-                           <mat-icon>close</mat-icon>
-                        </button>
-                     </mat-form-field>
-                  </form>
-               </div>
-               <mat-card *ngFor="let recipee of recipees | collectionFilter: filterRecipees : 'name'" data-id="{{ recipee._id }}" class="recipee" routerLink="/aprovisionamiento/receta/{{ recipee._id }}">
-                  <mat-card-content>
-                     <p class="cardMain">{{ recipee.name }}</p>
-                     <p class="cardSecondary"><span *ngFor="let ingredient of recipee.ingredients; let isLast = last; let isFirst = first;">{{ isFirst ? ingredient.name : ingredient.name | lowercase }}{{ isLast ? '' : ', ' }}</span></p>
-                  </mat-card-content>
-               </mat-card>
+            <div class="wrapper">
+               <h2 class="sectionTitle">Recetas <span matBadge="{{ recipeesCount }}"></span></h2>
+               <p *ngIf="recipeesCount == 0">Todavía no hay recetas, ¡crea una!</p>
+               <form *ngIf="recipeesCount > 0">
+                  <mat-form-field>
+                     <input matInput type="text" placeholder="Buscar" [(ngModel)]="filterRecipees" name="filterRecipees">
+                     <button mat-button *ngIf="filterRecipees" matSuffix mat-icon-button aria-label="Clear" (click)="filterRecipees=''">
+                        <mat-icon>close</mat-icon>
+                     </button>
+                  </mat-form-field>
+               </form>
             </div>
+            <mat-card *ngFor="let recipee of recipees | collectionFilter: filterRecipees : 'name'" data-id="{{ recipee._id }}" class="recipee" routerLink="/aprovisionamiento/receta/{{ recipee._id }}">
+               <mat-card-content>
+                  <p class="cardMain">{{ recipee.name }}</p>
+                  <p class="cardSecondary"><span *ngFor="let ingredient of recipee.ingredients; let isLast = last; let isFirst = first;">{{ isFirst ? ingredient.name : ingredient.name | lowercase }}{{ isLast ? '' : ', ' }}</span></p>
+               </mat-card-content>
+            </mat-card>
          </mat-tab>
       </mat-tab-group>
    </mat-tab>
    <mat-tab label="Bebida">
       <mat-tab-group [color]="'accent'" [backgroundColor]="'accent'" class="bottomTabs" (selectedTabChange)="changeSelectedIndex2($event)" [selectedIndex]="selectedIndex2">
          <mat-tab label="Bebida">
-            <div *ngIf="drinks" class="completed">
+            <div class="completed">
                <div class="wrapper">
                   <h2 class="sectionTitle">Bebida <span matBadge="{{ drinksCount }}"></span></h2>
-                  <form>
+                  <p *ngIf="drinksCount == 0">Todavía no hay bebidas, ¡crea una!</p>
+                  <form *ngIf="drinksCount > 0">
                      <mat-form-field>
                         <input matInput type="text" placeholder="Buscar" [(ngModel)]="filterDrinks" name="filterDrinks">
                         <button mat-button *ngIf="filterDrinks" matSuffix mat-icon-button aria-label="Clear" (click)="filterDrinks=''">
@@ -83,25 +82,24 @@
             </div>
          </mat-tab>
          <mat-tab label="Cócteles">
-            <div *ngIf="cocktails">
-               <div class="wrapper">
-                  <h2 class="sectionTitle">Cócteles <span matBadge="{{ cocktailsCount }}"></span></h2>
-                  <form>
-                     <mat-form-field>
-                        <input matInput type="text" placeholder="Buscar" [(ngModel)]="filterCocktails" name="filterCocktails">
-                        <button mat-button *ngIf="filterCocktails" matSuffix mat-icon-button aria-label="Clear" (click)="filterCocktails=''">
-                           <mat-icon>close</mat-icon>
-                        </button>
-                     </mat-form-field>
-                  </form>
-               </div>
-               <mat-card *ngFor="let cocktail of cocktails | collectionFilter: filterCocktails : 'nameAndIngredients'" data-id="{{ cocktail._id }}" class="cocktails" routerLink="/aprovisionamiento/coctel/{{ cocktail._id }}">
-                  <mat-card-content>
-                     <p class="cardMain">{{ cocktail.name }}</p>
-                     <p class="cardSecondary"><span *ngFor="let ingredient of cocktail.ingredients; let isFirst = first; let isLast = last">{{ isFirst ? (ingredient.name | titlecase) : (ingredient.name | lowercase) }}{{ isLast ? '' : ', ' }}</span></p>
-                  </mat-card-content>
-               </mat-card>
+            <div class="wrapper">
+               <h2 class="sectionTitle">Cócteles <span matBadge="{{ cocktailsCount }}"></span></h2>
+               <p *ngIf="cocktailsCount == 0">Todavía no hay cócteles, ¡crea uno!</p>
+               <form *ngIf="cocktailsCount > 0">
+                  <mat-form-field>
+                     <input matInput type="text" placeholder="Buscar" [(ngModel)]="filterCocktails" name="filterCocktails">
+                     <button mat-button *ngIf="filterCocktails" matSuffix mat-icon-button aria-label="Clear" (click)="filterCocktails=''">
+                        <mat-icon>close</mat-icon>
+                     </button>
+                  </mat-form-field>
+               </form>
             </div>
+            <mat-card *ngFor="let cocktail of cocktails | collectionFilter: filterCocktails : 'nameAndIngredients'" data-id="{{ cocktail._id }}" class="cocktails" routerLink="/aprovisionamiento/coctel/{{ cocktail._id }}">
+               <mat-card-content>
+                  <p class="cardMain">{{ cocktail.name }}</p>
+                  <p class="cardSecondary"><span *ngFor="let ingredient of cocktail.ingredients; let isFirst = first; let isLast = last">{{ isFirst ? (ingredient.name | titlecase) : (ingredient.name | lowercase) }}{{ isLast ? '' : ', ' }}</span></p>
+               </mat-card-content>
+            </mat-card>
          </mat-tab>
       </mat-tab-group>
    </mat-tab>

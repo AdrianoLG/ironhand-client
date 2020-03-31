@@ -1,10 +1,11 @@
 <mat-tab-group [color]="'primary'" [backgroundColor]="'primary'"
 (selectedTabChange)="changeSelectedIndex($event)" [selectedIndex]="selectedIndex">
    <mat-tab label="Todos">
+      <div class="wrapper">
+         <h2 class="sectionTitle">Tareas <span matBadge="{{ countTodos }}"></span></h2>
+         <p *ngIf="countTodos==0">Todavía no hay tareas, ¡crea una!</p>
+      </div>
       <div *ngIf="todos">
-         <div class="wrapper">
-            <h2 class="sectionTitle">Tareas <span matBadge="{{ countTodos }}"></span></h2>
-         </div>
          <mat-selection-list #todosList (selectionChange)="onSelection(todosList.selectedOptions.selected)"
          *ngIf="countTodos > 0">
             <mat-list-option *ngFor="let todo of todos" [value]="todo" [class.completed]="todo.completed">
@@ -12,23 +13,23 @@
                <sub class="category">{{ todo.category }}</sub>
             </mat-list-option>
          </mat-selection-list>
-         <p *ngIf="countTodos==0" class="pad">Todavía no hay tareas, ¡crea una!</p>
          <button mat-mini-fab routerLink="/tareas/todo/crear">
             <mat-icon>add</mat-icon>
          </button>
       </div>
    </mat-tab>
-   <mat-tab label="Proyectos" >
-      <div *ngIf="selectedProject">
-         <div class="wrapper">
-            <h2 class="sectionTitle">Proyectos <span matBadge="{{ countProjects }}"></span></h2>
-            <div class="buttons projectTitles">
-               <button mat-stroked-button *ngFor="let projectTitle of projectTitles; let isFirst = first"
-               [ngClass]="{ 'projectTitle' : isFirst }" (click)="onSelectProject($event, projectTitle)">
-                  {{ projectTitle }}
-               </button>
-            </div>
+   <mat-tab label="Proyectos">
+      <div class="wrapper">
+         <h2 class="sectionTitle">Proyectos <span matBadge="{{ countProjects }}"></span></h2>
+         <p *ngIf="countProjects==0">Todavía no hay proyectos, ¡crea uno!</p>
+         <div class="buttons projectTitles">
+            <button mat-stroked-button *ngFor="let projectTitle of projectTitles; let isFirst = first"
+            [ngClass]="{ 'projectTitle' : isFirst }" (click)="onSelectProject($event, projectTitle)">
+               {{ projectTitle }}
+            </button>
          </div>
+      </div>
+      <div *ngIf="selectedProject">
          <h3>{{ selectedProject.name }}<button mat-icon-button class="floatRight" routerLink="/tareas/proyecto/actualizar/{{ selectedProject._id }}">
                <mat-icon color="accent">edit</mat-icon>
             </button>
@@ -59,9 +60,9 @@
                </mat-list-option>
             </mat-selection-list>
          </section>
-         <button mat-mini-fab routerLink="/tareas/proyecto/crear">
-            <mat-icon>add</mat-icon>
-         </button>
       </div>
+      <button mat-mini-fab routerLink="/tareas/proyecto/crear">
+         <mat-icon>add</mat-icon>
+      </button>
    </mat-tab>
 </mat-tab-group>

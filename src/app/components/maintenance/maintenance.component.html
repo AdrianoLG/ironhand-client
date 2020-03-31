@@ -3,20 +3,19 @@
    <mat-tab label="Limpieza">
       <div class="wrapper">
          <h2 class="sectionTitle">Limpieza <span matBadge="{{ cleanupsCount }}"></span></h2>
+         <p *ngIf="cleanupsCount == 0">Todavía no hay tareas completadas, ¡crea una!</p>
       </div>
-      <div *ngIf="cleanups">
-         <mat-card mat-ripple *ngFor="let task of cleanups" routerLink="/mantenimiento/limpieza/editar/{{ task._id }}">
-            <mat-card-content>
-               <div class="flexBBw">
-                  <p class="cardMain">{{ task.place }}</p>
-                  <p class="cardTertiary">{{ task.date | dateFilter | uppercase }}</p>
-               </div>
-               <div class="hundred">
-                  <div *ngFor="let t of task.tasks;" class="customIcon" [inlineSVG]="'../../../../assets/img/icons/' + t + '.svg'"></div>
-               </div>
-            </mat-card-content>
-         </mat-card>
-      </div>
+      <mat-card mat-ripple *ngFor="let task of cleanups" routerLink="/mantenimiento/limpieza/editar/{{ task._id }}">
+         <mat-card-content>
+            <div class="flexBBw">
+               <p class="cardMain">{{ task.place }}</p>
+               <p class="cardTertiary">{{ task.date | dateFilter | uppercase }}</p>
+            </div>
+            <div class="hundred">
+               <div *ngFor="let t of task.tasks;" class="customIcon" [inlineSVG]="'../../../../assets/img/icons/' + t + '.svg'"></div>
+            </div>
+         </mat-card-content>
+      </mat-card>
       <button mat-mini-fab>
          <mat-icon routerLink="/mantenimiento/limpieza/crear">add</mat-icon>
       </button>
@@ -24,6 +23,7 @@
    <mat-tab label="Plantas">
       <div class="wrapper">
          <h2 class="sectionTitle">Plantas <span matBadge="{{ plantsCount }}"></span></h2>
+         <p *ngIf="plantsCount == 0">Todavía no hay plantas, ¡crea una!</p>
       </div>
       <mat-card mat-ripple *ngFor="let plant of plants" routerLink="/mantenimiento/plantas/{{ plant._id }}" [ngClass]="{'dead': plant.death != ''}">
          <mat-card-content>

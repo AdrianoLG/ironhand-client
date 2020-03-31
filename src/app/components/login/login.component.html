@@ -18,7 +18,7 @@
       </mat-error>
    </mat-form-field>
    <div class="formFooter">
-      <pre>{{ loginForm.status }}</pre>
+      <a routerLink="/register">Registrarse</a>
       <button type="submit" [disabled]="!loginForm.valid" mat-raised-button (click)="onSubmit()">Entrar</button>
    </div>
 </form>

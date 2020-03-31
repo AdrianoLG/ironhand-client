@@ -5,6 +5,7 @@
             <div *ngIf="meals">
                <div class="wrapper">
                   <h2 class="sectionTitle">Comidas <span matBadge="{{ mealsCount }}"></span></h2>
+                  <p *ngIf="mealsCount == 0">Todavía no hay comidas, ¡crea una!</p>
                </div>
                <mat-card *ngFor="let meal of meals" data-id="{{ meal._id }}" routerLink="/cuerpo/comida/comidas/editar/{{ meal._id }}">
                   <mat-card-content>
@@ -47,7 +48,8 @@
             <div *ngIf="suggestions" class="suggestions">
                <div class="wrapper">
                   <h2 class="sectionTitle">Sugerencias <span matBadge="{{ suggestionsCount }}"></span></h2>
-                  <mat-select [(value)]="selectedSeason">
+                  <p *ngIf="suggestionsCount == 0">Todavía no hay sugerencias, ¡crea una!</p>
+                  <mat-select [(value)]="selectedSeason" *ngIf="suggestionsCount > 0">
                      <mat-option *ngFor="let season of seasons"  [value]="season" (click)="changeSeason(season)">
                         {{ season }}
                      </mat-option>
@@ -75,6 +77,7 @@
             <div *ngIf="completedExercises" class="completed">
                <div class="wrapper">
                   <h2 class="sectionTitle">Completados <span matBadge="{{ completedExercisesCount }}"></span></h2>
+                  <p *ngIf="completedExercisesCount == 0">Todavía no hay ejercicios completados, ¡crea uno!</p>
                </div>
                <mat-card *ngFor="let completedExercise of completedExercisesMixed" data-id="{{ completedExercise._id }}" routerLink="/cuerpo/ejercicio/completados/editar/{{ completedExercise._id }}">
                   <mat-card-content>
@@ -96,6 +99,7 @@
             <div *ngIf="exercises">
                   <div class="wrapper">
                      <h2 class="sectionTitle">Ejercicios <span matBadge="{{ exercisesCount }}"></span></h2>
+                     <p *ngIf="exercisesCount == 0">Todavía no hay ejercicios, ¡crea uno!</p>
                   </div>
                <mat-card *ngFor="let exercise of exercises" data-id="{{ exercise._id }}" class="exercises" routerLink="/cuerpo/ejercicio/listado/editar/{{ exercise._id }}">
                   <mat-card-content>

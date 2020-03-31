@@ -3,6 +3,7 @@
    <mat-tab label="Riegos">
       <div class="wrapper">
          <h2 class="sectionTitle">Riegos <span matBadge="{{ wateringsCount }}"></span></h2>
+         <p *ngIf="wateringsCount == 0">Todavía no hay riegos, ¡crea uno!</p>
       </div>
       <mat-card mat-ripple *ngFor="let watering of waterings" routerLink="/jardin-de-la-alegria/riegos/actualizar/{{ watering._id }}" class="watering">
          <mat-card-content>
@@ -30,6 +31,7 @@
          <mat-tab label="Plantas">
             <div class="wrapper">
                <h2 class="sectionTitle">Plantas <span matBadge="{{ plantsCount }}"></span></h2>
+               <p *ngIf="plantsCount == 0">Todavía no hay plantas, ¡crea una!</p>
             </div>
             <mat-card mat-ripple *ngFor="let plant of plants" routerLink="/jardin-de-la-alegria/plantas/actualizar/{{ plant._id }}" class="plant">
                <mat-card-content>
@@ -48,16 +50,17 @@
          <mat-tab label="Semillas">
             <div class="wrapper">
                <h2 class="sectionTitle">Semillas <span matBadge="{{ seedsCount }}"></span></h2>
+               <p *ngIf="seedsCount == 0">Todavía no hay semillas, ¡crea una!</p>
             </div>
             <mat-card mat-ripple *ngFor="let seed of seeds" routerLink="/jardin-de-la-alegria/semillas/{{ seed._id }}" class="seed">
                <mat-card-content>
                      <div class="flexBBw">
                         <div class="left">
-                           <h3 class="cardMain">{{ seed.name }}</h3>
-                           <h4 class="cardSecondary">{{ seed.flowering }} días</h4>
+                           <p class="cardMain">{{ seed.name }}</p>
+                           <p class="cardSecondary">{{ seed.flowering }} días</p>
                         </div>
                         <div class="right">
-                           <h5 class="cardTertiary">I/S: {{ seed.indicaSativa }}</h5>
+                           <p class="cardTertiary">I/S: {{ seed.indicaSativa }}</p>
                         </div>
                      </div>
                   </mat-card-content>

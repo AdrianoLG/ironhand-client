@@ -1,3 +1,5 @@
+@import '_colors';
+
 form {
    left: 50%;
    max-width: 20em;
@@ -8,8 +10,16 @@ form {
 mat-form-field {
    width: 100%;
 }
+a {
+   color: $secondary;
+   font-style: italic;
+   text-decoration: none;
+   &:hover {
+      text-decoration: underline;
+   }
+}
 .formFooter {
-   align-items: flex-end;
+   align-items: baseline;
    display: flex;
    justify-content: space-between;
    margin-top: 1.5em;

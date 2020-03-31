@@ -10,6 +10,11 @@ import { Globals } from '../globals';
 
 export class UserService {
 
+  httpOptions = {
+    headers: new HttpHeaders({
+      'Content-Type':  'application/json'
+    })
+  };
   user: string;
 
   constructor(
@@ -19,17 +24,10 @@ export class UserService {
 
 
   public getToken(user): Observable<LoginResponse> {
-
-    const httpOptions = {
-      headers: new HttpHeaders({
-        'Content-Type':  'application/json'
-      })
-    };
-
     return this.http.post<LoginResponse>(
       this.globals.url + '/user/login',
       '{"email": "' + user.email + '", "password": "' + user.password + '"}',
-      httpOptions
+      this.httpOptions
     );
   }
 
@@ -39,5 +37,9 @@ export class UserService {
 
   public getUser() {
     return this.user;
+  }
+
+  public registerUser(user) {
+    return this.http.post<any>(this.globals.url + '/user/signup', user, this.httpOptions);
   }
 }
