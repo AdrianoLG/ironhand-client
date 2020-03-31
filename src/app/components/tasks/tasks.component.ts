@@ -145,11 +145,11 @@ export class TasksComponent implements OnInit {
   }
 
   completeTodo(id): void {
-    this._todosService.completeTodo(id);
+    this._todosService.completeTodo(id).subscribe();
   }
 
   uncompleteTodo(id): void {
-    this._todosService.uncompleteTodo(id);
+    this._todosService.uncompleteTodo(id).subscribe();
   }
 
   changeSelectedIndex($event): void {
