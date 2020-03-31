@@ -36,7 +36,6 @@ export class MaintenanceComponent implements OnInit {
           this.selectedIndex = currentTab.selected;
         }
       }
-      console.log(`TabGroup ${this.tabGroup}, SelectedIndex ${this.selectedIndex}`);
       this._cleanupService.getCleanups().subscribe(cleanups => {
         this.cleanupsCount = cleanups.count;
         this.cleanups = cleanups.cleaningTasks;
@@ -53,7 +52,6 @@ export class MaintenanceComponent implements OnInit {
     this.selectedIndex = tabIndex;
     this.currentTabs[this.tabGroup].selected = tabIndex;
     this._selectedTabService.changeTabs(this.currentTabs);
-    console.log(`TabGroup ${this.tabGroup}, SelectedIndex ${this.selectedIndex}`);
   }
 
 }

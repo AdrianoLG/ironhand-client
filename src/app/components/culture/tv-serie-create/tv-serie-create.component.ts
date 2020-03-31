@@ -67,7 +67,7 @@ export class TvSerieCreateComponent implements OnInit {
           this.categoriesItems.push({ name: value.trim() });
           break;
         default:
-          console.log('Pass a parameter');
+          console.log('No more cases. Check the code');
           break;
       }
     }
@@ -90,7 +90,7 @@ export class TvSerieCreateComponent implements OnInit {
         }
         break;
       default:
-        console.log('Pass a parameter');
+        console.log('No more cases. Check the code');
         break;
     }
   }

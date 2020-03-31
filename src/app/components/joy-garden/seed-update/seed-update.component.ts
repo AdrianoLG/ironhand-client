@@ -29,8 +29,6 @@ export class SeedUpdateComponent implements OnInit {
 
 		this._seedsService.getSeed(this._id).subscribe(seed => {
 			this.seed = seed;
-			console.log(this.seed);
-
 			this.updateSeedForm = this._formBuilder.group({
 				name: ['', [Validators.required]],
 				bank: ['', [Validators.required]],
@@ -43,7 +41,6 @@ export class SeedUpdateComponent implements OnInit {
 				effect: ['', []],
 				aroma: ['', []]
 			});
-
 			this.updateSeedForm.patchValue({
 				name: seed.name,
 				bank: seed.bank,

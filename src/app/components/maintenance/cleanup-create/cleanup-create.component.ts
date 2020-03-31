@@ -194,10 +194,9 @@ export class CleanupCreateComponent implements OnInit {
         }
         break;
       default:
-        console.log('Wheres that option?');
+        console.log('No more cases. Check the code');
         break;
     }
-    console.log(this.tasks);
   }
 
 }

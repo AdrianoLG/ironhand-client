@@ -74,7 +74,6 @@ export class BookCreateComponent implements OnInit {
 
   rateBook(rating: number) {
     this.bookRating = rating;
-    console.log(this.bookRating);
   }
 
 }

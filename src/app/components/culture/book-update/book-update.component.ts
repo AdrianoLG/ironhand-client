@@ -92,7 +92,6 @@ export class BookUpdateComponent implements OnInit {
 
   rateBook(rating: number) {
     this.bookRating = rating;
-    console.log(this.bookRating);
   }
 
 }

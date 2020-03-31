@@ -53,7 +53,7 @@ export class SuggestionCreateComponent implements OnInit {
           this.ingredientItems.push({name: value.trim()});
           break;
         default:
-          console.log('Pass a parameter');
+          console.log('No more cases. Check the code');
           break;
       }
     }
@@ -76,7 +76,7 @@ export class SuggestionCreateComponent implements OnInit {
         }
         break;
       default:
-        console.log('Pass a parameter');
+        console.log('No more cases. Check the code');
         break;
     }
   }

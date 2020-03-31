@@ -49,7 +49,7 @@ export class ListCreateComponent implements OnInit {
           this.bodyPartsItems.push({ name: value.trim() });
           break;
         default:
-          console.log('Pass a parameter');
+          console.log('No more cases. Check the code');
           break;
       }
     }
@@ -67,7 +67,7 @@ export class ListCreateComponent implements OnInit {
         }
         break;
       default:
-        console.log('Pass a parameter');
+        console.log('No more cases. Check the code');
         break;
     }
   }

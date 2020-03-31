@@ -80,7 +80,7 @@ export class ProjectUpdateComponent implements OnInit {
           this.doneItems.push({name: value.trim()});
           break;
         default:
-          console.log('Pass a parameter');
+          console.log('No more cases. Check the code');
           break;
       }
     }
@@ -108,7 +108,7 @@ export class ProjectUpdateComponent implements OnInit {
         }
         break;
       default:
-        console.log('Pass a parameter');
+        console.log('No more cases. Check the code');
         break;
     }
   }

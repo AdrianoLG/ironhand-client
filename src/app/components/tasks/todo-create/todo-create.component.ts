@@ -39,7 +39,6 @@ export class TodoCreateComponent implements OnInit {
     this.addTaskForm.patchValue({
       priority: e.value
     });
-    console.log(this.addTaskForm.value);
   }
 
   goBack(): void {

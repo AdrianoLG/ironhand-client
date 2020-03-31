@@ -30,8 +30,6 @@ export class PlantUpdateComponent implements OnInit {
 		this._id = this._route.snapshot.paramMap.get('_id');
 		this._plantsService.getPlant(this._id).subscribe(plant => {
 			this.plant = plant;
-			console.log(this.plant);
-
 			this.updatePlantForm = this._formBuilder.group({
 				seedId: ['', [Validators.required]],
 				name: ['', [Validators.required]],
@@ -39,9 +37,7 @@ export class PlantUpdateComponent implements OnInit {
 				coords: ['', [Validators.required]],
 				gallery: ['', []]
 			});
-
 			this.plant.seedId = plant.seedId;
-
 			this.updatePlantForm.patchValue({
 				seedId: plant.seedId,
 				name: plant.name,
@@ -49,7 +45,6 @@ export class PlantUpdateComponent implements OnInit {
 				coords: plant.coords,
 				gallery: plant.gallery
 			});
-
 			this._seedsService.getSeeds().subscribe(res => {
 				for (let seed of res.seeds) {
 					this.availableSeeds.push(seed);

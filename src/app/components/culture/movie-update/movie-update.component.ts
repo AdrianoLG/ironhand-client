@@ -92,7 +92,7 @@ export class MovieUpdateComponent implements OnInit {
           this.categoriesItems.push({ name: value.trim() });
           break;
         default:
-          console.log('Pass a parameter');
+          console.log('No more cases. Check the code');
           break;
       }
     }
@@ -115,7 +115,7 @@ export class MovieUpdateComponent implements OnInit {
         }
         break;
       default:
-        console.log('Pass a parameter');
+        console.log('No more cases. Check the code');
         break;
     }
   }
@@ -157,7 +157,6 @@ export class MovieUpdateComponent implements OnInit {
 
   rateMovie(rating: number) {
     this.movieRating = rating;
-    console.log(this.movieRating);
   }
 
 }

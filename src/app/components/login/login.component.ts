@@ -48,7 +48,7 @@ export class LoginComponent implements OnInit {
       this._userService.setUser(this.loginForm.value.email);
       this._authService.login(data.token);
     }, error => {
-      console.log('Erroooor ', error);
+      console.log(error);
     });
   }
 

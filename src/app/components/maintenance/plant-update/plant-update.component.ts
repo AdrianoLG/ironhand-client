@@ -111,7 +111,7 @@ export class PlantUpdateComponent implements OnInit {
           this.pestsItems.push({ name: value.trim() });
           break;
         default:
-          console.log('Pass a parameter');
+          console.log('No more cases. Check the code');
           break;
       }
     }
@@ -139,7 +139,7 @@ export class PlantUpdateComponent implements OnInit {
         }
         break;
       default:
-        console.log('Pass a parameter');
+        console.log('No more cases. Check the code');
         break;
     }
   }

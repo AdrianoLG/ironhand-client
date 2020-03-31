@@ -26,8 +26,6 @@ export class WateringUpdateComponent implements OnInit {
 		this._id = this._route.snapshot.paramMap.get('_id');
 		this._wateringsService.getWatering(this._id).subscribe(watering => {
 			this.watering = watering;
-			console.log(this.watering);
-
 			this.updateWateringForm.patchValue({
 				container: watering.container,
 				date: watering.date,

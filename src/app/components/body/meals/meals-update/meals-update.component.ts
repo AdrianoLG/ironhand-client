@@ -79,7 +79,7 @@ export class MealsUpdateComponent implements OnInit {
           this.dinnerItems.push({ name: value.trim() });
           break;
         default:
-          console.log('Pass a parameter');
+          console.log('No more cases. Check the code');
           break;
       }
     }
@@ -107,7 +107,7 @@ export class MealsUpdateComponent implements OnInit {
         }
         break;
       default:
-        console.log('Pass a parameter');
+        console.log('No more cases. Check the code');
         break;
     }
   }

@@ -36,7 +36,6 @@ export class CompletedCreateComponent implements OnInit {
       for (let exercise of res.exercises) {
         this.availableExercises.push(exercise);
       }
-      console.log(this.availableExercises);
     });
   }
 

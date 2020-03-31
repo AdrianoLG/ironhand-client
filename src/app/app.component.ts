@@ -58,7 +58,6 @@ export class AppComponent implements OnInit {
     switch (menuItem) {
       case 'Borrar completadas':
         this._todosService.deleteCompleted().subscribe(message => {
-          console.log(message);
           this._menuService.refreshIt();
           this._router.navigateByUrl('/', { skipLocationChange: true });
           this._router.navigate(['/tareas']);

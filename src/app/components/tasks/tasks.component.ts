@@ -38,8 +38,6 @@ export class TasksComponent implements OnInit {
     this.getProjects();
     this._selectedTabService.currentTabs.subscribe(currentTabs => {
       this.currentTabs = currentTabs;
-      console.log(this.currentTabs);
-
       for (const currentTab of currentTabs) {
         if (currentTab.name === 'tasks') {
           this.tabGroup = currentTabs.indexOf(currentTab);
@@ -147,22 +145,11 @@ export class TasksComponent implements OnInit {
   }
 
   completeTodo(id): void {
-    this._todosService.completeTodo(id)
-      .subscribe(message => {
-        console.log(message);
-        this.getTodos();
-      }, error => {
-        console.log(error);
-      });
+    this._todosService.completeTodo(id);
   }
 
   uncompleteTodo(id): void {
-    this._todosService.uncompleteTodo(id)
-      .subscribe(message => {
-        console.log(message);
-      }, error => {
-        console.log(error);
-      });
+    this._todosService.uncompleteTodo(id);
   }
 
   changeSelectedIndex($event): void {
@@ -170,7 +157,6 @@ export class TasksComponent implements OnInit {
     this.selectedIndex = tabIndex;
     this.currentTabs[this.tabGroup].selected = tabIndex;
     this._selectedTabService.changeTabs(this.currentTabs);
-    console.log(`TabGroup ${this.tabGroup}, SelectedIndex ${this.selectedIndex}`);
   }
 
   onSelectProject(event: any, projectTitle: string): void {
