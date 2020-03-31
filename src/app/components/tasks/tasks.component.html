@@ -1,6 +1,6 @@
 <mat-tab-group [color]="'primary'" [backgroundColor]="'primary'"
 (selectedTabChange)="changeSelectedIndex($event)" [selectedIndex]="selectedIndex" 
-(swipeleft)="nextSection(selectedIndex) (swiperight)="previousSection(selectedIndex)>
+(swipeleft)="nextSection(selectedIndex)" (swiperight)="previousSection(selectedIndex)">
    <mat-tab label="Todos">
       <div class="wrapper">
          <h2 class="sectionTitle">Tareas <span matBadge="{{ countTodos }}"></span></h2>
