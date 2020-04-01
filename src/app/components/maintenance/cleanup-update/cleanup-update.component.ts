@@ -64,10 +64,10 @@ export class CleanupUpdateComponent implements OnInit {
         date: cleanup.date,
         place: cleanup.place
       });
-      this.place = cleanup.place;
       for (const task of cleanup.tasks) {
         this.toggle(task);
       }
+      this.place = cleanup.place;
     });
   }
 
