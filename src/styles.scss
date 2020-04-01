@@ -127,6 +127,10 @@ button {
 		color: white;
 	}
 }
+.buttonsRight .mat-stroked-button {
+	font-size: $fontSize-s !important;
+	font-weight: 300;
+}
 .cdk-overlay-container {
 	z-index: 1 !important;
 }
@@ -175,6 +179,7 @@ button {
 	justify-content: end;
 }
 .mat-form-field {
+	color: $secondaryLightLow;
 	width: 100%;
 }
 .mat-input-element {

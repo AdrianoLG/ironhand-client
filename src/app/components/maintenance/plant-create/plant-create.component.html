@@ -36,8 +36,8 @@
          <mat-datepicker #picker></mat-datepicker>
       </mat-form-field>
       <div class="buttonsRight">
-         <button mat-raised-button color="secondary" (click)="removeWatering()">Quitar riego</button>
-         <button mat-raised-button color="primary" (click)="addWatering()">Añadir riego</button>
+         <button mat-stroked-button color="secondary" (click)="removeWatering()">Quitar</button>
+         <button mat-stroked-button color="warn" (click)="addWatering()">Añadir</button>
       </div>
       <mat-form-field>
          <input matInput type="number" placeholder="Frecuencia de riego" formControlName="wateringFrequency" required>
