@@ -16,6 +16,7 @@ export class CompletedUpdateComponent implements OnInit {
   updateCompletedForm: FormGroup;
   completedExercise: CompletedExercise;
   availableExercises: Exercise[] = [];
+  exerciseCategory: string;
   private _id: string;
 
   constructor(
@@ -49,6 +50,9 @@ export class CompletedUpdateComponent implements OnInit {
         });
         this._exercisesService.getExercises().subscribe(res => {
           for (let exercise of res.exercises) {
+            if (exercise._id === this.updateCompletedForm.value.exerciseId) {
+              this.changeCategory(exercise.category);
+            }
             this.availableExercises.push(exercise);
           }
         });
@@ -83,6 +87,10 @@ export class CompletedUpdateComponent implements OnInit {
 
   goBack(): void {
     this._location.back();
+  }
+
+  changeCategory(exerciseCategory) {
+    this.exerciseCategory = exerciseCategory;
   }
 
 }

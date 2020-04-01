@@ -89,8 +89,8 @@
                         </div>
                         <div class="rightI">
                            <p class="cardMain">{{ completedExercise.exerciseName }}</p>
-                           <p class="cardSecondary">Repeticiones: <span>{{ completedExercise.repetitions ? completedExercise.repetitions : '-' }} </span> | Tiempo: <span>{{ completedExercise.time ? completedExercise.time + ' seg.': '-' }}</span></p>
-                           <p class="cardSecondary">Min./max. pulsaciones: <span>{{ completedExercise.minHeart ? completedExercise.minHeart + ' ppm': '-' }}</span> | <span>{{ completedExercise.maxHeart ? completedExercise.maxHeart + ' ppm' : '-' }}</span></p>
+                           <p class="cardSecondary"><span *ngIf="completedExercise.repetitions">Repeticiones: <em>{{ completedExercise.repetitions }}</em> | </span>Tiempo: <em>{{ completedExercise.time ? completedExercise.time + ' seg.': '-' }}</em></p>
+                           <p class="cardSecondary"><span *ngIf="completedExercise.minHeart">Min./max. pulsaciones: <em>{{ completedExercise.minHeart }}</em> | <em>{{ completedExercise.maxHeart }} ppm</em></span></p>
                         </div>
                      </div>
                   </mat-card-content>

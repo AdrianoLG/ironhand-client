@@ -15,6 +15,7 @@ export class CompletedCreateComponent implements OnInit {
   addCompletedExerciseForm: FormGroup;
   completedExercise: CompletedExercise;
   availableExercises: Exercise[] = [];
+  exerciseCategory: string;
 
   constructor(
     private _completedExercisesService: CompletedExercisesService,
@@ -64,6 +65,10 @@ export class CompletedCreateComponent implements OnInit {
         console.log(error);
       }
     );
+  }
+
+  changeCategory(exerciseCategory) {
+    this.exerciseCategory = exerciseCategory;
   }
 
 }

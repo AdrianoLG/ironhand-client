@@ -12,6 +12,10 @@ p {
 		margin-bottom: 0;
 	}
 }
+em {
+	color: $secondaryDarkLower;
+	font-style: normal;
+}
 .exercises {
 	.mat-card-content {
 		flex-direction: column;
@@ -34,24 +38,16 @@ p {
 	.cardSecondary {
 		color: $secondaryLightLow !important;
 		margin-bottom: .25rem;
-		span {
-			color: $secondary;
-		}
 	}
 }
 .meals {
 	p {
 		margin-bottom: .5em;
 		&.heading {
-			color: $secondaryLightHigh;
+			color: $secondaryLightMedium;
 			font-weight: normal;
-			font-size: .875em;
+			font-size: $fontSize-xs;
 			margin-bottom: .25em;
-			span {
-				color: $secondaryLightLowest;
-				font-size: 1.125em;
-				padding-left: .25rem;
-			}
 		}
 	}
 	div:last-child p {

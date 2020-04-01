@@ -4,7 +4,7 @@
       <mat-form-field>
          <mat-label>Ejercicio</mat-label>
          <mat-select formControlName="exerciseId" [value]="completedExercise.exerciseId" required>
-            <mat-option *ngFor="let exercise of availableExercises" [value]="exercise._id" select>
+            <mat-option *ngFor="let exercise of availableExercises" [value]="exercise._id" select (click)="changeCategory(exercise.category)">
                {{exercise.name}}
             </mat-option>
          </mat-select>
@@ -14,16 +14,16 @@
          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
          <mat-datepicker #picker></mat-datepicker>
       </mat-form-field>
-      <mat-form-field>
+      <mat-form-field *ngIf="exerciseCategory && exerciseCategory != 'Estiramiento' && exerciseCategory != 'Cardio'">
          <input matInput type="number" placeholder="Repeticiones" formControlName="repetitions">
       </mat-form-field>
-      <mat-form-field>
+      <mat-form-field *ngIf="exerciseCategory">
          <input matInput type="number" placeholder="Tiempo" formControlName="time">
       </mat-form-field>
-      <mat-form-field>
+      <mat-form-field *ngIf="exerciseCategory && exerciseCategory != 'Estiramiento'">
          <input matInput type="number" placeholder="Pulsaciones mínimas" formControlName="minHeart">
       </mat-form-field>
-      <mat-form-field>
+      <mat-form-field *ngIf="exerciseCategory && exerciseCategory != 'Estiramiento'">
          <input matInput type="number" placeholder="Pulsaciones máximas" formControlName="maxHeart">
       </mat-form-field>
    </form>
