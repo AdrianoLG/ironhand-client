@@ -110,28 +110,21 @@ export class JoyGardenComponent implements OnInit {
   }
 
   // If exists it stablishes the next tab
-  nextSection(selectedIndex) {
-    if (selectedIndex < 2) {
-      this.changeSection(selectedIndex + 1);
-    }
-  }
-
-  nextSubsection(selectedIndex2) {
-    if (selectedIndex2 < 2) {
-      this.changeSection2(selectedIndex2 + 1);
+  nextSection() {
+    if (this.selectedIndex == 0) {
+      this.changeSection(1);
+      this.changeSection2(0);
+    } else if (this.selectedIndex == 1 && this.selectedIndex2 == 0) {
+      this.changeSection2(1);
     }
   }
 
   // If exists it stablishes the previous tab
-  previousSection(selectedIndex) {
-    if (selectedIndex > 0) {
-      this.changeSection(selectedIndex - 1);
-    }
-  }
-
-  previousSubsection(selectedIndex2) {
-    if (selectedIndex2 > 0) {
-      this.changeSection2(selectedIndex2 - 1);
+  previousSection() {
+    if (this.selectedIndex == 1 && this.selectedIndex2 == 1) {
+      this.changeSection2(0);
+    } else if (this.selectedIndex == 1 && this.selectedIndex2 == 0) {
+      this.changeSection(0);
     }
   }
 

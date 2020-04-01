@@ -1,7 +1,6 @@
 <mat-tab-group [color]="'primary'" [backgroundColor]="'primary'" 
 (selectedTabChange)="changeSelectedIndex($event)" [selectedIndex]="selectedIndex"
-(swipeleft)="nextSection(selectedIndex)" (swiperight)="previousSection(selectedIndex)"
-(swipedown)="previousSubsection(selectedIndex2)" (swipeup)="nextSubsection(selectedIndex2)">
+(swipeleft)="nextSection()" (swiperight)="previousSection()">
    <mat-tab label="Comida">
       <mat-tab-group [color]="'accent'" [backgroundColor]="'accent'" class="bottomTabs" 
       (selectedTabChange)="changeSelectedIndex2($event)" [selectedIndex]="selectedIndex2">
