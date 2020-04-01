@@ -63,6 +63,10 @@ export class CompletedExercisesService {
       {
         propName: 'maxHeart',
         value: completedExercise.maxHeart
+      },
+      {
+        propName: 'weight',
+        value: completedExercise.weight
       }
     ];
     return this.http.patch<CompletedExercise>(this.globals.url + '/exercise/completed-exercises/' + _id, body, this.httpOptions);

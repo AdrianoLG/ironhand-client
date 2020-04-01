@@ -32,6 +32,7 @@ export class CompletedCreateComponent implements OnInit {
       time: [, []],
       minHeart: [, []],
       maxHeart: [, []],
+      weight: [, []]
     });
     this._exercisesService.getExercises().subscribe(res => {
       for (let exercise of res.exercises) {
@@ -55,7 +56,8 @@ export class CompletedCreateComponent implements OnInit {
       repetitions: this.addCompletedExerciseForm.value.repetitions,
       time: this.addCompletedExerciseForm.value.time,
       minHeart: this.addCompletedExerciseForm.value.minHeart,
-      maxHeart: this.addCompletedExerciseForm.value.maxHeart
+      maxHeart: this.addCompletedExerciseForm.value.maxHeart,
+      weight: this.addCompletedExerciseForm.value.weight
     };
     this._completedExercisesService.addCompletedExercise(this.completedExercise).subscribe(
       () => {

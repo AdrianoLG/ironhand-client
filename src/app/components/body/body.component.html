@@ -89,6 +89,7 @@
                         </div>
                         <div class="rightI">
                            <p class="cardMain">{{ completedExercise.exerciseName }}</p>
+                           <p class="cardSecondary" *ngIf="completedExercise.weight">Peso: <em>{{ completedExercise.weight }} Kg</em></p>
                            <p class="cardSecondary"><span *ngIf="completedExercise.repetitions">Repeticiones: <em>{{ completedExercise.repetitions }}</em> | </span>Tiempo: <em>{{ completedExercise.time ? completedExercise.time + ' seg.': '-' }}</em></p>
                            <p class="cardSecondary"><span *ngIf="completedExercise.minHeart">Min./max. pulsaciones: <em>{{ completedExercise.minHeart }}</em> | <em>{{ completedExercise.maxHeart }} ppm</em></span></p>
                         </div>

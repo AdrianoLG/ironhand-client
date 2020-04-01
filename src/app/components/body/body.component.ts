@@ -104,7 +104,8 @@ export class BodyComponent implements OnInit {
                 repetitions: completedExercise.repetitions,
                 time: completedExercise.time,
                 minHeart: completedExercise.minHeart,
-                maxHeart: completedExercise.maxHeart
+                maxHeart: completedExercise.maxHeart,
+                weight: completedExercise.weight
               });
             }
           }

@@ -38,7 +38,8 @@ export class CompletedUpdateComponent implements OnInit {
           repetitions: [, []],
           time: [, []],
           minHeart: [, []],
-          maxHeart: [, []]
+          maxHeart: [, []],
+          weight: [, []]
         });
         this.updateCompletedForm.patchValue({
           exerciseId: completedExercise.exerciseId,
@@ -46,7 +47,8 @@ export class CompletedUpdateComponent implements OnInit {
           repetitions: completedExercise.repetitions,
           time: completedExercise.time,
           minHeart: completedExercise.minHeart,
-          maxHeart: completedExercise.maxHeart
+          maxHeart: completedExercise.maxHeart,
+          weight: completedExercise.weight
         });
         this._exercisesService.getExercises().subscribe(res => {
           for (let exercise of res.exercises) {
@@ -67,7 +69,8 @@ export class CompletedUpdateComponent implements OnInit {
       repetitions: this.updateCompletedForm.value.repetitions,
       time: this.updateCompletedForm.value.time,
       minHeart: this.updateCompletedForm.value.minHeart,
-      maxHeart: this.updateCompletedForm.value.maxHeart
+      maxHeart: this.updateCompletedForm.value.maxHeart,
+      weight: this.updateCompletedForm.value.weight
     };
 
     this._completedExercisesService.updateCompletedExercise(this._id, this.completedExercise).subscribe(() => {

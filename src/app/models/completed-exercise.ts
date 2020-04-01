@@ -6,4 +6,5 @@ export interface CompletedExercise {
    time: number;
    minHeart: number;
    maxHeart: number;
+   weight: number;
 }
