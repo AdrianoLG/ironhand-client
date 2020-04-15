@@ -211,6 +211,7 @@ export class AlertsComponent implements OnInit {
                 case 'broom':
                   if (this.getDifferenceInDays(this.today, new Date(cleaningTask.date)) < 31) {
                     indexes.push(12);
+                    indexes.push(15);
                   }
                   break;
                 case 'cleaningkit':
@@ -228,6 +229,7 @@ export class AlertsComponent implements OnInit {
                 case 'vacuum':
                   if (this.getDifferenceInDays(this.today, new Date(cleaningTask.date)) < 31) {
                     indexes.push(15);
+                    indexes.push(12);
                   }
                   break;
                 default:
@@ -241,6 +243,7 @@ export class AlertsComponent implements OnInit {
                 case 'broom':
                   if (this.getDifferenceInDays(this.today, new Date(cleaningTask.date)) < 31) {
                     indexes.push(16);
+                    indexes.push(21);
                   }
                   break;
                 case 'cleaningkit':
@@ -266,6 +269,7 @@ export class AlertsComponent implements OnInit {
                 case 'vacuum':
                   if (this.getDifferenceInDays(this.today, new Date(cleaningTask.date)) < 31) {
                     indexes.push(21);
+                    indexes.push(16);
                   }
                   break;
                 case 'washingmachine':
@@ -290,6 +294,7 @@ export class AlertsComponent implements OnInit {
                 case 'broom':
                   if (this.getDifferenceInDays(this.today, new Date(cleaningTask.date)) < 15) {
                     indexes.push(24);
+                    indexes.push(30);
                   }
                   break;
                 case 'cleaningkit':
@@ -320,6 +325,7 @@ export class AlertsComponent implements OnInit {
                 case 'vacuum':
                   if (this.getDifferenceInDays(this.today, new Date(cleaningTask.date)) < 15) {
                     indexes.push(30);
+                    indexes.push(24);
                   }
                   break;
                 default:
@@ -333,6 +339,7 @@ export class AlertsComponent implements OnInit {
                 case 'broom':
                   if (this.getDifferenceInDays(this.today, new Date(cleaningTask.date)) < 15) {
                     indexes.push(31);
+                    indexes.push(36);
                   }
                   break;
                 case 'cleaningkit':
@@ -358,6 +365,7 @@ export class AlertsComponent implements OnInit {
                 case 'vacuum':
                   if (this.getDifferenceInDays(this.today, new Date(cleaningTask.date)) < 15) {
                     indexes.push(36);
+                    indexes.push(31);
                   }
                   break;
                 default:
@@ -371,6 +379,7 @@ export class AlertsComponent implements OnInit {
                 case 'broom':
                   if (this.getDifferenceInDays(this.today, new Date(cleaningTask.date)) < 31) {
                     indexes.push(37);
+                    indexes.push(42);
                   }
                   break;
                 case 'cleaningkit':
@@ -396,6 +405,7 @@ export class AlertsComponent implements OnInit {
                 case 'vacuum':
                   if (this.getDifferenceInDays(this.today, new Date(cleaningTask.date)) < 31) {
                     indexes.push(42);
+                    indexes.push(37);
                   }
                   break;
                 default:
@@ -455,6 +465,7 @@ export class AlertsComponent implements OnInit {
                 case 'broom':
                   if (this.getDifferenceInDays(this.today, new Date(cleaningTask.date)) < 31) {
                     indexes.push(49);
+                    indexes.push(54);
                   }
                   break;
                 case 'cleaningkit':
@@ -480,6 +491,7 @@ export class AlertsComponent implements OnInit {
                 case 'vacuum':
                   if (this.getDifferenceInDays(this.today, new Date(cleaningTask.date)) < 31) {
                     indexes.push(54);
+                    indexes.push(49);
                   }
                   break;
                 default:
