@@ -1,18 +1,27 @@
-@import '_typography';
-
-h2 {
-   color: white;
-   font-size: $fontSize-hero;
-   left: 50%;
-   position: absolute;
-   font-weight: bold;
-   mix-blend-mode: difference;
-   top: 50%;
-   transform: translate(-50%, -50%);
-}
 .cover {
    width: 100%;
 }
 .hero {
    position: relative;
+   .logo {
+      width: 25vw;
+      left: 50%;
+      position: absolute;
+      mix-blend-mode: difference;
+      top: 50%;
+      transform: translate(-50%, -50%);
+   }
+}
+.stats {
+   margin: 4em 0;
+   div {
+      margin: 0 auto;
+      width: 80%;
+   }
+   .left, .right {
+      width: 100%;
+      @media screen and (min-width: 500px) {
+         width: 50%;
+      }
+   }
 }

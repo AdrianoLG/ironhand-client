@@ -14,6 +14,11 @@ import { Globals } from './services/globals';
 import 'hammerjs';
 import { GestureConfig } from '@angular/material';
 import { RegisterComponent } from './components/register/register.component';
+import { DatePipeModule } from './filters/date-pipe.module';
+import { InlineSVGModule } from 'ng-inline-svg';
+import { BodyComponent } from './components/home/body/body.component';
+import { HouseComponent } from './components/home/house/house.component';
+import { AlertsComponent } from './components/home/alerts/alerts.component';
 
 
 @NgModule({
@@ -21,7 +26,10 @@ import { RegisterComponent } from './components/register/register.component';
     AppComponent,
     LoginComponent,
     HomeComponent,
-    RegisterComponent
+    RegisterComponent,
+    BodyComponent,
+    HouseComponent,
+    AlertsComponent
   ],
   imports: [
     BrowserModule,
@@ -32,7 +40,9 @@ import { RegisterComponent } from './components/register/register.component';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    HammerModule
+    HammerModule,
+    DatePipeModule,
+    InlineSVGModule
   ],
   providers: [
     AuthGuard,

@@ -1,0 +1,29 @@
+@import '_typography';
+
+.alerts {
+    .leftI {
+       width: 60%;
+    }
+    .rightI {
+       width: 40%;
+    }
+    .leftI {
+       align-items: center;
+       display: flex;
+       font-size: $fontSize-s;
+       line-height: 1.3;
+       .mat-icon {
+          margin-right: .25em;
+       }
+    }
+    .rightI {
+       font-size: $fontSize-xxs;
+       font-weight: 300;
+       text-align: right;
+    }
+ }
+ .mat-list-item-content {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+ }

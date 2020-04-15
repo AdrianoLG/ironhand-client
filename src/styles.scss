@@ -177,6 +177,9 @@ button {
 .mat-chip-list.right .mat-chip-list-wrapper {
 	justify-content: end;
 }
+.mat-drawer-content {
+	overflow-x: hidden !important;
+}
 .mat-form-field {
 	color: $secondaryLightLow;
 	width: 100%;
@@ -287,4 +290,53 @@ button {
 	&:last-child {
 		margin-bottom: 0;
 	}
- }
+}
+/* Home SVGs */
+#body .st0 {
+	stroke: $secondaryLightLowest;
+}
+.lvl0 .st0, .lvl0.st0 {
+	fill: $lightestBackground;
+}
+.lvl1 .st0, .lvl1.st0 {
+	fill: $primaryLightLower;
+}
+.lvl2 .st0, .lvl2.st0 {
+	fill: $primaryLightLow;
+}
+.lvl3 .st0, .lvl3.st0 {
+	fill: $primaryLightMedium;
+}
+.lvl4 .st0, .lvl4.st0 {
+	fill: $primaryLightHigh;
+}
+.lvl5 .st0, .lvl5.st0 {
+	fill: $primary;
+}
+.heart, .stretch {
+	left: 45%;
+	height: 10vw;
+	position: absolute;
+	width: 10vw;
+	@media screen and (min-width: 500px) {
+		height: 5vw;
+		width: 5vw;
+	}
+	svg {
+		height: 10vw;
+		width: 10vw;
+		@media screen and (min-width: 500px) {
+			height: 5vw;
+			width: 5vw;
+		}
+	}
+}
+.heart {
+	top: 60%;
+}
+.stretch {
+	top: 75%;
+}
+.stats .left {
+	position: relative;
+}
