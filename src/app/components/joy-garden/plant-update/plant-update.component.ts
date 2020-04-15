@@ -77,4 +77,15 @@ export class PlantUpdateComponent implements OnInit {
 			}
 		);
 	}
+
+	deletePlant(): void {
+		this._plantsService.removePlant(this._id).subscribe(
+			() => {
+				this.goBack();
+			}, 
+			error => {
+				console.log(error)
+			}
+		);
+	}
 }

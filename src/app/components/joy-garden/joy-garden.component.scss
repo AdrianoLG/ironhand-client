@@ -24,3 +24,31 @@ ul {
 .flexBBw {
 	width: 100%;
 }
+.joy-garden .gallery {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: flex-start;
+	margin: 2em 1em 4em;
+	div {
+		margin: 4em 0 6em;
+		position: relative;
+		width: 100%;
+		@media screen and (min-width: 500px) {
+			width: 50%;
+		}
+		@media screen and (min-width: 1000px) {
+			width: 25%;
+		}
+		img {
+			margin: 0 auto 2em;
+			transform: rotate(90deg);
+			width: 100%;
+		}
+		span {
+			color: rgba(255, 255, 255, .5);
+			position: absolute;
+			top: 90%;
+			right: 20%;
+		}
+	}
+}

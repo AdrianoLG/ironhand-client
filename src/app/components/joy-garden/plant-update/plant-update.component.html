@@ -1,4 +1,4 @@
-<div class="wrapper" *ngIf="plant">
+<div class="wrapper plant-update" *ngIf="plant">
    <h2 class="formTitle">Actualizar planta</h2>
    <form [formGroup]="updatePlantForm">
       <mat-form-field>
@@ -27,6 +27,7 @@
       <mat-icon aria-hidden="false" aria-label="Formulario incorrecto" *ngIf="updatePlantForm.status=='VALID'" color="accent">thumb_up</mat-icon>
       <div class="buttons">
          <button class="cancelButton" mat-raised-button (click)="goBack()">Cancelar</button>
+         <button color="warn" mat-raised-button (click)="deletePlant()">Borrar</button>
          <button color="primary" type="submit" mat-raised-button [disabled]="!updatePlantForm.valid" (click)="updatePlant()">Actualizar</button>
       </div>
    </div>

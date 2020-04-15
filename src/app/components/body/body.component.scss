@@ -16,6 +16,9 @@ em {
 	color: $secondaryDarkLower;
 	font-style: normal;
 }
+.body .cardMain {
+	width: 100%;
+}
 .exercises {
 	.mat-card-content {
 		flex-direction: column;

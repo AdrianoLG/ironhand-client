@@ -219,7 +219,9 @@ export class TasksComponent implements OnInit {
       $implicit: todo
     }));
     
-    if (type == 'right') {
+    if (type === 'right' || type === undefined) {
+      console.log('right');
+      
       this.sub = fromEvent<MouseEvent>(document, 'click')
         .pipe(
           filter(event => {
@@ -228,7 +230,7 @@ export class TasksComponent implements OnInit {
           }),
           take(1)
         ).subscribe(() => this.closeContextMenu());
-    } else if (type == 'press') {
+    } else if (type === 'press') {
       setTimeout(() => {
         this.sub = fromEvent<MouseEvent>(document, 'click')
           .pipe(
@@ -243,6 +245,8 @@ export class TasksComponent implements OnInit {
   }
 
   closeContextMenu() {
+    console.log('hey');
+    
     this.sub && this.sub.unsubscribe();
     if (this.overlayRef) {
       this.overlayRef.dispose();

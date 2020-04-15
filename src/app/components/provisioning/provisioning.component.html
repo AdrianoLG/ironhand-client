@@ -1,6 +1,6 @@
 <mat-tab-group [color]="'primary'" [backgroundColor]="'primary'" 
 (selectedTabChange)="changeSelectedIndex($event)" [selectedIndex]="selectedIndex"
-(swipeleft)="nextSection()" (swiperight)="previousSection()">
+(swipeleft)="nextSection()" (swiperight)="previousSection()" class="provisioning">
    <mat-tab label="Comida">
       <mat-tab-group [color]="'accent'" [backgroundColor]="'accent'" class="bottomTabs" 
       (selectedTabChange)="changeSelectedIndex2($event)" [selectedIndex]="selectedIndex2">
@@ -57,33 +57,31 @@
       <mat-tab-group [color]="'accent'" [backgroundColor]="'accent'" class="bottomTabs" 
       (selectedTabChange)="changeSelectedIndex2($event)" [selectedIndex]="selectedIndex2">
          <mat-tab label="Bebida">
-            <div class="completed">
-               <div class="wrapper">
-                  <h2 class="sectionTitle">Bebida <span matBadge="{{ drinksCount }}"></span></h2>
-                  <p *ngIf="drinksCount == 0">Todavía no hay bebidas, ¡crea una!</p>
-                  <form *ngIf="drinksCount > 0">
-                     <mat-form-field>
-                        <input matInput type="text" placeholder="Buscar" [(ngModel)]="filterDrinks" name="filterDrinks">
-                        <button mat-button *ngIf="filterDrinks" matSuffix mat-icon-button aria-label="Clear" (click)="filterDrinks=''">
-                           <mat-icon>close</mat-icon>
-                        </button>
-                     </mat-form-field>
-                  </form>
-               </div>
-               <mat-card *ngFor="let drink of drinks | collectionFilter: filterDrinks : 'name'" data-id="{{ drink._id }}" routerLink="/aprovisionamiento/bebida/{{ drink._id }}">
-                  <mat-card-content>
-                     <div class="flexBBw">
-                        <div class="left">
-                           <p class="cardMain">{{ drink.name }}</p>
-                           <p class="cardSecondary">{{ drink.brand }}</p>
-                        </div>
-                        <div class="right">
-                           <p class="cardTertiary">{{ drink.graduation }}<span class="ss">º</span></p>
-                        </div>
-                     </div>
-                  </mat-card-content>
-               </mat-card>
+            <div class="wrapper">
+               <h2 class="sectionTitle">Bebida <span matBadge="{{ drinksCount }}"></span></h2>
+               <p *ngIf="drinksCount == 0">Todavía no hay bebidas, ¡crea una!</p>
+               <form *ngIf="drinksCount > 0">
+                  <mat-form-field>
+                     <input matInput type="text" placeholder="Buscar" [(ngModel)]="filterDrinks" name="filterDrinks">
+                     <button mat-button *ngIf="filterDrinks" matSuffix mat-icon-button aria-label="Clear" (click)="filterDrinks=''">
+                        <mat-icon>close</mat-icon>
+                     </button>
+                  </mat-form-field>
+               </form>
             </div>
+            <mat-card *ngFor="let drink of drinks | collectionFilter: filterDrinks : 'name'" data-id="{{ drink._id }}" routerLink="/aprovisionamiento/bebida/{{ drink._id }}">
+               <mat-card-content>
+                  <div class="flexBBw">
+                     <div class="left">
+                        <p class="cardMain">{{ drink.name }}</p>
+                        <p class="cardSecondary">{{ drink.brand }}</p>
+                     </div>
+                     <div class="right">
+                        <p class="cardTertiary">{{ drink.graduation }}<span class="ss">º</span></p>
+                     </div>
+                  </div>
+               </mat-card-content>
+            </mat-card>
          </mat-tab>
          <mat-tab label="Cócteles">
             <div class="wrapper">

@@ -26,6 +26,7 @@ export class JoyGardenComponent implements OnInit {
   plantsCount: number;
   seeds: JGSeed[];
   seedsCount: number;
+  gallery: Array<any>;
 
   constructor(
     private _selectedTabService: SelectedTabService,
@@ -56,6 +57,12 @@ export class JoyGardenComponent implements OnInit {
     this._plantsService.getPlants().subscribe(plants => {
       this.plantsCount = plants.count;
       this.plants = plants.plants;
+      this.gallery = [];
+      for (let plant of this.plants) {
+        if (plant.gallery[0] != '') {
+          this.gallery.push({ name: plant.name, pic: plant.gallery[0] });
+        }
+      }
     });
     this._seedsService.getSeeds().subscribe(seeds => {
       this.seedsCount = seeds.count;

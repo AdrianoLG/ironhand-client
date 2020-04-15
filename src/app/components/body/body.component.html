@@ -1,6 +1,6 @@
 <mat-tab-group [color]="'primary'" [backgroundColor]="'primary'" 
 (selectedTabChange)="changeSelectedIndex($event)" [selectedIndex]="selectedIndex"
-(swipeleft)="nextSection()" (swiperight)="previousSection()">
+(swipeleft)="nextSection()" (swiperight)="previousSection()" class="body">
    <mat-tab label="Comida">
       <mat-tab-group [color]="'accent'" [backgroundColor]="'accent'" class="bottomTabs" (selectedTabChange)="changeSelectedIndex2($event)" [selectedIndex]="selectedIndex2">
          <mat-tab label="Comidas">
@@ -76,7 +76,7 @@
    <mat-tab label="Ejercicio">
       <mat-tab-group [color]="'accent'" [backgroundColor]="'accent'" class="bottomTabs" (selectedTabChange)="changeSelectedIndex2($event)" [selectedIndex]="selectedIndex2">
          <mat-tab label="Completados">
-            <div *ngIf="completedExercises" class="completed">
+            <div *ngIf="completedExercises">
                <div class="wrapper">
                   <h2 class="sectionTitle">Completados <span matBadge="{{ completedExercisesCount }}"></span></h2>
                   <p *ngIf="completedExercisesCount == 0">Todavía no hay ejercicios completados, ¡crea uno!</p>

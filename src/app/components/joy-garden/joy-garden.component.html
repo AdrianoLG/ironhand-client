@@ -1,6 +1,6 @@
 <mat-tab-group [color]="'primary'" [backgroundColor]="'primary'"
 (selectedTabChange)="changeSelectedIndex($event)" [selectedIndex]="selectedIndex"
-(swipeleft)="nextSection()" (swiperight)="previousSection()">
+(swipeleft)="nextSection()" (swiperight)="previousSection()" class="joy-garden">
    <mat-tab label="Riegos">
       <div class="wrapper">
          <h2 class="sectionTitle">Riegos <span matBadge="{{ wateringsCount }}"></span></h2>
@@ -47,6 +47,9 @@
                   </div>
                </mat-card-content>
             </mat-card>
+            <div class="gallery" *ngIf="gallery.length">
+               <div *ngFor="let img of gallery"><img src="{{ img.pic }}" alt="{{ img.name }}"><span>{{ img.name }}</span></div>
+            </div>
          </mat-tab>
          <mat-tab label="Semillas">
             <div class="wrapper">
