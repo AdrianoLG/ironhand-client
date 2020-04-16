@@ -506,7 +506,8 @@ export class AlertsComponent implements OnInit {
       for (let i = indexes.length -1; i >= 0; i--) {
         this.cleaningTasks.splice(indexes[i], 1);
       }
-      this.alertsCount = this.cleaningTasks.length;
+      this.alertsCount = this.cleaningTasks.length + this.lastWatering.length + this.lastRehearsal.length 
+      + this.lastWateringFarm.length + this.expiryProducts.length + this.lastWateringFlo.length + this.lastExercise.length;
     });
   }
 
