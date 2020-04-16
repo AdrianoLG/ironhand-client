@@ -139,6 +139,9 @@ button {
 	width: 0;
 	visibility: hidden;
 }
+.mat-accordion .mat-expansion-panel {
+	margin-bottom: .5em;
+ }
 .mat-badge-medium.mat-badge-overlap.mat-badge-after .mat-badge-content {
 	right: 0;
 }
@@ -176,6 +179,9 @@ button {
 }
 .mat-chip-list.right .mat-chip-list-wrapper {
 	justify-content: end;
+}
+body .mat-divider {
+	margin: 1em 0;
 }
 .mat-drawer-content {
 	overflow-x: hidden !important;

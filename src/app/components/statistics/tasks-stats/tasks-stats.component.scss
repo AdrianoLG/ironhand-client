@@ -1,0 +1,56 @@
+@import '_colors';
+@import '_typography';
+
+.taskStats {
+    ul {
+        box-sizing: border-box;
+        padding-left: 1em;
+        li {
+            margin: .75em 0;
+            .stats {
+                color: $secondaryLightLow;
+                font-size: $fontSize-s;
+                display: flex;
+                justify-content: space-between;
+                max-width: 20em;
+                width: 100%;
+                div {
+                    align-items: center;
+                    display: flex;
+                    justify-content: space-between;
+                    max-width: 5em;
+                    width: 100%;
+                }
+            }
+        }
+    }
+    .category {
+        color: $secondaryLightLowest;
+        font-size: $fontSize-xxs;
+        text-transform: uppercase;
+    }
+    .mat-badge-content {
+        color: $secondary;
+    }
+    .todo .mat-badge-content, .todoBar {
+        background-color: #c5cae9;
+    }
+    .doing .mat-badge-content, .doingBar {
+        background-color: #ffccbc;
+    }
+    .done .mat-badge-content, .doneBar {
+        background-color: #b2dfdb;
+    }
+    .project {
+        margin-bottom: .5em;
+    }
+    .statsBar {
+        display: flex;
+        max-width: 20em;
+        width: 100%;
+        div {
+            height: .25em;
+            margin: .5em 0;
+        }
+    }
+}

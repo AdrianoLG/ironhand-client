@@ -1,0 +1,27 @@
+<mat-expansion-panel (afterExpand)="getTasks()" class="taskStats">
+    <mat-expansion-panel-header>
+      <mat-panel-title>Tareas</mat-panel-title>
+    </mat-expansion-panel-header>
+    <p class="sectionTitle">Todos</p>
+    <p *ngIf="todos">Tareas completadas: {{ completedTodos }}/{{ todos.count }}</p>
+    <mat-divider></mat-divider>
+    <p class="sectionTitle">Proyectos</p>
+    <div *ngFor="let categoryProjects of projectsByCategory">
+        <p class="category">{{ categoryProjects.category }}</p>
+        <ul *ngIf="categoryProjects">
+            <li *ngFor="let project of categoryProjects.projects">
+                <p class="project">{{ project.name }}</p>
+                <div class="stats">
+                    <div><span>To do:</span><span matBadge="{{ project.todo.length }}" class="todo"></span></div>
+                    <div><span>Doing:</span><span matBadge="{{ project.doing.length }}" class="doing"></span></div>
+                    <div><span>Done:</span><span matBadge="{{ project.done.length }}" class="done"></span></div>
+                </div>
+                <div class="statsBar">
+                    <div [style.width.%]="project.todo.percentage" class="todoBar"></div>
+                    <div [style.width.%]="project.doing.percentage" class="doingBar"></div>
+                    <div [style.width.%]="project.done.percentage" class="doneBar"></div>
+                </div>
+            </li>
+        </ul>
+    </div>
+</mat-expansion-panel>

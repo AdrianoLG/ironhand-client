@@ -1,0 +1,28 @@
+<mat-expansion-panel (afterExpand)="getCulture()" class="cultureStats">
+    <mat-expansion-panel-header>
+      <mat-panel-title>Cultura</mat-panel-title>
+    </mat-expansion-panel-header>
+    <p class="sectionTitle">Libros</p>
+    <p *ngIf="readBooks && booksCount">Leídos: {{ readBooks }}/{{ booksCount }}</p>
+    <p *ngIf="lastBook">Último leído:</p>
+    <p *ngIf="lastBook" class="list">
+        <span class="last">{{ lastBook.title }}, {{ lastBook.author }}</span>
+        <span class="date">({{ lastBook.readDate | dateFilter | uppercase }})</span>
+    </p>
+    <mat-divider></mat-divider>
+    <p class="sectionTitle">Películas</p>
+    <p *ngIf="seenMovies && moviesCount">Vistas: {{ seenMovies }}/{{ moviesCount }}</p>
+    <p *ngIf="lastMovie">Última vista:</p>
+    <p *ngIf="lastMovie" class="list">
+        <span class="last">{{ lastMovie.title }}, {{ lastMovie.director }}</span>
+        <span class="date">({{ lastMovie.seenDate | dateFilter | uppercase }})</span>
+    </p>
+    <mat-divider></mat-divider>
+    <p class="sectionTitle">Series</p>
+    <p *ngIf="tvSeriesCount">Número de series: {{ tvSeriesCount }}</p>
+    <p *ngIf="lastThreeTvSeriesAdded">Últimas añadidas:</p>
+    <p *ngFor="let tvSerie of lastThreeTvSeriesAdded" class="list">
+        <span class="last">{{ tvSerie.title }}, {{ tvSerie.tv }}</span>
+        <span class="date">{{ tvSerie.lastSeen }}</span>
+    </p>
+</mat-expansion-panel>

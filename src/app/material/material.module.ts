@@ -21,7 +21,8 @@ import {
   MatSelectModule,
   MAT_DATE_LOCALE,
   DateAdapter,
-  MatSliderModule
+  MatSliderModule,
+  MatExpansionModule
 } from '@angular/material';
 import { StartOnMondayDateAdapter } from './date-adapter';
 
@@ -46,7 +47,8 @@ import { StartOnMondayDateAdapter } from './date-adapter';
     MatSlideToggleModule,
     MatRippleModule,
     MatSelectModule,
-    MatSliderModule
+    MatSliderModule,
+    MatExpansionModule
   ],
   exports: [
     MatButtonModule,
@@ -67,7 +69,8 @@ import { StartOnMondayDateAdapter } from './date-adapter';
     MatSlideToggleModule,
     MatRippleModule,
     MatSelectModule,
-    MatSliderModule
+    MatSliderModule,
+    MatExpansionModule
   ],
   providers: [
     MatDatepickerModule,

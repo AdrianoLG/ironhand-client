@@ -1,0 +1,17 @@
+@import '_colors';
+@import '_typography';
+
+.cultureStats {
+    .date {
+        color: $secondaryLightLow;
+        font-size: $fontSize-xs;
+        margin-left: .5em;
+    }
+    .last {
+        font-style: italic;
+    }
+    .list {
+        box-sizing: border-box;
+        padding-left: 1em;
+    }
+}

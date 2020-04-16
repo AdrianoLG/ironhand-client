@@ -2,6 +2,7 @@
   "name": "client",
   "version": "0.0.0",
   "scripts": {
+    "paco": "ng g c components/statistics/maintenance-stats && ng g c components/statistics/body-stats && ng g c components/statistics/rehearsal-stats && ng g c components/statistics/joy-garden-stats",
     "ng": "ng",
     "start": "ng serve -o",
     "build": "ng build",

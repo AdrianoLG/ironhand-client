@@ -19,6 +19,13 @@ import { InlineSVGModule } from 'ng-inline-svg';
 import { BodyComponent } from './components/home/body/body.component';
 import { HouseComponent } from './components/home/house/house.component';
 import { AlertsComponent } from './components/home/alerts/alerts.component';
+import { StatisticsComponent } from './components/statistics/statistics.component';
+import { TasksStatsComponent } from './components/statistics/tasks-stats/tasks-stats.component';
+import { CultureStatsComponent } from './components/statistics/culture-stats/culture-stats.component';
+import { MaintenanceStatsComponent } from './components/statistics/maintenance-stats/maintenance-stats.component';
+import { BodyStatsComponent } from './components/statistics/body-stats/body-stats.component';
+import { RehearsalStatsComponent } from './components/statistics/rehearsal-stats/rehearsal-stats.component';
+import { JoyGardenStatsComponent } from './components/statistics/joy-garden-stats/joy-garden-stats.component';
 
 
 @NgModule({
@@ -29,7 +36,14 @@ import { AlertsComponent } from './components/home/alerts/alerts.component';
     RegisterComponent,
     BodyComponent,
     HouseComponent,
-    AlertsComponent
+    AlertsComponent,
+    StatisticsComponent,
+    TasksStatsComponent,
+    CultureStatsComponent,
+    MaintenanceStatsComponent,
+    BodyStatsComponent,
+    RehearsalStatsComponent,
+    JoyGardenStatsComponent
   ],
   imports: [
     BrowserModule,

@@ -118,7 +118,6 @@ export class AlertsComponent implements OnInit {
         { place: 'Escaleras', task: 'Pasar la aspiradora', period: '1 mes' },
       ];
       let indexes = [];
-      console.log(this.cleaningTasks);
       for (let cleaningTask of alerts.cleaningTasks) {
         switch (cleaningTask.place) {
           case 'Garaje':
