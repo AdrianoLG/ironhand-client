@@ -502,9 +502,10 @@ export class AlertsComponent implements OnInit {
             console.log('Error');
         }
       }
-      indexes = indexes.sort();
-      for (let i = indexes.length -1; i >= 0; i--) {
-        this.cleaningTasks.splice(indexes[i], 1);
+      let orderedIndexes = indexes.sort((a, b) => { return a - b });
+      let uniqueIndexes = [...new Set(orderedIndexes)];
+      for (let i = uniqueIndexes.length -1; i >= 0; i--) {
+        this.cleaningTasks.splice(uniqueIndexes[i], 1);
       }
       this.alertsCount = this.cleaningTasks.length + this.lastWatering.length + this.lastRehearsal.length 
       + this.lastWateringFarm.length + this.expiryProducts.length + this.lastWateringFlo.length + this.lastExercise.length;
