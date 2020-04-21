@@ -1,1 +1,14 @@
-<p>maintenance-stats works!</p>
+<mat-expansion-panel (afterExpand)="getMaintenance()" class="maintenanceStats">
+    <mat-expansion-panel-header>
+      <mat-panel-title>Mantenimiento</mat-panel-title>
+    </mat-expansion-panel-header>
+    <p class="sectionTitle">Limpieza</p>
+    <canvas id="chart" width="400" height="400">{{ chart }}</canvas>
+    <div class="buttonRight">
+        <button (click)="changeRange()" mat-stroked-button color="secondary">{{ range }}</button>
+    </div>
+    <mat-divider></mat-divider>
+    <p class="sectionTitle">Plantas</p>
+    <p>Vivas: {{ alivePlants }}/{{ plantsCount }}</p>
+    
+</mat-expansion-panel>
