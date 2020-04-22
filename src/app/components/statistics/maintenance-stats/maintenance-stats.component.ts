@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CleanupService } from 'src/app/services/cleanup/cleanup.service';
 import { PlantsService } from 'src/app/services/plants/plants.service';
 import { Chart } from 'chart.js';
@@ -35,14 +35,14 @@ export class MaintenanceStatsComponent implements OnInit {
           labels: ['Bodega', 'Garaje', 'Taller', 'Cocina', 'Salón', 'Habitación', 'Estudio', 'Ático', 'Terraza N', 'Terraza S', 'Escaleras'],
           datasets: [
             {
-              label: 'Tareas esta semana',
+              label: 'Esta semana',
               data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
               backgroundColor: 'rgba(183, 28, 28, .5)',
               borderColor: 'rgba(183, 28, 28, .5)',
               fill: false
             },
             {
-              label: 'Tareas semana pasada',
+              label: 'Semana pasada',
               data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
               backgroundColor: 'rgba(38, 50, 56, .5)',
               borderColor: 'rgba(38, 50, 56, .5)',
@@ -73,6 +73,9 @@ export class MaintenanceStatsComponent implements OnInit {
           } else if (daysPassed >= 31 && daysPassed < 61) {
             monthBeforeTasks = this.countTasks(monthBeforeTasks, cleanup);
           }
+          if (daysPassed >= 31) {
+            break;
+          }
         }
         this.cleanups = {
           thisWeekTasks: thisWeekTasks,
@@ -89,7 +92,6 @@ export class MaintenanceStatsComponent implements OnInit {
       this._plantsService.getPlants().subscribe(plants => {
         this.plantsCount = plants.count;
         for (let plant of plants.plants) {
-          console.log(plant.death);
           if (!plant.death) {
             this.alivePlants++;
           }
@@ -170,16 +172,16 @@ export class MaintenanceStatsComponent implements OnInit {
     if (this.range === 'Esta semana') {
       this.range = 'Este mes';
       this.chart.data.datasets[0].data = this.getData(this.cleanups.thisWeekTasks);
-      this.chart.data.datasets[0].label = 'Tareas esta semana';
+      this.chart.data.datasets[0].label = 'Esta semana';
       this.chart.data.datasets[1].data = this.getData(this.cleanups.weekBeforeTasks);
-      this.chart.data.datasets[1].label = 'Tareas semana pasada';
+      this.chart.data.datasets[1].label = 'Semana pasada';
       this.chart.update();
     } else {
       this.range = 'Esta semana';
       this.chart.data.datasets[0].data = this.getData(this.cleanups.thisMonthTasks);
-      this.chart.data.datasets[0].label = 'Tareas este mes';
+      this.chart.data.datasets[0].label = 'Este mes';
       this.chart.data.datasets[1].data = this.getData(this.cleanups.monthBeforeTasks);
-      this.chart.data.datasets[1].label = 'Tareas mes pasado';
+      this.chart.data.datasets[1].label = 'Mes pasado';
       this.chart.update();
     }
   }

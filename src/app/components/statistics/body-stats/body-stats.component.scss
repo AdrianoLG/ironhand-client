@@ -1,0 +1,17 @@
+@import '_typography';
+
+.buttonRight {
+    display: flex;
+    justify-content: flex-end;
+    margin: 2em 0;
+    button {
+        font-size: $fontSize-xs !important;
+        font-weight: 300 !important;
+    }
+}
+
+.bodyStats {
+    canvas {
+        margin: 2em 0 1em;
+    }
+}

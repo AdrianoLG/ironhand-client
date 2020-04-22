@@ -1,1 +1,16 @@
-<p>body-stats works!</p>
+<mat-expansion-panel (afterExpand)="getBody()" class="bodyStats">
+    <mat-expansion-panel-header>
+      <mat-panel-title>Cuerpo</mat-panel-title>
+    </mat-expansion-panel-header>
+    <p class="sectionTitle">Comidas</p>
+    <canvas id="foodChart" width="400" height="400">{{ foodChart }}</canvas>
+    <div class="buttonRight">
+        <button (click)="changeFoodRange()" mat-stroked-button color="secondary">{{ foodRange }}</button>
+    </div>
+    <mat-divider></mat-divider>
+    <p class="sectionTitle">Ejercicio</p>
+    <canvas id="exerciseChart" width="400" height="400">{{ exerciseChart }}</canvas>
+    <div class="buttonRight">
+        <button (click)="changeExerciseRange()" mat-stroked-button color="secondary">{{ exerciseRange }}</button>
+    </div>
+</mat-expansion-panel>

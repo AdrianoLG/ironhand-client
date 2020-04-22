@@ -1,1 +1,33 @@
-<p>rehearsal-stats works!</p>
+<mat-expansion-panel (afterExpand)="getRehearsal()" class="rehearsalStats">
+    <mat-expansion-panel-header>
+      <mat-panel-title>Ensayos</mat-panel-title>
+    </mat-expansion-panel-header>
+    <p class="sectionTitle">Ensayos</p>
+    <p class="subsectionTitle">Canciones</p>
+    <p class="chartTitle">{{ songsLabel}}</p>
+    <div class="songs">
+        <ul *ngIf="songs">
+            <li *ngFor="let song of songs">{{ song.name }} - {{ song.time }} min.</li>
+        </ul>
+        <p *ngIf="songs.length == 0">No hay canciones</p>
+    </div>
+    <p class="chartTitle">{{ songsLastLabel }}</p>
+    <div class="songs">
+        <ul *ngIf="songsLast">
+            <li *ngFor="let song of songsLast">{{ song.name }} - {{ song.time }} min.</li>
+        </ul>
+        <p *ngIf="songsLast.length == 0">No hay canciones</p>
+    </div>
+    <div class="buttonRight">
+        <button (click)="changeSongsRange()" mat-stroked-button color="secondary">{{ songsRange }}</button>
+    </div>
+    <p class="subsectionTitle">Instrumentos</p>
+    <p class="chartTitle">{{ instrumentsChartTitle }}</p>
+    <div class="doubleDoughnut">
+        <canvas id="instrumentsChart" width="400" height="400">{{ instrumentsChart }}</canvas>
+        <canvas id="instrumentsChartLast" width="300" height="300">{{ instrumentsChartLast }}</canvas>
+    </div>
+    <div class="buttonRight">
+        <button (click)="changeInstrumentsRange()" mat-stroked-button color="secondary">{{ instrumentsRange }}</button>
+    </div>
+</mat-expansion-panel>
