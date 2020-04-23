@@ -1,1 +1,16 @@
-<p>joy-garden-stats works!</p>
+<mat-expansion-panel (afterExpand)="getJoyGarden()" class="joyGardenStats">
+    <mat-expansion-panel-header>
+      <mat-panel-title>Jardín de la alegría</mat-panel-title>
+    </mat-expansion-panel-header>
+    <p class="sectionTitle">Riegos</p>
+    <p class="subsectionTitle">{{ wateringsContainer }}</p>
+    <div #wateringsFlo>
+        <canvas id="wateringsFloChart" width="400" height="400">{{ wateringsFloChart }}</canvas>
+    </div>
+    <div #wateringsFarm class="hidden">
+        <canvas id="wateringsFarmChart" width="400" height="400">{{ wateringsFarmChart }}</canvas>
+    </div>
+    <div class="buttonRight">
+        <button (click)="changeContainer()" mat-stroked-button color="secondary">{{ wateringsButton }}</button>
+    </div>
+</mat-expansion-panel>

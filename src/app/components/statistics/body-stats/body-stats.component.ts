@@ -52,6 +52,11 @@ export class BodyStatsComponent implements OnInit {
               fill: false
             }
           ]
+      },
+      options: {
+        legend: {
+          position: 'bottom'
+        }
       }
     });
     this.exerciseChart = new Chart('exerciseChart', {
@@ -74,6 +79,11 @@ export class BodyStatsComponent implements OnInit {
               fill: false
             }
           ]
+      },
+      options: {
+        legend: {
+          position: 'bottom'
+        }
       }
     });
   }

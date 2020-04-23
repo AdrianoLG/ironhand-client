@@ -49,6 +49,11 @@ export class MaintenanceStatsComponent implements OnInit {
               fill: false
             }
           ]
+      },
+      options: {
+        legend: {
+          position: 'bottom'
+        }
       }
     });
   }

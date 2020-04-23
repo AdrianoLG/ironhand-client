@@ -106,6 +106,7 @@ export class RehearsalStatsComponent implements OnInit {
       for (let rehearsal of rehearsals.rehearsals) {
         let date = new Date(rehearsal.date);
         let daysPassed = this.getDifferenceInDays(this.today, date);
+        console.log(daysPassed);
         if (daysPassed < 8) {
           thisWeekRehearsal = this.countRehearsal(thisWeekRehearsal, rehearsal);
         } else if (daysPassed >= 8 && daysPassed < 15) {
@@ -116,7 +117,7 @@ export class RehearsalStatsComponent implements OnInit {
         } else if (daysPassed >= 31 && daysPassed < 61) {
           monthBeforeRehearsal = this.countRehearsal(monthBeforeRehearsal, rehearsal);
         }
-        if (daysPassed >= 31) {
+        if (daysPassed >= 61) {
           break;
         }
       }
