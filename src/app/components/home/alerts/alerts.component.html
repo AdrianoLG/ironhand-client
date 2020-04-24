@@ -1,15 +1,15 @@
 <div class="wrapper">
-    <h2 class="sectionTitle">Alertas <span matBadge="{{ alertsCount }}"></span></h2>
- </div>
- <div *ngIf="alerts">
-    <mat-list role="list" class="alerts">
-       <mat-list-item role="listitem" *ngIf="lastWateringFarm != ''"><span class="leftI"><mat-icon>power</mat-icon> Regar AeroFarm</span><span class="rightI">Último riego: {{ lastWateringFarm[0].date | dateFilter | uppercase }}</span></mat-list-item>
-       <mat-list-item role="listitem" *ngIf="lastWateringFlo != ''"><span class="leftI"><mat-icon>power</mat-icon> Regar AeroFlo</span><span class="rightI">Último riego: {{ lastWateringFlo[0].date | dateFilter | uppercase }}</span></mat-list-item>
-       <mat-list-item role="listitem" *ngFor="let watering of lastWatering"><span class="leftI"><mat-icon>store</mat-icon> Regar {{ watering.name | lowercase }}</span><span *ngIf="watering.date" class="rightI">Último riego: {{ watering.date | dateFilter | uppercase}}</span></mat-list-item>
-       <mat-list-item role="listitem" *ngFor="let foodProduct of expiryProducts"><span class="leftI"><mat-icon>local_dining</mat-icon> {{ foodProduct.name }}</span><span class="rightI">Caduca: {{ foodProduct.expiry | dateFilter | uppercase }}</span></mat-list-item>
-       <mat-list-item role="listitem" *ngFor="let todo of alerts.importantTasks"><span class="leftI"><mat-icon>alarm_on</mat-icon> {{ todo.name }}</span><span class="rightI">Prioridad: {{ todo.priority }}</span></mat-list-item>
-       <mat-list-item role="listitem" *ngIf="lastExercise != ''"><span class="leftI"><mat-icon>accessibility</mat-icon> Hacer ejercicio</span><span class="rightI">Último ejercicio: {{ lastExercise[0].date | dateFilter | uppercase }}</span></mat-list-item>
-       <mat-list-item role="listitem" *ngIf="lastRehearsal != ''"><span class="leftI"><mat-icon>queue_music</mat-icon> Ensayar</span><span class="rightI">Último ensayo: {{ lastRehearsal[0].date | dateFilter | uppercase }}</span></mat-list-item>
-       <mat-list-item role="listitem" *ngFor="let cleaningTask of cleaningTasks"><span class="leftI"><mat-icon>store</mat-icon> [{{ cleaningTask.place }}] {{ cleaningTask.task }}</span><span class="rightI">Más de {{ cleaningTask.period }}</span></mat-list-item>
-     </mat-list>
- </div>
+   <h2 class="sectionTitle">Alertas <span matBadge="{{ alertsCount }}"></span></h2>
+</div>
+<div *ngIf="alerts">
+   <mat-list role="list" class="alerts">
+      <mat-list-item role="listitem" *ngIf="lastWateringFarm != ''"><span class="leftI"><mat-icon>power</mat-icon> Regar AeroFarm</span><span class="rightI">Último riego: {{ lastWateringFarm[0].date | dateFilter | uppercase }}</span></mat-list-item>
+      <mat-list-item role="listitem" *ngIf="lastWateringFlo != ''"><span class="leftI"><mat-icon>power</mat-icon> Regar AeroFlo</span><span class="rightI">Último riego: {{ lastWateringFlo[0].date | dateFilter | uppercase }}</span></mat-list-item>
+      <mat-list-item role="listitem" *ngFor="let watering of lastWatering"><span class="leftI"><mat-icon>store</mat-icon> Regar {{ watering.name | lowercase }}</span><span *ngIf="watering.date" class="rightI">Último riego: {{ watering.date | dateFilter | uppercase}}</span></mat-list-item>
+      <mat-list-item role="listitem" *ngFor="let foodProduct of expiryProducts"><span class="leftI"><mat-icon>local_dining</mat-icon> {{ foodProduct.name }}</span><span class="rightI">Caduca: {{ foodProduct.expiry | dateFilter | uppercase }}</span></mat-list-item>
+      <mat-list-item role="listitem" *ngFor="let todo of alerts.importantTasks"><span class="leftI"><mat-icon>alarm_on</mat-icon> {{ todo.name }}</span><span class="rightI">Prioridad: {{ todo.priority }}</span></mat-list-item>
+      <mat-list-item role="listitem" *ngIf="lastExercise != ''"><span class="leftI"><mat-icon>accessibility</mat-icon> Hacer ejercicio</span><span class="rightI">Último ejercicio: {{ lastExercise[0].date | dateFilter | uppercase }}</span></mat-list-item>
+      <mat-list-item role="listitem" *ngIf="lastRehearsal != ''"><span class="leftI"><mat-icon>queue_music</mat-icon> Ensayar</span><span class="rightI">Último ensayo: {{ lastRehearsal[0].date | dateFilter | uppercase }}</span></mat-list-item>
+      <mat-list-item role="listitem" *ngFor="let cleaningTask of cleaningTasks"><span class="leftI"><mat-icon>store</mat-icon> [{{ cleaningTask.place }}] {{ cleaningTask.task }}</span><span class="rightI">Más de {{ cleaningTask.period }}</span></mat-list-item>
+   </mat-list>
+</div>

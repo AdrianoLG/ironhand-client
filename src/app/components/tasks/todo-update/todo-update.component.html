@@ -1,26 +1,28 @@
-<div class="wrapper">
-    <h2 class="formTitle">Actualizar tarea a hacer</h2>
-    <form [formGroup]="updateTaskForm">
-       <mat-form-field>
-          <input matInput placeholder="Nombre de tarea" formControlName="todoName" required>
-       </mat-form-field>
-       <mat-form-field>
-          <input matInput placeholder="Categoría" formControlName="category" required>
-       </mat-form-field>
-       <div class="slider">
-          <mat-slider id="priority" #priority min="1" max="10" step="1" thumbLabel tickInterval="1" (input)="changePriority($event)" formControlName="priority" required></mat-slider>
-          <label for="priority">Prioridad: {{ priority.value }}</label>
-       </div>
-       <mat-form-field class="hidden">
-         <input matInput formControlName="completed">
-      </mat-form-field>
-       <div class="formFooter">
-          <mat-icon aria-hidden="false" aria-label="Formulario incorrecto" *ngIf="updateTaskForm.status=='INVALID'" color="primary">block</mat-icon>
-          <mat-icon aria-hidden="false" aria-label="Formulario correcto" *ngIf="updateTaskForm.status=='VALID'" color="accent">thumb_up</mat-icon>
-          <div class="buttons">
-             <button class="cancelButton" mat-raised-button (click)="goBack()">Cancelar</button>
-             <button type="submit" mat-raised-button [disabled]="!updateTaskForm.valid" (click)="updateTask()" color="accent">Actualizar</button>
-          </div>
-       </div>
-    </form>
- </div>
+<ng-scrollbar>
+   <div class="wrapper">
+      <h2 class="formTitle">Actualizar tarea a hacer</h2>
+      <form [formGroup]="updateTaskForm">
+         <mat-form-field>
+            <input matInput placeholder="Nombre de tarea" formControlName="todoName" required>
+         </mat-form-field>
+         <mat-form-field>
+            <input matInput placeholder="Categoría" formControlName="category" required>
+         </mat-form-field>
+         <div class="slider">
+            <mat-slider id="priority" #priority min="1" max="10" step="1" thumbLabel tickInterval="1" (input)="changePriority($event)" formControlName="priority" required></mat-slider>
+            <label for="priority">Prioridad: {{ priority.value }}</label>
+         </div>
+         <mat-form-field class="hidden">
+            <input matInput formControlName="completed">
+         </mat-form-field>
+         <div class="formFooter">
+            <mat-icon aria-hidden="false" aria-label="Formulario incorrecto" *ngIf="updateTaskForm.status=='INVALID'" color="primary">block</mat-icon>
+            <mat-icon aria-hidden="false" aria-label="Formulario correcto" *ngIf="updateTaskForm.status=='VALID'" color="accent">thumb_up</mat-icon>
+            <div class="buttons">
+               <button class="cancelButton" mat-raised-button (click)="goBack()">Cancelar</button>
+               <button type="submit" mat-raised-button [disabled]="!updateTaskForm.valid" (click)="updateTask()" color="accent">Actualizar</button>
+            </div>
+         </div>
+      </form>
+   </div>
+</ng-scrollbar>

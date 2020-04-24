@@ -1,31 +1,33 @@
-<div *ngIf="tvSerie" class="wrapper">
-   <div class="flexBBw">
-      <div class="left">
-         <h2 class="sectionTitle">{{ tvSerie.title }}</h2>
-         <p class="detailSecondary">{{ tvSerie.tv }}</p>
+<ng-scrollbar>
+   <div *ngIf="tvSerie" class="wrapper">
+      <div class="flexBBw">
+         <div class="left">
+            <h2 class="sectionTitle">{{ tvSerie.title }}</h2>
+            <p class="detailSecondary">{{ tvSerie.tv }}</p>
+         </div>
+         <div class="right">
+            <p class="detailTertiary">{{ tvSerie.lastSeen }}</p>
+         </div>
       </div>
-      <div class="right">
-         <p class="detailTertiary">{{ tvSerie.lastSeen }}</p>
+      <div *ngIf="tvSerie" class="img">
+         <img src="{{ tvSerie.img }}" alt="">
+      </div>
+      <div *ngIf="!tvSerie" class="img">
+         <img src="assets/img/dummy.jpg" alt="">
+      </div>
+      <div class="tvSeriedata">
+         <p>Director: <span class="data">{{ tvSerie.director }}</span></p>
+         <p>Reparto: <span *ngFor="let actor of tvSerie.cast; let isLast = last" class="data">{{ actor }}{{isLast ? '' : ', '}}</span></p>
+         <p>TV: <span class="data">{{ tvSerie.tv }}</span></p>
+         <p>País: <span class="data">{{ tvSerie.country }}</span></p>
+         <p>Fecha de comienzo: <span class="data">{{ tvSerie.beginDate | date: 'dd-MM-yyyy' }}</span></p>
+         <p>Categorías: <span *ngFor="let category of tvSerie.categories; let isLast = last" class="data">{{ category }}{{isLast ? '' : ', '}}</span></p>
+         <p *ngIf="tvSerie.ended">Terminada: <span class="ended data" *ngIf="tvSerie.endDate">{{ tvSerie.endDate | date: 'dd-MM-yyyy' }}</span></p>
+      </div>
+      <div class="buttons floatRight">
+         <button class="cancelButton" mat-raised-button (click)="goBack()">Atrás</button>
+         <button color="warn" mat-raised-button (click)="deleteTvSerie()">Borrar</button>
+         <button color="accent" mat-raised-button routerLink="/cultura/series/editar/{{ tvSerie._id }}">Editar</button>
       </div>
    </div>
-   <div *ngIf="tvSerie" class="img">
-      <img src="{{ tvSerie.img }}" alt="">
-   </div>
-   <div *ngIf="!tvSerie" class="img">
-      <img src="assets/img/dummy.jpg" alt="">
-   </div>
-   <div class="tvSeriedata">
-      <p>Director: <span class="data">{{ tvSerie.director }}</span></p>
-      <p>Reparto: <span *ngFor="let actor of tvSerie.cast; let isLast = last" class="data">{{ actor }}{{isLast ? '' : ', '}}</span></p>
-      <p>TV: <span class="data">{{ tvSerie.tv }}</span></p>
-      <p>País: <span class="data">{{ tvSerie.country }}</span></p>
-      <p>Fecha de comienzo: <span class="data">{{ tvSerie.beginDate | date: 'dd-MM-yyyy' }}</span></p>
-      <p>Categorías: <span *ngFor="let category of tvSerie.categories; let isLast = last" class="data">{{ category }}{{isLast ? '' : ', '}}</span></p>
-      <p *ngIf="tvSerie.ended">Terminada: <span class="ended data" *ngIf="tvSerie.endDate">{{ tvSerie.endDate | date: 'dd-MM-yyyy' }}</span></p>
-   </div>
-   <div class="buttons floatRight">
-      <button class="cancelButton" mat-raised-button (click)="goBack()">Atrás</button>
-      <button color="warn" mat-raised-button (click)="deleteTvSerie()">Borrar</button>
-      <button color="accent" mat-raised-button routerLink="/cultura/series/editar/{{ tvSerie._id }}">Editar</button>
-   </div>
-</div>
+</ng-scrollbar>

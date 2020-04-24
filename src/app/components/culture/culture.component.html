@@ -2,85 +2,91 @@
 (selectedTabChange)="changeSelectedIndex($event)" [selectedIndex]="selectedIndex" 
 (swipeleft)="nextSection(selectedIndex)" (swiperight)="previousSection(selectedIndex)">
    <mat-tab label="Libros">
-      <div class="wrapper-nobottom">
-         <h2 class="sectionTitle">Libros <span matBadge="{{ booksCount }}"></span></h2>
-         <p *ngIf="booksCount == 0">Todavía no hay libros, ¡crea uno!</p>
-         <form *ngIf="booksCount > 0">
-            <mat-form-field>
-               <input matInput type="text" placeholder="Buscar" [(ngModel)]="filterBook" name="filterBook">
-               <button mat-button *ngIf="filterBook" matSuffix mat-icon-button aria-label="Clear" (click)="filterBook=''">
-                  <mat-icon>close</mat-icon>
-               </button>
-            </mat-form-field>
-         </form>
-      </div>
-      <mat-card mat-ripple *ngFor="let book of books | collectionFilter: filterBook : 'titleAndAuthor'" routerLink="/cultura/libros/{{ book._id }}">
-         <mat-card-content>
-            <div class="left">
-               <p class="cardMain">{{ book.title }}</p>
-               <p class="cardSecondary">{{ book.author }}</p>
-            </div>
-            <div class="right">
-               <p class="cardTertiary">{{ book.category }}</p>
-            </div>
-         </mat-card-content>
-      </mat-card>
+      <ng-scrollbar>
+         <div class="wrapper-nobottom">
+            <h2 class="sectionTitle">Libros <span matBadge="{{ booksCount }}"></span></h2>
+            <p *ngIf="booksCount == 0">Todavía no hay libros, ¡crea uno!</p>
+            <form *ngIf="booksCount > 0">
+               <mat-form-field>
+                  <input matInput type="text" placeholder="Buscar" [(ngModel)]="filterBook" name="filterBook">
+                  <button mat-button *ngIf="filterBook" matSuffix mat-icon-button aria-label="Clear" (click)="filterBook=''">
+                     <mat-icon>close</mat-icon>
+                  </button>
+               </mat-form-field>
+            </form>
+         </div>
+         <mat-card mat-ripple *ngFor="let book of books | collectionFilter: filterBook : 'titleAndAuthor'" routerLink="/cultura/libros/{{ book._id }}">
+            <mat-card-content>
+               <div class="left">
+                  <p class="cardMain">{{ book.title }}</p>
+                  <p class="cardSecondary">{{ book.author }}</p>
+               </div>
+               <div class="right">
+                  <p class="cardTertiary">{{ book.category }}</p>
+               </div>
+            </mat-card-content>
+         </mat-card>
+      </ng-scrollbar>
       <button mat-mini-fab routerLink="/cultura/libros/crear">
          <mat-icon>add</mat-icon>
       </button>
    </mat-tab>
    <mat-tab label="Películas">
-      <div class="wrapper-nobottom">
-         <h2 class="sectionTitle">Películas <span matBadge="{{ moviesCount }}"></span></h2>
-         <p *ngIf="moviesCount == 0">Todavía no hay películas, ¡crea una!</p>
-         <form *ngIf="moviesCount > 0">
-            <mat-form-field>
-               <input matInput type="text" placeholder="Buscar" [(ngModel)]="filterMovie" name="filterMovie">
-               <button mat-button *ngIf="filterMovie" matSuffix mat-icon-button aria-label="Clear" (click)="filterMovie=''">
-                  <mat-icon>close</mat-icon>
-               </button>
-            </mat-form-field>
-         </form>
-      </div>
-      <mat-card mat-ripple *ngFor="let movie of movies | collectionFilter: filterMovie : 'titleAndDirector'" routerLink="/cultura/peliculas/{{ movie._id }}">
-         <mat-card-content>
-            <div class="left">
-               <p class="cardMain">{{ movie.title }}</p>
-               <p class="cardSecondary">{{ movie.director }}</p>
-            </div>
-            <div class="right">
-               <p class="cardTertiary">{{ movie.year }}</p>
-            </div>
-         </mat-card-content>
-      </mat-card>
+      <ng-scrollbar>
+         <div class="wrapper-nobottom">
+            <h2 class="sectionTitle">Películas <span matBadge="{{ moviesCount }}"></span></h2>
+            <p *ngIf="moviesCount == 0">Todavía no hay películas, ¡crea una!</p>
+            <form *ngIf="moviesCount > 0">
+               <mat-form-field>
+                  <input matInput type="text" placeholder="Buscar" [(ngModel)]="filterMovie" name="filterMovie">
+                  <button mat-button *ngIf="filterMovie" matSuffix mat-icon-button aria-label="Clear" (click)="filterMovie=''">
+                     <mat-icon>close</mat-icon>
+                  </button>
+               </mat-form-field>
+            </form>
+         </div>
+         <mat-card mat-ripple *ngFor="let movie of movies | collectionFilter: filterMovie : 'titleAndDirector'" routerLink="/cultura/peliculas/{{ movie._id }}">
+            <mat-card-content>
+               <div class="left">
+                  <p class="cardMain">{{ movie.title }}</p>
+                  <p class="cardSecondary">{{ movie.director }}</p>
+               </div>
+               <div class="right">
+                  <p class="cardTertiary">{{ movie.year }}</p>
+               </div>
+            </mat-card-content>
+         </mat-card>
+      </ng-scrollbar>
       <button mat-mini-fab routerLink="/cultura/peliculas/crear">
          <mat-icon>add</mat-icon>
       </button>
    </mat-tab>
    <mat-tab tab label="Series">
-      <div class="wrapper-nobottom">
-         <h2 class="sectionTitle">Series <span matBadge="{{ tvSeriesCount }}"></span></h2>
-         <p *ngIf="tvSeriesCount == 0">Todavía no hay series, ¡crea una!</p>
-         <form *ngIf="tvSeriesCount > 0">
-            <mat-form-field>
-               <input matInput type="text" placeholder="Buscar" [(ngModel)]="filterTvSerie" name="filterTvSerie">
-               <button mat-button *ngIf="filterTvSerie" matSuffix mat-icon-button aria-label="Clear" (click)="filterTvSerie=''">
-                  <mat-icon>close</mat-icon>
-               </button>
-            </mat-form-field>
-         </form>
-      </div>
-      <mat-card mat-ripple *ngFor="let tvSerie of tvSeries | collectionFilter: filterTvSerie : 'titleAndTV'" routerLink="/cultura/series/{{ tvSerie._id }}">
-         <mat-card-content>
-            <div class="left">
-               <p class="cardMain">{{ tvSerie.title }}</p>
-               <p class="cardSecondary">{{ tvSerie.tv }}</p>
-            </div>
-            <div class="right">
-               <p class="cardTertiary">{{ tvSerie.lastSeen || '-' }}</p>
-            </div>
-         </mat-card-content>
-      </mat-card>
+      <ng-scrollbar>
+         <div class="wrapper-nobottom">
+            <h2 class="sectionTitle">Series <span matBadge="{{ tvSeriesCount }}"></span></h2>
+            <p *ngIf="tvSeriesCount == 0">Todavía no hay series, ¡crea una!</p>
+            <form *ngIf="tvSeriesCount > 0">
+               <mat-form-field>
+                  <input matInput type="text" placeholder="Buscar" [(ngModel)]="filterTvSerie" name="filterTvSerie">
+                  <button mat-button *ngIf="filterTvSerie" matSuffix mat-icon-button aria-label="Clear" (click)="filterTvSerie=''">
+                     <mat-icon>close</mat-icon>
+                  </button>
+               </mat-form-field>
+            </form>
+         </div>
+         <mat-card mat-ripple *ngFor="let tvSerie of tvSeries | collectionFilter: filterTvSerie : 'titleAndTV'" routerLink="/cultura/series/{{ tvSerie._id }}">
+            <mat-card-content>
+               <div class="left">
+                  <p class="cardMain">{{ tvSerie.title }}</p>
+                  <p class="cardSecondary">{{ tvSerie.tv }}</p>
+               </div>
+               <div class="right">
+                  <p class="cardTertiary">{{ tvSerie.lastSeen || '-' }}</p>
+               </div>
+            </mat-card-content>
+         </mat-card>
+      </ng-scrollbar>
       <button mat-mini-fab routerLink="/cultura/series/crear">
          <mat-icon>add</mat-icon>
       </button>

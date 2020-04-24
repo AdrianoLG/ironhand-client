@@ -1,21 +1,23 @@
-<div *ngIf="recipee">
-   <div class="wrapper">
-      <h2 class="formTitle">{{ recipee.name }}</h2>
-      <img [src]="recipee.img">
-      <h3>Ingredientes:</h3>
-      <ul>
-         <li *ngFor="let ingredient of recipee.ingredients">{{ ingredient.parts }} {{ ingredient.name }}</li>
-      </ul>
-      <h3>Instrucciones:</h3>
-      <ol>
-         <li *ngFor="let instruction of recipee.instructions">{{ instruction }}</li>
-      </ol>
-   </div>
-   <div class="wrapper">
-      <div class="buttons floatRight">
-         <button class="cancelButton" mat-raised-button (click)="goBack()">Atrás</button>
-         <button color="warn" mat-raised-button (click)="deleteRecipee()">Borrar</button>
-         <button color="accent" mat-raised-button routerLink="/aprovisionamiento/receta/editar/{{ recipee._id }}">Editar</button>
+<ng-scrollbar>
+   <div *ngIf="recipee">
+      <div class="wrapper">
+         <h2 class="formTitle">{{ recipee.name }}</h2>
+         <img [src]="recipee.img">
+         <h3>Ingredientes:</h3>
+         <ul>
+            <li *ngFor="let ingredient of recipee.ingredients">{{ ingredient.parts }} {{ ingredient.name }}</li>
+         </ul>
+         <h3>Instrucciones:</h3>
+         <ol>
+            <li *ngFor="let instruction of recipee.instructions">{{ instruction }}</li>
+         </ol>
+      </div>
+      <div class="wrapper">
+         <div class="buttons floatRight">
+            <button class="cancelButton" mat-raised-button (click)="goBack()">Atrás</button>
+            <button color="warn" mat-raised-button (click)="deleteRecipee()">Borrar</button>
+            <button color="accent" mat-raised-button routerLink="/aprovisionamiento/receta/editar/{{ recipee._id }}">Editar</button>
+         </div>
       </div>
    </div>
-</div>
+</ng-scrollbar>

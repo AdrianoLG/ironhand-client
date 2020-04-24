@@ -1,26 +1,28 @@
-<div *ngIf="food" class="wrapper">
-   <div class="flexBBw">
-      <div class="left">
-         <h2 class="sectionTitle">{{ food.productQty }}x {{ food.name }}</h2>
-         <p class="detailSecondary">{{ food.category }}</p>
+<ng-scrollbar>
+   <div *ngIf="food" class="wrapper">
+      <div class="flexBBw">
+         <div class="left">
+            <h2 class="sectionTitle">{{ food.productQty }}x {{ food.name }}</h2>
+            <p class="detailSecondary">{{ food.category }}</p>
+         </div>
+         <div class="right">
+            <p class="detailTertiary">{{ food.expiry | date: 'dd-MM-yyyy'}}</p>
+         </div>
       </div>
-      <div class="right">
-         <p class="detailTertiary">{{ food.expiry | date: 'dd-MM-yyyy'}}</p>
+      <div class="img">
+         <img [src]="food.img">
+      </div>
+      <div class="flexBBw">
+         <div class="fifty">
+            <p>Cantidad: <span class="data">{{ food.qty }} {{ food.unit }}</span></p>
+            <p>Marca: <span class="data">{{ food.brand }}</span></p>
+         </div>
+         <mat-chip-list class="data fifty right"><mat-chip *ngFor="let tag of food.tags;let isLast = last" color="primary">{{ tag }}</mat-chip></mat-chip-list>
+      </div>
+      <div class="buttons floatRight">
+         <button class="cancelButton" mat-raised-button (click)="goBack()">Atrás</button>
+         <button color="warn" mat-raised-button (click)="deleteFood()">Borrar</button>
+         <button color="accent" mat-raised-button routerLink="/aprovisionamiento/comida/editar/{{ food._id }}">Editar</button>
       </div>
    </div>
-   <div class="img">
-      <img [src]="food.img">
-   </div>
-   <div class="flexBBw">
-      <div class="fifty">
-         <p>Cantidad: <span class="data">{{ food.qty }} {{ food.unit }}</span></p>
-         <p>Marca: <span class="data">{{ food.brand }}</span></p>
-      </div>
-      <mat-chip-list class="data fifty right"><mat-chip *ngFor="let tag of food.tags;let isLast = last" color="primary">{{ tag }}</mat-chip></mat-chip-list>
-   </div>
-   <div class="buttons floatRight">
-      <button class="cancelButton" mat-raised-button (click)="goBack()">Atrás</button>
-      <button color="warn" mat-raised-button (click)="deleteFood()">Borrar</button>
-      <button color="accent" mat-raised-button routerLink="/aprovisionamiento/comida/editar/{{ food._id }}">Editar</button>
-   </div>
-</div>
+</ng-scrollbar>

@@ -25,6 +25,7 @@ import {
   MatExpansionModule
 } from '@angular/material';
 import { StartOnMondayDateAdapter } from './date-adapter';
+import { NgScrollbarModule } from 'ngx-scrollbar';
 
 @NgModule({
   imports: [
@@ -48,7 +49,11 @@ import { StartOnMondayDateAdapter } from './date-adapter';
     MatRippleModule,
     MatSelectModule,
     MatSliderModule,
-    MatExpansionModule
+    MatExpansionModule,
+    NgScrollbarModule.withConfig({
+      visibility: 'hover',
+      viewClass: 'custom-scrollbar'
+    })
   ],
   exports: [
     MatButtonModule,
@@ -70,7 +75,8 @@ import { StartOnMondayDateAdapter } from './date-adapter';
     MatRippleModule,
     MatSelectModule,
     MatSliderModule,
-    MatExpansionModule
+    MatExpansionModule,
+    NgScrollbarModule
   ],
   providers: [
     MatDatepickerModule,

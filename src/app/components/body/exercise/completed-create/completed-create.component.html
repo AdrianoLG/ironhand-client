@@ -1,41 +1,43 @@
-<div class="wrapper">
-   <h2 class="formTitle">Añadir ejercicio completado</h2>
-   <form [formGroup]="addCompletedExerciseForm">
-      <mat-form-field>
-         <mat-label>Ejercicio</mat-label>
-         <mat-select formControlName="exerciseId" required>
-            <mat-option *ngFor="let exercise of availableExercises" [value]="exercise._id" (click)="changeCategory(exercise.category)">
-               {{ exercise.name }}
-            </mat-option>
-         </mat-select>
-      </mat-form-field>
-      <mat-form-field>
-         <input matInput [matDatepicker]="picker" formControlName="date" placeholder="Fecha" required>
-         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-         <mat-datepicker #picker></mat-datepicker>
-      </mat-form-field>
-      <mat-form-field *ngIf="exerciseCategory && exerciseCategory != 'Estiramiento' && exerciseCategory != 'Cardio'">
-         <input matInput type="number" placeholder="Peso" formControlName="weight">
-      </mat-form-field>
-      <mat-form-field *ngIf="exerciseCategory && exerciseCategory != 'Estiramiento' && exerciseCategory != 'Cardio'">
-         <input matInput type="number" placeholder="Repeticiones" formControlName="repetitions">
-      </mat-form-field>
-      <mat-form-field *ngIf="exerciseCategory">
-         <input matInput type="number" placeholder="Tiempo" formControlName="time">
-      </mat-form-field>
-      <mat-form-field *ngIf="exerciseCategory && exerciseCategory != 'Estiramiento'">
-         <input matInput type="number" placeholder="Pulsaciones mínimas" formControlName="minHeart">
-      </mat-form-field>
-      <mat-form-field *ngIf="exerciseCategory && exerciseCategory != 'Estiramiento'">
-         <input matInput type="number" placeholder="Pulsaciones máximas" formControlName="maxHeart">
-      </mat-form-field>
-   </form>
-   <div class="formFooter">
-      <mat-icon aria-hidden="false" aria-label="Formulario incorrecto" *ngIf="addCompletedExerciseForm.status=='INVALID'" color="primary">block</mat-icon>
-      <mat-icon aria-hidden="false" aria-label="Formulario incorrecto" *ngIf="addCompletedExerciseForm.status=='VALID'" color="accent">thumb_up</mat-icon>
-      <div class="buttons">
-         <button class="cancelButton" mat-raised-button (click)="goBack()">Cancelar</button>
-         <button color="primary" type="submit" mat-raised-button [disabled]="!addCompletedExerciseForm.valid" (click)="saveCompletedExercise()">Crear</button>
+<ng-scrollbar>
+   <div class="wrapper">
+      <h2 class="formTitle">Añadir ejercicio completado</h2>
+      <form [formGroup]="addCompletedExerciseForm">
+         <mat-form-field>
+            <mat-label>Ejercicio</mat-label>
+            <mat-select formControlName="exerciseId" required>
+               <mat-option *ngFor="let exercise of availableExercises" [value]="exercise._id" (click)="changeCategory(exercise.category)">
+                  {{ exercise.name }}
+               </mat-option>
+            </mat-select>
+         </mat-form-field>
+         <mat-form-field>
+            <input matInput [matDatepicker]="picker" formControlName="date" placeholder="Fecha" required>
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+         </mat-form-field>
+         <mat-form-field *ngIf="exerciseCategory && exerciseCategory != 'Estiramiento' && exerciseCategory != 'Cardio'">
+            <input matInput type="number" placeholder="Peso" formControlName="weight">
+         </mat-form-field>
+         <mat-form-field *ngIf="exerciseCategory && exerciseCategory != 'Estiramiento' && exerciseCategory != 'Cardio'">
+            <input matInput type="number" placeholder="Repeticiones" formControlName="repetitions">
+         </mat-form-field>
+         <mat-form-field *ngIf="exerciseCategory">
+            <input matInput type="number" placeholder="Tiempo" formControlName="time">
+         </mat-form-field>
+         <mat-form-field *ngIf="exerciseCategory && exerciseCategory != 'Estiramiento'">
+            <input matInput type="number" placeholder="Pulsaciones mínimas" formControlName="minHeart">
+         </mat-form-field>
+         <mat-form-field *ngIf="exerciseCategory && exerciseCategory != 'Estiramiento'">
+            <input matInput type="number" placeholder="Pulsaciones máximas" formControlName="maxHeart">
+         </mat-form-field>
+      </form>
+      <div class="formFooter">
+         <mat-icon aria-hidden="false" aria-label="Formulario incorrecto" *ngIf="addCompletedExerciseForm.status=='INVALID'" color="primary">block</mat-icon>
+         <mat-icon aria-hidden="false" aria-label="Formulario incorrecto" *ngIf="addCompletedExerciseForm.status=='VALID'" color="accent">thumb_up</mat-icon>
+         <div class="buttons">
+            <button class="cancelButton" mat-raised-button (click)="goBack()">Cancelar</button>
+            <button color="primary" type="submit" mat-raised-button [disabled]="!addCompletedExerciseForm.valid" (click)="saveCompletedExercise()">Crear</button>
+         </div>
       </div>
    </div>
-</div>
+</ng-scrollbar>

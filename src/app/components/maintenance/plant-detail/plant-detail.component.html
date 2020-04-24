@@ -1,60 +1,62 @@
-<div *ngIf="plant">
-   <div class="wrapper">
-      <div class="flexBBw">
-         <div>
-            <h2 class="sectionTitle">{{ plant.name }}</h2>
-            <p class="detailSecondary">{{ plant.scientific }}</p>
+<ng-scrollbar>
+   <div *ngIf="plant">
+      <div class="wrapper">
+         <div class="flexBBw">
+            <div>
+               <h2 class="sectionTitle">{{ plant.name }}</h2>
+               <p class="detailSecondary">{{ plant.scientific }}</p>
+            </div>
+            <div>
+               <p class="detailTertiary">{{ plant.zone }}</p>
+            </div>
          </div>
-         <div>
-            <p class="detailTertiary">{{ plant.zone }}</p>
+         <div class="img">
+            <img src="{{ plant.img }}" alt="" *ngIf="plant.img != ''">
+            <img src="assets/img/dummy.jpg" alt="" *ngIf="plant.img == ''">
          </div>
-      </div>
-      <div class="img">
-         <img src="{{ plant.img }}" alt="" *ngIf="plant.img != ''">
-         <img src="assets/img/dummy.jpg" alt="" *ngIf="plant.img == ''">
-      </div>
-      <mat-tab-group class="tabs">
-         <mat-tab label="Información">
-            <p class="margTop"><mat-icon>crop_3_2</mat-icon> {{ plant.container }}</p>
-            <p *ngIf="plant.sun != ''"><mat-icon>wb_sunny</mat-icon> {{ plant.sun }}</p>
-            <p *ngIf="plant.wateringFrequency != ''"><mat-icon>opacity</mat-icon> {{ plant.wateringFrequency }} días</p>
-            <p><mat-icon>kitchen</mat-icon><mat-icon *ngIf="plant.frost" class="smIcon">check</mat-icon><mat-icon *ngIf="!plant.frost" class="smIcon">close</mat-icon></p>
-            <p *ngIf="plant.soil != ''"><mat-icon>view_comfy</mat-icon> {{ plant.soil }}</p>
-            <p *ngIf="plant.flowering != ''"><mat-icon>local_florist</mat-icon> {{ plant.flowering }}</p>
-            <p><mat-icon>cached</mat-icon><mat-icon *ngIf="plant.perishable" class="smIcon">check</mat-icon><mat-icon *ngIf="!plant.perishable" class="smIcon">close</mat-icon></p>
-            <p *ngIf="plant.pests.length != 0"><mat-icon>emoji_nature</mat-icon> <span *ngFor="let pest of plant.pests; let isLast = last">{{ pest }}{{ isLast ? '' : ',&nbsp;' }}</span></p>
-            <p *ngIf="plant.origin.length != 0"><mat-icon>public</mat-icon> <span *ngFor="let origin of plant.origin; let isLast = last">{{ origin }}{{ isLast ? '' : ', ' }}</span></p>
-            <p *ngIf="plant.death != ''"><mat-icon>sentiment_dissatisfied</mat-icon> {{ plant.death | date: 'dd/MM/yyyy'}}</p>
-            <p *ngIf="plant.deathCause != ''"><mat-icon>menu_book</mat-icon> {{ plant.deathCause }}</p>
-            <div class="gallery" *ngIf="plant.gallery.length != 0">
-               <img [src]="mainImg">
-               <div>
-                  <div *ngFor="let picture of plant.gallery" [ngStyle]="{'background-image':'url(' + picture + ')'}" (click)="toggleImage(picture)"></div>
+         <mat-tab-group class="tabs">
+            <mat-tab label="Información">
+               <p class="margTop"><mat-icon>crop_3_2</mat-icon> {{ plant.container }}</p>
+               <p *ngIf="plant.sun != ''"><mat-icon>wb_sunny</mat-icon> {{ plant.sun }}</p>
+               <p *ngIf="plant.wateringFrequency != ''"><mat-icon>opacity</mat-icon> {{ plant.wateringFrequency }} días</p>
+               <p><mat-icon>kitchen</mat-icon><mat-icon *ngIf="plant.frost" class="smIcon">check</mat-icon><mat-icon *ngIf="!plant.frost" class="smIcon">close</mat-icon></p>
+               <p *ngIf="plant.soil != ''"><mat-icon>view_comfy</mat-icon> {{ plant.soil }}</p>
+               <p *ngIf="plant.flowering != ''"><mat-icon>local_florist</mat-icon> {{ plant.flowering }}</p>
+               <p><mat-icon>cached</mat-icon><mat-icon *ngIf="plant.perishable" class="smIcon">check</mat-icon><mat-icon *ngIf="!plant.perishable" class="smIcon">close</mat-icon></p>
+               <p *ngIf="plant.pests.length != 0"><mat-icon>emoji_nature</mat-icon> <span *ngFor="let pest of plant.pests; let isLast = last">{{ pest }}{{ isLast ? '' : ',&nbsp;' }}</span></p>
+               <p *ngIf="plant.origin.length != 0"><mat-icon>public</mat-icon> <span *ngFor="let origin of plant.origin; let isLast = last">{{ origin }}{{ isLast ? '' : ', ' }}</span></p>
+               <p *ngIf="plant.death != ''"><mat-icon>sentiment_dissatisfied</mat-icon> {{ plant.death | date: 'dd/MM/yyyy'}}</p>
+               <p *ngIf="plant.deathCause != ''"><mat-icon>menu_book</mat-icon> {{ plant.deathCause }}</p>
+               <div class="gallery" *ngIf="plant.gallery.length != 0">
+                  <img [src]="mainImg">
+                  <div>
+                     <div *ngFor="let picture of plant.gallery" [ngStyle]="{'background-image':'url(' + picture + ')'}" (click)="toggleImage(picture)"></div>
+                  </div>
                </div>
-            </div>
-         </mat-tab>
-         <mat-tab label="Riegos">
-            <h5 class="flexCBw margTop">Riegos <button mat-stroked-button color="secondary" routerLink="riego/crear">Añadir</button></h5>
-            <div *ngIf="plant.watering">
-               <div *ngIf="plant.watering.length != 0" class="waterings">
-                  <p *ngFor="let watering of wateringSortBy('date')">
-                     <mat-icon class="iconMargRight">opacity</mat-icon> {{ watering.date | date: 'dd/MM/yyyy'}} <mat-icon class="fertilizer">local_drink</mat-icon> <mat-icon *ngIf="watering.fertilized" class="smIcon">check</mat-icon><mat-icon *ngIf="!watering.fertilized" class="smIcon">close</mat-icon>
-                     <button mat-icon-button aria-label="Remove" (click)="removeWatering(watering.date)"><mat-icon color="primary">delete</mat-icon></button></p>
+            </mat-tab>
+            <mat-tab label="Riegos">
+               <h5 class="flexCBw margTop">Riegos <button mat-stroked-button color="secondary" routerLink="riego/crear">Añadir</button></h5>
+               <div *ngIf="plant.watering">
+                  <div *ngIf="plant.watering.length != 0" class="waterings">
+                     <p *ngFor="let watering of wateringSortBy('date')">
+                        <mat-icon class="iconMargRight">opacity</mat-icon> {{ watering.date | date: 'dd/MM/yyyy'}} <mat-icon class="fertilizer">local_drink</mat-icon> <mat-icon *ngIf="watering.fertilized" class="smIcon">check</mat-icon><mat-icon *ngIf="!watering.fertilized" class="smIcon">close</mat-icon>
+                        <button mat-icon-button aria-label="Remove" (click)="removeWatering(watering.date)"><mat-icon color="primary">delete</mat-icon></button></p>
+                  </div>
                </div>
-            </div>
-            <hr>
-            <h5 class="flexCBw">Trasplantes <button mat-stroked-button color="secondary" routerLink="trasplante/crear">Añadir</button></h5>
-            <div *ngIf="plant.transplant">
-               <div *ngIf="plant.transplant.length != 0" class="transplants">
-                  <p *ngFor="let transplant of plant.transplant"><mat-icon class="iconMargRight">dynamic_feed</mat-icon> {{ transplant | date: 'dd/MM/yyyy'}}<button mat-icon-button aria-label="Remove" (click)="removeTransplant(transplant)"><mat-icon color="primary">delete</mat-icon></button></p>
+               <hr>
+               <h5 class="flexCBw">Trasplantes <button mat-stroked-button color="secondary" routerLink="trasplante/crear">Añadir</button></h5>
+               <div *ngIf="plant.transplant">
+                  <div *ngIf="plant.transplant.length != 0" class="transplants">
+                     <p *ngFor="let transplant of plant.transplant"><mat-icon class="iconMargRight">dynamic_feed</mat-icon> {{ transplant | date: 'dd/MM/yyyy'}}<button mat-icon-button aria-label="Remove" (click)="removeTransplant(transplant)"><mat-icon color="primary">delete</mat-icon></button></p>
+                  </div>
                </div>
-            </div>
-         </mat-tab>
-      </mat-tab-group>
-      <div class="buttons floatRight">
-         <button class="cancelButton" mat-raised-button (click)="goBack()">Atrás</button>
-         <button color="warn" mat-raised-button (click)="deletePlant()">Borrar</button>
-         <button color="accent" mat-raised-button routerLink="/mantenimiento/plantas/editar/{{ plant._id }}">Editar</button>
+            </mat-tab>
+         </mat-tab-group>
+         <div class="buttons floatRight">
+            <button class="cancelButton" mat-raised-button (click)="goBack()">Atrás</button>
+            <button color="warn" mat-raised-button (click)="deletePlant()">Borrar</button>
+            <button color="accent" mat-raised-button routerLink="/mantenimiento/plantas/editar/{{ plant._id }}">Editar</button>
+         </div>
       </div>
    </div>
-</div>
+</ng-scrollbar>

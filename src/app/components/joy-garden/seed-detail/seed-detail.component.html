@@ -1,25 +1,27 @@
-<div *ngIf="seed" class="wrapper">
-   <div class="flexBBw">
-      <div class="left">
-         <h2 class="sectionTitle">{{ seed.name }}</h2>
-         <p class="detailSecondary">{{ seed.bank }}</p>
+<ng-scrollbar>
+   <div *ngIf="seed" class="wrapper">
+      <div class="flexBBw">
+         <div class="left">
+            <h2 class="sectionTitle">{{ seed.name }}</h2>
+            <p class="detailSecondary">{{ seed.bank }}</p>
+         </div>
+         <div class="right">
+            <p class="detailTertiary">{{ seed.indicaSativa }} (I/S)</p>
+            <p class="detailTertiary">{{ seed.flowering }} días</p>
+         </div>
       </div>
-      <div class="right">
-         <p class="detailTertiary">{{ seed.indicaSativa }} (I/S)</p>
-         <p class="detailTertiary">{{ seed.flowering }} días</p>
+      <div class="img" *ngIf="seed">
+         <img src="{{ seed.img }}" alt="" *ngIf="seed.img != ''">
+         <img src="assets/img/dummy.jpg" alt="" *ngIf="seed.img == ''">
+      </div>
+      <p *ngIf="seed.genetic"><mat-icon>shuffle</mat-icon>{{ seed.genetic }}</p>
+      <p *ngIf="seed.productivity"><mat-icon>nature</mat-icon>{{ seed.productivity }} gr/m<span class="sup">2</span></p>
+      <p *ngIf="seed.height"><mat-icon>height</mat-icon>{{ seed.height }} cm</p>
+      <p *ngIf="seed.effect"><mat-icon>leak_add</mat-icon>{{ seed.effect }}</p>
+      <p *ngIf="seed.aroma"><mat-icon>grain</mat-icon>{{ seed.aroma }}</p>
+      <div class="buttons floatRight">
+         <button class="cancelButton" mat-raised-button (click)="goBack()">Atrás</button>
+         <button color="accent" mat-raised-button routerLink="/jardin-de-la-alegria/semillas/actualizar/{{ seed._id }}">Editar</button>
       </div>
    </div>
-   <div class="img" *ngIf="seed">
-      <img src="{{ seed.img }}" alt="" *ngIf="seed.img != ''">
-      <img src="assets/img/dummy.jpg" alt="" *ngIf="seed.img == ''">
-   </div>
-   <p *ngIf="seed.genetic"><mat-icon>shuffle</mat-icon>{{ seed.genetic }}</p>
-   <p *ngIf="seed.productivity"><mat-icon>nature</mat-icon>{{ seed.productivity }} gr/m<span class="sup">2</span></p>
-   <p *ngIf="seed.height"><mat-icon>height</mat-icon>{{ seed.height }} cm</p>
-   <p *ngIf="seed.effect"><mat-icon>leak_add</mat-icon>{{ seed.effect }}</p>
-   <p *ngIf="seed.aroma"><mat-icon>grain</mat-icon>{{ seed.aroma }}</p>
-   <div class="buttons floatRight">
-      <button class="cancelButton" mat-raised-button (click)="goBack()">Atrás</button>
-      <button color="accent" mat-raised-button routerLink="/jardin-de-la-alegria/semillas/actualizar/{{ seed._id }}">Editar</button>
-   </div>
-</div>
+</ng-scrollbar>

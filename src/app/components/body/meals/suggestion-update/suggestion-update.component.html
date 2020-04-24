@@ -1,45 +1,47 @@
-<div class="wrapper" *ngIf="updateSuggestionForm">
-   <h2 class="formTitle">Actualizar sugerencia de comida</h2>
-   <form [formGroup]="updateSuggestionForm">
-      <mat-form-field>
-         <input matInput formControlName="name" placeholder="Nombre" required>
-      </mat-form-field>
-      <mat-form-field>
-         <mat-chip-list #seasonChipList aria-label="Estación">
-            <mat-chip *ngFor="let item of seasonItems" [selectable]="seSelectable"
-                  [removable]="seRemovable" (removed)="removeItem('season', item)">
-               {{ item.name }}
-               <mat-icon matChipRemove *ngIf="seRemovable">cancel</mat-icon>
-            </mat-chip>
-            <input placeholder="Estación"
-                  [matChipInputFor]="seasonChipList"
-                  [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
-                  [matChipInputAddOnBlur]="seAddOnBlur"
-                  (matChipInputTokenEnd)="addItem('season', $event)">
-         </mat-chip-list>
-      </mat-form-field>
-      <mat-form-field>
-         <mat-chip-list #ingredientChipList aria-label="Ingredientes">
-            <mat-chip *ngFor="let item of ingredientItems" [selectable]="inSelectable"
-                  [removable]="inRemovable" (removed)="removeItem('ingredient', item)">
-               {{ item.name }}
-               <mat-icon matChipRemove *ngIf="inRemovable">cancel</mat-icon>
-            </mat-chip>
-            <input placeholder="Ingredientes"
-                  [matChipInputFor]="ingredientChipList"
-                  [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
-                  [matChipInputAddOnBlur]="inAddOnBlur"
-                  (matChipInputTokenEnd)="addItem('ingredient', $event)">
-         </mat-chip-list>
-      </mat-form-field>
-   </form>
-   <div class="formFooter">
-      <mat-icon aria-hidden="false" aria-label="Formulario incorrecto" *ngIf="updateSuggestionForm.status=='INVALID'" color="primary">block</mat-icon>
-      <mat-icon aria-hidden="false" aria-label="Formulario incorrecto" *ngIf="updateSuggestionForm.status=='VALID'" color="accent">thumb_up</mat-icon>
-      <div class="buttons">
-         <button class="cancelButton" mat-raised-button (click)="goBack()">Cancelar</button>
-         <button color="warn" mat-raised-button (click)="deleteSuggestion()">Borrar</button>
-         <button color="primary" type="submit" mat-raised-button [disabled]="!updateSuggestionForm.valid" (click)="updateSuggestion()">Actualizar</button>
+<ng-scrollbar>
+   <div class="wrapper" *ngIf="updateSuggestionForm">
+      <h2 class="formTitle">Actualizar sugerencia de comida</h2>
+      <form [formGroup]="updateSuggestionForm">
+         <mat-form-field>
+            <input matInput formControlName="name" placeholder="Nombre" required>
+         </mat-form-field>
+         <mat-form-field>
+            <mat-chip-list #seasonChipList aria-label="Estación">
+               <mat-chip *ngFor="let item of seasonItems" [selectable]="seSelectable"
+                     [removable]="seRemovable" (removed)="removeItem('season', item)">
+                  {{ item.name }}
+                  <mat-icon matChipRemove *ngIf="seRemovable">cancel</mat-icon>
+               </mat-chip>
+               <input placeholder="Estación"
+                     [matChipInputFor]="seasonChipList"
+                     [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                     [matChipInputAddOnBlur]="seAddOnBlur"
+                     (matChipInputTokenEnd)="addItem('season', $event)">
+            </mat-chip-list>
+         </mat-form-field>
+         <mat-form-field>
+            <mat-chip-list #ingredientChipList aria-label="Ingredientes">
+               <mat-chip *ngFor="let item of ingredientItems" [selectable]="inSelectable"
+                     [removable]="inRemovable" (removed)="removeItem('ingredient', item)">
+                  {{ item.name }}
+                  <mat-icon matChipRemove *ngIf="inRemovable">cancel</mat-icon>
+               </mat-chip>
+               <input placeholder="Ingredientes"
+                     [matChipInputFor]="ingredientChipList"
+                     [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                     [matChipInputAddOnBlur]="inAddOnBlur"
+                     (matChipInputTokenEnd)="addItem('ingredient', $event)">
+            </mat-chip-list>
+         </mat-form-field>
+      </form>
+      <div class="formFooter">
+         <mat-icon aria-hidden="false" aria-label="Formulario incorrecto" *ngIf="updateSuggestionForm.status=='INVALID'" color="primary">block</mat-icon>
+         <mat-icon aria-hidden="false" aria-label="Formulario incorrecto" *ngIf="updateSuggestionForm.status=='VALID'" color="accent">thumb_up</mat-icon>
+         <div class="buttons">
+            <button class="cancelButton" mat-raised-button (click)="goBack()">Cancelar</button>
+            <button color="warn" mat-raised-button (click)="deleteSuggestion()">Borrar</button>
+            <button color="primary" type="submit" mat-raised-button [disabled]="!updateSuggestionForm.valid" (click)="updateSuggestion()">Actualizar</button>
+         </div>
       </div>
    </div>
-</div>
+</ng-scrollbar>

@@ -1,48 +1,50 @@
-<div class="wrapper">
-   <h2 class="formTitle">Añadir riego</h2>
-   <form [formGroup]="addWateringForm">
-      <mat-form-field>
-         <input matInput placeholder="Contenedor" formControlName="container" required>
-      </mat-form-field>
-      <mat-form-field>
-         <input matInput [matDatepicker]="picker" formControlName="date" placeholder="Fecha">
-         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-         <mat-datepicker #picker></mat-datepicker>
-      </mat-form-field>
-      <div>
-         <h3>Fertilizante</h3>
-      </div>
-      <mat-form-field>
-         <input matInput type="number" placeholder="Crecimiento" formControlName="grow">
-      </mat-form-field>
-      <mat-form-field>
-         <input matInput type="number" placeholder="Floración" formControlName="flower">
-      </mat-form-field>
-      <mat-form-field>
-         <input matInput type="number" placeholder="Raíces" formControlName="root">
-      </mat-form-field>
-      <mat-form-field>
-         <input matInput type="number" placeholder="Powerzyme" formControlName="powerzyme">
-      </mat-form-field>
-      <mat-form-field>
-         <input matInput type="number" placeholder="Supervit" formControlName="supervit">
-      </mat-form-field>
-      <mat-form-field>
-         <input matInput type="number" placeholder="Delta 9" formControlName="delta9">
-      </mat-form-field>
-      <mat-form-field>
-         <input matInput type="number" placeholder="Boost" formControlName="boost">
-      </mat-form-field>
-      <mat-form-field>
-         <input matInput type="number" placeholder="PK 13-14" formControlName="pk1314">
-      </mat-form-field>
-   </form>
-   <div class="formFooter">
-      <mat-icon aria-hidden="false" aria-label="Formulario incorrecto" *ngIf="addWateringForm.status=='INVALID'" color="primary">block</mat-icon>
-      <mat-icon aria-hidden="false" aria-label="Formulario incorrecto" *ngIf="addWateringForm.status=='VALID'" color="accent">thumb_up</mat-icon>
-      <div class="buttons">
-         <button class="cancelButton" mat-raised-button (click)="goBack()">Cancelar</button>
-         <button color="primary" type="submit" mat-raised-button [disabled]="!addWateringForm.valid" (click)="saveWatering()">Crear</button>
+<ng-scrollbar>
+   <div class="wrapper">
+      <h2 class="formTitle">Añadir riego</h2>
+      <form [formGroup]="addWateringForm">
+         <mat-form-field>
+            <input matInput placeholder="Contenedor" formControlName="container" required>
+         </mat-form-field>
+         <mat-form-field>
+            <input matInput [matDatepicker]="picker" formControlName="date" placeholder="Fecha">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+         </mat-form-field>
+         <div>
+            <h3>Fertilizante</h3>
+         </div>
+         <mat-form-field>
+            <input matInput type="number" placeholder="Crecimiento" formControlName="grow">
+         </mat-form-field>
+         <mat-form-field>
+            <input matInput type="number" placeholder="Floración" formControlName="flower">
+         </mat-form-field>
+         <mat-form-field>
+            <input matInput type="number" placeholder="Raíces" formControlName="root">
+         </mat-form-field>
+         <mat-form-field>
+            <input matInput type="number" placeholder="Powerzyme" formControlName="powerzyme">
+         </mat-form-field>
+         <mat-form-field>
+            <input matInput type="number" placeholder="Supervit" formControlName="supervit">
+         </mat-form-field>
+         <mat-form-field>
+            <input matInput type="number" placeholder="Delta 9" formControlName="delta9">
+         </mat-form-field>
+         <mat-form-field>
+            <input matInput type="number" placeholder="Boost" formControlName="boost">
+         </mat-form-field>
+         <mat-form-field>
+            <input matInput type="number" placeholder="PK 13-14" formControlName="pk1314">
+         </mat-form-field>
+      </form>
+      <div class="formFooter">
+         <mat-icon aria-hidden="false" aria-label="Formulario incorrecto" *ngIf="addWateringForm.status=='INVALID'" color="primary">block</mat-icon>
+         <mat-icon aria-hidden="false" aria-label="Formulario incorrecto" *ngIf="addWateringForm.status=='VALID'" color="accent">thumb_up</mat-icon>
+         <div class="buttons">
+            <button class="cancelButton" mat-raised-button (click)="goBack()">Cancelar</button>
+            <button color="primary" type="submit" mat-raised-button [disabled]="!addWateringForm.valid" (click)="saveWatering()">Crear</button>
+         </div>
       </div>
    </div>
-</div>
+</ng-scrollbar>

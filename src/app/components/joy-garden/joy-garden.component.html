@@ -2,62 +2,67 @@
 (selectedTabChange)="changeSelectedIndex($event)" [selectedIndex]="selectedIndex"
 (swipeleft)="nextSection()" (swiperight)="previousSection()" class="joy-garden">
    <mat-tab label="Riegos">
-      <div class="wrapper">
-         <h2 class="sectionTitle">Riegos <span matBadge="{{ wateringsCount }}"></span></h2>
-         <p *ngIf="wateringsCount == 0">Todavía no hay riegos, ¡crea uno!</p>
-      </div>
-      <mat-card mat-ripple *ngFor="let watering of waterings" routerLink="/jardin-de-la-alegria/riegos/actualizar/{{ watering._id }}" class="watering">
-         <mat-card-content>
-            <div class="flexBBw">
-               <p>{{ watering.container }}</p>
-               <p class="date">{{ watering.date | dateFilter | uppercase }}</p>
-            </div>
-            <ul>
-               <li *ngFor="let fertilizers of watering.fertilizer"> 
-                  <p *ngIf="fertilizers.grow">{{ fertilizers.grow }} ml Crecimiento</p>
-                  <p *ngIf="fertilizers.flower">{{ fertilizers.flower }} ml Floración</p>
-                  <p *ngIf="fertilizers.root">{{ fertilizers.root }} ml Complejo radicular</p>
-                  <p *ngIf="fertilizers.powerzyme">{{ fertilizers.powerzyme }} ml Powerzyme</p>
-                  <p *ngIf="fertilizers.supervit">{{ fertilizers.supervit }} ml SuperVit</p>
-                  <p *ngIf="fertilizers.delta9">{{ fertilizers.delta9 }} ml Delta 9</p>
-                  <p *ngIf="fertilizers.boost">{{ fertilizers.boost }} ml Boost</p>
-                  <p *ngIf="fertilizers.pk1314">{{ fertilizers.pk1314 }} ml PK 13/14</p>
-               </li>
-            </ul>
-         </mat-card-content>
-      </mat-card>
+      <ng-scrollbar>
+         <div class="wrapper">
+            <h2 class="sectionTitle">Riegos <span matBadge="{{ wateringsCount }}"></span></h2>
+            <p *ngIf="wateringsCount == 0">Todavía no hay riegos, ¡crea uno!</p>
+         </div>
+         <mat-card mat-ripple *ngFor="let watering of waterings" routerLink="/jardin-de-la-alegria/riegos/actualizar/{{ watering._id }}" class="watering">
+            <mat-card-content>
+               <div class="flexBBw">
+                  <p>{{ watering.container }}</p>
+                  <p class="date">{{ watering.date | dateFilter | uppercase }}</p>
+               </div>
+               <ul>
+                  <li *ngFor="let fertilizers of watering.fertilizer"> 
+                     <p *ngIf="fertilizers.grow">{{ fertilizers.grow }} ml Crecimiento</p>
+                     <p *ngIf="fertilizers.flower">{{ fertilizers.flower }} ml Floración</p>
+                     <p *ngIf="fertilizers.root">{{ fertilizers.root }} ml Complejo radicular</p>
+                     <p *ngIf="fertilizers.powerzyme">{{ fertilizers.powerzyme }} ml Powerzyme</p>
+                     <p *ngIf="fertilizers.supervit">{{ fertilizers.supervit }} ml SuperVit</p>
+                     <p *ngIf="fertilizers.delta9">{{ fertilizers.delta9 }} ml Delta 9</p>
+                     <p *ngIf="fertilizers.boost">{{ fertilizers.boost }} ml Boost</p>
+                     <p *ngIf="fertilizers.pk1314">{{ fertilizers.pk1314 }} ml PK 13/14</p>
+                  </li>
+               </ul>
+            </mat-card-content>
+         </mat-card>
+      </ng-scrollbar>
    </mat-tab>
    <mat-tab label="Plantas">
       <mat-tab-group [color]="'accent'" [backgroundColor]="'accent'" class="bottomTabs" (selectedTabChange)="changeSelectedIndex2($event)" [selectedIndex]="selectedIndex2">
          <mat-tab label="Plantas">
-            <div class="wrapper">
-               <h2 class="sectionTitle">Plantas <span matBadge="{{ plantsCount }}"></span></h2>
-               <p *ngIf="plantsCount == 0">Todavía no hay plantas, ¡crea una!</p>
-            </div>
-            <mat-card mat-ripple *ngFor="let plant of plants" routerLink="/jardin-de-la-alegria/plantas/actualizar/{{ plant._id }}" class="plant">
-               <mat-card-content>
-                  <div class="flexBBw">
-                     <div class="left">
-                        <p class="cardMain">{{ plant.name }}</p>
-                        <p class="cardSecondary">{{ plant.container }}</p>
+            <ng-scrollbar>
+               <div class="wrapper">
+                  <h2 class="sectionTitle">Plantas <span matBadge="{{ plantsCount }}"></span></h2>
+                  <p *ngIf="plantsCount == 0">Todavía no hay plantas, ¡crea una!</p>
+               </div>
+               <mat-card mat-ripple *ngFor="let plant of plants" routerLink="/jardin-de-la-alegria/plantas/actualizar/{{ plant._id }}" class="plant">
+                  <mat-card-content>
+                     <div class="flexBBw">
+                        <div class="left">
+                           <p class="cardMain">{{ plant.name }}</p>
+                           <p class="cardSecondary">{{ plant.container }}</p>
+                        </div>
+                        <div class="right">
+                           <p class="cardTertiary">{{ plant.coords }}</p>
+                        </div>
                      </div>
-                     <div class="right">
-                        <p class="cardTertiary">{{ plant.coords }}</p>
-                     </div>
-                  </div>
-               </mat-card-content>
-            </mat-card>
-            <div class="gallery" *ngIf="gallery.length">
-               <div *ngFor="let img of gallery"><img src="{{ img.pic }}" alt="{{ img.name }}"><span>{{ img.name }}</span></div>
-            </div>
+                  </mat-card-content>
+               </mat-card>
+               <div class="gallery" *ngIf="gallery.length">
+                  <div *ngFor="let img of gallery"><img src="{{ img.pic }}" alt="{{ img.name }}"><span>{{ img.name }}</span></div>
+               </div>
+            </ng-scrollbar>
          </mat-tab>
          <mat-tab label="Semillas">
-            <div class="wrapper">
-               <h2 class="sectionTitle">Semillas <span matBadge="{{ seedsCount }}"></span></h2>
-               <p *ngIf="seedsCount == 0">Todavía no hay semillas, ¡crea una!</p>
-            </div>
-            <mat-card mat-ripple *ngFor="let seed of seeds" routerLink="/jardin-de-la-alegria/semillas/{{ seed._id }}" class="seed">
-               <mat-card-content>
+            <ng-scrollbar>
+               <div class="wrapper">
+                  <h2 class="sectionTitle">Semillas <span matBadge="{{ seedsCount }}"></span></h2>
+                  <p *ngIf="seedsCount == 0">Todavía no hay semillas, ¡crea una!</p>
+               </div>
+               <mat-card mat-ripple *ngFor="let seed of seeds" routerLink="/jardin-de-la-alegria/semillas/{{ seed._id }}" class="seed">
+                  <mat-card-content>
                      <div class="flexBBw">
                         <div class="left">
                            <p class="cardMain">{{ seed.name }}</p>
@@ -69,7 +74,8 @@
                      </div>
                   </mat-card-content>
                </mat-card>
-            </mat-tab>
+            </ng-scrollbar>
+         </mat-tab>
       </mat-tab-group>
    </mat-tab>
 </mat-tab-group>

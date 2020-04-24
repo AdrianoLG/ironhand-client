@@ -1,73 +1,75 @@
-<div class="wrapper">
-   <h2 class="formTitle">Añadir serie</h2>
-   <form [formGroup]="addTvSerieForm">
-      <mat-form-field>
-         <input matInput placeholder="Título" formControlName="title" required>
-      </mat-form-field>
-      <mat-form-field>
-         <input matInput placeholder="Director" formControlName="director" required>
-      </mat-form-field>
-      <mat-form-field>
-         <mat-chip-list #castList aria-label="Reparto">
-            <mat-chip *ngFor="let item of castItems" [selectable]="castSelectable"
-            [removable]="castRemovable" (removed)="removeItem('cast', item)">
-               {{ item.name }}
-               <mat-icon matChipRemove *ngIf="castRemovable">cancel</mat-icon>
-            </mat-chip>
-            <input placeholder="Reparto"
-            [matChipInputFor]="castList"
-            [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
-            [matChipInputAddOnBlur]="castAddOnBlur"
-            (matChipInputTokenEnd)="addItem('cast', $event)">
-         </mat-chip-list>
-      </mat-form-field>
-      <mat-form-field>
-         <input matInput placeholder="Tv" formControlName="tv">
-      </mat-form-field>
-      <mat-form-field>
-         <input matInput placeholder="País" formControlName="country">
-      </mat-form-field>
-      <mat-form-field>
-         <mat-chip-list #categoriesList aria-label="Categorías">
-            <mat-chip *ngFor="let item of categoriesItems" [selectable]="categoriesSelectable"
-            [removable]="categoriesRemovable" (removed)="removeItem('categories', item)">
-               {{ item.name }}
-               <mat-icon matChipRemove *ngIf="categoriesRemovable">cancel</mat-icon>
-            </mat-chip>
-            <input placeholder="Categorías"
-            [matChipInputFor]="categoriesList"
-            [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
-            [matChipInputAddOnBlur]="categoriesAddOnBlur"
-            (matChipInputTokenEnd)="addItem('categories', $event)">
-         </mat-chip-list>
-      </mat-form-field>
-      <mat-form-field>
-         <input matInput [matDatepicker]="picker" formControlName="beginDate" placeholder="Fecha de comienzo">
-         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-         <mat-datepicker #picker></mat-datepicker>
-      </mat-form-field>
-      <mat-form-field>
-         <input matInput placeholder="Último episodio visto" formControlName="lastSeen">
-      </mat-form-field>
-      <mat-slide-toggle (change)="ended = !ended">Vista</mat-slide-toggle>
-      <mat-form-field *ngIf="ended">
-         <input matInput [matDatepicker]="picker2" formControlName="endDate" placeholder="Fecha de finalización">
-         <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
-         <mat-datepicker #picker2></mat-datepicker>
-      </mat-form-field>
-      <mat-form-field>
-         <input matInput type="number" placeholder="Duración de los capítulos" formControlName="episodeDuration" required>
-      </mat-form-field>
-      <mat-form-field>
-         <input matInput placeholder="Imagen" formControlName="img">
-      </mat-form-field>
-   </form>
-   <div class="formFooter">
-      <mat-icon aria-hidden="false" aria-label="Formulario incorrecto" *ngIf="addTvSerieForm.status=='INVALID'" color="primary">block</mat-icon>
-      <mat-icon aria-hidden="false" aria-label="Formulario incorrecto" *ngIf="addTvSerieForm.status=='VALID'" color="accent">thumb_up</mat-icon>
-      <div class="buttons">
-         <button class="cancelButton" mat-raised-button (click)="goBack()">Cancelar</button>
-         <button color="primary" type="submit" mat-raised-button [disabled]="!addTvSerieForm.valid" (click)="saveTvSerie()">Crear</button>
+<ng-scrollbar>
+   <div class="wrapper">
+      <h2 class="formTitle">Añadir serie</h2>
+      <form [formGroup]="addTvSerieForm">
+         <mat-form-field>
+            <input matInput placeholder="Título" formControlName="title" required>
+         </mat-form-field>
+         <mat-form-field>
+            <input matInput placeholder="Director" formControlName="director" required>
+         </mat-form-field>
+         <mat-form-field>
+            <mat-chip-list #castList aria-label="Reparto">
+               <mat-chip *ngFor="let item of castItems" [selectable]="castSelectable"
+               [removable]="castRemovable" (removed)="removeItem('cast', item)">
+                  {{ item.name }}
+                  <mat-icon matChipRemove *ngIf="castRemovable">cancel</mat-icon>
+               </mat-chip>
+               <input placeholder="Reparto"
+               [matChipInputFor]="castList"
+               [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+               [matChipInputAddOnBlur]="castAddOnBlur"
+               (matChipInputTokenEnd)="addItem('cast', $event)">
+            </mat-chip-list>
+         </mat-form-field>
+         <mat-form-field>
+            <input matInput placeholder="Tv" formControlName="tv">
+         </mat-form-field>
+         <mat-form-field>
+            <input matInput placeholder="País" formControlName="country">
+         </mat-form-field>
+         <mat-form-field>
+            <mat-chip-list #categoriesList aria-label="Categorías">
+               <mat-chip *ngFor="let item of categoriesItems" [selectable]="categoriesSelectable"
+               [removable]="categoriesRemovable" (removed)="removeItem('categories', item)">
+                  {{ item.name }}
+                  <mat-icon matChipRemove *ngIf="categoriesRemovable">cancel</mat-icon>
+               </mat-chip>
+               <input placeholder="Categorías"
+               [matChipInputFor]="categoriesList"
+               [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+               [matChipInputAddOnBlur]="categoriesAddOnBlur"
+               (matChipInputTokenEnd)="addItem('categories', $event)">
+            </mat-chip-list>
+         </mat-form-field>
+         <mat-form-field>
+            <input matInput [matDatepicker]="picker" formControlName="beginDate" placeholder="Fecha de comienzo">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+         </mat-form-field>
+         <mat-form-field>
+            <input matInput placeholder="Último episodio visto" formControlName="lastSeen">
+         </mat-form-field>
+         <mat-slide-toggle (change)="ended = !ended">Vista</mat-slide-toggle>
+         <mat-form-field *ngIf="ended">
+            <input matInput [matDatepicker]="picker2" formControlName="endDate" placeholder="Fecha de finalización">
+            <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+            <mat-datepicker #picker2></mat-datepicker>
+         </mat-form-field>
+         <mat-form-field>
+            <input matInput type="number" placeholder="Duración de los capítulos" formControlName="episodeDuration" required>
+         </mat-form-field>
+         <mat-form-field>
+            <input matInput placeholder="Imagen" formControlName="img">
+         </mat-form-field>
+      </form>
+      <div class="formFooter">
+         <mat-icon aria-hidden="false" aria-label="Formulario incorrecto" *ngIf="addTvSerieForm.status=='INVALID'" color="primary">block</mat-icon>
+         <mat-icon aria-hidden="false" aria-label="Formulario incorrecto" *ngIf="addTvSerieForm.status=='VALID'" color="accent">thumb_up</mat-icon>
+         <div class="buttons">
+            <button class="cancelButton" mat-raised-button (click)="goBack()">Cancelar</button>
+            <button color="primary" type="submit" mat-raised-button [disabled]="!addTvSerieForm.valid" (click)="saveTvSerie()">Crear</button>
+         </div>
       </div>
    </div>
-</div>
+</ng-scrollbar>

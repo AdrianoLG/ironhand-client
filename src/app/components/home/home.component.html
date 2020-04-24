@@ -1,23 +1,25 @@
-<main>
-   <div class="hero">
-      <img class="cover" src="https://picsum.photos/800/400" alt="">
-      <img class="logo" src="../../../assets/img/logo.svg">
-   </div>
-   <section>
-      <app-alerts></app-alerts>
-   </section>
-   <section>
-      <div class="wrapper">
-         <h2 class="sectionTitle">Estadísticas</h2>
-         <div class="flexBBw stats">
-            <div class="left">
-               <app-body></app-body>
-            </div>
-            <div class="right">
-               <app-house></app-house>
-            </div>
-         </div>
-         <app-statistics></app-statistics>
+<ng-scrollbar>
+   <main>
+      <div class="hero">
+         <img class="cover" src="https://picsum.photos/800/400" alt="">
+         <img class="logo" src="../../../assets/img/logo.svg">
       </div>
-   </section>
-</main>
+      <section>
+         <app-alerts></app-alerts>
+      </section>
+      <section>
+         <div class="wrapper">
+            <h2 class="sectionTitle">Estadísticas</h2>
+            <div class="flexBBw stats">
+               <div class="left">
+                  <app-body></app-body>
+               </div>
+               <div class="right">
+                  <app-house></app-house>
+               </div>
+            </div>
+            <app-statistics></app-statistics>
+         </div>
+      </section>
+   </main>
+</ng-scrollbar>

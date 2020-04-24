@@ -108,6 +108,7 @@ button {
 	padding-top: 0;
 }
 .wrapper {
+	box-sizing: border-box;
 	padding: 1.5em 1em 1em;
 }
 .wrapper-nobottom {
@@ -286,6 +287,9 @@ body .mat-divider {
 .mat-tab-labels {
 	border-bottom: 1px solid $lightBackground;
 }
+.ng-scroll-content {
+	width: 100% !important;
+ }
 .tabs .mat-tab-label:hover {
    color: $secondary !important;
 }
@@ -346,3 +350,17 @@ body .mat-divider {
 .stats .left {
 	position: relative;
 }
+// Scrollbar
+.custom-scrollbar {
+	--scrollbar-border-radius: 10px;
+	--scrollbar-padding: 4px;
+	--scrollbar-viewport-margin: 0;
+	--scrollbar-track-color: transparent;
+	--scrollbar-wrapper-color: transparent;
+	--scrollbar-thumb-color: #464646;
+	--scrollbar-thumb-hover-color: #232323;
+	--scrollbar-size: 8px;
+	--scrollbar-hover-size: 8px;
+	--scrollbar-thumb-transition: height ease-out 150ms, width ease-out 150ms;
+	--scrollbar-track-transition: height ease-out 150ms, width ease-out 150ms;
+  }

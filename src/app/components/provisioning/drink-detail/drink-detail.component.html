@@ -1,21 +1,23 @@
-<div *ngIf="drink">
-   <div class="wrapper">
-      <div class="flexBBw">
-         <div class="left">
-            <h2 class="sectionTitle">{{ drink.name }}</h2>
-            <p class="detailSecondary">{{ drink.brand }}</p>
+<ng-scrollbar>
+   <div *ngIf="drink">
+      <div class="wrapper">
+         <div class="flexBBw">
+            <div class="left">
+               <h2 class="sectionTitle">{{ drink.name }}</h2>
+               <p class="detailSecondary">{{ drink.brand }}</p>
+            </div>
+            <div class="right">
+               <p class="detailTertiary">{{ drink.alcohol === true ? drink.graduation : 0}}<span class="ss">º</span></p>
+            </div>
          </div>
-         <div class="right">
-            <p class="detailTertiary">{{ drink.alcohol === true ? drink.graduation : 0}}<span class="ss">º</span></p>
+         <img [src]="drink.img">
+         <p>Categoría: <span class="data">{{ drink.category }}</span></p>
+         <p>Cantidad: <span class="data">{{ drink.qty }} {{ drink.unit }}</span></p>
+         <div class="buttons floatRight">
+            <button class="cancelButton" mat-raised-button (click)="goBack()">Atrás</button>
+            <button color="warn" mat-raised-button (click)="deleteDrink()">Borrar</button>
+            <button color="accent" mat-raised-button routerLink="/aprovisionamiento/bebida/editar/{{ drink._id }}">Editar</button>
          </div>
-      </div>
-      <img [src]="drink.img">
-      <p>Categoría: <span class="data">{{ drink.category }}</span></p>
-      <p>Cantidad: <span class="data">{{ drink.qty }} {{ drink.unit }}</span></p>
-      <div class="buttons floatRight">
-         <button class="cancelButton" mat-raised-button (click)="goBack()">Atrás</button>
-         <button color="warn" mat-raised-button (click)="deleteDrink()">Borrar</button>
-         <button color="accent" mat-raised-button routerLink="/aprovisionamiento/bebida/editar/{{ drink._id }}">Editar</button>
       </div>
    </div>
-</div>
+</ng-scrollbar>

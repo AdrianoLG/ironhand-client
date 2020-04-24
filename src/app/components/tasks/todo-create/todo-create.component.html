@@ -1,23 +1,25 @@
-<div class="wrapper">
-   <h2 class="formTitle">Crear tarea a hacer</h2>
-   <form [formGroup]="addTaskForm">
-      <mat-form-field>
-         <input matInput placeholder="Nombre de tarea" formControlName="todoName" required>
-      </mat-form-field>
-      <mat-form-field>
-         <input matInput placeholder="Categoría" formControlName="category" required>
-      </mat-form-field>
-      <div class="slider">
-         <mat-slider id="priority" #priority min="1" max="10" step="1" thumbLabel tickInterval="1" (input)="changePriority($event)" formControlName="priority" required></mat-slider>
-         <label for="priority">Prioridad: {{ priority.value }}</label>
-      </div>
-      <div class="formFooter">
-         <mat-icon aria-hidden="false" aria-label="Formulario incorrecto" *ngIf="addTaskForm.status=='INVALID'" color="primary">block</mat-icon>
-         <mat-icon aria-hidden="false" aria-label="Formulario correcto" *ngIf="addTaskForm.status=='VALID'" color="accent">thumb_up</mat-icon>
-         <div class="buttons">
-            <button class="cancelButton" mat-raised-button (click)="goBack()">Cancelar</button>
-            <button type="submit" mat-raised-button [disabled]="!addTaskForm.valid" (click)="addTask()" color="accent">Crear</button>
+<ng-scrollbar>
+   <div class="wrapper">
+      <h2 class="formTitle">Crear tarea a hacer</h2>
+      <form [formGroup]="addTaskForm">
+         <mat-form-field>
+            <input matInput placeholder="Nombre de tarea" formControlName="todoName" required>
+         </mat-form-field>
+         <mat-form-field>
+            <input matInput placeholder="Categoría" formControlName="category" required>
+         </mat-form-field>
+         <div class="slider">
+            <mat-slider id="priority" #priority min="1" max="10" step="1" thumbLabel tickInterval="1" (input)="changePriority($event)" formControlName="priority" required></mat-slider>
+            <label for="priority">Prioridad: {{ priority.value }}</label>
          </div>
-      </div>
-   </form>
-</div>
+         <div class="formFooter">
+            <mat-icon aria-hidden="false" aria-label="Formulario incorrecto" *ngIf="addTaskForm.status=='INVALID'" color="primary">block</mat-icon>
+            <mat-icon aria-hidden="false" aria-label="Formulario correcto" *ngIf="addTaskForm.status=='VALID'" color="accent">thumb_up</mat-icon>
+            <div class="buttons">
+               <button class="cancelButton" mat-raised-button (click)="goBack()">Cancelar</button>
+               <button type="submit" mat-raised-button [disabled]="!addTaskForm.valid" (click)="addTask()" color="accent">Crear</button>
+            </div>
+         </div>
+      </form>
+   </div>
+</ng-scrollbar>

@@ -1,48 +1,50 @@
-<div class="wrapper">
-   <h2 class="formTitle">Crear ensayo</h2>
-   <form [formGroup]="addRehearsalForm" *ngIf="addRehearsalForm">
-      <mat-form-field>
-         <input matInput [matDatepicker]="picker" formControlName="date" placeholder="Fecha" required>
-         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-         <mat-datepicker #picker></mat-datepicker>
-      </mat-form-field>
-      <mat-form-field>
-         <mat-label>Instrumento</mat-label>
-         <mat-select formControlName="instrument" required>
-            <mat-option *ngFor="let instrument of availableInstruments" [value]="instrument">
-               {{instrument}}
-            </mat-option>
-         </mat-select>
-      </mat-form-field>
-      <mat-form-field>
-         <input matInput placeholder="Tiempo" formControlName="time" required>
-      </mat-form-field>
-      <ul>
-         <li *ngFor="let sheet of sheets; let i = index" class="sheet">
-            <p>{{ sheet.name }}{{ sheet.time ? ' - ' + sheet.time + ' min.' : '' }} </p>
-            <button mat-icon-button class="mr1" (click)="editSheet(i, sheet.name, sheet.time)"><mat-icon>edit</mat-icon></button>
-         </li>
-      </ul>
-      <form [formGroup]="addSheetForm" *ngIf="addSheetForm">
-         <p class="mat-subheading-2">{{ sheetFormAction }} partitura</p>
+<ng-scrollbar>
+   <div class="wrapper">
+      <h2 class="formTitle">Crear ensayo</h2>
+      <form [formGroup]="addRehearsalForm" *ngIf="addRehearsalForm">
          <mat-form-field>
-            <input matInput placeholder="Nombre" formControlName="name">
+            <input matInput [matDatepicker]="picker" formControlName="date" placeholder="Fecha" required>
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
          </mat-form-field>
          <mat-form-field>
-            <input matInput type="number" placeholder="Tiempo" formControlName="time">
+            <mat-label>Instrumento</mat-label>
+            <mat-select formControlName="instrument" required>
+               <mat-option *ngFor="let instrument of availableInstruments" [value]="instrument">
+                  {{instrument}}
+               </mat-option>
+            </mat-select>
          </mat-form-field>
-         <div class="buttonsB">
-            <button mat-raised-button color="secondary" (click)="removeSheet(i)" mat-raised-button class="removeSheet" *ngIf="sheetFormAction == 'Editar'">Quitar partitura</button>
-            <button mat-raised-button color="primary" (click)="addSheet(sheetIndex)"mat-raised-button type="submit" [disabled]="!addSheetForm.valid" color="accent">{{ sheetFormAction }} partitura</button>
+         <mat-form-field>
+            <input matInput placeholder="Tiempo" formControlName="time" required>
+         </mat-form-field>
+         <ul>
+            <li *ngFor="let sheet of sheets; let i = index" class="sheet">
+               <p>{{ sheet.name }}{{ sheet.time ? ' - ' + sheet.time + ' min.' : '' }} </p>
+               <button mat-icon-button class="mr1" (click)="editSheet(i, sheet.name, sheet.time)"><mat-icon>edit</mat-icon></button>
+            </li>
+         </ul>
+         <form [formGroup]="addSheetForm" *ngIf="addSheetForm">
+            <p class="mat-subheading-2">{{ sheetFormAction }} partitura</p>
+            <mat-form-field>
+               <input matInput placeholder="Nombre" formControlName="name">
+            </mat-form-field>
+            <mat-form-field>
+               <input matInput type="number" placeholder="Tiempo" formControlName="time">
+            </mat-form-field>
+            <div class="buttonsB">
+               <button mat-raised-button color="secondary" (click)="removeSheet(i)" mat-raised-button class="removeSheet" *ngIf="sheetFormAction == 'Editar'">Quitar partitura</button>
+               <button mat-raised-button color="primary" (click)="addSheet(sheetIndex)"mat-raised-button type="submit" [disabled]="!addSheetForm.valid" color="accent">{{ sheetFormAction }} partitura</button>
+            </div>
+         </form>
+         <div class="formFooter" *ngIf="addRehearsalForm">
+            <mat-icon aria-hidden="false" aria-label="Formulario incorrecto" *ngIf="addRehearsalForm.status=='INVALID'" color="primary">block</mat-icon>
+            <mat-icon aria-hidden="false" aria-label="Formulario incorrecto" *ngIf="addRehearsalForm.status=='VALID'" color="accent">thumb_up</mat-icon>
+            <div class="buttons">
+               <button mat-raised-button class="cancelButton" (click)="goBack()">Cancelar</button>
+               <button mat-raised-button type="submit" [disabled]="!addRehearsalForm.valid" color="accent" (click)="saveRehearsal()">Crear</button>
+            </div>
          </div>
       </form>
-      <div class="formFooter" *ngIf="addRehearsalForm">
-         <mat-icon aria-hidden="false" aria-label="Formulario incorrecto" *ngIf="addRehearsalForm.status=='INVALID'" color="primary">block</mat-icon>
-         <mat-icon aria-hidden="false" aria-label="Formulario incorrecto" *ngIf="addRehearsalForm.status=='VALID'" color="accent">thumb_up</mat-icon>
-         <div class="buttons">
-            <button mat-raised-button class="cancelButton" (click)="goBack()">Cancelar</button>
-            <button mat-raised-button type="submit" [disabled]="!addRehearsalForm.valid" color="accent" (click)="saveRehearsal()">Crear</button>
-         </div>
-      </div>
-   </form>
-</div>
+   </div>
+</ng-scrollbar>

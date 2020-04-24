@@ -1,55 +1,57 @@
-<div class="wrapper">
-   <h2 class="formTitle">Crear cóctel</h2>
-   <form [formGroup]="addCocktailForm" *ngIf="addCocktailForm">
-      <mat-form-field>
-         <input matInput placeholder="Nombre" formControlName="name" required>
-      </mat-form-field>
-      <mat-form-field>
-         <input matInput placeholder="Imagen" formControlName="img" required>
-      </mat-form-field>
-      <ul>
-         <li *ngFor="let ingredient of ingredients; let i = index" class="ingredient">
-            <p *ngIf="ingredient.parts">{{ ingredient.parts }} de {{ ingredient.name | lowercase }}</p>
-            <p *ngIf="!ingredient.parts">{{ ingredient.name }}</p>
-            <button mat-icon-button class="mr1" (click)="editIngredient(i, ingredient.name, ingredient.parts)"><mat-icon>edit</mat-icon></button>
-         </li>
-      </ul>
-      <form [formGroup]="addIngredientForm" *ngIf="addIngredientForm">
-         <p class="mat-subheading-2">{{ ingredientFormAction }} ingrediente</p>
+<ng-scrollbar>
+   <div class="wrapper">
+      <h2 class="formTitle">Crear cóctel</h2>
+      <form [formGroup]="addCocktailForm" *ngIf="addCocktailForm">
          <mat-form-field>
-            <input matInput placeholder="Nombre" formControlName="name">
+            <input matInput placeholder="Nombre" formControlName="name" required>
          </mat-form-field>
          <mat-form-field>
-            <input matInput placeholder="Partes" formControlName="parts">
+            <input matInput placeholder="Imagen" formControlName="img" required>
          </mat-form-field>
-         <div class="buttonsB">
-            <button mat-raised-button color="secondary" (click)="removeIngredient(i)" mat-raised-button class="removeIngredient" *ngIf="ingredientFormAction == 'Editar'">Quitar ingrediente</button>
-            <button mat-raised-button color="primary" (click)="addIngredient(ingredientIndex)"mat-raised-button type="submit" [disabled]="!addIngredientForm.valid" color="accent">{{ ingredientFormAction }} ingrediente</button>
+         <ul>
+            <li *ngFor="let ingredient of ingredients; let i = index" class="ingredient">
+               <p *ngIf="ingredient.parts">{{ ingredient.parts }} de {{ ingredient.name | lowercase }}</p>
+               <p *ngIf="!ingredient.parts">{{ ingredient.name }}</p>
+               <button mat-icon-button class="mr1" (click)="editIngredient(i, ingredient.name, ingredient.parts)"><mat-icon>edit</mat-icon></button>
+            </li>
+         </ul>
+         <form [formGroup]="addIngredientForm" *ngIf="addIngredientForm">
+            <p class="mat-subheading-2">{{ ingredientFormAction }} ingrediente</p>
+            <mat-form-field>
+               <input matInput placeholder="Nombre" formControlName="name">
+            </mat-form-field>
+            <mat-form-field>
+               <input matInput placeholder="Partes" formControlName="parts">
+            </mat-form-field>
+            <div class="buttonsB">
+               <button mat-raised-button color="secondary" (click)="removeIngredient(i)" mat-raised-button class="removeIngredient" *ngIf="ingredientFormAction == 'Editar'">Quitar ingrediente</button>
+               <button mat-raised-button color="primary" (click)="addIngredient(ingredientIndex)"mat-raised-button type="submit" [disabled]="!addIngredientForm.valid" color="accent">{{ ingredientFormAction }} ingrediente</button>
+            </div>
+         </form>
+         <ul>
+            <li *ngFor="let mix of mixture; let i = index" class="mixture">
+               <p>{{ mix.mixture }}</p>
+               <button mat-icon-button class="mr1" (click)="editMixture(i, mix.mixture)"><mat-icon>edit</mat-icon></button>
+            </li>
+         </ul>
+         <form [formGroup]="addMixtureForm" *ngIf="addMixtureForm">
+            <p class="mat-subheading-2">{{ mixtureFormAction }} instrucción</p>
+            <mat-form-field>
+               <input matInput placeholder="Instrucción" formControlName="mixture">
+            </mat-form-field>
+            <div class="buttonsB">
+               <button mat-raised-button color="secondary" (click)="removeMixture(i)" mat-raised-button class="removeMixture" *ngIf="mixtureFormAction == 'Editar'">Quitar instrucción</button>
+               <button mat-raised-button color="primary" (click)="addMixture(mixtureIndex)"mat-raised-button type="submit" [disabled]="!addMixtureForm.valid" color="accent">{{ mixtureFormAction }} instrucción</button>
+            </div>
+         </form>
+         <div class="formFooter" *ngIf="addCocktailForm">
+            <mat-icon aria-hidden="false" aria-label="Formulario incorrecto" *ngIf="addCocktailForm.status=='INVALID'" color="primary">block</mat-icon>
+            <mat-icon aria-hidden="false" aria-label="Formulario incorrecto" *ngIf="addCocktailForm.status=='VALID'" color="accent">thumb_up</mat-icon>
+            <div class="buttons">
+               <button mat-raised-button class="cancelButton" (click)="goBack()">Cancelar</button>
+               <button mat-raised-button type="submit" [disabled]="!addCocktailForm.valid" color="accent" (click)="saveCocktail()">Crear</button>
+            </div>
          </div>
       </form>
-      <ul>
-         <li *ngFor="let mix of mixture; let i = index" class="mixture">
-            <p>{{ mix.mixture }}</p>
-            <button mat-icon-button class="mr1" (click)="editMixture(i, mix.mixture)"><mat-icon>edit</mat-icon></button>
-         </li>
-      </ul>
-      <form [formGroup]="addMixtureForm" *ngIf="addMixtureForm">
-         <p class="mat-subheading-2">{{ mixtureFormAction }} instrucción</p>
-         <mat-form-field>
-            <input matInput placeholder="Instrucción" formControlName="mixture">
-         </mat-form-field>
-         <div class="buttonsB">
-            <button mat-raised-button color="secondary" (click)="removeMixture(i)" mat-raised-button class="removeMixture" *ngIf="mixtureFormAction == 'Editar'">Quitar instrucción</button>
-            <button mat-raised-button color="primary" (click)="addMixture(mixtureIndex)"mat-raised-button type="submit" [disabled]="!addMixtureForm.valid" color="accent">{{ mixtureFormAction }} instrucción</button>
-         </div>
-      </form>
-      <div class="formFooter" *ngIf="addCocktailForm">
-         <mat-icon aria-hidden="false" aria-label="Formulario incorrecto" *ngIf="addCocktailForm.status=='INVALID'" color="primary">block</mat-icon>
-         <mat-icon aria-hidden="false" aria-label="Formulario incorrecto" *ngIf="addCocktailForm.status=='VALID'" color="accent">thumb_up</mat-icon>
-         <div class="buttons">
-            <button mat-raised-button class="cancelButton" (click)="goBack()">Cancelar</button>
-            <button mat-raised-button type="submit" [disabled]="!addCocktailForm.valid" color="accent" (click)="saveCocktail()">Crear</button>
-         </div>
-      </div>
-   </form>
-</div>
+   </div>
+</ng-scrollbar>

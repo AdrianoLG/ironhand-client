@@ -1,38 +1,40 @@
-<div class="wrapper">
-   <h2 class="formTitle">Crear bebida</h2>
-   <form [formGroup]="addDrinkForm" *ngIf="addDrinkForm">
-      <mat-form-field>
-         <input matInput placeholder="Nombre" formControlName="name" required>
-      </mat-form-field>
-      <mat-form-field>
-         <input matInput placeholder="Marca" formControlName="brand" required>
-      </mat-form-field>
-      <mat-form-field>
-         <input matInput placeholder="Categoría" formControlName="category" required>
-      </mat-form-field>
-      <mat-slide-toggle (change)="alcohol = !alcohol">Alcohol</mat-slide-toggle>
-      <mat-form-field *ngIf="alcohol">
-         <input matInput type="number" placeholder="Graduación" formControlName="graduation">
-      </mat-form-field>
-      <mat-form-field>
-         <input matInput placeholder="Imagen" formControlName="img">
-      </mat-form-field>
-      <mat-form-field>
-         <input matInput type="number" placeholder="Cantidad" formControlName="qty" required>
-      </mat-form-field>
-      <mat-form-field>
-         <input matInput placeholder="Unidad" formControlName="unit" required>
-      </mat-form-field>
-      <mat-form-field>
-         <input matInput type="number" placeholder="Cantidad de producto" formControlName="productQty">
-      </mat-form-field>
-      <div class="formFooter" *ngIf="addDrinkForm">
-         <mat-icon aria-hidden="false" aria-label="Formulario incorrecto" *ngIf="addDrinkForm.status=='INVALID'" color="primary">block</mat-icon>
-         <mat-icon aria-hidden="false" aria-label="Formulario incorrecto" *ngIf="addDrinkForm.status=='VALID'" color="accent">thumb_up</mat-icon>
-         <div class="buttons">
-            <button mat-raised-button class="cancelButton" (click)="goBack()">Cancelar</button>
-            <button mat-raised-button type="submit" [disabled]="!addDrinkForm.valid" color="accent" (click)="createDrink()">Crear</button>
+<ng-scrollbar>
+   <div class="wrapper">
+      <h2 class="formTitle">Crear bebida</h2>
+      <form [formGroup]="addDrinkForm" *ngIf="addDrinkForm">
+         <mat-form-field>
+            <input matInput placeholder="Nombre" formControlName="name" required>
+         </mat-form-field>
+         <mat-form-field>
+            <input matInput placeholder="Marca" formControlName="brand" required>
+         </mat-form-field>
+         <mat-form-field>
+            <input matInput placeholder="Categoría" formControlName="category" required>
+         </mat-form-field>
+         <mat-slide-toggle (change)="alcohol = !alcohol">Alcohol</mat-slide-toggle>
+         <mat-form-field *ngIf="alcohol">
+            <input matInput type="number" placeholder="Graduación" formControlName="graduation">
+         </mat-form-field>
+         <mat-form-field>
+            <input matInput placeholder="Imagen" formControlName="img">
+         </mat-form-field>
+         <mat-form-field>
+            <input matInput type="number" placeholder="Cantidad" formControlName="qty" required>
+         </mat-form-field>
+         <mat-form-field>
+            <input matInput placeholder="Unidad" formControlName="unit" required>
+         </mat-form-field>
+         <mat-form-field>
+            <input matInput type="number" placeholder="Cantidad de producto" formControlName="productQty">
+         </mat-form-field>
+         <div class="formFooter" *ngIf="addDrinkForm">
+            <mat-icon aria-hidden="false" aria-label="Formulario incorrecto" *ngIf="addDrinkForm.status=='INVALID'" color="primary">block</mat-icon>
+            <mat-icon aria-hidden="false" aria-label="Formulario incorrecto" *ngIf="addDrinkForm.status=='VALID'" color="accent">thumb_up</mat-icon>
+            <div class="buttons">
+               <button mat-raised-button class="cancelButton" (click)="goBack()">Cancelar</button>
+               <button mat-raised-button type="submit" [disabled]="!addDrinkForm.valid" color="accent" (click)="createDrink()">Crear</button>
+            </div>
          </div>
-      </div>
-   </form>
-</div>
+      </form>
+   </div>
+</ng-scrollbar>

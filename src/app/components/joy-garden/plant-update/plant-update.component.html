@@ -1,34 +1,36 @@
-<div class="wrapper plant-update" *ngIf="plant">
-   <h2 class="formTitle">Actualizar planta</h2>
-   <form [formGroup]="updatePlantForm">
-      <mat-form-field>
-         <mat-label>Semilla</mat-label>
-         <mat-select formControlName="seedId" [value]="plant.seedId" required>
-            <mat-option *ngFor="let seed of availableSeeds" [value]="seed._id" select>
-               {{seed.name}}
-            </mat-option>
-         </mat-select>
-      </mat-form-field>
-      <mat-form-field>
-         <input matInput placeholder="Nombre" formControlName="name" required>
-      </mat-form-field>
-      <mat-form-field>
-         <input matInput placeholder="Contenedor" formControlName="container" required>
-      </mat-form-field>
-      <mat-form-field>
-         <input matInput placeholder="Coordenadas" formControlName="coords" required>
-      </mat-form-field>
-      <mat-form-field>
-         <input matInput placeholder="Galería" formControlName="gallery">
-      </mat-form-field>
-   </form>
-   <div class="formFooter">
-      <mat-icon aria-hidden="false" aria-label="Formulario incorrecto" *ngIf="updatePlantForm.status=='INVALID'" color="primary">block</mat-icon>
-      <mat-icon aria-hidden="false" aria-label="Formulario incorrecto" *ngIf="updatePlantForm.status=='VALID'" color="accent">thumb_up</mat-icon>
-      <div class="buttons">
-         <button class="cancelButton" mat-raised-button (click)="goBack()">Cancelar</button>
-         <button color="warn" mat-raised-button (click)="deletePlant()">Borrar</button>
-         <button color="primary" type="submit" mat-raised-button [disabled]="!updatePlantForm.valid" (click)="updatePlant()">Actualizar</button>
+<ng-scrollbar>
+   <div class="wrapper plant-update" *ngIf="plant">
+      <h2 class="formTitle">Actualizar planta</h2>
+      <form [formGroup]="updatePlantForm">
+         <mat-form-field>
+            <mat-label>Semilla</mat-label>
+            <mat-select formControlName="seedId" [value]="plant.seedId" required>
+               <mat-option *ngFor="let seed of availableSeeds" [value]="seed._id" select>
+                  {{seed.name}}
+               </mat-option>
+            </mat-select>
+         </mat-form-field>
+         <mat-form-field>
+            <input matInput placeholder="Nombre" formControlName="name" required>
+         </mat-form-field>
+         <mat-form-field>
+            <input matInput placeholder="Contenedor" formControlName="container" required>
+         </mat-form-field>
+         <mat-form-field>
+            <input matInput placeholder="Coordenadas" formControlName="coords" required>
+         </mat-form-field>
+         <mat-form-field>
+            <input matInput placeholder="Galería" formControlName="gallery">
+         </mat-form-field>
+      </form>
+      <div class="formFooter">
+         <mat-icon aria-hidden="false" aria-label="Formulario incorrecto" *ngIf="updatePlantForm.status=='INVALID'" color="primary">block</mat-icon>
+         <mat-icon aria-hidden="false" aria-label="Formulario incorrecto" *ngIf="updatePlantForm.status=='VALID'" color="accent">thumb_up</mat-icon>
+         <div class="buttons">
+            <button class="cancelButton" mat-raised-button (click)="goBack()">Cancelar</button>
+            <button color="warn" mat-raised-button (click)="deletePlant()">Borrar</button>
+            <button color="primary" type="submit" mat-raised-button [disabled]="!updatePlantForm.valid" (click)="updatePlant()">Actualizar</button>
+         </div>
       </div>
    </div>
-</div>
+</ng-scrollbar>

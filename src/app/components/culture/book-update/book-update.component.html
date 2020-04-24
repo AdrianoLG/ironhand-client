@@ -1,64 +1,66 @@
-<div class="wrapper">
-   <h2 class="formTitle">Añadir libro</h2>
-   <form [formGroup]="updateBookForm" *ngIf="updateBookForm">
-      <mat-form-field>
-         <input matInput placeholder="Título" formControlName="title" required>
-      </mat-form-field>
-      <mat-form-field>
-         <input matInput placeholder="Autor" formControlName="author" required>
-      </mat-form-field>
-      <mat-form-field>
-         <input matInput placeholder="Categoría" formControlName="category" required>
-      </mat-form-field>
-      <mat-form-field>
-         <input matInput type="number" placeholder="Páginas" formControlName="pages">
-      </mat-form-field>
-      <mat-form-field>
-         <input matInput placeholder="Imagen" formControlName="img">
-      </mat-form-field>
-      <mat-slide-toggle (change)="readBook = !readBook" [checked]="readBook">Leído</mat-slide-toggle>
-      <div *ngIf="readBook">
+<ng-scrollbar>
+   <div class="wrapper">
+      <h2 class="formTitle">Añadir libro</h2>
+      <form [formGroup]="updateBookForm" *ngIf="updateBookForm">
          <mat-form-field>
-            <input matInput [matDatepicker]="picker" formControlName="readDate" placeholder="Fecha">
-            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-            <mat-datepicker #picker></mat-datepicker>
+            <input matInput placeholder="Título" formControlName="title" required>
          </mat-form-field>
-         <div class="custom-form-field">
-            <p>Calificación</p>
-            <div>
-               <button mat-icon-button aria-label="1 estrella" (click)="rateBook(1)">
-                  <mat-icon color="accent" *ngIf="bookRating > 0 && bookRating <= 5">star</mat-icon>
-                  <mat-icon color="accent" *ngIf="!(bookRating > 0 && bookRating <= 5)">star_border</mat-icon>
-               </button>
-               <button mat-icon-button aria-label="2 estrellas" (click)="rateBook(2)">
-                  <mat-icon color="accent" *ngIf="bookRating > 1 && bookRating <= 5">star</mat-icon>
-                  <mat-icon color="accent" *ngIf="!(bookRating > 1 && bookRating <= 5)">star_border</mat-icon>
-               </button>
-               <button mat-icon-button aria-label="3 estrellas"(click)="rateBook(3)">
-                  <mat-icon color="accent" *ngIf="bookRating > 2 && bookRating <= 5">star</mat-icon>
-                  <mat-icon color="accent" *ngIf="!(bookRating > 2 && bookRating <= 5)">star_border</mat-icon>
-               </button>
-               <button mat-icon-button aria-label="4 estrellas" (click)="rateBook(4)">
-                  <mat-icon color="accent" *ngIf="bookRating > 3 && bookRating <= 5">star</mat-icon>
-                  <mat-icon color="accent" *ngIf="!(bookRating > 3 && bookRating <= 5)">star_border</mat-icon>
-               </button>
-               <button mat-icon-button aria-label="5 estrellas" (click)="rateBook(5)">
-                  <mat-icon color="accent" *ngIf="bookRating > 4 && bookRating <= 5">star</mat-icon>
-                  <mat-icon color="accent" *ngIf="!(bookRating > 4 && bookRating <= 5)">star_border</mat-icon>
-               </button>
+         <mat-form-field>
+            <input matInput placeholder="Autor" formControlName="author" required>
+         </mat-form-field>
+         <mat-form-field>
+            <input matInput placeholder="Categoría" formControlName="category" required>
+         </mat-form-field>
+         <mat-form-field>
+            <input matInput type="number" placeholder="Páginas" formControlName="pages">
+         </mat-form-field>
+         <mat-form-field>
+            <input matInput placeholder="Imagen" formControlName="img">
+         </mat-form-field>
+         <mat-slide-toggle (change)="readBook = !readBook" [checked]="readBook">Leído</mat-slide-toggle>
+         <div *ngIf="readBook">
+            <mat-form-field>
+               <input matInput [matDatepicker]="picker" formControlName="readDate" placeholder="Fecha">
+               <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+               <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+            <div class="custom-form-field">
+               <p>Calificación</p>
+               <div>
+                  <button mat-icon-button aria-label="1 estrella" (click)="rateBook(1)">
+                     <mat-icon color="accent" *ngIf="bookRating > 0 && bookRating <= 5">star</mat-icon>
+                     <mat-icon color="accent" *ngIf="!(bookRating > 0 && bookRating <= 5)">star_border</mat-icon>
+                  </button>
+                  <button mat-icon-button aria-label="2 estrellas" (click)="rateBook(2)">
+                     <mat-icon color="accent" *ngIf="bookRating > 1 && bookRating <= 5">star</mat-icon>
+                     <mat-icon color="accent" *ngIf="!(bookRating > 1 && bookRating <= 5)">star_border</mat-icon>
+                  </button>
+                  <button mat-icon-button aria-label="3 estrellas"(click)="rateBook(3)">
+                     <mat-icon color="accent" *ngIf="bookRating > 2 && bookRating <= 5">star</mat-icon>
+                     <mat-icon color="accent" *ngIf="!(bookRating > 2 && bookRating <= 5)">star_border</mat-icon>
+                  </button>
+                  <button mat-icon-button aria-label="4 estrellas" (click)="rateBook(4)">
+                     <mat-icon color="accent" *ngIf="bookRating > 3 && bookRating <= 5">star</mat-icon>
+                     <mat-icon color="accent" *ngIf="!(bookRating > 3 && bookRating <= 5)">star_border</mat-icon>
+                  </button>
+                  <button mat-icon-button aria-label="5 estrellas" (click)="rateBook(5)">
+                     <mat-icon color="accent" *ngIf="bookRating > 4 && bookRating <= 5">star</mat-icon>
+                     <mat-icon color="accent" *ngIf="!(bookRating > 4 && bookRating <= 5)">star_border</mat-icon>
+                  </button>
+               </div>
             </div>
+            <mat-form-field>
+               <textarea matInput placeholder="Comentarios" formControlName="comments"></textarea>
+            </mat-form-field>
          </div>
-         <mat-form-field>
-            <textarea matInput placeholder="Comentarios" formControlName="comments"></textarea>
-         </mat-form-field>
-      </div>
-   </form>
-   <div class="formFooter" *ngIf="updateBookForm">
-      <mat-icon aria-hidden="false" aria-label="Formulario incorrecto" *ngIf="updateBookForm.status=='INVALID'" color="primary">block</mat-icon>
-      <mat-icon aria-hidden="false" aria-label="Formulario incorrecto" *ngIf="updateBookForm.status=='VALID'" color="accent">thumb_up</mat-icon>
-      <div class="buttons">
-         <button class="cancelButton" mat-raised-button (click)="goBack()">Cancelar</button>
-         <button color="accent" type="submit" mat-raised-button [disabled]="!updateBookForm.valid" (click)="updateBook()">Actualizar</button>
+      </form>
+      <div class="formFooter" *ngIf="updateBookForm">
+         <mat-icon aria-hidden="false" aria-label="Formulario incorrecto" *ngIf="updateBookForm.status=='INVALID'" color="primary">block</mat-icon>
+         <mat-icon aria-hidden="false" aria-label="Formulario incorrecto" *ngIf="updateBookForm.status=='VALID'" color="accent">thumb_up</mat-icon>
+         <div class="buttons">
+            <button class="cancelButton" mat-raised-button (click)="goBack()">Cancelar</button>
+            <button color="accent" type="submit" mat-raised-button [disabled]="!updateBookForm.valid" (click)="updateBook()">Actualizar</button>
+         </div>
       </div>
    </div>
-</div>
+</ng-scrollbar>

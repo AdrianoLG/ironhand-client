@@ -1,18 +1,20 @@
-<div class="wrapper">
-   <h2 class="formTitle">Añadir trasplante</h2>
-   <form [formGroup]="addTransplantForm">
-      <mat-form-field>
-         <input matInput [matDatepicker]="picker" formControlName="date" placeholder="Fecha">
-         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-         <mat-datepicker #picker></mat-datepicker>
-      </mat-form-field>
-   </form>
-   <div class="formFooter">
-      <mat-icon aria-hidden="false" aria-label="Formulario incorrecto" *ngIf="addTransplantForm.status=='INVALID'" color="primary">block</mat-icon>
-      <mat-icon aria-hidden="false" aria-label="Formulario incorrecto" *ngIf="addTransplantForm.status=='VALID'" color="accent">thumb_up</mat-icon>
-      <div class="buttons">
-         <button class="cancelButton" mat-raised-button (click)="goBack()">Cancelar</button>
-         <button color="primary" type="submit" mat-raised-button [disabled]="!addTransplantForm.valid" (click)="saveTransplant()">Crear</button>
+<ng-scrollbar>
+   <div class="wrapper">
+      <h2 class="formTitle">Añadir trasplante</h2>
+      <form [formGroup]="addTransplantForm">
+         <mat-form-field>
+            <input matInput [matDatepicker]="picker" formControlName="date" placeholder="Fecha">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+         </mat-form-field>
+      </form>
+      <div class="formFooter">
+         <mat-icon aria-hidden="false" aria-label="Formulario incorrecto" *ngIf="addTransplantForm.status=='INVALID'" color="primary">block</mat-icon>
+         <mat-icon aria-hidden="false" aria-label="Formulario incorrecto" *ngIf="addTransplantForm.status=='VALID'" color="accent">thumb_up</mat-icon>
+         <div class="buttons">
+            <button class="cancelButton" mat-raised-button (click)="goBack()">Cancelar</button>
+            <button color="primary" type="submit" mat-raised-button [disabled]="!addTransplantForm.valid" (click)="saveTransplant()">Crear</button>
+         </div>
       </div>
    </div>
-</div>
+</ng-scrollbar>

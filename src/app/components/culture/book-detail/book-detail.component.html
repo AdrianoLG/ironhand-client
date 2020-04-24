@@ -1,34 +1,36 @@
-<div *ngIf="book" class="wrapper">
-   <div class="flexBBw">
-      <div class="left">
-         <h2 class="sectionTitle">{{ book.title }}</h2>
-         <p class="detailSecondary">{{ book.author }}</p>
+<ng-scrollbar>
+   <div *ngIf="book" class="wrapper">
+      <div class="flexBBw">
+         <div class="left">
+            <h2 class="sectionTitle">{{ book.title }}</h2>
+            <p class="detailSecondary">{{ book.author }}</p>
+         </div>
+         <div class="right">
+            <p class="detailTertiary">{{ book.category }}</p>
+         </div>
       </div>
-      <div class="right">
-         <p class="detailTertiary">{{ book.category }}</p>
+      <div class="img" *ngIf="book">
+         <img src="{{ book.img }}" alt="" *ngIf="book.img != ''">
+         <img src="assets/img/dummy.jpg" alt="" *ngIf="book.img == ''">
+      </div>
+      <p>{{ book.pages }} pág. <span class="readDate" *ngIf="book.read">Leído: {{ book.readDate | date: 'dd-MM-yyyy' }}</span></p>
+      <div class="rating" *ngIf="book.read">
+         <mat-icon color="accent" *ngIf="book.rating > 0 && book.rating <= 5">star</mat-icon>
+         <mat-icon color="accent" *ngIf="!(book.rating > 0 && book.rating <= 5)">star_border</mat-icon>
+         <mat-icon color="accent" *ngIf="book.rating > 1 && book.rating <= 5">star</mat-icon>
+         <mat-icon color="accent" *ngIf="!(book.rating > 1 && book.rating <= 5)">star_border</mat-icon>
+         <mat-icon color="accent" *ngIf="book.rating > 2 && book.rating <= 5">star</mat-icon>
+         <mat-icon color="accent" *ngIf="!(book.rating > 2 && book.rating <= 5)">star_border</mat-icon>
+         <mat-icon color="accent" *ngIf="book.rating > 3 && book.rating <= 5">star</mat-icon>
+         <mat-icon color="accent" *ngIf="!(book.rating > 3 && book.rating <= 5)">star_border</mat-icon>
+         <mat-icon color="accent" *ngIf="book.rating > 4 && book.rating <= 5">star</mat-icon>
+         <mat-icon color="accent" *ngIf="!(book.rating > 4 && book.rating <= 5)">star_border</mat-icon>
+      </div>
+      <p class="comments">{{ book.comments }}</p>
+      <div class="buttons floatRight">
+         <button class="cancelButton" mat-raised-button (click)="goBack()">Atrás</button>
+         <button color="warn" mat-raised-button (click)="deleteBook()">Borrar</button>
+         <button color="accent" mat-raised-button routerLink="/cultura/libros/editar/{{ book._id }}">Editar</button>
       </div>
    </div>
-   <div class="img" *ngIf="book">
-      <img src="{{ book.img }}" alt="" *ngIf="book.img != ''">
-      <img src="assets/img/dummy.jpg" alt="" *ngIf="book.img == ''">
-   </div>
-   <p>{{ book.pages }} pág. <span class="readDate" *ngIf="book.read">Leído: {{ book.readDate | date: 'dd-MM-yyyy' }}</span></p>
-   <div class="rating" *ngIf="book.read">
-      <mat-icon color="accent" *ngIf="book.rating > 0 && book.rating <= 5">star</mat-icon>
-      <mat-icon color="accent" *ngIf="!(book.rating > 0 && book.rating <= 5)">star_border</mat-icon>
-      <mat-icon color="accent" *ngIf="book.rating > 1 && book.rating <= 5">star</mat-icon>
-      <mat-icon color="accent" *ngIf="!(book.rating > 1 && book.rating <= 5)">star_border</mat-icon>
-      <mat-icon color="accent" *ngIf="book.rating > 2 && book.rating <= 5">star</mat-icon>
-      <mat-icon color="accent" *ngIf="!(book.rating > 2 && book.rating <= 5)">star_border</mat-icon>
-      <mat-icon color="accent" *ngIf="book.rating > 3 && book.rating <= 5">star</mat-icon>
-      <mat-icon color="accent" *ngIf="!(book.rating > 3 && book.rating <= 5)">star_border</mat-icon>
-      <mat-icon color="accent" *ngIf="book.rating > 4 && book.rating <= 5">star</mat-icon>
-      <mat-icon color="accent" *ngIf="!(book.rating > 4 && book.rating <= 5)">star_border</mat-icon>
-   </div>
-   <p class="comments">{{ book.comments }}</p>
-   <div class="buttons floatRight">
-      <button class="cancelButton" mat-raised-button (click)="goBack()">Atrás</button>
-      <button color="warn" mat-raised-button (click)="deleteBook()">Borrar</button>
-      <button color="accent" mat-raised-button routerLink="/cultura/libros/editar/{{ book._id }}">Editar</button>
-   </div>
-</div>
+</ng-scrollbar>
