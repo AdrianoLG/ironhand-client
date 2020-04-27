@@ -201,6 +201,9 @@ body .mat-divider {
 	position: fixed !important;
 	right: 1em;
 	z-index: 5;
+	@media screen and (min-width: 850px) {
+		right: calc(50% - 399px);
+	}
 	.mat-button-wrapper {
 		@extend .flexCC;
 	}
@@ -256,6 +259,7 @@ body .mat-divider {
 	.mat-tab-header {
 		background: $primary;
 		bottom: 0;
+		max-width: 850px;
 		position: fixed;
 		width: 100%;
 		z-index: 2;

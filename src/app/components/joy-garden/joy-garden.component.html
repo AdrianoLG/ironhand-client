@@ -50,7 +50,7 @@
                      </div>
                   </mat-card-content>
                </mat-card>
-               <div class="gallery" *ngIf="gallery.length">
+               <div class="gallery" *ngIf="gallery">
                   <div *ngFor="let img of gallery"><img src="{{ img.pic }}" alt="{{ img.name }}"><span>{{ img.name }}</span></div>
                </div>
             </ng-scrollbar>

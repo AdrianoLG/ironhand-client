@@ -272,7 +272,6 @@ export class AlertsComponent implements OnInit {
                   }
                   break;
                 case 'washingmachine':
-                  console.log('washingmachine');
                   if (this.getDifferenceInDays(this.today, new Date(cleaningTask.date)) < 8) {
                     indexes.push(22);
                   }
