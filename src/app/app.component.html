@@ -7,16 +7,6 @@
       <a routerLink='/' (click)="opened=false">
          <h1>Iron Hand</h1>
       </a>
-      <span class="spacer"></span>
-      <button mat-icon-button [matMenuTriggerFor]="menu">
-         <mat-icon>more_vert</mat-icon>
-      </button>
-      <mat-menu #menu>
-         <button mat-menu-item *ngFor="let item of menuItems" (click)="selectMenuItem(item.name)">
-            <mat-icon>{{ item.icon}}</mat-icon>
-            <span>{{ item.name }}</span>
-         </button>
-      </mat-menu>
    </mat-toolbar-row>
 </mat-toolbar>
 

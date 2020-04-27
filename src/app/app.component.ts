@@ -15,7 +15,6 @@ export class AppComponent implements OnInit {
   title = 'Iron Hand';
   visibleBar = true;
   opened = false;
-  menuItems: object[];
   user: string;
   date: Date;
 
@@ -31,17 +30,6 @@ export class AppComponent implements OnInit {
     } else {
       this.visibleBar = true;
     }
-    this.menuItems = [
-      {
-        name: 'Preferencias',
-        icon: 'settings' 
-      },
-      {
-        name: 'Cerrar sesión',
-        icon: 'logout'
-      }
-    ]
-    this._authService.logout();
     this.date = new Date();
   }
 
