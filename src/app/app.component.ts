@@ -30,6 +30,7 @@ export class AppComponent implements OnInit {
     } else {
       this.visibleBar = true;
     }
+    this._authService.logout();
     this.date = new Date();
   }
 
