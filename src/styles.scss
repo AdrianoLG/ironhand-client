@@ -2,6 +2,7 @@
 @import '_typography';
 
 body {
+	background: $lightestBackground;
 	color: $secondary;
 	overflow: hidden;
 	font-family: 'Fira Sans', sans-serif;
@@ -286,6 +287,10 @@ body .mat-divider {
 }
 .mat-tab-labels {
 	border-bottom: 1px solid $lightBackground;
+}
+.mat-toolbar, .mat-sidenav-container {
+	margin: 0 auto;
+	max-width: 850px;
 }
 .ng-scroll-content {
 	width: 100% !important;
