@@ -17,7 +17,7 @@ import { CocktailUpdateComponent } from './cocktail-update/cocktail-update.compo
 import { RecipeeCreateComponent } from './recipee-create/recipee-create.component';
 import { RecipeeDetailComponent } from './recipee-detail/recipee-detail.component';
 import { RecipeeUpdateComponent } from './recipee-update/recipee-update.component';
-import { MatTabsModule } from '@angular/material';
+import { MatTabsModule } from '@angular/material/tabs';
 import { CollectionPipeModule } from 'src/app/filters/collection-pipe.module';
 
 

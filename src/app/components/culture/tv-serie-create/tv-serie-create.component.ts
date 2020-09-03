@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
 import { ChipItem } from 'src/app/models/chip-item';
 import { ENTER, COMMA } from '@angular/cdk/keycodes';
-import { MatChipInputEvent } from '@angular/material';
+import { MatChipInputEvent } from '@angular/material/chips';
 import { TvSeriesService } from 'src/app/services/tv-series/tv-series.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { TvSerie } from 'src/app/models/tv-serie';

@@ -18,6 +18,10 @@
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
             "aot": true,
+            "allowedCommonJsDependencies": [
+              "hammerjs",
+              "jwt-decode"
+            ],
             "outputPath": "dist/client",
             "index": "src/index.html",
             "main": "src/main.ts",
@@ -31,13 +35,14 @@
               "src/assets/theme/theme.scss",
               "src/styles.scss"
             ],
-            "scripts": ["node_modules/hammerjs/hammer.min.js"],
+            "scripts": [
+              "node_modules/hammerjs/hammer.min.js"
+            ],
             "stylePreprocessorOptions": {
               "includePaths": [
                 "src/app/scss"
               ]
-            },
-            "es5BrowserSupport": true
+            }
           },
           "configurations": {
             "production": {

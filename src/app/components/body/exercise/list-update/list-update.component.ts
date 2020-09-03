@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
 import { ChipItem } from 'src/app/models/chip-item';
 import { ENTER, COMMA } from '@angular/cdk/keycodes';
-import { MatChipInputEvent } from '@angular/material';
+import { MatChipInputEvent } from '@angular/material/chips';
 import { ExercisesService } from 'src/app/services/exercises/exercises.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Exercise } from 'src/app/models/exercise';

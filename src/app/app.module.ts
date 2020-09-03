@@ -1,4 +1,4 @@
-import { BrowserModule, HammerModule, HAMMER_GESTURE_CONFIG } from '@angular/platform-browser';
+import { BrowserModule, HammerModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
@@ -12,7 +12,6 @@ import { LoginComponent } from './components/login/login.component';
 import { HomeComponent } from './components/home/home.component';
 import { Globals } from './services/globals';
 import 'hammerjs';
-import { GestureConfig } from '@angular/material';
 import { RegisterComponent } from './components/register/register.component';
 import { DatePipeModule } from './filters/date-pipe.module';
 import { InlineSVGModule } from 'ng-inline-svg';
@@ -61,7 +60,6 @@ import { JoyGardenStatsComponent } from './components/statistics/joy-garden-stat
   providers: [
     AuthGuard,
     Globals,
-    { provide: HAMMER_GESTURE_CONFIG, useClass: GestureConfig }
   ],
   bootstrap: [AppComponent]
 })

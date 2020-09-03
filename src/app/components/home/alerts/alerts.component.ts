@@ -31,7 +31,7 @@ export class AlertsComponent implements OnInit {
     this.lastRehearsal = '';
     this.lastWateringFarm = '';
     this.lastWateringFlo = '';
-    
+
     this._alertsService.getAlerts().subscribe(alerts => {
       this.alerts = alerts;
       for (let watering of alerts.lastWatering) {
@@ -411,7 +411,7 @@ export class AlertsComponent implements OnInit {
               }
             }
             break;
-          case 'Terraza norte':
+          case 'Terraza Norte':
             for (let task of cleaningTask.tasks) {
               switch (task) {
                 case 'broom':
@@ -434,7 +434,7 @@ export class AlertsComponent implements OnInit {
               }
             }
             break;
-          case 'Terraza sur':
+          case 'Terraza Sur':
             for (let task of cleaningTask.tasks) {
               switch (task) {
                 case 'broom':
@@ -506,7 +506,7 @@ export class AlertsComponent implements OnInit {
       for (let i = uniqueIndexes.length -1; i >= 0; i--) {
         this.cleaningTasks.splice(uniqueIndexes[i], 1);
       }
-      this.alertsCount = this.cleaningTasks.length + this.lastWatering.length + this.lastRehearsal.length 
+      this.alertsCount = this.cleaningTasks.length + this.lastWatering.length + this.lastRehearsal.length
       + this.lastWateringFarm.length + this.expiryProducts.length + this.lastWateringFlo.length + this.lastExercise.length;
     });
   }

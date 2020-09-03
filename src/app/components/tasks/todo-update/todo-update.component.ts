@@ -3,7 +3,7 @@ import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { Location } from '@angular/common';
 import { Todo } from '../../../models/todo';
 import { TodosService } from 'src/app/services/todos/todos.service';
-import { MatSliderChange } from '@angular/material';
+import { MatSliderChange } from '@angular/material/slider';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
