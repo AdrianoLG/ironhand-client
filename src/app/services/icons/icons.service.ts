@@ -30,7 +30,7 @@ export class IconsService {
   ) { }
 
   public registerIcons(): void {
-    this.loadIcons(Object.values(Icons), '../../../assets/icons');
+    this.loadIcons(Object.values(Icons), './assets/icons');
   }
 
   private loadIcons(iconKeys: string[], iconUrl: string): void {

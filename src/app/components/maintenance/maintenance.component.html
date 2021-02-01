@@ -14,7 +14,7 @@
                   <p class="cardTertiary">{{ task.date | dateFilter | uppercase }}</p>
                </div>
                <div class="hundred">
-                  <div *ngFor="let t of task.tasks;" class="customIcon" [inlineSVG]="'../../../../assets/img/icons/' + t + '.svg'"></div>
+                  <div *ngFor="let t of task.tasks;" class="customIcon" [inlineSVG]="'/assets/img/icons/' + t + '.svg'"></div>
                </div>
             </mat-card-content>
          </mat-card>
