@@ -1,17 +1,16 @@
-import { Component, OnInit } from '@angular/core';
-import { Location } from '@angular/common';
-import { FormGroup, Validators, FormBuilder } from '@angular/forms';
-import { Plant } from 'src/app/models/Plant';
-import { PlantsService } from 'src/app/services/plants/plants.service';
-import { ActivatedRoute } from '@angular/router';
+import { Component, OnInit } from "@angular/core";
+import { Location } from "@angular/common";
+import { FormGroup, Validators, FormBuilder } from "@angular/forms";
+import { Plant } from "src/app/models/plant";
+import { PlantsService } from "src/app/services/plants/plants.service";
+import { ActivatedRoute } from "@angular/router";
 
 @Component({
-  selector: 'app-transplant-create',
-  templateUrl: './transplant-create.component.html',
-  styleUrls: ['./transplant-create.component.scss']
+  selector: "app-transplant-create",
+  templateUrl: "./transplant-create.component.html",
+  styleUrls: ["./transplant-create.component.scss"],
 })
 export class TransplantCreateComponent implements OnInit {
-
   addTransplantForm: FormGroup;
   plant: Plant;
   private _id: string;
@@ -21,12 +20,12 @@ export class TransplantCreateComponent implements OnInit {
     private _location: Location,
     private _formBuilder: FormBuilder,
     private _route: ActivatedRoute
-  ) { }
+  ) {}
 
   ngOnInit() {
-    this._id = this._route.snapshot.paramMap.get('_id');
+    this._id = this._route.snapshot.paramMap.get("_id");
     this.addTransplantForm = this._formBuilder.group({
-      date: ['', [Validators.required]]
+      date: ["", [Validators.required]],
     });
   }
 
@@ -40,16 +39,18 @@ export class TransplantCreateComponent implements OnInit {
     }
 
     let transplants = [];
-    this._plantsService.getPlant(this._id).subscribe(plant => {
+    this._plantsService.getPlant(this._id).subscribe((plant) => {
       transplants = plant.transplant;
       transplants.push(this.addTransplantForm.value.date);
       plant.transplant = transplants;
-      this._plantsService.updatePlant(this._id, plant).subscribe(() => {
-        this.goBack();
-      }, error => {
-        console.log(error);
-      });
+      this._plantsService.updatePlant(this._id, plant).subscribe(
+        () => {
+          this.goBack();
+        },
+        (error) => {
+          console.log(error);
+        }
+      );
     });
   }
-
 }
